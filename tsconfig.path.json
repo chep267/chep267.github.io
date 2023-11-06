@@ -2,7 +2,7 @@
     "compilerOptions": {
         "paths": {
             "@src/*": ["src/*"],
-            "@dong/*": ["src/react/*"],
+            "@root/*": ["src/react/*"],
             "@modules/*": ["src/modules/*"],
             "@module-base/*": ["src/modules/module-base/*"],
             "@module-theme/*": ["src/modules/module-theme/*"],
