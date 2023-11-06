@@ -1,0 +1,13 @@
+/**
+ *
+ * @author dong.nguyenthanh@powergatesoftware.com on 26/07/2023.
+ *
+ */
+
+/** types */
+import { PaletteMode } from '@mui/material';
+
+export const themeObject: Readonly<Record<PaletteMode, PaletteMode>> = Object.freeze({
+    light: 'light',
+    dark: 'dark',
+});
