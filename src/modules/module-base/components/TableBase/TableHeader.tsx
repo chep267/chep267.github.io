@@ -7,7 +7,7 @@
 import * as React from 'react';
 import { visuallyHidden } from '@mui/utils';
 
-/** mui components */
+/** lib components */
 import Box from '@mui/material/Box';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';

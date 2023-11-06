@@ -7,9 +7,8 @@
 /** types */
 import type { Theme } from '@mui/material';
 import type { ISourceOptions } from 'tsparticles-engine';
-import type { ThemeModeType } from '@module-theme/models';
 
-export const getOption = (_mode: ThemeModeType, theme: Theme): ISourceOptions => ({
+export const getOption = (theme: Theme): ISourceOptions => ({
     fullScreen: {
         enable: true,
         zIndex: 1,
@@ -17,7 +16,6 @@ export const getOption = (_mode: ThemeModeType, theme: Theme): ISourceOptions =>
     autoPlay: true,
     background: {
         color: {
-            // value: '#111111',
             value: theme.palette.background.default,
         },
         image: '',

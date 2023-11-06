@@ -6,7 +6,7 @@
 
 import * as React from 'react';
 
-/** mui components */
+/** lib components */
 import {
     StyledEngineProvider,
     CssBaseline,

@@ -8,9 +8,9 @@ const focusInput = (elem?: HTMLInputElement | null) => {
     if (!elem) {
         return false;
     }
-    window.setTimeout(function () {
-        elem.selectionStart = elem.selectionEnd = elem.value.length;
-        elem?.focus();
+    setTimeout(() => {
+        elem.selectionStart = elem.selectionEnd = elem.value?.length;
+        elem?.focus?.();
     }, 1);
 };
 

@@ -7,7 +7,7 @@
 import * as React from 'react';
 import classnames from 'classnames';
 
-/** mui components */
+/** lib components */
 import Box from '@mui/material/Box';
 import Table from '@mui/material/Table';
 import TableContainer from '@mui/material/TableContainer';

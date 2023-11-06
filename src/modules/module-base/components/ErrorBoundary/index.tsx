@@ -7,23 +7,16 @@
 import * as React from 'react';
 
 /** types */
-import type { PropsWithChildren, FunctionComponent, ErrorInfo } from 'react';
+import type { ErrorInfo } from 'react';
+import type { ErrorBoundaryProps } from '@module-base/models';
+import { ErrorBoundaryStates } from '@module-base/models';
 
-type Props = PropsWithChildren<{
-    fallback?: FunctionComponent;
-    isAutoReload?: boolean;
-}>;
-
-type States = {
-    hasError: boolean;
-};
-
-/** components */
+/** lazy components */
 const FallbackDefault = React.lazy(() => import('./FallbackDefault'));
 const NotifyBoundary = React.lazy(() => import('@module-base/components/NotifyBoundary'));
 
-class ErrorBoundary extends React.Component<Props, States> {
-    constructor(props: Props) {
+class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundaryStates> {
+    constructor(props: ErrorBoundaryProps) {
         super(props);
         this.state = { hasError: false };
     }

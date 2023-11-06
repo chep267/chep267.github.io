@@ -6,11 +6,11 @@
 
 import * as React from 'react';
 
-/** mui components */
+/** lib components */
 import TextField from '@mui/material/TextField';
 import InputAdornment from '@mui/material/InputAdornment';
 
-/** mui icons */
+/** icons */
 import ClearIcon from '@mui/icons-material/Clear';
 import SearchIcon from '@mui/icons-material/Search';
 
