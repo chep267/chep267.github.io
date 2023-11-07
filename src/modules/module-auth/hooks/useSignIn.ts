@@ -9,7 +9,7 @@ import { useMutation } from '@tanstack/react-query';
 import { useIntl } from 'react-intl';
 
 /** apis */
-import { signInApi } from '@module-auth/apis';
+import { apiSignIn } from '@module-auth/apis';
 
 /** constants */
 import { accessTokenCookieKey, emailLocalKey } from '@module-base/constants/localStoreKey';
@@ -17,9 +17,11 @@ import { accessTokenCookieKey, emailLocalKey } from '@module-base/constants/loca
 /** utils */
 import { Encrypt } from '@module-base/utils/security';
 import { localStorageBase } from '@module-base/utils/storages';
+import { authMessage } from '@module-auth/utils/messages';
+
+/** hooks */
 import { useBase } from '@module-base/hooks/useBase';
 import { useAuth } from '@module-auth/hooks/useAuth';
-import { authMessage } from '@module-auth/utils/messages';
 
 export function useSignIn() {
     const intl = useIntl();
@@ -27,7 +29,7 @@ export function useSignIn() {
     const { notify } = useBase();
 
     return useMutation({
-        mutationFn: signInApi,
+        mutationFn: apiSignIn,
         onSuccess: async (response, { email }) => {
             const me = response.user;
             const accessToken = (await me.getIdToken()) || '';
