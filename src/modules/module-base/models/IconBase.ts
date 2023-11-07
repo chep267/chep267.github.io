@@ -9,7 +9,7 @@ import type { RefObject, SVGProps } from 'react';
 
 type IconSVGProps = SVGProps<SVGSVGElement>;
 
-type IconBaseType = 'appLogo';
+type IconBaseType = 'appLogo' | 'error' | 'notFound';
 
 interface IconBaseProps extends SVGProps<SVGSVGElement> {
     name: IconBaseType;

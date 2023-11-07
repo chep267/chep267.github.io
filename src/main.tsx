@@ -8,7 +8,7 @@ import * as React from 'react';
 import ReactDOM from 'react-dom/client';
 
 /** App */
-import App from '@src/react';
+import App from '@root/index';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
     <React.StrictMode>

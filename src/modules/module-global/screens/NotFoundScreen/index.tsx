@@ -5,10 +5,12 @@
  */
 
 import * as React from 'react';
+
+/** lib components */
 import { Stack } from '@mui/material';
 
-/** images */
-import Cover from '@module-base/assets/404.jpg';
+/** components */
+import IconBase from '@module-base/components/IconBase';
 
 /** styles */
 import useStyles from './styles';
@@ -22,7 +24,7 @@ export default function NotFoundScreen() {
     return (
         <Stack className={classes.layout}>
             <Stack className={classes.notFound}>
-                <img src={Cover} alt="" />
+                <IconBase name="notFound" width="100%" height="100%" />
             </Stack>
             <React.Suspense fallback={null}>
                 <Particle />

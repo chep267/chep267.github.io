@@ -16,6 +16,9 @@ import type { IconBaseProps, IconBaseType } from '@module-base/models';
 const Icons: Readonly<Record<IconBaseType, LazyExoticComponent<(props: IconBaseProps) => JSX.Element>>> = Object.freeze({
     /** app icon */
     appLogo: React.lazy(() => import('./svg/AppLogo')),
+
+    error: React.lazy(() => import('./svg/Error')),
+    notFound: React.lazy(() => import('./svg/NotFound')),
 });
 
 const IconBase = React.memo((props: IconBaseProps) => {
@@ -24,7 +27,7 @@ const IconBase = React.memo((props: IconBaseProps) => {
 
     return (
         <React.Suspense fallback={<Skeleton width={24} height={24} variant="circular" />}>
-            <Icon name={name} width={size} viewBox={viewBox} height={size} {...iconProps} />
+            <Icon name={name} width={size} height={size} viewBox={viewBox} {...iconProps} />
         </React.Suspense>
     );
 });
