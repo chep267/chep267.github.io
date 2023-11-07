@@ -52,8 +52,8 @@ const apiRecover = async (payload: AuthApiProps['Recover']['Payload']): Promise<
 const apiRestart = async (payload: AuthApiProps['Restart']['Payload']): Promise<AuthApiProps['Restart']['Response']> => {
     const { timer = TIMING_API_PENDING, fnCallback } = payload;
     return onAuthStateChanged(authentication, async (user) => {
-        await debounce(timer);
         if (user) {
+            await debounce(timer);
             fnCallback(user);
         }
     });
