@@ -7,7 +7,7 @@
 import * as React from 'react';
 import classnames from 'classnames';
 
-/** mui components */
+/** lib components */
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
 import AlertTitle from '@mui/material/AlertTitle';

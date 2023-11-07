@@ -9,14 +9,13 @@ import Cookies from 'js-cookie';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 /** apis */
-import { authentication, restartApi } from '@module-auth/apis';
+import { apiRestart } from '@module-auth/apis';
 
 /** components */
 import StartLoading from '@module-base/components/StartLoading';
 
 /** constants */
 import { accessTokenCookieKey } from '@module-base/constants/localStoreKey';
-import { TIMING_APP_START } from '@module-base/constants/defaultValue';
 import { ACCOUNT_STATE } from '@module-auth/constants/accountState';
 import { AUTH_SCREEN } from '@module-auth/constants/screen';
 
@@ -42,21 +41,15 @@ function AuthRoute(props: PropsWithChildren) {
         : ACCOUNT_STATE.SIGN_IN;
 
     React.useEffect(() => {
-        let timeout: NodeJS.Timeout;
         if (accountState === ACCOUNT_STATE.RE_SIGN_IN) {
             /** đã đăng nhập từ trước, lấy phiên đăng nhập */
-            restartApi(authentication, (me) => {
-                if (me) {
-                    timeout = setTimeout(() => {
-                        auth.toggleAuth({ isAuth: true, me });
-                    }, TIMING_APP_START);
-                }
-            });
+            apiRestart({
+                fnCallback: (me) => auth.toggleAuth({ isAuth: true, me }),
+            }).then();
         }
         if (accountState === ACCOUNT_STATE.SIGNED_IN && Object.values(AUTH_SCREEN).includes(pathname as any)) {
             navigate(AUTH_SCREEN.HOME, { replace: true });
         }
-        return () => clearTimeout(timeout);
     }, [accountState]);
 
     switch (accountState) {

@@ -7,7 +7,7 @@
 import * as React from 'react';
 import classnames from 'classnames';
 
-/** mui components */
+/** lib components */
 import TableBodyElem from '@mui/material/TableBody';
 import TableRow from '@mui/material/TableRow';
 import TableCell from '@mui/material/TableCell';

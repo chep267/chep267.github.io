@@ -9,7 +9,7 @@ import classnames from 'classnames';
 import { useIntl } from 'react-intl';
 import { useLocation, useNavigate } from 'react-router-dom';
 
-/** mui components */
+/** lib components */
 import Drawer from '@mui/material/Drawer';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
@@ -20,7 +20,7 @@ import Button from '@mui/material/Button';
 import Divider from '@mui/material/Divider';
 import Tooltip from '@mui/material/Tooltip';
 
-/** mui icons */
+/** icons */
 import HomeIcon from '@mui/icons-material/Home';
 import TelegramIcon from '@mui/icons-material/Telegram';
 import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRight';
@@ -42,7 +42,7 @@ import useStyles from './styles';
 const AppMenu = React.memo(() => {
     const { pathname } = useLocation();
     const navigate = useNavigate();
-    const intl = useIntl();
+    const { formatMessage } = useIntl();
     const {
         sider: { open, toggleSider },
     } = useBase();
@@ -51,12 +51,12 @@ const AppMenu = React.memo(() => {
     const MENU_ROUTER = React.useMemo(
         () => [
             {
-                name: intl.formatMessage(feedMessage['module.feed.feed']),
+                name: feedMessage['module.feed.feed'],
                 path: SCREEN.FEED,
                 icon: <HomeIcon />,
             },
             {
-                name: intl.formatMessage(messengerMessage['module.messenger.messenger']),
+                name: messengerMessage['module.messenger.messenger'],
                 path: SCREEN.MESSENGER,
                 icon: <TelegramIcon />,
             },
@@ -67,22 +67,25 @@ const AppMenu = React.memo(() => {
     const renderMenu = () => {
         return (
             <List className={classes.menu}>
-                {MENU_ROUTER.map((item) => (
-                    <ListItem
-                        key={item.path}
-                        className={classnames(
-                            classes.menuItem,
-                            { [classes.menuItemSelected]: pathname.includes(item.path) },
-                            { [classes.menuItemClose]: !open }
-                        )}>
-                        <Tooltip title={item.name} placement="right" disableHoverListener={open}>
-                            <ListItemButton onClick={() => navigate(item.path)}>
-                                <ListItemIcon>{item.icon}</ListItemIcon>
-                                <ListItemText primary={item.name} />
-                            </ListItemButton>
-                        </Tooltip>
-                    </ListItem>
-                ))}
+                {MENU_ROUTER.map((item) => {
+                    const title = formatMessage(item.name);
+                    return (
+                        <ListItem
+                            key={item.path}
+                            className={classnames(
+                                classes.menuItem,
+                                { [classes.menuItemSelected]: pathname.includes(item.path) },
+                                { [classes.menuItemClose]: !open }
+                            )}>
+                            <Tooltip title={title} placement="right" disableHoverListener={open}>
+                                <ListItemButton onClick={() => navigate(item.path)}>
+                                    <ListItemIcon>{item.icon}</ListItemIcon>
+                                    <ListItemText primary={title} />
+                                </ListItemButton>
+                            </Tooltip>
+                        </ListItem>
+                    );
+                })}
             </List>
         );
     };

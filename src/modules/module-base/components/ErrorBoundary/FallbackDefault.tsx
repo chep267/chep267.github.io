@@ -5,9 +5,9 @@
  */
 
 import * as React from 'react';
-import { FormattedMessage } from 'react-intl';
+import { useIntl } from 'react-intl';
 
-/** mui components */
+/** lib components */
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
@@ -17,7 +17,6 @@ import { SECOND_COUNT_DOWN_ERROR } from '@module-base/constants/defaultValue';
 
 /** utils */
 import { baseMessage } from '@module-base/utils/messages';
-import Logo from '@module-base/assets/error.jpeg';
 
 /** hooks */
 import { useCountdown } from '@module-base/hooks/useCountdown';
@@ -25,11 +24,17 @@ import { useCountdown } from '@module-base/hooks/useCountdown';
 /** styles */
 import useStyles from './styles';
 
-/** components lazy */
+/** types */
+import type { FallbackDefaultProps } from '@module-base/models';
+import IconBase from '@module-base/components/IconBase';
+
+/** lazy components */
 const Particle = React.lazy(() => import('@module-base/components/Particles'));
 
-function FallbackDefault({ isAutoReload }: { isAutoReload: boolean }) {
+export default function FallbackDefault(props: FallbackDefaultProps) {
+    const { isAutoReload } = props;
     const classes = useStyles();
+    const { formatMessage } = useIntl();
 
     const reloadWindow = React.useCallback(() => window.location.reload(), []);
 
@@ -38,22 +43,23 @@ function FallbackDefault({ isAutoReload }: { isAutoReload: boolean }) {
     return (
         <Stack className={classes.fallback}>
             <Stack className={classes.content}>
-                <img src={Logo} alt="err" />
+                <IconBase name="error" width={237} height={213} />
+
                 <Typography variant="h1" fontWeight={600} color="error.main">
-                    <FormattedMessage {...baseMessage['module.base.error.fallback.title']} />
+                    {formatMessage(baseMessage['module.base.error.fallback.title'])}
                 </Typography>
 
                 <Typography variant="h6" fontWeight={600} py={2} color="error.main">
-                    <FormattedMessage {...baseMessage['module.base.error.fallback.content']} />
+                    {formatMessage(baseMessage['module.base.error.fallback.content'])}
                 </Typography>
 
                 <Button onClick={reloadWindow} variant="outlined" size="large" color="error">
-                    <FormattedMessage {...baseMessage['module.base.error.fallback.retry']} />
+                    {formatMessage(baseMessage['module.base.error.fallback.retry'])}
                 </Button>
 
                 {isAutoReload ? (
                     <Typography variant="subtitle1" fontWeight={600} color="error.main" pt={3}>
-                        <FormattedMessage {...baseMessage['module.base.error.fallback.autoReload']} values={{ second }} />
+                        {formatMessage(baseMessage['module.base.error.fallback.autoReload'], { second })}
                     </Typography>
                 ) : null}
             </Stack>
@@ -64,5 +70,3 @@ function FallbackDefault({ isAutoReload }: { isAutoReload: boolean }) {
         </Stack>
     );
 }
-
-export default FallbackDefault;

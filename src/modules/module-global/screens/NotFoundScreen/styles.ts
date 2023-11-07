@@ -27,14 +27,8 @@ const useStyles = makeStyles(({ palette, zIndex }) => ({
         width: '100%',
         height: '100%',
         zIndex: zIndex.fab,
-        '& img': {
-            borderRadius: 6,
-            objectFit: 'cover',
-            width: '60%',
-            height: '65%',
-            maxWidth: 950, // for 1920*1080
-            border: `2px dashed ${palette.error.main}`,
-            opacity: 0.7,
+        '& svg': {
+            fill: () => palette.error.main,
         },
     },
 }));

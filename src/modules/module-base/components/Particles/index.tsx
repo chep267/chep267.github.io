@@ -15,10 +15,9 @@ import { getOption } from '@module-base/utils/helpers/particleOptions';
 /** types */
 import type { Engine } from 'tsparticles-engine';
 import type { IParticlesProps } from 'react-tsparticles/types/IParticlesProps';
-import type { ThemeModeType } from '@module-theme/models';
 
-const Particle = React.memo((props: IParticlesProps & { mode?: ThemeModeType }) => {
-    const { options: Options, mode = 'dark' } = props;
+const Particle = React.memo((props: IParticlesProps) => {
+    const { options: Options } = props;
     const theme = useThemeMUI();
     const id = React.useId();
 
@@ -26,7 +25,7 @@ const Particle = React.memo((props: IParticlesProps & { mode?: ThemeModeType }) 
         await loadSlim(engine);
     }, []);
 
-    const options = Options || getOption(mode, theme);
+    const options = Options || getOption(theme);
 
     return <Particles id={`Particles-${id}`} init={particlesInit} options={options} />;
 });

@@ -25,28 +25,38 @@ import type { AuthApiProps } from '@module-auth/models';
 
 const authentication = getAuth(firebaseApp);
 
-const signInApi = async (payload: AuthApiProps['SignIn']['Payload']): Promise<AuthApiProps['SignIn']['Response']> => {
+const apiSignIn = async (payload: AuthApiProps['SignIn']['Payload']): Promise<AuthApiProps['SignIn']['Response']> => {
     const { timer = TIMING_API_PENDING, email, password } = payload;
     const [response] = await Promise.all([signInWithEmailAndPassword(authentication, email, password), debounce(timer)]);
     return response;
 };
 
-const signOut = async (payload: AuthApiProps['SignOut']['Payload']): Promise<AuthApiProps['SignOut']['Response']> => {
+const apiSignOut = async (payload: AuthApiProps['SignOut']['Payload']): Promise<AuthApiProps['SignOut']['Response']> => {
     const { timer = TIMING_API_PENDING } = payload;
     const [response] = await Promise.all([signOutFirebase(authentication), debounce(timer)]);
     return response;
 };
 
-const registerApi = async (payload: AuthApiProps['Register']['Payload']): Promise<AuthApiProps['Register']['Response']> => {
+const apiRegister = async (payload: AuthApiProps['Register']['Payload']): Promise<AuthApiProps['Register']['Response']> => {
     const { timer = TIMING_API_PENDING, email, password } = payload;
     const [response] = await Promise.all([createUserWithEmailAndPassword(authentication, email, password), debounce(timer)]);
     return response;
 };
 
-const recoverApi = async (payload: AuthApiProps['Recover']['Payload']): Promise<AuthApiProps['Recover']['Response']> => {
+const apiRecover = async (payload: AuthApiProps['Recover']['Payload']): Promise<AuthApiProps['Recover']['Response']> => {
     const { timer = TIMING_API_PENDING, email } = payload;
     const [response] = await Promise.all([sendPasswordResetEmail(authentication, email), debounce(timer)]);
     return response;
 };
 
-export { authentication, signInApi, signOut, registerApi, onAuthStateChanged as restartApi, recoverApi };
+const apiRestart = async (payload: AuthApiProps['Restart']['Payload']): Promise<AuthApiProps['Restart']['Response']> => {
+    const { timer = TIMING_API_PENDING, fnCallback } = payload;
+    return onAuthStateChanged(authentication, async (user) => {
+        if (user) {
+            await debounce(timer);
+            fnCallback(user);
+        }
+    });
+};
+
+export { authentication, apiSignIn, apiSignOut, apiRegister, apiRestart, apiRecover };

@@ -7,7 +7,7 @@
 import * as React from 'react';
 import { FormattedMessage } from 'react-intl';
 
-/** mui components */
+/** lib components */
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import CircularProgress from '@mui/material/CircularProgress';

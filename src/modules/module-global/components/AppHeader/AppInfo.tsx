@@ -11,7 +11,7 @@ import dayjs from 'dayjs';
 import IconBase from '@module-base/components/IconBase';
 
 /** constants */
-import { APP_NAME } from '@src/config';
+import { APP_NAME } from '@root/utils/config';
 
 /** utils */
 import { useLanguage } from '@module-language/hooks/useLanguage';

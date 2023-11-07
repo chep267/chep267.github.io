@@ -8,8 +8,8 @@ import * as React from 'react';
 import { QueryClientProvider } from '@tanstack/react-query';
 
 /** utils */
-import { queryClient } from '@src/react/utils/queryClient';
-import { messages } from '@src/react/utils/messages';
+import { queryClient } from '@root/utils/queryClient';
+import { messages } from '@root/utils/messages';
 
 /** global styles */
 import './global.css';

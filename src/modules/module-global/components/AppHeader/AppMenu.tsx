@@ -6,7 +6,7 @@
 
 import { Stack, Button, Tooltip } from '@mui/material';
 
-/** mui icons */
+/** icons */
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MessageIcon from '@mui/icons-material/Message';
 

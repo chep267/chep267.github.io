@@ -5,14 +5,11 @@
  */
 
 /** types */
-import type { SVGProps } from 'react';
-
-export type IconSVGProps = SVGProps<SVGSVGElement>;
-export type { IconBaseProps, IconBaseType } from '@module-base/components/IconBase';
-
 export * from './apis';
+export * from './IconBase';
 export * from './Event';
-export * from './Base';
+export * from './BaseProvider';
+export * from './ErrorBoundary';
 export * from './BreadcrumbsBase';
 export * from './DialogBase';
 export * from './SelectBase';

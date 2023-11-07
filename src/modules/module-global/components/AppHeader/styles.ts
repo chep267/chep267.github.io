@@ -77,6 +77,7 @@ const useStyles = makeStyles(({ palette, breakpoints, spacing }) => ({
     },
     flagIcon: {
         transform: 'scale(1.3)',
+        color: palette.primary.main,
     },
 }));
 

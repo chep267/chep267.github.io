@@ -7,7 +7,7 @@
 import * as React from 'react';
 import { useIntl } from 'react-intl';
 
-/** mui components */
+/** lib components */
 import Menu from '@mui/material/Menu';
 import List from '@mui/material/List';
 import ListItemButton from '@mui/material/ListItemButton';
@@ -19,7 +19,7 @@ import Tooltip from '@mui/material/Tooltip';
 import Collapse from '@mui/material/Collapse';
 import CircularProgress from '@mui/material/CircularProgress';
 
-/** mui icons */
+/** icons */
 import MenuIcon from '@mui/icons-material/Menu';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 import LightModeIcon from '@mui/icons-material/LightMode';
@@ -72,17 +72,13 @@ function MenuItem(props: MenuItemProps) {
         });
     }, []);
 
-    const sxIcon = React.useMemo(() => ({ ml: subIndex * 2 }), [subIndex]);
+    const styleIcon = React.useMemo(() => ({ marginLeft: subIndex * 16 }), [subIndex]);
 
     return (
         <>
             <ListItemButton onClick={toggleOpen}>
-                {icon ? <ListItemIcon sx={sxIcon}>{icon}</ListItemIcon> : null}
-                {loading ? (
-                    <CircularProgress size={26} className={classes.loadingIcon} />
-                ) : (
-                    <ListItemText primary={title}></ListItemText>
-                )}
+                {icon ? <ListItemIcon style={styleIcon}>{icon}</ListItemIcon> : null}
+                {loading ? <CircularProgress size={26} className={classes.loadingIcon} /> : <ListItemText primary={title} />}
                 {!hasSub ? null : open ? (
                     <ExpandLessIcon className={classes.menuIcon} />
                 ) : (

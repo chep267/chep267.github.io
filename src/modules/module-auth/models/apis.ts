@@ -5,10 +5,14 @@
  */
 
 /** types */
-import type { UserCredential } from '@firebase/auth';
+import type { User, UserCredential, Unsubscribe } from '@firebase/auth';
 import type { CallApiPayloadType } from '@module-base/models';
 
 interface AuthApiProps {
+    Restart: {
+        Payload: CallApiPayloadType<{ fnCallback: (user: User) => void }>;
+        Response: Unsubscribe;
+    };
     SignIn: {
         Payload: CallApiPayloadType<{ email: string; password: string }>;
         Response: UserCredential;

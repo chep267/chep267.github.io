@@ -6,37 +6,31 @@
 
 import * as React from 'react';
 
-/** mui components */
+/** lib components */
 import Skeleton from '@mui/material/Skeleton';
 
 /** types */
-import type { SVGProps, LazyExoticComponent, RefObject } from 'react';
+import type { LazyExoticComponent } from 'react';
+import type { IconBaseProps, IconBaseType } from '@module-base/models';
 
-type IconBaseType = keyof typeof Icons;
-
-interface IconBaseProps extends SVGProps<SVGSVGElement> {
-    name: IconBaseType;
-    size?: number;
-    ref?: ((instance: SVGSVGElement | null) => void) | RefObject<SVGSVGElement> | null;
-}
-
-const Icons = Object.freeze({
+const Icons: Readonly<Record<IconBaseType, LazyExoticComponent<(props: IconBaseProps) => JSX.Element>>> = Object.freeze({
     /** app icon */
     appLogo: React.lazy(() => import('./svg/AppLogo')),
+
+    error: React.lazy(() => import('./svg/Error')),
+    notFound: React.lazy(() => import('./svg/NotFound')),
 });
 
 const IconBase = React.memo((props: IconBaseProps) => {
     const { name, size = 24, viewBox = '0 0 24 24', ...iconProps } = props;
-    const Icon: LazyExoticComponent<(props: IconBaseProps) => JSX.Element> = Icons[name];
+    const Icon = Icons[name];
 
     return (
         <React.Suspense fallback={<Skeleton width={24} height={24} variant="circular" />}>
-            <Icon name={name} width={size} viewBox={viewBox} height={size} {...iconProps} />
+            <Icon name={name} width={size} height={size} viewBox={viewBox} {...iconProps} />
         </React.Suspense>
     );
 });
 
 IconBase.displayName = 'IconBase';
-
-export type { IconBaseProps, IconBaseType };
 export default IconBase;

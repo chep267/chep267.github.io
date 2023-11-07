@@ -8,7 +8,7 @@ import { useMutation } from '@tanstack/react-query';
 import { useIntl } from 'react-intl';
 
 /** apis */
-import { registerApi } from '@module-auth/apis';
+import { apiRegister } from '@module-auth/apis';
 
 /** constants */
 import { emailLocalKey } from '@module-base/constants/localStoreKey';
@@ -17,15 +17,20 @@ import { AUTH_ERROR_CODES } from '@module-auth/constants/error';
 /** utils */
 import { Encrypt } from '@module-base/utils/security';
 import { localStorageBase } from '@module-base/utils/storages';
-import { useBase } from '@module-base/hooks/useBase';
 import { authMessage } from '@module-auth/utils/messages';
+
+/** hooks */
+import { useBase } from '@module-base/hooks/useBase';
+
+/** types */
+import type { FirebaseError } from 'firebase/app';
 
 export function useRegister() {
     const intl = useIntl();
     const { notify } = useBase();
 
     return useMutation({
-        mutationFn: registerApi,
+        mutationFn: apiRegister,
         onSuccess: (_response, { email }) => {
             localStorageBase.set(emailLocalKey, Encrypt(email));
             notify.toggleNotify({
@@ -34,8 +39,7 @@ export function useRegister() {
                 message: intl.formatMessage(authMessage[`module.auth.form.status.register.success`]),
             });
         },
-        onError: (error) => {
-            // @ts-ignore
+        onError: (error: FirebaseError) => {
             const code = error?.code === AUTH_ERROR_CODES.EMAIL_EXISTS ? 'exist' : 'fail';
             notify.toggleNotify({
                 open: true,

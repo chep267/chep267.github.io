@@ -23,6 +23,7 @@ module.exports = {
         'plugin:import/typescript',
         'plugin:jsx-a11y/recommended',
         'plugin:@typescript-eslint/recommended',
+        'plugin:@tanstack/eslint-plugin-query/recommended',
         // Disable các rule mà eslint xung đột với prettier.
         // Để cái này ở dưới để nó override các rule phía trên!.
         'eslint-config-prettier',
@@ -36,7 +37,7 @@ module.exports = {
     },
     ignorePatterns: ['dist', '.eslintrc.cjs'],
     parser: '@typescript-eslint/parser',
-    plugins: ['react-refresh', 'prettier'],
+    plugins: ['react-refresh', 'prettier', '@tanstack/query'],
     // plugins: ['prettier'],
     settings: {
         react: {
@@ -67,6 +68,9 @@ module.exports = {
         'no-case-declarations': 'off',
         '@typescript-eslint/no-explicit-any': 'off',
         'react-hooks/exhaustive-deps': 'off',
+        '@tanstack/query/exhaustive-deps': 'error',
+        '@tanstack/query/no-rest-destructuring': 'warn',
+        '@tanstack/query/stable-query-client': 'error',
 
         // Cảnh báo khi import sai
         'no-restricted-imports': [

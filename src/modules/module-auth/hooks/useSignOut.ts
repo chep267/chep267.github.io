@@ -4,23 +4,23 @@
  *
  */
 
-import { useMutation } from '@tanstack/react-query';
 import Cookies from 'js-cookie';
+import { useMutation } from '@tanstack/react-query';
 
 /** apis */
-import { signOut } from '@module-auth/apis';
+import { apiSignOut } from '@module-auth/apis';
 
 /** constants */
 import { accessTokenCookieKey } from '@module-base/constants/localStoreKey';
 
-/** utils */
+/** hooks */
 import { useAuth } from '@module-auth/hooks/useAuth';
 
 export function useSignOut() {
     const auth = useAuth();
 
     const SIGN_OUT = useMutation({
-        mutationFn: signOut,
+        mutationFn: apiSignOut,
         retry: 3,
         onSuccess: () => {
             Cookies.remove(accessTokenCookieKey);
