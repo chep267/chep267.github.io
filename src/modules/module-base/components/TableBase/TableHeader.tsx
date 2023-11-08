@@ -34,7 +34,7 @@ const TableHeader = React.memo((props: Pick<TableBaseProps, 'rows' | 'orderBy' |
                         align="left"
                         padding="normal"
                         sortDirection={orderBy === cell.id ? orderType : false}>
-                        {cell.disableSort || !orderBy || !orderType ? (
+                        {!cell.isSort || !orderBy || !orderType ? (
                             cell.label
                         ) : (
                             <TableSortLabel

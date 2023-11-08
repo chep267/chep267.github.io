@@ -5,5 +5,5 @@
  */
 
 export const EN = Object.freeze({
-    'module.messenger.messenger': 'Messenger',
+    'module.messenger.router.name': 'Messenger',
 });

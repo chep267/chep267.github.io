@@ -5,5 +5,5 @@
  */
 
 export const VI = Object.freeze({
-    'module.messenger.messenger': 'Trò chuyện',
+    'module.messenger.router.name': 'Trò chuyện',
 });

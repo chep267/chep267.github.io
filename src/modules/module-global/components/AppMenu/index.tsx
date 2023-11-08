@@ -10,21 +10,16 @@ import { useIntl } from 'react-intl';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 /** lib components */
-import Drawer from '@mui/material/Drawer';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import Button from '@mui/material/Button';
-import Divider from '@mui/material/Divider';
-import Tooltip from '@mui/material/Tooltip';
+import { Drawer, Button, Divider, Tooltip, List, ListItem, ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
 
 /** icons */
-import HomeIcon from '@mui/icons-material/Home';
-import TelegramIcon from '@mui/icons-material/Telegram';
-import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRight';
-import KeyboardDoubleArrowLeftIcon from '@mui/icons-material/KeyboardDoubleArrowLeft';
+import {
+    Home as HomeIcon,
+    Telegram as TelegramIcon,
+    CalendarMonth as CalendarMonthIcon,
+    KeyboardDoubleArrowRight as KeyboardDoubleArrowRightIcon,
+    KeyboardDoubleArrowLeft as KeyboardDoubleArrowLeftIcon,
+} from '@mui/icons-material';
 
 /** constants */
 import { SCREEN } from '@module-global/constants/screen';
@@ -32,6 +27,7 @@ import { SCREEN } from '@module-global/constants/screen';
 /** utils */
 import { feedMessage } from '@module-feed/utils/messages';
 import { messengerMessage } from '@module-messenger/utils/messages';
+import { calendarMessage } from '@module-calendar/utils/messages';
 
 /** hooks */
 import { useBase } from '@module-base/hooks/useBase';
@@ -51,14 +47,19 @@ const AppMenu = React.memo(() => {
     const MENU_ROUTER = React.useMemo(
         () => [
             {
-                name: feedMessage['module.feed.feed'],
+                name: feedMessage['module.feed.router.name'],
                 path: SCREEN.FEED,
                 icon: <HomeIcon />,
             },
             {
-                name: messengerMessage['module.messenger.messenger'],
+                name: messengerMessage['module.messenger.router.name'],
                 path: SCREEN.MESSENGER,
                 icon: <TelegramIcon />,
+            },
+            {
+                name: calendarMessage['module.calendar.router.name'],
+                path: SCREEN.CALENDAR,
+                icon: <CalendarMonthIcon />,
             },
         ],
         []

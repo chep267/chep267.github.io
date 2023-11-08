@@ -17,7 +17,7 @@ const useStyles = makeStyles(({ palette }) => ({
     },
     tableContainer: {
         borderRadius: '8px',
-        border: `2px solid ${palette.grey[200]}`,
+        border: `2px solid ${palette.divider}`,
         maxWidth: '100%',
         maxHeight: '100%',
         '&::-webkit-scrollbar': {
@@ -45,7 +45,6 @@ const useStyles = makeStyles(({ palette }) => ({
         justifyContent: 'center',
         alignItems: 'center',
         width: '100%',
-        backgroundColor: palette.grey.bgColor,
         zIndex: 1,
         top: 0,
         left: 0,
@@ -55,7 +54,7 @@ const useStyles = makeStyles(({ palette }) => ({
     },
     tableHead: {
         height: 60,
-        '& th': { backgroundColor: palette.grey[200] },
+        '& th': { backgroundColor: palette.grey[palette.mode === 'light' ? 200 : 900] },
     },
     tableRow: {
         '& td': {

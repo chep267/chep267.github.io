@@ -11,7 +11,8 @@
             "@module-auth/*": ["src/modules/module-auth/*"],
             "@module-global/*": ["src/modules/module-global/*"],
             "@module-messenger/*": ["src/modules/module-messenger/*"],
-            "@module-feed/*": ["src/modules/module-feed/*"]
+            "@module-feed/*": ["src/modules/module-feed/*"],
+            "@module-calendar/*": ["src/modules/module-calendar/*"]
         }
     }
 }
