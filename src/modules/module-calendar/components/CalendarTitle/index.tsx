@@ -60,7 +60,7 @@ export default function CalendarTitle(props: Props) {
                     <KeyboardArrowLeftIcon />
                 </IconButton>
             </Stack>
-            <Typography variant="h6" fontWeight={600}>
+            <Typography variant="h5" fontWeight="bold">
                 {genTitleMessage()}
             </Typography>
             <Stack className={classes.titleIcon}>

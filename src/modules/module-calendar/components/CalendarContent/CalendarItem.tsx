@@ -24,7 +24,7 @@ export default function CalendarItem(props: CalendarItemType) {
 
     return (
         <Stack className={classnames(classes.item, { [classes.itemToday]: isToday })}>
-            <Typography>{date || ''}</Typography>
+            <Typography variant="h6">{date || ''}</Typography>
         </Stack>
     );
 }

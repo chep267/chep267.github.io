@@ -7,11 +7,9 @@
 import * as React from 'react';
 import dayjs from 'dayjs';
 
-/** lib components */
-import { Typography } from '@mui/material';
-
 /** components */
 import TableBase from '@module-base/components/TableBase';
+import CalendarLabel from './CalendarLabel';
 import CalendarItem from './CalendarItem';
 
 /** hooks */
@@ -38,40 +36,41 @@ export default function CalendarContent(props: Props) {
     const tableRows = React.useMemo<TableBaseProps<TableDataType>['rows']>(() => {
         const today = dayjs();
         const toDate = today.year() === time.year() && today.month() === time.month() ? today.date() : -1;
+
         return [
             {
                 id: 'sun',
-                label: <Typography color="error.main">{dayjs().day(7).locale(locale).format('ddd')}</Typography>,
+                label: <CalendarLabel day={0} locale={locale} />,
                 render: (item) => <CalendarItem date={item[0]} isToday={item[0] === toDate} />,
             },
             {
                 id: 'mon',
-                label: <Typography>{dayjs().day(1).locale(locale).format('ddd')}</Typography>,
+                label: <CalendarLabel day={1} locale={locale} />,
                 render: (item) => <CalendarItem date={item[1]} isToday={item[1] === toDate} />,
             },
             {
                 id: 'tue',
-                label: <Typography>{dayjs().day(2).locale(locale).format('ddd')}</Typography>,
+                label: <CalendarLabel day={2} locale={locale} />,
                 render: (item) => <CalendarItem date={item[2]} isToday={item[2] === toDate} />,
             },
             {
                 id: 'wed',
-                label: <Typography>{dayjs().day(3).locale(locale).format('ddd')}</Typography>,
+                label: <CalendarLabel day={3} locale={locale} />,
                 render: (item) => <CalendarItem date={item[3]} isToday={item[3] === toDate} />,
             },
             {
                 id: 'thu',
-                label: <Typography>{dayjs().day(4).locale(locale).format('ddd')}</Typography>,
+                label: <CalendarLabel day={4} locale={locale} />,
                 render: (item) => <CalendarItem date={item[4]} isToday={item[4] === toDate} />,
             },
             {
                 id: 'fri',
-                label: <Typography>{dayjs().day(5).locale(locale).format('ddd')}</Typography>,
+                label: <CalendarLabel day={5} locale={locale} />,
                 render: (item) => <CalendarItem date={item[5]} isToday={item[5] === toDate} />,
             },
             {
                 id: 'sat',
-                label: <Typography color="error.main">{dayjs().day(6).locale(locale).format('ddd')}</Typography>,
+                label: <CalendarLabel day={6} locale={locale} />,
                 render: (item) => <CalendarItem date={item[6]} isToday={item[6] === toDate} />,
             },
         ];

@@ -32,7 +32,7 @@ const useStyles = makeStyles(({ palette }) => ({
     itemToday: {
         borderRadius: '50%',
         color: palette.error.main,
-        border: '1px solid red',
+        border: `1px solid ${palette.error.main}`,
     },
 }));
 

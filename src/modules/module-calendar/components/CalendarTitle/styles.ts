@@ -13,6 +13,7 @@ const useStyles = makeStyles(({ spacing }) => ({
         alignItems: 'center',
         width: '100%',
         padding: spacing(3),
+        textAlign: 'center',
     },
     titleIcon: {
         flexDirection: 'row',
