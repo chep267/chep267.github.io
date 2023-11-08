@@ -12,6 +12,10 @@ import TableBase from '@module-base/components/TableBase';
 import CalendarLabel from './CalendarLabel';
 import CalendarItem from './CalendarItem';
 
+/** utils */
+import { genMatrixCalendar } from '@module-calendar/utils/Helpers/genMatrixCalendar';
+import { reverseMatrix } from '@module-calendar/utils/Helpers/reverseMatrix';
+
 /** hooks */
 import { useLanguage } from '@module-language/hooks/useLanguage';
 
@@ -76,48 +80,13 @@ export default function CalendarContent(props: Props) {
         ];
     }, [locale, time]);
 
-    const calculatorData = () => {
+    const data = React.useMemo(() => {
         const totalDate = time.daysInMonth(); // => 28, 29, 30, 31
-        const firstDay = time.set('date', 1).day();
-        const matrixCalendar: any[] = Array.from({ length: 7 }, () => []);
-        let countDate = 1;
-
-        const fillEmpty = (start: number, end: number) => {
-            for (let day = start; day < end; ++day) {
-                matrixCalendar[day].push(0);
-            }
-        };
-
-        function reverseMatrix<T extends unknown[][]>(matrix: T) {
-            const output: any[] = [];
-            for (let j = 0; j < matrix[0].length; j++) {
-                output.push([]);
-                for (let i = 0; i < matrix.length; i++) {
-                    output[j].push(matrix[i][j]);
-                }
-            }
-            return output as T;
-        }
-
-        if (firstDay > 0) {
-            fillEmpty(0, firstDay);
-        }
-        for (let day = firstDay; day < 7; ++day) {
-            matrixCalendar[day].push(countDate);
-            ++countDate;
-            if (day === 6 && countDate < totalDate) {
-                day = -1;
-            }
-            if (countDate > totalDate) {
-                if (day < 7) {
-                    fillEmpty(day + 1, 7);
-                }
-                break;
-            }
-        }
+        const firstDay = time.set('date', 1).day(); // => 0 -> 6
+        const matrixCalendar = genMatrixCalendar(firstDay, totalDate);
         const output = reverseMatrix(matrixCalendar);
         return output.map((item) => Object.assign({}, item));
-    };
+    }, [time]);
 
-    return <TableBase className={classes.calendar} rows={tableRows} data={calculatorData()} />;
+    return <TableBase className={classes.calendar} rows={tableRows} data={data} />;
 }
