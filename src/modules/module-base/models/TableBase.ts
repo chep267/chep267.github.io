@@ -24,7 +24,7 @@ interface TableBaseProps<T = unknown> {
     rows?: {
         id: string;
         label: ReactNode;
-        disableSort?: boolean;
+        isSort?: boolean;
         render(item: T, indexRow: number, indexCell: number): ReactNode;
     }[];
     orderType?: OrderType;

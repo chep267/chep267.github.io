@@ -8,11 +8,8 @@ const SCREEN = Object.freeze({
     HOME: '/',
     FEED: '/feed',
     MESSENGER: '/messenger',
+    CALENDAR: '/calendar',
     PROFILE: '/profile',
-
-    ACCOUNT_MANAGEMENT: '/account-management',
-    NEW_ACCOUNT: '/account-management/add-account',
-    EDIT_ACCOUNT: '/account-management/edit-account/:userId',
 });
 
 const SCREEN_SIZE = Object.freeze({

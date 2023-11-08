@@ -5,5 +5,5 @@
  */
 
 export const EN = Object.freeze({
-    'module.feed.feed': 'New Feed',
+    'module.feed.router.name': 'New Feed',
 });

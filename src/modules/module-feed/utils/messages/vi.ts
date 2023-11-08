@@ -5,5 +5,5 @@
  */
 
 export const VI = Object.freeze({
-    'module.feed.feed': 'Bảng tin',
+    'module.feed.router.name': 'Bảng tin',
 });
