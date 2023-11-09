@@ -15,7 +15,7 @@ import CalendarTitle from '@module-calendar/components/CalendarTitle';
 import CalendarContent from '@module-calendar/components/CalendarContent';
 
 /** styles */
-import useStyles from './styles.ts';
+import useStyles from './styles';
 
 export default function CalendarScreen() {
     const classes = useStyles();

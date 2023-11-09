@@ -7,7 +7,7 @@
 import { Stack, Paper } from '@mui/material';
 
 /** styles */
-import useStyles from './styles.ts';
+import useStyles from './styles';
 
 export default function MessengerScreen() {
     const classes = useStyles();

@@ -8,35 +8,44 @@ import * as React from 'react';
 import { useIntl } from 'react-intl';
 
 /** lib components */
-import Menu from '@mui/material/Menu';
-import List from '@mui/material/List';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import Button from '@mui/material/Button';
-import Divider from '@mui/material/Divider';
-import Tooltip from '@mui/material/Tooltip';
-import Collapse from '@mui/material/Collapse';
-import CircularProgress from '@mui/material/CircularProgress';
+import {
+    Button,
+    Divider,
+    Tooltip,
+    Collapse,
+    CircularProgress,
+    Menu,
+    List,
+    ListItemButton,
+    ListItemIcon,
+    ListItemText,
+} from '@mui/material';
 
 /** icons */
-import MenuIcon from '@mui/icons-material/Menu';
-import DarkModeIcon from '@mui/icons-material/DarkMode';
-import LightModeIcon from '@mui/icons-material/LightMode';
-import TranslateIcon from '@mui/icons-material/Translate';
-import ExpandLessIcon from '@mui/icons-material/ExpandLess';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import PaletteIcon from '@mui/icons-material/Palette';
-import LogoutIcon from '@mui/icons-material/Logout';
+import {
+    Menu as MenuIcon,
+    DarkMode as DarkModeIcon,
+    LightMode as LightModeIcon,
+    Translate as TranslateIcon,
+    ExpandLess as ExpandLessIcon,
+    ExpandMore as ExpandMoreIcon,
+    Logout as LogoutIcon,
+    Palette as PaletteIcon,
+    CalendarMonth as CalendarMonthIcon,
+} from '@mui/icons-material';
 
 /** utils */
 import { baseMessage } from '@module-base/utils/messages';
 import { themeMessage } from '@module-theme/utils/messages';
 import { langMessage } from '@module-language/utils/messages';
+import { calendarMessage } from '@module-calendar/utils/messages';
 import { authMessage } from '@module-auth/utils/messages';
+
+/** hooks */
 import { useTheme } from '@module-theme/hooks/useTheme';
 import { useSignOut } from '@module-auth/hooks/useSignOut';
 import { useLanguage } from '@module-language/hooks/useLanguage';
+import { useCalendar } from '@module-calendar/hooks/useCalendar';
 
 /** styles */
 import useStyles from './styles';
@@ -56,7 +65,7 @@ type MenuItemProps = {
 };
 
 function MenuItem(props: MenuItemProps) {
-    const { subIndex = 1, divide, loading, onClick, title, icon, subMenu } = props;
+    const { subIndex = 1, divide, loading, onClick, title, icon = ' ', subMenu } = props;
     const classes = useStyles();
     const hasSub = (subMenu?.length || 0) > 0;
 
@@ -77,7 +86,7 @@ function MenuItem(props: MenuItemProps) {
     return (
         <>
             <ListItemButton onClick={toggleOpen}>
-                {icon ? <ListItemIcon style={styleIcon}>{icon}</ListItemIcon> : null}
+                <ListItemIcon style={styleIcon}>{icon}</ListItemIcon>
                 {loading ? <CircularProgress size={26} className={classes.loadingIcon} /> : <ListItemText primary={title} />}
                 {!hasSub ? null : open ? (
                     <ExpandLessIcon className={classes.menuIcon} />
@@ -103,6 +112,7 @@ export default function ButtonMenu() {
     const intl = useIntl();
     const theme = useTheme();
     const language = useLanguage();
+    const calendar = useCalendar();
     const SIGN_OUT = useSignOut();
     const classes = useStyles();
 
@@ -164,6 +174,29 @@ export default function ButtonMenu() {
         if (SIGN_OUT.isAuth) {
             output = [
                 ...output,
+                {
+                    id: 'Calendar',
+                    title: intl.formatMessage(calendarMessage['module.calendar.setting.display']),
+                    icon: <CalendarMonthIcon />,
+                    divide: true,
+                    subMenu: [
+                        {
+                            id: 'default',
+                            title: intl.formatMessage(calendarMessage['module.calendar.setting.display.default']),
+                            onClick: () => calendar.toggleDisplay('default'),
+                        },
+                        {
+                            id: 'mon',
+                            title: intl.formatMessage(calendarMessage['module.calendar.setting.display.mon']),
+                            onClick: () => calendar.toggleDisplay('mon'),
+                        },
+                        {
+                            id: 'sat',
+                            title: intl.formatMessage(calendarMessage['module.calendar.setting.display.sat']),
+                            onClick: () => calendar.toggleDisplay('sat'),
+                        },
+                    ],
+                },
                 {
                     id: 'sign-out',
                     title: intl.formatMessage(authMessage['module.auth.form.title.signout']),
