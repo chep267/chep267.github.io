@@ -16,7 +16,7 @@ export function genMatrixCalendar(time: Dayjs, display: CalendarContextProps['di
 
     /** fill before matrixCalendar */
     if (display === 'sun') {
-        for (let i = 0; i < day; ++i) {
+        for (let i = day - 1; i >= 0; --i) {
             matrixCalendar[i].push(0);
         }
     } else if (display === 'mon') {
@@ -68,7 +68,7 @@ export function genMatrixCalendarDayJS(time: Dayjs, display: CalendarContextProp
     /** fill before matrixCalendar */
     let prevDay = firstDay.add(-1, 'day');
     if (display === 'sun') {
-        for (let i = 0; i < day; ++i) {
+        for (let i = day - 1; i >= 0; --i) {
             matrixCalendar[i].push(prevDay);
             prevDay = prevDay.add(-1, 'day');
         }
