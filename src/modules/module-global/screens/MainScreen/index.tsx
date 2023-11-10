@@ -24,7 +24,7 @@ const AuthRoute = React.lazy(() => import('@module-auth/screens/AuthRoute'));
 const NotFoundScreen = React.lazy(() => import('@module-global/screens/NotFoundScreen'));
 const NewFeedScreen = React.lazy(() => import('@module-feed/screens/NewFeedScreen'));
 const MessengerScreen = React.lazy(() => import('@module-messenger/screens/MessengerScreen'));
-const CalendarScreen = React.lazy(() => import('@module-calendar/screens/CalendarScreen'));
+const CalendarScreen = React.lazy(() => import('@module-calendar/screens'));
 
 export default function MainScreen() {
     const classes = useStyles();
@@ -36,10 +36,10 @@ export default function MainScreen() {
                 <Box className={classes.mainContent} component="main">
                     <React.Suspense fallback={null}>
                         <Routes>
-                            <Route path={SCREEN.HOME} element={<Navigate to={SCREEN.MESSENGER} />} />
+                            <Route path={SCREEN.HOME} element={<Navigate to={SCREEN.FEED} />} />
                             <Route path={SCREEN.FEED} element={<NewFeedScreen />} />
-                            <Route path={SCREEN.MESSENGER} element={<MessengerScreen />} />
-                            <Route path={SCREEN.CALENDAR} element={<CalendarScreen />} />
+                            <Route path={`${SCREEN.MESSENGER}/*`} element={<MessengerScreen />} />
+                            <Route path={`${SCREEN.CALENDAR}/*`} element={<CalendarScreen />} />
                             <Route path="*" element={<NotFoundScreen />} />
                         </Routes>
                     </React.Suspense>

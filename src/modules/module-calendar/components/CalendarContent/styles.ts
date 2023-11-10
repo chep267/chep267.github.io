@@ -38,6 +38,9 @@ const useStyles = makeStyles(({ palette }) => ({
         color: palette.error.main,
         border: `1px solid ${palette.error.main}`,
     },
+    itemDifferentMonth: {
+        color: palette.text.disabled,
+    },
 }));
 
 export default useStyles;

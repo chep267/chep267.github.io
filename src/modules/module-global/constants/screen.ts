@@ -8,7 +8,10 @@ const SCREEN = Object.freeze({
     HOME: '/',
     FEED: '/feed',
     MESSENGER: '/messenger',
+
     CALENDAR: '/calendar',
+    CALENDAR_INFO: '/calendar/info',
+
     PROFILE: '/profile',
 });
 
