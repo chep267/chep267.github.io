@@ -1,2 +1,0 @@
-import{j as t}from"./index-507fa5ff.js";import{S as n}from"./index-838cd3f0.js";import{m as r}from"./makeStyles-33b0fe2d.js";const s=r({screen:{flexDirection:"row",width:"100%",height:"100%",padding:"6%"},mainContent:{display:"flex",flexDirection:"column",justifyContent:"center",width:"100%",height:"100%",borderRadius:8,overflow:"hidden"}});var o=s;function c(){const e=o();return t.jsx(n,{className:e.screen,children:"CalendarInfoScreen"})}export{c as default};
-//# sourceMappingURL=index-5e6452c7.js.map
