@@ -183,7 +183,7 @@ export default function ButtonMenu() {
                         {
                             id: 'default',
                             title: intl.formatMessage(calendarMessage['module.calendar.setting.display.default']),
-                            onClick: () => calendar.toggleDisplay('default'),
+                            onClick: () => calendar.toggleDisplay('sun'),
                         },
                         {
                             id: 'mon',
