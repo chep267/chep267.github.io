@@ -35,23 +35,23 @@ export function genMatrixCalendar(time: Dayjs, display: CalendarContextProps['di
     /** fill matrixCalendar */
     for (let date = 1; date <= totalDate; ++date) {
         matrixCalendar[day].push(date);
-        day = day === 6 && date < totalDate ? 0 : day + 1;
+        day = date === totalDate ? day : (day + 1) % 7;
     }
 
     /** fill after matrixCalendar */
     if (display === 'sun') {
-        for (let i = day; i <= 6; ++i) {
+        for (let i = day + 1; i <= 6; ++i) {
             matrixCalendar[i].push(0);
         }
     } else if (display === 'mon') {
         if (day !== 0) {
-            for (let i = day; i <= 6; ++i) {
+            for (let i = day + 1; i <= 6; ++i) {
                 matrixCalendar[i].push(0);
             }
             matrixCalendar[0].push(0);
         }
     } else if (display === 'sat') {
-        for (let i = day === 6 ? 0 : day; i <= 5; ++i) {
+        for (let i = day === 6 ? 0 : day + 1; i <= 5; ++i) {
             matrixCalendar[i].push(0);
         }
     }
@@ -90,26 +90,26 @@ export function genMatrixCalendarDayJS(time: Dayjs, display: CalendarContextProp
     /** fill matrixCalendar */
     for (let date = 1; date <= totalDate; ++date) {
         matrixCalendar[day].push(time.set('date', date));
-        day = day === 6 && date < totalDate ? 0 : day + 1;
+        day = date === totalDate ? day : (day + 1) % 7;
     }
 
     /** fill after matrixCalendar */
     let nextDay = firstDay.add(1, 'month');
     if (display === 'sun') {
-        for (let i = day; i <= 6; ++i) {
+        for (let i = day + 1; i <= 6; ++i) {
             matrixCalendar[i].push(nextDay);
             nextDay = nextDay.add(1, 'day');
         }
     } else if (display === 'mon') {
         if (day !== 0) {
-            for (let i = day; i <= 6; ++i) {
+            for (let i = day + 1; i <= 6; ++i) {
                 matrixCalendar[i].push(nextDay);
                 nextDay = nextDay.add(1, 'day');
             }
             matrixCalendar[0].push(nextDay);
         }
     } else if (display === 'sat') {
-        for (let i = day === 6 ? 0 : day; i <= 5; ++i) {
+        for (let i = day === 6 ? 0 : day + 1; i <= 5; ++i) {
             matrixCalendar[i].push(nextDay);
             nextDay = nextDay.add(1, 'day');
         }
