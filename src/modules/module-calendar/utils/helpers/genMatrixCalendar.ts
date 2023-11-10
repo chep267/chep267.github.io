@@ -5,7 +5,8 @@
  */
 
 /** types */
-import { CalendarContextProps } from '@module-calendar/models';
+import type { Dayjs } from 'dayjs';
+import type { CalendarContextProps } from '@module-calendar/models';
 
 const fillEmpty = (matrixCalendar: number[][], start: number, end: number) => {
     for (let day = start; day < end; ++day) {
@@ -13,8 +14,10 @@ const fillEmpty = (matrixCalendar: number[][], start: number, end: number) => {
     }
 };
 
-export function genMatrixCalendar(firstDay: number, totalDate: number, display: CalendarContextProps['display']) {
+export function genMatrixCalendar(time: Dayjs, display: CalendarContextProps['display']) {
     const matrixCalendar: number[][] = Array.from({ length: 7 }, () => []);
+    const firstDay = time.set('date', 1).day();
+    const totalDate = time.daysInMonth();
 
     let day = firstDay;
     if (day > 0) {

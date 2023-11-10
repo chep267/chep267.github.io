@@ -13,8 +13,8 @@ import CalendarLabel from './CalendarLabel';
 import CalendarItem from './CalendarItem';
 
 /** utils */
-import { genMatrixCalendar } from '@module-calendar/utils/Helpers/genMatrixCalendar';
-import { reverseMatrix } from '@module-calendar/utils/Helpers/reverseMatrix';
+import { genMatrixCalendar } from '@module-calendar/utils/helpers/genMatrixCalendar';
+import { reverseMatrix } from '@module-calendar/utils/helpers/reverseMatrix';
 
 /** hooks */
 import { useLanguage } from '@module-language/hooks/useLanguage';
@@ -40,9 +40,11 @@ export default function CalendarContent(props: Props) {
 
     const tableRows = React.useMemo<TableBaseProps<CalendarTableDataType>['rows']>(() => {
         const today = dayjs();
-        const toDate = today.year() === time.year() && today.month() === time.month() ? today.date() : -1;
-        let output: (keyof CalendarTableDataType)[];
+        const month = time.month();
+        const year = time.year();
+        const toDate = year === today.year() && month === today.month() ? today.date() : -1;
 
+        let output: (keyof CalendarTableDataType)[];
         switch (display) {
             case 'sat':
                 output = [6, 0, 1, 2, 3, 4, 5];
@@ -50,7 +52,7 @@ export default function CalendarContent(props: Props) {
             case 'mon':
                 output = [1, 2, 3, 4, 5, 6, 0];
                 break;
-            case 'default':
+            case 'sun':
             default:
                 output = [0, 1, 2, 3, 4, 5, 6];
                 break;
@@ -59,14 +61,12 @@ export default function CalendarContent(props: Props) {
         return output.map((day) => ({
             id: `${day}`,
             label: <CalendarLabel day={day} locale={locale} />,
-            render: (item) => <CalendarItem date={item[day]} isToday={item[day] === toDate} />,
+            render: (item) => <CalendarItem date={item[day]} isToday={item[day] === toDate} month={month + 1} year={year} />,
         }));
     }, [display, locale, time]);
 
     const tableData = React.useMemo(() => {
-        const totalDate = time.daysInMonth(); // => 28, 29, 30, 31
-        const firstDay = time.set('date', 1).day(); // => 0 -> 6
-        const matrixCalendar = genMatrixCalendar(firstDay, totalDate, display);
+        const matrixCalendar = genMatrixCalendar(time, display);
         const output = reverseMatrix(matrixCalendar);
         return output.map((item) => Object.assign({}, item));
     }, [time, display]);

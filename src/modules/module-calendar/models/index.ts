@@ -5,7 +5,7 @@
  */
 
 type CalendarContextProps = {
-    display: 'default' | 'mon' | 'sat';
+    display: 'sun' | 'mon' | 'sat';
     toggleDisplay(display: CalendarContextProps['display']): void;
 };
 

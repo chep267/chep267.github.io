@@ -15,6 +15,8 @@ import useStyles from './styles';
 /** types */
 type CalendarItemType = {
     date: number;
+    month: number;
+    year: number;
     isToday?: boolean;
 };
 
@@ -23,7 +25,7 @@ export default function CalendarItem(props: CalendarItemType) {
     const classes = useStyles();
 
     return (
-        <Stack className={classnames(classes.item, { [classes.itemToday]: isToday })}>
+        <Stack className={classnames(classes.item, { [classes.itemToday]: isToday }, { [classes.itemHover]: !!date })}>
             <Typography variant="h6">{date || ''}</Typography>
         </Stack>
     );

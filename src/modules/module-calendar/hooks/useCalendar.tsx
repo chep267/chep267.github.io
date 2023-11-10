@@ -11,7 +11,7 @@ import type { ComponentType } from 'react';
 import type { CalendarContextProps } from '@module-calendar/models';
 
 const CalendarContext = React.createContext<CalendarContextProps>({
-    display: 'default',
+    display: 'sun',
     toggleDisplay: () => {},
 });
 

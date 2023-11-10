@@ -23,10 +23,14 @@ const useStyles = makeStyles(({ palette }) => ({
         margin: 'auto',
         justifyContent: 'center',
         alignItems: 'center',
-        width: 40,
-        height: 40,
-        '& > p': {
-            fontWeight: 'bold',
+        width: 50,
+        height: 50,
+        borderRadius: '50%',
+    },
+    itemHover: {
+        '&:hover': {
+            cursor: 'pointer',
+            backgroundColor: palette.divider,
         },
     },
     itemToday: {

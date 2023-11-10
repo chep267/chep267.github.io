@@ -16,7 +16,7 @@ import type { CalendarContextProps } from '@module-calendar/models';
 function CalendarProvider(props: PropsWithChildren) {
     const { children } = props;
 
-    const [display, setDisplay] = React.useState<CalendarContextProps['display']>('default');
+    const [display, setDisplay] = React.useState<CalendarContextProps['display']>('sun');
 
     const toggleDisplay = React.useCallback<CalendarContextProps['toggleDisplay']>((value) => setDisplay(value), []);
 

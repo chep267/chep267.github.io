@@ -60,9 +60,7 @@ export default function CalendarTitle(props: Props) {
                     <KeyboardArrowLeftIcon />
                 </IconButton>
             </Stack>
-            <Typography variant="h5" fontWeight="bold">
-                {genTitleMessage()}
-            </Typography>
+            <Typography variant="h5">{genTitleMessage()}</Typography>
             <Stack className={classes.titleIcon}>
                 <IconButton onClick={() => onChange('next', 'month')}>
                     <KeyboardArrowRightIcon />
