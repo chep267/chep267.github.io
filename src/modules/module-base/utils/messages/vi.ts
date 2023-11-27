@@ -1,10 +1,11 @@
 /**
  *
- * @author dong.nguyenthanh@powergatesoftware.com on 26/07/2023.
+ * @author dongntd267@gmail.com on 26/07/2023.
  *
  */
 
 export const VI = Object.freeze({
+    'module.base.error.server.busy': 'Máy chủ không phản hồi!',
     'module.base.error.fallback.title': 'Đã xảy ra lỗi',
     'module.base.error.fallback.content': 'Bạn hãy thử chạy lại ứng dụng',
     'module.base.error.fallback.retry': 'Thử lại',

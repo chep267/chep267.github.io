@@ -1,6 +1,6 @@
 /**
  *
- * @author dong.nguyenthanh@powergatesoftware.com on 26/07/2023.
+ * @author dongntd267@gmail.com on 26/07/2023.
  *
  */
 
@@ -8,10 +8,13 @@ import {
     getAuth,
     createUserWithEmailAndPassword,
     signInWithEmailAndPassword,
-    signOut as signOutFirebase,
+    signOut,
     onAuthStateChanged,
     sendPasswordResetEmail,
-} from 'firebase/auth';
+} from '@firebase/auth';
+
+/** apis */
+import { apiCreateUser, apiGetUser } from '@module-user/apis';
 
 /** constants */
 import { TIMING_API_PENDING } from '@module-base/constants/defaultValue';
@@ -28,12 +31,26 @@ const authentication = getAuth(firebaseApp);
 const apiSignIn = async (payload: AuthApiProps['SignIn']['Payload']): Promise<AuthApiProps['SignIn']['Response']> => {
     const { timer = TIMING_API_PENDING, email, password } = payload;
     const [response] = await Promise.all([signInWithEmailAndPassword(authentication, email, password), debounce(timer)]);
+    if (response?.user) {
+        let user = await apiGetUser({ uid: response.user.uid, timer: 0 });
+        if (!user) {
+            user = {
+                uid: response.user.uid,
+                email: response.user.email || email,
+                displayName: response.user.displayName || email.slice(0, email.indexOf('@')),
+                providerId: response.user.providerId,
+                photoURL: response.user.photoURL,
+                phoneNumber: response.user.phoneNumber,
+            };
+            await apiCreateUser({ user });
+        }
+    }
     return response;
 };
 
 const apiSignOut = async (payload: AuthApiProps['SignOut']['Payload']): Promise<AuthApiProps['SignOut']['Response']> => {
     const { timer = TIMING_API_PENDING } = payload;
-    const [response] = await Promise.all([signOutFirebase(authentication), debounce(timer)]);
+    const [response] = await Promise.all([signOut(authentication), debounce(timer)]);
     return response;
 };
 
@@ -59,4 +76,4 @@ const apiRestart = async (payload: AuthApiProps['Restart']['Payload']): Promise<
     });
 };
 
-export { authentication, apiSignIn, apiSignOut, apiRegister, apiRestart, apiRecover };
+export { apiSignIn, apiSignOut, apiRegister, apiRestart, apiRecover };

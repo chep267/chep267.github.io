@@ -1,6 +1,6 @@
 /**
  *
- * @author dong.nguyenthanh@powergatesoftware.com on 24/08/2023.
+ * @author dongntd267@gmail.com on 24/08/2023.
  *
  */
 
@@ -42,21 +42,21 @@ const useStyles = makeStyles(({ palette }) => ({
     },
     drawerOpen: {
         width: SCREEN_SIZE.APP_BAR_MAX_WIDTH,
-        transition: 'width 0.5s ease-in-out',
+        transition: 'width 0.6s',
         overflowX: 'hidden',
         '& .MuiDrawer-paper': {
             width: SCREEN_SIZE.APP_BAR_MAX_WIDTH,
-            transition: 'width 0.5s ease-in-out',
+            transition: 'width 0.6s',
             overflowX: 'hidden',
         },
     },
     drawerClose: {
         width: SCREEN_SIZE.APP_BAR_MIN_WIDTH,
-        transition: 'width 0.5s linear',
+        transition: 'width 0.6s',
         overflowX: 'hidden',
         '& .MuiDrawer-paper': {
             width: SCREEN_SIZE.APP_BAR_MIN_WIDTH,
-            transition: 'width 0.5s linear',
+            transition: 'width 0.6s',
             overflowX: 'hidden',
         },
     },

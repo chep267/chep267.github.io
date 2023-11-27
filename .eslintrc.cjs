@@ -1,6 +1,6 @@
 /**
  *
- * @author dong.nguyenthanh@powergatesoftware.com on 26/07/2023.
+ * @author dongntd267@gmail.com on 26/07/2023.
  *
  */
 
@@ -68,7 +68,7 @@ module.exports = {
         'no-case-declarations': 'off',
         '@typescript-eslint/no-explicit-any': 'off',
         'react-hooks/exhaustive-deps': 'off',
-        '@tanstack/query/exhaustive-deps': 'error',
+        '@tanstack/query/exhaustive-deps': 'off',
         '@tanstack/query/no-rest-destructuring': 'warn',
         '@tanstack/query/stable-query-client': 'error',
 

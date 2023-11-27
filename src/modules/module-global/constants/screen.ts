@@ -1,18 +1,19 @@
 /**
  *
- * @author dong.nguyenthanh@powergatesoftware.com on 26/07/2023.
+ * @author dongntd267@gmail.com on 26/07/2023.
  *
  */
 
 const SCREEN = Object.freeze({
-    HOME: '/',
-    FEED: '/feed',
-    MESSENGER: '/messenger',
+    HOME: '',
+    FEED: 'feed',
+    MESSENGER: 'messenger',
+    MESSENGER_CONVERSATION: 't/:tid',
 
-    CALENDAR: '/calendar',
-    CALENDAR_INFO: '/calendar/info',
+    CALENDAR: 'calendar',
+    CALENDAR_INFO: 'info',
 
-    PROFILE: '/profile',
+    PROFILE: 'profile',
 });
 
 const SCREEN_SIZE = Object.freeze({
@@ -24,6 +25,8 @@ const SCREEN_SIZE = Object.freeze({
     AUTH_FORM_MAX_WIDTH: 700,
 
     MESSENGER_LEFT_RIGHT_MIN_WIDTH: 100,
+    MESSENGER_LEFT_MIN_WIDTH: 100,
+    MESSENGER_LEFT_MEDIUM_WIDTH: 280,
     MESSENGER_LEFT_RIGHT_MAX_WIDTH: 360,
 });
 

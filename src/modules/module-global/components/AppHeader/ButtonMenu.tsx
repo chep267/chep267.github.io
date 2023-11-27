@@ -1,6 +1,6 @@
 /**
  *
- * @author dong.nguyenthanh@powergatesoftware.com on 26/07/2023.
+ * @author dongntd267@gmail.com on 26/07/2023.
  *
  */
 
@@ -33,6 +33,9 @@ import {
     Palette as PaletteIcon,
     CalendarMonth as CalendarMonthIcon,
 } from '@mui/icons-material';
+
+/** constants */
+import { emptyArray } from '@module-base/constants/defaultValue';
 
 /** utils */
 import { baseMessage } from '@module-base/utils/messages';
@@ -113,7 +116,6 @@ export default function ButtonMenu() {
     const theme = useTheme();
     const language = useLanguage();
     const calendar = useCalendar();
-    const SIGN_OUT = useSignOut();
     const classes = useStyles();
 
     const [menuElem, setMenuElem] = React.useState<null | HTMLElement>(null);
@@ -122,6 +124,8 @@ export default function ButtonMenu() {
     const openMenu = React.useCallback((event: ElementClickEvent<HTMLButtonElement>) => setMenuElem(event.currentTarget), []);
 
     const closeMenu = React.useCallback(() => setMenuElem(null), []);
+
+    const SIGN_OUT = useSignOut({ onSuccess: closeMenu });
 
     const menuBase = React.useMemo<MenuItemProps[]>(
         () => [
@@ -169,46 +173,56 @@ export default function ButtonMenu() {
         [language.locale]
     );
 
-    const menu = React.useMemo<MenuItemProps[]>(() => {
-        let output = menuBase;
-        if (SIGN_OUT.isAuth) {
-            output = [
-                ...output,
-                {
-                    id: 'Calendar',
-                    title: intl.formatMessage(calendarMessage['module.calendar.setting.display']),
-                    icon: <CalendarMonthIcon />,
-                    divide: true,
-                    subMenu: [
-                        {
-                            id: 'default',
-                            title: intl.formatMessage(calendarMessage['module.calendar.setting.display.default']),
-                            onClick: () => calendar.toggleDisplay('sun'),
-                        },
-                        {
-                            id: 'mon',
-                            title: intl.formatMessage(calendarMessage['module.calendar.setting.display.mon']),
-                            onClick: () => calendar.toggleDisplay('mon'),
-                        },
-                        {
-                            id: 'sat',
-                            title: intl.formatMessage(calendarMessage['module.calendar.setting.display.sat']),
-                            onClick: () => calendar.toggleDisplay('sat'),
-                        },
-                    ],
-                },
-                {
-                    id: 'sign-out',
-                    title: intl.formatMessage(authMessage['module.auth.form.title.signout']),
-                    icon: <LogoutIcon />,
-                    onClick: () => SIGN_OUT.mutate({}),
-                    divide: true,
-                    loading: SIGN_OUT.isPending,
-                },
-            ];
+    const menuAuth = React.useMemo<MenuItemProps[]>(() => {
+        if (!SIGN_OUT.isAuth) {
+            return emptyArray;
         }
-        return output;
-    }, [SIGN_OUT.isAuth, menuBase, SIGN_OUT.isPending]);
+        return [
+            {
+                id: 'Calendar',
+                title: intl.formatMessage(calendarMessage['module.calendar.setting.display']),
+                icon: <CalendarMonthIcon />,
+                divide: true,
+                subMenu: [
+                    {
+                        id: 'default',
+                        title: intl.formatMessage(calendarMessage['module.calendar.setting.display.default']),
+                        onClick: () => calendar.toggleDisplay('sun'),
+                    },
+                    {
+                        id: 'mon',
+                        title: intl.formatMessage(calendarMessage['module.calendar.setting.display.mon']),
+                        onClick: () => calendar.toggleDisplay('mon'),
+                    },
+                    {
+                        id: 'sat',
+                        title: intl.formatMessage(calendarMessage['module.calendar.setting.display.sat']),
+                        onClick: () => calendar.toggleDisplay('sat'),
+                    },
+                ],
+            },
+        ];
+    }, [language.locale, SIGN_OUT.isAuth]);
+
+    const menuSignOut = React.useMemo<MenuItemProps[]>(() => {
+        if (!SIGN_OUT.isAuth) {
+            return emptyArray;
+        }
+        return [
+            {
+                id: 'sign-out',
+                title: intl.formatMessage(authMessage['module.auth.form.title.signout']),
+                icon: <LogoutIcon />,
+                onClick: () => SIGN_OUT.mutate({}),
+                divide: true,
+                loading: SIGN_OUT.isPending,
+            },
+        ];
+    }, [language.locale, SIGN_OUT.isAuth, SIGN_OUT.isPending]);
+
+    const menu = React.useMemo<MenuItemProps[]>(() => {
+        return ([] as MenuItemProps[]).concat(menuBase, menuAuth, menuSignOut);
+    }, [menuBase, menuAuth, menuSignOut]);
 
     return (
         <>

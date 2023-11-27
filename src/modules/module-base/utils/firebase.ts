@@ -4,7 +4,8 @@
  *
  */
 
-import { getApps, initializeApp } from 'firebase/app';
+import { getApps, initializeApp } from '@firebase/app';
+import { getFirestore } from '@firebase/firestore';
 
 const firebaseConfig = Object.freeze({
     apiKey: 'AIzaSyBYZKhAWUgxDLqNZFMONEBCc05-7YQVt6Q',
@@ -18,5 +19,7 @@ const firebaseConfig = Object.freeze({
 });
 
 if (!getApps().length) initializeApp(firebaseConfig);
+
 const firebaseApp = initializeApp(firebaseConfig);
-export { firebaseApp };
+const firestore = getFirestore(firebaseApp);
+export { firebaseApp, firestore };

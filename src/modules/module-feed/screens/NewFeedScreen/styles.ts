@@ -1,6 +1,6 @@
 /**
  *
- * @author dong.nguyenthanh@powergatesoftware.com on 24/08/2023.
+ * @author dongntd267@gmail.com on 24/08/2023.
  *
  */
 

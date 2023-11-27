@@ -1,6 +1,6 @@
 /**
  *
- * @author dong.nguyenthanh@powergatesoftware.com on 26/07/2023.
+ * @author dongntd267@gmail.com on 26/07/2023.
  *
  */
 
@@ -20,7 +20,7 @@ import { authMessage } from '@module-auth/utils/messages';
 import { useBase } from '@module-base/hooks/useBase';
 
 /** types */
-import type { FirebaseError } from 'firebase/app';
+import type { FirebaseError } from '@firebase/app';
 
 export function useRecover() {
     const intl = useIntl();

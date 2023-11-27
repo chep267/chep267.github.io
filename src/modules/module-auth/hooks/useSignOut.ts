@@ -1,6 +1,6 @@
 /**
  *
- * @author dong.nguyenthanh@powergatesoftware.com on 26/07/2023.
+ * @author dongntd267@gmail.com on 26/07/2023.
  *
  */
 
@@ -16,7 +16,11 @@ import { accessTokenCookieKey } from '@module-base/constants/localStoreKey';
 /** hooks */
 import { useAuth } from '@module-auth/hooks/useAuth';
 
-export function useSignOut() {
+type UseSignOutProps = {
+    onSuccess?(): void;
+};
+
+export function useSignOut(props: UseSignOutProps) {
     const auth = useAuth();
 
     const SIGN_OUT = useMutation({
@@ -25,6 +29,7 @@ export function useSignOut() {
         onSuccess: () => {
             Cookies.remove(accessTokenCookieKey);
             auth.toggleAuth();
+            props.onSuccess?.();
         },
     });
 

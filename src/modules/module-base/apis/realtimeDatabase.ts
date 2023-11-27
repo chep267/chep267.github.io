@@ -17,7 +17,7 @@ import {
     update,
     remove,
     QueryConstraint,
-} from 'firebase/database';
+} from '@firebase/database';
 
 /** utils */
 import { firebaseApp } from '@module-base/utils/firebase';
