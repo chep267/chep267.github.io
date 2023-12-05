@@ -38,9 +38,15 @@ const useStyles = makeStyles(({ palette }) => ({
             backgroundColor: palette.divider,
         },
     },
+    itemDifferentMonth: {
+        color: palette.text.disabled,
+    },
     itemSelectedDate: {
         borderRadius: '50%',
         backgroundColor: palette.divider,
+    },
+    itemWeekend: {
+        color: palette.error.main,
     },
     itemToday: {
         borderRadius: '50%',
@@ -51,9 +57,6 @@ const useStyles = makeStyles(({ palette }) => ({
             color: palette.common.white,
             backgroundColor: palette.error.main,
         },
-    },
-    itemDifferentMonth: {
-        color: palette.text.disabled,
     },
 }));
 

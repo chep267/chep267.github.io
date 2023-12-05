@@ -31,6 +31,7 @@ export default function CalendarItem(props: CalendarItemType) {
     const { data, isToday, isToMonth, isSelectedDate, onSelect } = props;
     const classes = useStyles();
     const date = data.date();
+    const isWeekend = data.day() === 0 || data.day() === 6;
 
     return (
         <Link to={SCREEN.CALENDAR_INFO} onClick={onSelect}>
@@ -40,7 +41,8 @@ export default function CalendarItem(props: CalendarItemType) {
                     { [classes.itemHover]: !!date },
                     { [classes.itemToday]: isToday },
                     { [classes.itemSelectedDate]: isSelectedDate },
-                    { [classes.itemDifferentMonth]: !isToMonth }
+                    { [classes.itemDifferentMonth]: !isToMonth },
+                    { [classes.itemWeekend]: isWeekend }
                 )}>
                 <Typography variant="h6">{date}</Typography>
             </Stack>

@@ -114,8 +114,8 @@ function MenuItem(props: MenuItemProps) {
 export default function ButtonMenu() {
     const intl = useIntl();
     const theme = useTheme();
-    const language = useLanguage();
-    const calendar = useCalendar();
+    const LANGUAGE = useLanguage();
+    const CALENDAR = useCalendar();
     const classes = useStyles();
 
     const [menuElem, setMenuElem] = React.useState<null | HTMLElement>(null);
@@ -159,18 +159,18 @@ export default function ButtonMenu() {
                         id: 'Language-Vi',
                         title: intl.formatMessage(langMessage['module.language.lang.vi']),
                         icon: <span className={classes.flagIcon}>🇻🇳</span>,
-                        onClick: () => language.toggleLanguage('vi'),
+                        onClick: () => LANGUAGE.toggleLanguage('vi'),
                     },
                     {
                         id: 'Language-En',
                         title: intl.formatMessage(langMessage['module.language.lang.en']),
                         icon: <span className={classes.flagIcon}>🇬🇧</span>,
-                        onClick: () => language.toggleLanguage('en'),
+                        onClick: () => LANGUAGE.toggleLanguage('en'),
                     },
                 ],
             },
         ],
-        [language.locale]
+        [LANGUAGE.locale]
     );
 
     const menuAuth = React.useMemo<MenuItemProps[]>(() => {
@@ -187,22 +187,22 @@ export default function ButtonMenu() {
                     {
                         id: 'default',
                         title: intl.formatMessage(calendarMessage['module.calendar.setting.display.default']),
-                        onClick: () => calendar.toggleDisplay('sun'),
+                        onClick: () => CALENDAR.method.setDisplay('sun'),
                     },
                     {
                         id: 'mon',
                         title: intl.formatMessage(calendarMessage['module.calendar.setting.display.mon']),
-                        onClick: () => calendar.toggleDisplay('mon'),
+                        onClick: () => CALENDAR.method.setDisplay('mon'),
                     },
                     {
                         id: 'sat',
                         title: intl.formatMessage(calendarMessage['module.calendar.setting.display.sat']),
-                        onClick: () => calendar.toggleDisplay('sat'),
+                        onClick: () => CALENDAR.method.setDisplay('sat'),
                     },
                 ],
             },
         ];
-    }, [language.locale, SIGN_OUT.isAuth]);
+    }, [LANGUAGE.locale, SIGN_OUT.isAuth]);
 
     const menuSignOut = React.useMemo<MenuItemProps[]>(() => {
         if (!SIGN_OUT.isAuth) {
@@ -218,7 +218,7 @@ export default function ButtonMenu() {
                 loading: SIGN_OUT.isPending,
             },
         ];
-    }, [language.locale, SIGN_OUT.isAuth, SIGN_OUT.isPending]);
+    }, [LANGUAGE.locale, SIGN_OUT.isAuth, SIGN_OUT.isPending]);
 
     const menu = React.useMemo<MenuItemProps[]>(() => {
         return ([] as MenuItemProps[]).concat(menuBase, menuAuth, menuSignOut);
