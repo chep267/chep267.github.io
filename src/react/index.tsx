@@ -22,18 +22,15 @@ import BaseProvider from '@module-base/components/BaseProvider';
 import ThemeProvider from '@module-theme/components/ThemeProvider';
 import LanguageProvider from '@module-language/components/LanguageProvider';
 import AuthProvider from '@module-auth/components/AuthProvider';
-import CalendarProvider from '@module-calendar/components/CalendarProvider';
 
 const App = () => (
     <QueryClientProvider client={queryClient}>
         <ThemeProvider>
             <LanguageProvider messages={messages}>
                 <AuthProvider>
-                    <CalendarProvider>
-                        <BaseProvider>
-                            <RootScreen />
-                        </BaseProvider>
-                    </CalendarProvider>
+                    <BaseProvider>
+                        <RootScreen />
+                    </BaseProvider>
                 </AuthProvider>
             </LanguageProvider>
         </ThemeProvider>

@@ -6,6 +6,16 @@
 
 /// <reference types="vite/client" />
 
+declare module '*.svg' {
+    const ReactComponent: any;
+    export const ReactComponent;
+}
+
+declare module '*.png' {
+    const ReactComponent: any;
+    export const ReactComponent;
+}
+
 interface ImportMetaEnv {
     readonly VITE_APP_MODE: 'dev' | 'build';
     readonly VITE_APP_TITLE: boolean;

@@ -5,14 +5,21 @@
  */
 
 /** types */
+import type { Dispatch, SetStateAction } from 'react';
 import type { Dayjs } from 'dayjs';
 
 type CalendarContextProps = {
-    display: 'sun' | 'mon' | 'sat';
-    toggleDisplay(display: CalendarContextProps['display']): void;
+    data: {
+        display: 'sun' | 'mon' | 'sat';
+        time: Dayjs;
+        isToday: boolean;
+    };
+    method: {
+        setDisplay: Dispatch<SetStateAction<CalendarContextProps['data']['display']>>;
+        setTime: Dispatch<SetStateAction<Dayjs>>;
+    };
 };
 
-// type CalendarTableDataType = { 0: number; 1: number; 2: number; 3: number; 4: number; 5: number; 6: number };
 type CalendarTableDataType = Record<number, Dayjs>;
 
 export type { CalendarContextProps, CalendarTableDataType };

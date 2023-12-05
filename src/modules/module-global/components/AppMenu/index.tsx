@@ -19,6 +19,7 @@ import {
     CalendarMonth as CalendarMonthIcon,
     KeyboardDoubleArrowRight as KeyboardDoubleArrowRightIcon,
     KeyboardDoubleArrowLeft as KeyboardDoubleArrowLeftIcon,
+    Games as GamesIcon,
 } from '@mui/icons-material';
 
 /** constants */
@@ -28,6 +29,7 @@ import { SCREEN } from '@module-global/constants/screen';
 import { feedMessage } from '@module-feed/utils/messages';
 import { messengerMessage } from '@module-messenger/utils/messages';
 import { calendarMessage } from '@module-calendar/utils/messages';
+import { gameMessage } from '@module-game/utils/messages';
 
 /** hooks */
 import { useBase } from '@module-base/hooks/useBase';
@@ -60,6 +62,11 @@ const AppMenu = React.memo(() => {
                 name: calendarMessage['module.calendar.router.name'],
                 path: SCREEN.CALENDAR,
                 icon: <CalendarMonthIcon />,
+            },
+            {
+                name: gameMessage['module.game.router.name'],
+                path: SCREEN.GAME,
+                icon: <GamesIcon />,
             },
         ],
         []

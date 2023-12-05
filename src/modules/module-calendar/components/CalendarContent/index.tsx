@@ -17,33 +17,26 @@ import { genMatrixCalendarDayJS } from '@module-calendar/utils/helpers/genMatrix
 import { reverseMatrix } from '@module-calendar/utils/helpers/reverseMatrix';
 
 /** hooks */
-import { useLanguage } from '@module-language/hooks/useLanguage';
 import { useCalendar } from '@module-calendar/hooks/useCalendar';
 
 /** styles */
 import useStyles from './styles';
 
 /** types */
-import type { Dayjs } from 'dayjs';
 import type { TableBaseProps } from '@module-base/models';
 import type { CalendarTableDataType } from '@module-calendar/models';
 
-type Props = {
-    time: Dayjs;
-};
-
-export default function CalendarContent(props: Props) {
-    const { time } = props;
-    const { locale } = useLanguage();
-    const { display } = useCalendar();
+export default function CalendarContent() {
+    const CALENDAR = useCalendar();
     const classes = useStyles();
 
     const tableRows = React.useMemo<TableBaseProps<CalendarTableDataType>['rows']>(() => {
-        const today = dayjs();
-        const toDate = time.year() === today.year() && time.month() === today.month() ? today.date() : -1;
+        const TODAY = dayjs();
+        const today =
+            CALENDAR.data.time.year() === TODAY.year() && CALENDAR.data.time.month() === TODAY.month() ? TODAY.date() : 0;
 
         let output: (keyof CalendarTableDataType)[];
-        switch (display) {
+        switch (CALENDAR.data.display) {
             case 'sat':
                 output = [6, 0, 1, 2, 3, 4, 5];
                 break;
@@ -58,20 +51,31 @@ export default function CalendarContent(props: Props) {
 
         return output.map((day) => ({
             id: `${day}`,
-            label: <CalendarLabel day={day} locale={locale} />,
+            label: <CalendarLabel day={day} />,
             render: (item) => {
                 const data = item[day];
-                const isToMonth = data.year() === time.year() && data.month() === time.month();
-                return <CalendarItem data={data} isToday={data.date() === toDate} isToMonth={isToMonth} />;
+                const isToMonth = data.year() === CALENDAR.data.time.year() && data.month() === CALENDAR.data.time.month();
+                const isToday = isToMonth && data.date() === today;
+                const isSelectedDate = isToMonth && data.date() === CALENDAR.data.time.date();
+                const onSelect = () => CALENDAR.method.setTime(data);
+                return (
+                    <CalendarItem
+                        data={data}
+                        isToday={isToday}
+                        isSelectedDate={isSelectedDate}
+                        isToMonth={isToMonth}
+                        onSelect={onSelect}
+                    />
+                );
             },
         }));
-    }, [display, locale, time]);
+    }, [CALENDAR.data.display, CALENDAR.data.time]);
 
     const tableData = React.useMemo(() => {
-        const matrixCalendar = genMatrixCalendarDayJS(time, display);
+        const matrixCalendar = genMatrixCalendarDayJS(CALENDAR.data.time, CALENDAR.data.display);
         const output = reverseMatrix(matrixCalendar);
         return output.map((item) => Object.assign({}, item));
-    }, [time, display]);
+    }, [CALENDAR.data.time, CALENDAR.data.display]);
 
     return <TableBase className={classes.calendar} rows={tableRows} data={tableData} />;
 }

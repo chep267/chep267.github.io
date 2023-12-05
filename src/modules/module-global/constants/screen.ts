@@ -13,6 +13,9 @@ const SCREEN = Object.freeze({
     CALENDAR: 'calendar',
     CALENDAR_INFO: 'info',
 
+    GAME: 'game',
+    GAME_POKEMON: 'pokemon',
+
     PROFILE: 'profile',
 });
 

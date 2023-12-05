@@ -6,9 +6,17 @@
 
 export const EN = Object.freeze({
     'module.calendar.router.name': 'Calendar',
+    'module.calendar.text.today': 'Today',
+    'module.calendar.text.solar': 'Solar calendar',
+    'module.calendar.text.lunar': 'Lunar calendar',
+    'module.calendar.text.day': 'Day',
+    'module.calendar.text.month': 'Month',
+    'module.calendar.text.year': 'Year',
     'module.calendar.component.calendar.title.text': '{month}, {year}',
+    'module.calendar.component.calendarInfo.title.solar.text': 'Solar calendar, ngày {day} tháng {month} năm {year}',
+    'module.calendar.component.calendarInfo.title.lunar.text': 'Lunar calendar, ngày {day} tháng {month} năm {year}',
     'module.calendar.setting.display': 'Calendar display',
     'module.calendar.setting.display.default': 'Default',
-    'module.calendar.setting.display.mon': 'Đầu tuần',
-    'module.calendar.setting.display.sat': 'Cuối tuần',
+    'module.calendar.setting.display.mon': 'Monday',
+    'module.calendar.setting.display.sat': 'Weekend',
 });

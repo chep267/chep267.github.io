@@ -15,8 +15,13 @@ const useStyles = makeStyles(({ palette }) => ({
             textAlign: 'center',
             width: 'calc(14%)',
         },
-        '& tbody > tr > td': {
-            textAlign: 'center',
+        '& tbody': {
+            '& > tr > td': {
+                textAlign: 'center',
+            },
+            '& > tr:last-of-type > td': {
+                border: 'none',
+            },
         },
     },
     item: {
@@ -33,10 +38,19 @@ const useStyles = makeStyles(({ palette }) => ({
             backgroundColor: palette.divider,
         },
     },
+    itemSelectedDate: {
+        borderRadius: '50%',
+        backgroundColor: palette.divider,
+    },
     itemToday: {
         borderRadius: '50%',
         color: palette.error.main,
         border: `1px solid ${palette.error.main}`,
+        backgroundColor: 'transparent',
+        '&:hover': {
+            color: palette.common.white,
+            backgroundColor: palette.error.main,
+        },
     },
     itemDifferentMonth: {
         color: palette.text.disabled,

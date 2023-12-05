@@ -12,7 +12,7 @@ import ThreadTitle from './ThreadTitle';
 import ThreadContent from './ThreadContent';
 
 /** styles */
-import useStyles from '../styles';
+import useStyles from '@module-messenger/screens/ConversationScreen/styles';
 
 export default function ConversationLeft() {
     const classes = useStyles();

@@ -9,17 +9,17 @@ import dayjs from 'dayjs';
 /** lib components */
 import { Typography } from '@mui/material';
 
-/** types */
-import type { LocaleType } from '@module-language/models';
+/** hooks */
+import { useLanguage } from '@module-language/hooks/useLanguage';
 
 /** types */
 type CalendarLabelType = {
     day: number;
-    locale: LocaleType;
 };
 
 export default function CalendarLabel(props: CalendarLabelType) {
-    const { day, locale } = props;
+    const { day } = props;
+    const { locale } = useLanguage();
 
     return (
         <Typography variant="h6" color={day === 0 || day === 6 ? 'error.main' : ''}>

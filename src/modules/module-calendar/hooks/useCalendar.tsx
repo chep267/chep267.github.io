@@ -5,14 +5,26 @@
  */
 
 import * as React from 'react';
+import dayjs from 'dayjs';
+
+/** constants */
+import { emptyFunction } from '@module-base/constants/defaultValue';
 
 /** types */
 import type { ComponentType } from 'react';
 import type { CalendarContextProps } from '@module-calendar/models';
 
+const today = dayjs();
 const CalendarContext = React.createContext<CalendarContextProps>({
-    display: 'sun',
-    toggleDisplay: () => {},
+    data: {
+        display: 'sun',
+        time: today,
+        isToday: true,
+    },
+    method: {
+        setTime: emptyFunction,
+        setDisplay: emptyFunction,
+    },
 });
 
 const useCalendar = () => React.useContext(CalendarContext);
@@ -26,4 +38,4 @@ function withCalendar<Props>(WrappedComponent: ComponentType<Props>) {
 
 CalendarContext.displayName = 'CalendarContext';
 // eslint-disable-next-line react-refresh/only-export-components
-export { CalendarContext, useCalendar, withCalendar };
+export { CalendarContext, useCalendar, withCalendar, today };

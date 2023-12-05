@@ -12,7 +12,8 @@
             "@module-global/*": ["src/modules/module-global/*"],
             "@module-messenger/*": ["src/modules/module-messenger/*"],
             "@module-feed/*": ["src/modules/module-feed/*"],
-            "@module-calendar/*": ["src/modules/module-calendar/*"]
+            "@module-calendar/*": ["src/modules/module-calendar/*"],
+            "@module-game/*": ["src/modules/module-game/*"]
         }
     }
 }

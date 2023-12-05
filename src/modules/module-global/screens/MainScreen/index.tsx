@@ -27,6 +27,7 @@ const NotFoundScreen = React.lazy(() => import('@module-base/screens/NotFoundScr
 const NewFeedScreen = React.lazy(() => import('@module-feed/screens/NewFeedScreen'));
 const MessengerScreen = React.lazy(() => import('@module-messenger/screens'));
 const CalendarScreen = React.lazy(() => import('@module-calendar/screens'));
+const GameScreen = React.lazy(() => import('@module-game/screens'));
 
 export default function MainScreen() {
     const classes = useStyles();
@@ -42,6 +43,7 @@ export default function MainScreen() {
                             <Route path={`${SCREEN.FEED}/*`} element={<NewFeedScreen />} />
                             <Route path={`${SCREEN.MESSENGER}/*`} element={<MessengerScreen />} />
                             <Route path={`${SCREEN.CALENDAR}/*`} element={<CalendarScreen />} />
+                            <Route path={`${SCREEN.GAME}/*`} element={<GameScreen />} />
                             <Route path="*" element={<NotFoundScreen />} />
                         </Routes>
                     </React.Suspense>

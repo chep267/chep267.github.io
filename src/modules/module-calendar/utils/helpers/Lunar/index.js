@@ -208,6 +208,8 @@ const PropitiousHours = [
     [0, 0, 1, 0, 1, 1, 0, 0, 1, 1, 0, 1],
     [0, 1, 0, 0, 1, 0, 1, 1, 0, 0, 1, 1],
 ];
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const MinorSolarTerms = [
     'Xuân Phân',
     'Thanh Minh',

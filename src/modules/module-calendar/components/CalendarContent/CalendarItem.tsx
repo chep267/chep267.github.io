@@ -23,23 +23,23 @@ type CalendarItemType = {
     data: Dayjs;
     isToday?: boolean;
     isToMonth?: boolean;
+    isSelectedDate?: boolean;
+    onSelect(): void;
 };
 
 export default function CalendarItem(props: CalendarItemType) {
-    const { data, isToday, isToMonth } = props;
+    const { data, isToday, isToMonth, isSelectedDate, onSelect } = props;
     const classes = useStyles();
-
     const date = data.date();
-    // const month = data.month();
-    // const year = data.year();
 
     return (
-        <Link to={SCREEN.CALENDAR_INFO} state={props}>
+        <Link to={SCREEN.CALENDAR_INFO} onClick={onSelect}>
             <Stack
                 className={classnames(
                     classes.item,
                     { [classes.itemHover]: !!date },
                     { [classes.itemToday]: isToday },
+                    { [classes.itemSelectedDate]: isSelectedDate },
                     { [classes.itemDifferentMonth]: !isToMonth }
                 )}>
                 <Typography variant="h6">{date}</Typography>
