@@ -6,13 +6,14 @@
 
 import makeStyles from '@mui/styles/makeStyles';
 
-const useStyles = makeStyles(({ palette, spacing }) => ({
+const useStyles = makeStyles({
     screen: {
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'center',
         width: '100%',
         height: '100%',
+        overflow: 'auto',
     },
     mainContent: {
         display: 'flex',
@@ -21,37 +22,10 @@ const useStyles = makeStyles(({ palette, spacing }) => ({
         justifyContent: 'flex-start',
         width: '50%',
         height: '80%',
-        minWidth: 400,
-        borderRadius: 4,
-        overflow: 'hidden',
+        minWidth: 480,
+        minHeight: 600,
+        borderRadius: 6,
     },
-    body: {
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        height: '70%',
-        width: '100%',
-        padding: spacing(3),
-    },
-    footer: {
-        display: 'flex',
-        flexDirection: 'row',
-        height: '30%',
-        width: '100%',
-        '& div:first-of-type': {
-            borderLeft: 'none',
-        },
-    },
-    footerItem: {
-        display: 'flex',
-        flex: 1,
-        width: '30%',
-        borderLeft: `2px solid ${palette.divider}`,
-        borderTop: `2px solid ${palette.divider}`,
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        padding: spacing(1.5),
-    },
-}));
+});
 
 export default useStyles;

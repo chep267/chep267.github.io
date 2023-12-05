@@ -20,6 +20,7 @@ const useStyles = makeStyles(({ palette, spacing }) => ({
         display: 'flex',
         flex: 1,
         width: '30%',
+        minWidth: 120,
         borderLeft: `2px solid ${palette.divider}`,
         borderTop: `2px solid ${palette.divider}`,
         alignItems: 'center',
