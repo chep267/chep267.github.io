@@ -27,23 +27,31 @@ export default function CalendarInfoFooter() {
     const time = CALENDAR.data.time;
     const lunar = new VietnameseDate(new Date(`${time.year()}-${time.month() + 1}-${time.date()}`));
 
+    const renderItem = ({ title, content, subContent }: Record<'title' | 'content' | 'subContent', string | number>) => (
+        <Stack className={classes.footerItem}>
+            <Typography variant="h5">{title}</Typography>
+            <Typography variant="h3">{content}</Typography>
+            <Typography variant="h6">{subContent}</Typography>
+        </Stack>
+    );
+
     return (
         <Stack className={classes.footer}>
-            <Stack className={classes.footerItem}>
-                <Typography variant="h5">{formatMessage(calendarMessage['module.calendar.text.day'])}</Typography>
-                <Typography variant="h3">{lunar.day}</Typography>
-                <Typography variant="h6">{`${lunar.celestialStemOfDay} ${lunar.terrestrialBranchOfDay}`}</Typography>
-            </Stack>
-            <Stack className={classes.footerItem}>
-                <Typography variant="h5">{formatMessage(calendarMessage['module.calendar.text.month'])}</Typography>
-                <Typography variant="h3">{lunar.month}</Typography>
-                <Typography variant="h6">{`${lunar.celestialStemOfMonth} ${lunar.terrestrialBranchOfMonth}`}</Typography>
-            </Stack>
-            <Stack className={classes.footerItem}>
-                <Typography variant="h5">{formatMessage(calendarMessage['module.calendar.text.year'])}</Typography>
-                <Typography variant="h3">{lunar.year}</Typography>
-                <Typography variant="h6">{`${lunar.celestialStemOfYear} ${lunar.terrestrialBranchOfYear}`}</Typography>
-            </Stack>
+            {renderItem({
+                title: formatMessage(calendarMessage['module.calendar.text.day']),
+                content: lunar.day,
+                subContent: `${lunar.celestialStemOfDay} ${lunar.terrestrialBranchOfDay}`,
+            })}
+            {renderItem({
+                title: formatMessage(calendarMessage['module.calendar.text.month']),
+                content: lunar.month,
+                subContent: `${lunar.celestialStemOfMonth} ${lunar.terrestrialBranchOfMonth}`,
+            })}
+            {renderItem({
+                title: formatMessage(calendarMessage['module.calendar.text.year']),
+                content: lunar.year,
+                subContent: `${lunar.celestialStemOfYear} ${lunar.terrestrialBranchOfYear}`,
+            })}
         </Stack>
     );
 }
