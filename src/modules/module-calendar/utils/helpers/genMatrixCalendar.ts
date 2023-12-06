@@ -8,7 +8,7 @@
 import type { Dayjs } from 'dayjs';
 import type { CalendarContextProps } from '@module-calendar/models';
 
-export function genMatrixCalendar(time: Dayjs, display: CalendarContextProps['display']) {
+export function genMatrixCalendar(time: Dayjs, display: CalendarContextProps['data']['display']) {
     const matrixCalendar: number[][] = Array.from({ length: 7 }, () => []);
     const firstDay = time.set('date', 1);
     const totalDate = time.daysInMonth();
@@ -59,7 +59,7 @@ export function genMatrixCalendar(time: Dayjs, display: CalendarContextProps['di
     return matrixCalendar;
 }
 
-export function genMatrixCalendarDayJS(time: Dayjs, display: CalendarContextProps['display']) {
+export function genMatrixCalendarDayJS(time: Dayjs, display: CalendarContextProps['data']['display']) {
     const matrixCalendar: Dayjs[][] = Array.from({ length: 7 }, () => []);
     const firstDay = time.set('date', 1);
     const totalDate = time.daysInMonth();

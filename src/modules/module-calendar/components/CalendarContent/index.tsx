@@ -57,10 +57,13 @@ export default function CalendarContent() {
                 const isToMonth = data.year() === CALENDAR.data.time.year() && data.month() === CALENDAR.data.time.month();
                 const isToday = isToMonth && data.date() === today;
                 const isSelectedDate = isToMonth && data.date() === CALENDAR.data.time.date();
+                const isHide = CALENDAR.data.isOnlyMonth ? !isToMonth : false;
+
                 const onSelect = () => CALENDAR.method.setTime(data);
                 return (
                     <CalendarItem
                         data={data}
+                        isHide={isHide}
                         isToday={isToday}
                         isSelectedDate={isSelectedDate}
                         isToMonth={isToMonth}
@@ -69,7 +72,7 @@ export default function CalendarContent() {
                 );
             },
         }));
-    }, [CALENDAR.data.display, CALENDAR.data.time]);
+    }, [CALENDAR.data.display, CALENDAR.data.time, CALENDAR.data.isOnlyMonth]);
 
     const tableData = React.useMemo(() => {
         const matrixCalendar = genMatrixCalendarDayJS(CALENDAR.data.time, CALENDAR.data.display);

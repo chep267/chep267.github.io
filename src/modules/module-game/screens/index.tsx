@@ -11,13 +11,14 @@ import { SCREEN } from '@module-global/constants/screen';
 
 /** screens */
 const NotFoundScreen = React.lazy(() => import('@module-base/screens/NotFoundScreen'));
+const GameScreen = React.lazy(() => import('./GameScreen'));
 const PokemonScreen = React.lazy(() => import('./PokemonScreen'));
 
 export default function GameRouter() {
     return (
         <React.Suspense fallback={null}>
             <Routes>
-                <Route index element={<PokemonScreen />} />
+                <Route index element={<GameScreen />} />
                 <Route path={SCREEN.GAME_POKEMON} element={<PokemonScreen />} />
                 <Route path="*" element={<NotFoundScreen />} />
             </Routes>

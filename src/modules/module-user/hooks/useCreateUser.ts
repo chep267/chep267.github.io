@@ -27,8 +27,7 @@ export function useCreateUser() {
                 message: 'ok',
             });
         },
-        onError: (error) => {
-            console.log('useCreateThread: ', error);
+        onError: () => {
             notify.toggleNotify({
                 open: true,
                 mode: 'error',

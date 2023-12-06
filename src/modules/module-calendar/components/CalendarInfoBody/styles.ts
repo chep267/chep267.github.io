@@ -6,7 +6,7 @@
 
 import makeStyles from '@mui/styles/makeStyles';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(({ palette }) => ({
     body: {
         display: 'flex',
         alignItems: 'center',
@@ -15,6 +15,13 @@ const useStyles = makeStyles({
         height: '70%',
         padding: 8,
     },
-});
+    solarDay: {
+        fontSize: '12rem',
+        color: palette.primary.main,
+    },
+    weekendDay: {
+        color: palette.error.main,
+    },
+}));
 
 export default useStyles;

@@ -19,11 +19,14 @@ const CalendarContext = React.createContext<CalendarContextProps>({
     data: {
         display: 'sun',
         time: today,
-        isToday: true,
+        isOnlyMonth: false,
     },
     method: {
         setTime: emptyFunction,
         setDisplay: emptyFunction,
+        setIsOnlyMonth: emptyFunction,
+        isWeekend: () => false,
+        isToday: () => false,
     },
 });
 

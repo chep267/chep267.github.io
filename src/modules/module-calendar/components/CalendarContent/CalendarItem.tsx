@@ -21,6 +21,7 @@ import type { Dayjs } from 'dayjs';
 
 type CalendarItemType = {
     data: Dayjs;
+    isHide?: boolean;
     isToday?: boolean;
     isToMonth?: boolean;
     isSelectedDate?: boolean;
@@ -28,12 +29,12 @@ type CalendarItemType = {
 };
 
 export default function CalendarItem(props: CalendarItemType) {
-    const { data, isToday, isToMonth, isSelectedDate, onSelect } = props;
+    const { data, isHide, isToday, isToMonth, isSelectedDate, onSelect } = props;
     const classes = useStyles();
     const date = data.date();
     const isWeekend = data.day() === 0 || data.day() === 6;
 
-    return (
+    return isHide ? null : (
         <Link to={SCREEN.CALENDAR_INFO} onClick={onSelect}>
             <Stack
                 className={classnames(

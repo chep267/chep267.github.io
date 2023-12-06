@@ -20,4 +20,6 @@ export const VI = Object.freeze({
     'module.calendar.setting.display.default': 'Mặc định',
     'module.calendar.setting.display.mon': 'Đầu tuần',
     'module.calendar.setting.display.sat': 'Cuối tuần',
+    'module.calendar.setting.display.only.month': 'Trong tháng',
+    'module.calendar.setting.display.both.month': 'Ngoài tháng',
 });

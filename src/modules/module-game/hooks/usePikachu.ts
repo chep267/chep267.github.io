@@ -22,7 +22,7 @@ const isItemInArray = (array: PikachuItemType[], item: PikachuItemType) => {
 
 const genBoard = (payload: PikachuState) => {
     const { row, col } = payload;
-    const board: PikachuItemType[][] = [];
+    const board: PikachuItemType[][] = Array.from({ length: row }, () => []);
     const random = () => Math.floor(Math.random() * MAX_IMG) + 1;
     const total = row * col;
     for (let x = 0, count = 0; x < row; ++x) {
@@ -30,12 +30,6 @@ const genBoard = (payload: PikachuState) => {
             ++count;
             const px = row - 1 - x;
             const py = col - 1 - y;
-            if (!board[x]) {
-                board[x] = [];
-            }
-            if (!board[px]) {
-                board[px] = [];
-            }
             const value = random();
             board[x][y] = { x, y, value };
             board[px][py] = { x: px, y: py, value };
@@ -66,8 +60,6 @@ export default function usePikachu() {
     const [boardGame, setBoardGame] = React.useState<PikachuItemType[][]>([]);
     const [itemSelects, setItemSelects] = React.useState<PikachuItemType[]>([]);
     const [itemStatus, setItemStatus] = React.useState<PikachuItemStatusType>('');
-
-    console.log('itemStatus: ', itemStatus);
 
     React.useEffect(() => {
         reload();

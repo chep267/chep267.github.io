@@ -12,11 +12,14 @@ type CalendarContextProps = {
     data: {
         display: 'sun' | 'mon' | 'sat';
         time: Dayjs;
-        isToday: boolean;
+        isOnlyMonth: boolean;
     };
     method: {
         setDisplay: Dispatch<SetStateAction<CalendarContextProps['data']['display']>>;
         setTime: Dispatch<SetStateAction<Dayjs>>;
+        setIsOnlyMonth: Dispatch<SetStateAction<boolean>>;
+        isWeekend: (day: Dayjs) => boolean;
+        isToday: (day: Dayjs) => boolean;
     };
 };
 

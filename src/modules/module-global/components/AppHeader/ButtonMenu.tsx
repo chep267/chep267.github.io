@@ -32,6 +32,7 @@ import {
     Logout as LogoutIcon,
     Palette as PaletteIcon,
     CalendarMonth as CalendarMonthIcon,
+    FiberManualRecord as FiberManualRecordIcon,
 } from '@mui/icons-material';
 
 /** constants */
@@ -90,9 +91,13 @@ function MenuItem(props: MenuItemProps) {
         <>
             <ListItemButton onClick={toggleOpen}>
                 <ListItemIcon style={styleIcon}>{icon}</ListItemIcon>
-                {loading ? <CircularProgress size={26} className={classes.loadingIcon} /> : <ListItemText primary={title} />}
+                {loading ? (
+                    <CircularProgress size={26} className={classes.loadingIcon} />
+                ) : (
+                    <ListItemText primary={title} primaryTypographyProps={{ color: open ? 'primary' : undefined }} />
+                )}
                 {!hasSub ? null : open ? (
-                    <ExpandLessIcon className={classes.menuIcon} />
+                    <ExpandLessIcon className={classes.menuIcon} color="primary" />
                 ) : (
                     <ExpandMoreIcon className={classes.menuIcon} />
                 )}
@@ -132,19 +137,19 @@ export default function ButtonMenu() {
             {
                 id: 'Theme',
                 title: intl.formatMessage(themeMessage['module.theme.theme']),
-                icon: <PaletteIcon />,
+                icon: <PaletteIcon color="primary" />,
                 divide: true,
                 subMenu: [
                     {
                         id: 'Theme-Dark',
                         title: intl.formatMessage(themeMessage['module.theme.theme.dark']),
-                        icon: <DarkModeIcon />,
+                        icon: <DarkModeIcon color="disabled" />,
                         onClick: () => theme.toggleTheme('dark'),
                     },
                     {
                         id: 'Theme-Light',
                         title: intl.formatMessage(themeMessage['module.theme.theme.light']),
-                        icon: <LightModeIcon />,
+                        icon: <LightModeIcon color="warning" />,
                         onClick: () => theme.toggleTheme('light'),
                     },
                 ],
@@ -152,7 +157,7 @@ export default function ButtonMenu() {
             {
                 id: 'Language',
                 title: intl.formatMessage(langMessage['module.language.lang']),
-                icon: <TranslateIcon />,
+                icon: <TranslateIcon color="primary" />,
                 divide: true,
                 subMenu: [
                     {
@@ -181,23 +186,38 @@ export default function ButtonMenu() {
             {
                 id: 'Calendar',
                 title: intl.formatMessage(calendarMessage['module.calendar.setting.display']),
-                icon: <CalendarMonthIcon />,
+                icon: <CalendarMonthIcon color="primary" />,
                 divide: true,
                 subMenu: [
                     {
                         id: 'default',
                         title: intl.formatMessage(calendarMessage['module.calendar.setting.display.default']),
+                        icon: <FiberManualRecordIcon fontSize="small" color="secondary" />,
                         onClick: () => CALENDAR.method.setDisplay('sun'),
                     },
                     {
                         id: 'mon',
                         title: intl.formatMessage(calendarMessage['module.calendar.setting.display.mon']),
+                        icon: <FiberManualRecordIcon fontSize="small" color="secondary" />,
                         onClick: () => CALENDAR.method.setDisplay('mon'),
                     },
                     {
                         id: 'sat',
                         title: intl.formatMessage(calendarMessage['module.calendar.setting.display.sat']),
+                        icon: <FiberManualRecordIcon fontSize="small" color="secondary" />,
                         onClick: () => CALENDAR.method.setDisplay('sat'),
+                    },
+                    {
+                        id: 'only.month',
+                        title: intl.formatMessage(calendarMessage['module.calendar.setting.display.only.month']),
+                        icon: <FiberManualRecordIcon fontSize="small" color="secondary" />,
+                        onClick: () => CALENDAR.method.setIsOnlyMonth((prev) => !prev),
+                    },
+                    {
+                        id: 'both.month',
+                        title: intl.formatMessage(calendarMessage['module.calendar.setting.display.both.month']),
+                        icon: <FiberManualRecordIcon fontSize="small" color="secondary" />,
+                        onClick: () => CALENDAR.method.setIsOnlyMonth((prev) => !prev),
                     },
                 ],
             },
@@ -212,7 +232,7 @@ export default function ButtonMenu() {
             {
                 id: 'sign-out',
                 title: intl.formatMessage(authMessage['module.auth.form.title.signout']),
-                icon: <LogoutIcon />,
+                icon: <LogoutIcon color="primary" />,
                 onClick: () => SIGN_OUT.mutate({}),
                 divide: true,
                 loading: SIGN_OUT.isPending,

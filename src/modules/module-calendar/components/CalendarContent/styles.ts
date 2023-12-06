@@ -33,8 +33,8 @@ const useStyles = makeStyles(({ palette }) => ({
         borderRadius: '50%',
     },
     itemHover: {
+        cursor: 'pointer',
         '&:hover': {
-            cursor: 'pointer',
             backgroundColor: palette.divider,
         },
     },
@@ -47,15 +47,19 @@ const useStyles = makeStyles(({ palette }) => ({
     },
     itemWeekend: {
         color: palette.error.main,
-    },
-    itemToday: {
-        borderRadius: '50%',
-        color: palette.error.main,
-        border: `1px solid ${palette.error.main}`,
-        backgroundColor: 'transparent',
         '&:hover': {
             color: palette.common.white,
             backgroundColor: palette.error.main,
+        },
+    },
+    itemToday: {
+        borderRadius: '50%',
+        color: palette.primary.main,
+        border: `1px solid ${palette.primary.main}`,
+        backgroundColor: 'transparent',
+        '&:hover': {
+            color: palette.common.white,
+            backgroundColor: palette.primary.main,
         },
     },
 }));

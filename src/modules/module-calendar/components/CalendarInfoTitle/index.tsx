@@ -9,15 +9,15 @@ import { useIntl } from 'react-intl';
 
 /** lib components */
 import { Stack, Typography, IconButton } from '@mui/material';
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-
-/** icons */
 import {
     KeyboardDoubleArrowRight as KeyboardDoubleArrowRightIcon,
     KeyboardDoubleArrowLeft as KeyboardDoubleArrowLeftIcon,
     KeyboardArrowRight as KeyboardArrowRightIcon,
     KeyboardArrowLeft as KeyboardArrowLeftIcon,
 } from '@mui/icons-material';
+
+/** components */
+import SelectDate from '@module-calendar/components/SelectDate';
 
 /** utils */
 import { calendarMessage } from '@module-calendar/utils/messages';
@@ -58,10 +58,10 @@ export default function CalendarInfoTitle() {
         return (
             <Stack className={classes.titleIcon}>
                 <IconButton onClick={() => onChangeTime('prev', 'month')}>
-                    <KeyboardDoubleArrowLeftIcon />
+                    <KeyboardDoubleArrowLeftIcon color="primary" />
                 </IconButton>
                 <IconButton onClick={() => onChangeTime('prev', 'day')}>
-                    <KeyboardArrowLeftIcon />
+                    <KeyboardArrowLeftIcon color="primary" />
                 </IconButton>
             </Stack>
         );
@@ -71,10 +71,10 @@ export default function CalendarInfoTitle() {
         return (
             <Stack className={classes.titleIcon}>
                 <IconButton onClick={() => onChangeTime('next', 'day')}>
-                    <KeyboardArrowRightIcon />
+                    <KeyboardArrowRightIcon color="primary" />
                 </IconButton>
                 <IconButton onClick={() => onChangeTime('next', 'month')}>
-                    <KeyboardDoubleArrowRightIcon />
+                    <KeyboardDoubleArrowRightIcon color="primary" />
                 </IconButton>
             </Stack>
         );
@@ -83,15 +83,11 @@ export default function CalendarInfoTitle() {
     return (
         <Stack className={classes.title}>
             {renderButtonLeft}
-            <Stack className={classes.titleText}>
-                <Typography variant="h5">{genTitleMessage()}</Typography>
-                <DatePicker
-                    className={classes.date_piker}
-                    views={['month', 'year']}
-                    value={CALENDAR.data.time}
-                    onChange={onSelectDate}
-                />
-            </Stack>
+            <SelectDate views={['month', 'year']} value={CALENDAR.data.time} onChange={onSelectDate}>
+                <Typography variant="h5" color="primary.main">
+                    {genTitleMessage()}
+                </Typography>
+            </SelectDate>
             {renderButtonRight}
         </Stack>
     );

@@ -10,7 +10,7 @@ import makeStyles from '@mui/styles/makeStyles';
 /** constants */
 import { SCREEN_SIZE } from '@module-global/constants/screen';
 
-const useStyles = makeStyles(({ palette, breakpoints, spacing }) => ({
+const useStyles = makeStyles(({ palette, breakpoints, spacing, zIndex }) => ({
     header: {
         ...(palette.mode === 'light'
             ? {
@@ -32,6 +32,7 @@ const useStyles = makeStyles(({ palette, breakpoints, spacing }) => ({
                 padding: `0 ${spacing(1)}`,
             },
         },
+        zIndex: zIndex.drawer + 1,
     },
     info: {
         flexDirection: 'row',

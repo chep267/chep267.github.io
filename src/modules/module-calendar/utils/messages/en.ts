@@ -19,4 +19,6 @@ export const EN = Object.freeze({
     'module.calendar.setting.display.default': 'Default',
     'module.calendar.setting.display.mon': 'Monday',
     'module.calendar.setting.display.sat': 'Weekend',
+    'module.calendar.setting.display.only.month': 'Only month',
+    'module.calendar.setting.display.both.month': 'Both months',
 });

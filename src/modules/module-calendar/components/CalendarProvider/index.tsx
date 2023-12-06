@@ -23,10 +23,16 @@ function CalendarProvider(props: PropsWithChildren) {
     const { locale } = useLanguage();
 
     const [display, setDisplay] = React.useState<CalendarContextProps['data']['display']>('sun');
+    const [isOnlyMonth, setIsOnlyMonth] = React.useState(false);
     const [time, setTime] = React.useState<CalendarContextProps['data']['time']>(today);
 
     const isToday = React.useCallback((timer: CalendarContextProps['data']['time']) => {
         return timer.year() === today.year() && timer.month() === today.month() && timer.date() === today.date();
+    }, []);
+
+    const isWeekend = React.useCallback((timer: CalendarContextProps['data']['time']) => {
+        const day = timer.day();
+        return day === 0 || day == 6;
     }, []);
 
     const store = React.useMemo<CalendarContextProps>(
@@ -34,14 +40,17 @@ function CalendarProvider(props: PropsWithChildren) {
             data: {
                 display,
                 time,
-                isToday: isToday(time),
+                isOnlyMonth,
             },
             method: {
                 setDisplay,
                 setTime,
+                isWeekend,
+                setIsOnlyMonth,
+                isToday,
             },
         }),
-        [display, time]
+        [display, time, isOnlyMonth]
     );
 
     return (

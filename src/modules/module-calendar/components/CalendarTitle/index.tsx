@@ -10,15 +10,15 @@ import { useIntl } from 'react-intl';
 
 /** lib components */
 import { Stack, Typography, IconButton } from '@mui/material';
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-
-/** icons */
 import {
     KeyboardDoubleArrowRight as KeyboardDoubleArrowRightIcon,
     KeyboardDoubleArrowLeft as KeyboardDoubleArrowLeftIcon,
     KeyboardArrowRight as KeyboardArrowRightIcon,
     KeyboardArrowLeft as KeyboardArrowLeftIcon,
 } from '@mui/icons-material';
+
+/** components */
+import SelectDate from '@module-calendar/components/SelectDate';
 
 /** utils */
 import { calendarMessage } from '@module-calendar/utils/messages';
@@ -38,6 +38,7 @@ export default function CalendarTitle() {
     const { locale } = useLanguage();
     const CALENDAR = useCalendar();
     const classes = useStyles();
+    const isToday = CALENDAR.method.isToday(CALENDAR.data.time);
 
     const genTitleMessage = () => {
         const month = CALENDAR.data.time.format(locale === 'en' ? 'MMMM' : 'MM');
@@ -56,21 +57,24 @@ export default function CalendarTitle() {
     }, []);
 
     const renderButtonToday = React.useMemo(() => {
+        const isToday = CALENDAR.method.isToday(CALENDAR.data.time);
         return (
-            <IconButton className={classes.today} onClick={() => onSelectDate(dayjs())} disabled={CALENDAR.data.isToday}>
-                <Typography variant="h6">{formatMessage(calendarMessage['module.calendar.text.today'])}</Typography>
+            <IconButton className={classes.today} onClick={() => onSelectDate(dayjs())} disabled={isToday}>
+                <Typography variant="h6">
+                    {isToday ? '' : formatMessage(calendarMessage['module.calendar.text.today'])}
+                </Typography>
             </IconButton>
         );
-    }, [CALENDAR.data.isToday, locale]);
+    }, [isToday, locale]);
 
     const renderButtonLeft = React.useMemo(() => {
         return (
             <Stack className={classes.titleIcon}>
                 <IconButton onClick={() => onChangeTime('prev', 'year')}>
-                    <KeyboardDoubleArrowLeftIcon />
+                    <KeyboardDoubleArrowLeftIcon color="primary" />
                 </IconButton>
                 <IconButton onClick={() => onChangeTime('prev', 'month')}>
-                    <KeyboardArrowLeftIcon />
+                    <KeyboardArrowLeftIcon color="primary" />
                 </IconButton>
             </Stack>
         );
@@ -80,10 +84,10 @@ export default function CalendarTitle() {
         return (
             <Stack className={classes.titleIcon}>
                 <IconButton onClick={() => onChangeTime('next', 'month')}>
-                    <KeyboardArrowRightIcon />
+                    <KeyboardArrowRightIcon color="primary" />
                 </IconButton>
                 <IconButton onClick={() => onChangeTime('next', 'year')}>
-                    <KeyboardDoubleArrowRightIcon />
+                    <KeyboardDoubleArrowRightIcon color="primary" />
                 </IconButton>
             </Stack>
         );
@@ -94,15 +98,11 @@ export default function CalendarTitle() {
             {renderButtonToday}
             <Stack className={classes.titleRight}>
                 {renderButtonLeft}
-                <Stack className={classes.titleText}>
-                    <Typography variant="h5">{genTitleMessage()}</Typography>
-                    <DatePicker
-                        className={classes.date_piker}
-                        views={['month', 'year']}
-                        value={CALENDAR.data.time}
-                        onChange={onSelectDate}
-                    />
-                </Stack>
+                <SelectDate views={['month', 'year']} value={CALENDAR.data.time} onChange={onSelectDate}>
+                    <Typography variant="h5" color="primary.main">
+                        {genTitleMessage()}
+                    </Typography>
+                </SelectDate>
                 {renderButtonRight}
             </Stack>
         </Stack>
