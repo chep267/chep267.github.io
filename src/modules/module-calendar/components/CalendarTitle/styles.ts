@@ -28,6 +28,7 @@ const useStyles = makeStyles(({ spacing, palette }) => ({
         justifyContent: 'space-between',
         alignItems: 'center',
         minWidth: '50%',
+        width: 'unset',
         textAlign: 'center',
     },
     titleIcon: {

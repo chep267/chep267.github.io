@@ -15,6 +15,9 @@ const useStyles = makeStyles(({ palette }) => ({
         height: '70%',
         padding: 8,
     },
+    selectDay: {
+        alignItems: 'center',
+    },
     solarDay: {
         fontSize: '12rem',
         color: palette.primary.main,

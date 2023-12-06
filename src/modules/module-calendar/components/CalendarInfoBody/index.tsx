@@ -15,6 +15,9 @@ import { useLanguage } from '@module-language/hooks/useLanguage';
 
 /** styles */
 import useStyles from './styles';
+import SelectDate from '@module-calendar/components/SelectDate';
+import * as React from 'react';
+import { Dayjs } from 'dayjs';
 
 export default function CalendarInfoScreen() {
     const CALENDAR = useCalendar();
@@ -24,14 +27,22 @@ export default function CalendarInfoScreen() {
     const solar = CALENDAR.data.time;
     const isWeekend = CALENDAR.method.isWeekend(solar);
 
+    const onSelectDate = React.useCallback((value: Dayjs | null) => {
+        if (value) {
+            CALENDAR.method.setTime(value);
+        }
+    }, []);
+
     return (
         <Stack className={classes.body}>
-            <Typography variant="h1" className={classnames(classes.solarDay, { [classes.weekendDay]: isWeekend })}>
-                {solar.date()}
-            </Typography>
-            <Typography variant="h4" textTransform="capitalize">
-                {solar.locale(locale).format('dddd')}
-            </Typography>
+            <SelectDate className={classes.selectDay} views={['day']} value={CALENDAR.data.time} onChange={onSelectDate}>
+                <Typography variant="h1" className={classnames(classes.solarDay, { [classes.weekendDay]: isWeekend })}>
+                    {solar.date()}
+                </Typography>
+                <Typography variant="h4" textTransform="capitalize">
+                    {solar.locale(locale).format('dddd')}
+                </Typography>
+            </SelectDate>
         </Stack>
     );
 }

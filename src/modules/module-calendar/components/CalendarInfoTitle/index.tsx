@@ -5,6 +5,7 @@
  */
 
 import * as React from 'react';
+import classnames from 'classnames';
 import { useIntl } from 'react-intl';
 
 /** lib components */
@@ -32,7 +33,12 @@ import useStyles from './styles';
 /** types */
 import type { Dayjs } from 'dayjs';
 
-export default function CalendarInfoTitle() {
+type CalendarInfoTitleProps = {
+    className?: string;
+};
+
+export default function CalendarInfoTitle(props: CalendarInfoTitleProps) {
+    const { className } = props;
     const { formatMessage } = useIntl();
     const { locale } = useLanguage();
     const CALENDAR = useCalendar();
@@ -50,17 +56,17 @@ export default function CalendarInfoTitle() {
         }
     }, []);
 
-    const onChangeTime = React.useCallback((mode: 'prev' | 'next', type: 'month' | 'day') => {
+    const onChangeTime = React.useCallback((mode: 'prev' | 'next', type: 'month' | 'year') => {
         CALENDAR.method.setTime((prevTime) => prevTime.add(mode === 'prev' ? -1 : 1, type));
     }, []);
 
     const renderButtonLeft = React.useMemo(() => {
         return (
             <Stack className={classes.titleIcon}>
-                <IconButton onClick={() => onChangeTime('prev', 'month')}>
+                <IconButton onClick={() => onChangeTime('prev', 'year')}>
                     <KeyboardDoubleArrowLeftIcon color="primary" />
                 </IconButton>
-                <IconButton onClick={() => onChangeTime('prev', 'day')}>
+                <IconButton onClick={() => onChangeTime('prev', 'month')}>
                     <KeyboardArrowLeftIcon color="primary" />
                 </IconButton>
             </Stack>
@@ -70,10 +76,10 @@ export default function CalendarInfoTitle() {
     const renderButtonRight = React.useMemo(() => {
         return (
             <Stack className={classes.titleIcon}>
-                <IconButton onClick={() => onChangeTime('next', 'day')}>
+                <IconButton onClick={() => onChangeTime('next', 'month')}>
                     <KeyboardArrowRightIcon color="primary" />
                 </IconButton>
-                <IconButton onClick={() => onChangeTime('next', 'month')}>
+                <IconButton onClick={() => onChangeTime('next', 'year')}>
                     <KeyboardDoubleArrowRightIcon color="primary" />
                 </IconButton>
             </Stack>
@@ -81,7 +87,7 @@ export default function CalendarInfoTitle() {
     }, []);
 
     return (
-        <Stack className={classes.title}>
+        <Stack className={classnames(classes.title, className)}>
             {renderButtonLeft}
             <SelectDate views={['month', 'year']} value={CALENDAR.data.time} onChange={onSelectDate}>
                 <Typography variant="h5" color="primary.main">

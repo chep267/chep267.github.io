@@ -9,6 +9,8 @@ import { alpha } from '@mui/material/styles';
 
 const useStyles = makeStyles(({ spacing, palette }) => ({
     selectDate: {
+        alignItems: 'center',
+        justifyContent: 'center',
         position: 'relative',
         padding: `${spacing(1)} ${spacing(2)}`,
         borderRadius: 8,
