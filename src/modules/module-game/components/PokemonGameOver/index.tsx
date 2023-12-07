@@ -27,7 +27,7 @@ export default function PokemonGameOver(props: PokemonTimerProps) {
 
     return (
         <Stack className={classnames(classes.gameOver, { [classes.gameOverShow]: data.status === 'stop' }, className)}>
-            <Typography variant="h1" color="warning.main">
+            <Typography variant="h1" color="warning.main" textAlign="center">
                 Game Over!
             </Typography>
             <Button variant="outlined" onClick={() => method.restartGame()}>
