@@ -18,15 +18,15 @@ import { PIKACHU_LOGO } from '@module-game/constants';
 import useStyles from './styles';
 
 /** types */
-import type { PikachuItemType, PikachuItemStatusType } from '@module-game/models';
+import type { TypePokemonItem, TypePokemonItemStatus } from '@module-game/models';
 
 type Props = {
-    status: PikachuItemStatusType;
-    item: PikachuItemType;
-    onSelect(item: PikachuItemType): void;
+    status?: TypePokemonItemStatus;
+    item: TypePokemonItem;
+    onSelect(item: TypePokemonItem): void;
 };
 
-export default function PikachuItem(props: Props) {
+export default function PokemonItem(props: Props) {
     const { status, item, onSelect } = props;
     const classes = useStyles();
     const isEmpty = item.value === 0;

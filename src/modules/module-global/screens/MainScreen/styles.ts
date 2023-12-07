@@ -28,8 +28,14 @@ const useStyles = makeStyles({
         minHeight: `calc(100% - ${SCREEN_SIZE.HEADER_HEIGHT}px)`,
     },
     mainContent: {
-        flexGrow: 1,
+        display: 'flex',
+        width: `calc(100% - ${SCREEN_SIZE.APP_BAR_MAX_WIDTH}px)`,
+        maxWidth: `calc(100% - ${SCREEN_SIZE.APP_BAR_MAX_WIDTH}px)`,
         height: '100%',
+    },
+    mainContentWithAppbarClose: {
+        width: `calc(100% - ${SCREEN_SIZE.APP_BAR_MIN_WIDTH}px)`,
+        maxWidth: `calc(100% - ${SCREEN_SIZE.APP_BAR_MIN_WIDTH}px)`,
     },
 });
 

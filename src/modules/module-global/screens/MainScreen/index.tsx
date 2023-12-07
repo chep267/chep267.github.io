@@ -18,8 +18,12 @@ import AppMenu from '@module-global/components/AppMenu';
 /** constants */
 import { SCREEN } from '@module-global/constants/screen';
 
+/** hooks */
+import { useBase } from '@module-base/hooks/useBase';
+
 /** styles */
 import useStyles from './styles';
+import classnames from 'classnames';
 
 /** screens */
 const AuthRoute = React.lazy(() => import('@module-auth/screens/AuthRoute'));
@@ -33,10 +37,16 @@ export default function MainScreen() {
     const classes = useStyles();
 
     function MainRoute() {
+        const {
+            sider: { open },
+        } = useBase();
+
         return (
             <Box className={classes.mainBody}>
                 <AppMenu />
-                <Box className={classes.mainContent} component="main">
+                <Box
+                    className={classnames(classes.mainContent, { [classes.mainContentWithAppbarClose]: !open })}
+                    component="main">
                     <React.Suspense fallback={null}>
                         <Routes>
                             <Route path={SCREEN.HOME} element={<Navigate to={SCREEN.MESSENGER} />} />

@@ -12,7 +12,7 @@ const useStyles = makeStyles(({ palette }) => ({
             transform: 'scale(1)',
         },
         '50%': {
-            transform: 'scale(1.1)',
+            transform: 'scale(0.9)',
         },
         '100%': {
             transform: 'scale(1)',
@@ -71,7 +71,7 @@ const useStyles = makeStyles(({ palette }) => ({
         },
     },
     itemSuccess: {
-        opacity: `1 !important`,
+        opacity: '1 !important',
         animation: '$success 1s linear infinite',
     },
 }));

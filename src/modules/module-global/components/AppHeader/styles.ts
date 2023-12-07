@@ -69,7 +69,10 @@ const useStyles = makeStyles(({ palette, breakpoints, spacing, zIndex }) => ({
             },
         },
     },
-    menuPaper: { '& .MuiPaper-root': { top: `${SCREEN_SIZE.HEADER_HEIGHT + 10}px !important` } },
+    menuPaper: {
+        zIndex: zIndex.tooltip,
+        '& .MuiPaper-root': { top: `${SCREEN_SIZE.HEADER_HEIGHT + 10}px !important` },
+    },
     menuIcon: {
         marginLeft: spacing(3),
     },

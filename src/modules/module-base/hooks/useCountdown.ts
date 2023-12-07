@@ -28,19 +28,20 @@ const useCountdown = (props: UseCountdownType) => {
         setRefresh((prev) => (prev + 1) % 7);
     }, []);
 
-    React.useEffect(() => {
-        const countdownEffect = () =>
-            setSecond((s) => {
-                if (s === 1) {
-                    callback?.();
-                    if (isContinue) {
-                        return numberCountdown;
-                    }
-                    onStop();
+    const countdownEffect = React.useCallback(() => {
+        setSecond((s) => {
+            if (s <= 1) {
+                callback?.();
+                if (isContinue) {
+                    return numberCountdown;
                 }
-                return s - 1;
-            });
+                onStop();
+            }
+            return s - 1;
+        });
+    }, [numberCountdown]);
 
+    React.useEffect(() => {
         countdownRef.current = setInterval(countdownEffect, timer);
         return () => {
             clearInterval(countdownRef.current);

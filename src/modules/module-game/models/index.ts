@@ -5,4 +5,4 @@
  */
 
 /** types */
-export * from './Pikachu';
+export * from './Pokemon';
