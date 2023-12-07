@@ -5,18 +5,19 @@
  */
 
 const SCREEN = Object.freeze({
-    HOME: '',
-    FEED: 'feed',
-    MESSENGER: 'messenger',
-    MESSENGER_CONVERSATION: 't/:tid',
+    HOME: '/',
+    FEED: '/feed',
 
-    CALENDAR: 'calendar',
-    CALENDAR_INFO: 'info',
+    MESSENGER: '/messenger',
+    MESSENGER_CONVERSATION: '/t/:tid',
 
-    GAME: 'game',
-    GAME_POKEMON: 'pokemon',
+    CALENDAR: '/calendar',
+    CALENDAR_INFO: '/info',
 
-    PROFILE: 'profile',
+    GAME: '/game',
+    GAME_POKEMON: '/pokemon',
+
+    PROFILE: '/profile',
 });
 
 const SCREEN_SIZE = Object.freeze({

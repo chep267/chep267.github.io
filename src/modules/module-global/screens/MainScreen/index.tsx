@@ -5,9 +5,10 @@
  */
 
 import * as React from 'react';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import classnames from 'classnames';
 
 /** lib components */
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { Box } from '@mui/material';
 
 /** components */
@@ -23,7 +24,6 @@ import { useBase } from '@module-base/hooks/useBase';
 
 /** styles */
 import useStyles from './styles';
-import classnames from 'classnames';
 
 /** screens */
 const AuthRoute = React.lazy(() => import('@module-auth/screens/AuthRoute'));
@@ -33,34 +33,32 @@ const MessengerScreen = React.lazy(() => import('@module-messenger/screens'));
 const CalendarScreen = React.lazy(() => import('@module-calendar/screens'));
 const GameScreen = React.lazy(() => import('@module-game/screens'));
 
+function MainRoute() {
+    const classes = useStyles();
+    const { sider } = useBase();
+
+    return (
+        <Box className={classes.mainBody}>
+            <AppMenu />
+            <Box
+                className={classnames(classes.mainContent, { [classes.mainContentWithAppbarClose]: !sider.open })}
+                component="main">
+                <React.Suspense fallback={null}>
+                    <Routes>
+                        <Route path={SCREEN.HOME} element={<Navigate to={SCREEN.CALENDAR} />} />
+                        <Route path={`${SCREEN.FEED}/*`} element={<NewFeedScreen />} />
+                        <Route path={`${SCREEN.MESSENGER}/*`} element={<MessengerScreen />} />
+                        <Route path={`${SCREEN.CALENDAR}/*`} element={<CalendarScreen />} />
+                        <Route path={`${SCREEN.GAME}/*`} element={<GameScreen />} />
+                        <Route path="*" element={<NotFoundScreen />} />
+                    </Routes>
+                </React.Suspense>
+            </Box>
+        </Box>
+    );
+}
 export default function MainScreen() {
     const classes = useStyles();
-
-    function MainRoute() {
-        const {
-            sider: { open },
-        } = useBase();
-
-        return (
-            <Box className={classes.mainBody}>
-                <AppMenu />
-                <Box
-                    className={classnames(classes.mainContent, { [classes.mainContentWithAppbarClose]: !open })}
-                    component="main">
-                    <React.Suspense fallback={null}>
-                        <Routes>
-                            <Route path={SCREEN.HOME} element={<Navigate to={SCREEN.MESSENGER} />} />
-                            <Route path={`${SCREEN.FEED}/*`} element={<NewFeedScreen />} />
-                            <Route path={`${SCREEN.MESSENGER}/*`} element={<MessengerScreen />} />
-                            <Route path={`${SCREEN.CALENDAR}/*`} element={<CalendarScreen />} />
-                            <Route path={`${SCREEN.GAME}/*`} element={<GameScreen />} />
-                            <Route path="*" element={<NotFoundScreen />} />
-                        </Routes>
-                    </React.Suspense>
-                </Box>
-            </Box>
-        );
-    }
 
     return (
         <Box className={classes.main}>

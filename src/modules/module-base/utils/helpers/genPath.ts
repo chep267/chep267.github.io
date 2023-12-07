@@ -5,5 +5,5 @@
  */
 
 export const genPath = (root: string, ...arrPath: Array<string | number>) => {
-    return `/${root}${arrPath ? `/${arrPath?.join('/')}` : ''}`;
+    return `${root}${arrPath?.join('') || ''}`;
 };

@@ -8,7 +8,11 @@ import classnames from 'classnames';
 import { useIntl } from 'react-intl';
 
 /** lib components */
+import { Link } from 'react-router-dom';
 import { Stack, Typography, Button } from '@mui/material';
+
+/** constants */
+import { SCREEN } from '@module-global/constants/screen';
 
 /** utils */
 import { gameMessage } from '@module-game/utils/messages';
@@ -35,9 +39,16 @@ export default function PokemonGameOver(props: PokemonTimerProps) {
             <Typography variant="h1" color="warning.main" textAlign="center">
                 {formatMessage(gameMessage['module.game.pokemon.text.game.over'])}
             </Typography>
-            <Button variant="outlined" onClick={method.restartGame}>
-                {formatMessage(gameMessage['module.game.pokemon.button.restart'])}
-            </Button>
+            <Stack direction="row" gap={2}>
+                <Button variant="outlined" onClick={method.restartGame}>
+                    {formatMessage(gameMessage['module.game.pokemon.button.restart'])}
+                </Button>
+                <Link to={SCREEN.GAME}>
+                    <Button variant="outlined" color="error" onClick={method.restartGame}>
+                        {formatMessage(gameMessage['module.game.pokemon.button.exit'])}
+                    </Button>
+                </Link>
+            </Stack>
         </Stack>
     );
 }

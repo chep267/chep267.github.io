@@ -35,7 +35,7 @@ export default function CalendarItem(props: CalendarItemType) {
     const isWeekend = data.day() === 0 || data.day() === 6;
 
     return isHide ? null : (
-        <Link to={SCREEN.CALENDAR_INFO} onClick={onSelect}>
+        <Link to={`${SCREEN.CALENDAR}${SCREEN.CALENDAR_INFO}`} onClick={onSelect}>
             <Stack
                 className={classnames(
                     classes.item,
