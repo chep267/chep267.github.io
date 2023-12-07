@@ -12,8 +12,9 @@ const useStyles = makeStyles({
         flexDirection: 'column',
         width: 'auto',
         height: 'auto',
-        borderRadius: 0,
+        borderRadius: 6,
         gap: 1,
+        padding: 10,
     },
     row: {
         flexDirection: 'row',

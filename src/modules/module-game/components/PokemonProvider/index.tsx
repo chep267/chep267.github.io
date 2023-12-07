@@ -7,7 +7,7 @@
 import * as React from 'react';
 
 /** utils */
-import { GameLevel, genBoardGame, isItemInArray } from '@module-game/utils/helpers/Pokemon';
+import { GameLevel, genBoardGame, isItemInArray, hasPruneItem } from '@module-game/utils/helpers/Pokemon';
 
 /** hooks */
 import { useCountdown } from '@module-base/hooks/useCountdown';
@@ -27,12 +27,12 @@ export default function PokemonProvider(props: PropsWithChildren) {
     const [gameKey, setGameKey] = React.useState(PokemonStateDefault.gameKey);
     const COUNT_DOWN = useCountdown({ numberCountdown: 0 });
 
-    /** Effect init */
+    /** Effect init game */
     React.useEffect(() => {
         initGame(level);
     }, [gameKey]);
 
-    /** Effect count down */
+    /** Effect stop game */
     React.useEffect(() => {
         if (COUNT_DOWN.second === 0 && status === 'start') {
             setStatus('stop');
@@ -42,11 +42,10 @@ export default function PokemonProvider(props: PropsWithChildren) {
     /** Effect select item */
     React.useEffect(() => {
         const statusPresent: TypePokemonItemStatus =
-            items.length > 1 ? (items[0].value === items[1].value ? 'success' : 'error') : 'select';
+            items.length > 1 ? (hasPruneItem(boardGame, items) ? 'success' : 'error') : 'select';
         if (statusPresent === 'error') {
             setTimeout(() => {
                 setItems([]);
-                setItemStatus('select');
             }, 1000);
         } else if (statusPresent === 'success') {
             const item1 = items[0];
