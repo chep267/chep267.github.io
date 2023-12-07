@@ -6,4 +6,6 @@
 
 export const EN = Object.freeze({
     'module.game.router.name': 'Game',
+    'module.game.pokemon.button.restart': 'Restart',
+    'module.game.pokemon.text.game.over': 'Game Over!',
 });
