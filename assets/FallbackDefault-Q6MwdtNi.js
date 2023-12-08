@@ -1,8 +1,0 @@
-import{r as s,M as u,j as e,H as t,N as m}from"./index-kmJqstLT.js";import{u as h,S as i,I as f,B as b}from"./index-weSaxHQ5.js";import{u as x}from"./useCountdown-BjqPO6is.js";import{m as g,T as r}from"./makeStyles-BE3EznBh.js";const j=g(({zIndex:o})=>({fallback:{justifyContent:"center",alignItems:"center",width:"100vw",height:"100vh",overflow:"hidden"},content:{justifyContent:"center",alignItems:"center",zIndex:o.modal,"& img":{width:"auto",height:150,borderRadius:"50%"}}}));var k=j;const p=s.lazy(()=>u(()=>import("./index-OHcFwXW2.js"),__vite__mapDeps([0,1,2,3])));function C(o){const{isAutoReload:c}=o,l=k(),{formatMessage:a}=h(),n=s.useCallback(()=>window.location.reload(),[]),{second:d}=x({callback:n,numberCountdown:m});return e.jsxs(i,{className:l.fallback,children:[e.jsxs(i,{className:l.content,children:[e.jsx(f,{name:"error",width:237,height:213}),e.jsx(r,{variant:"h1",fontWeight:600,color:"error.main",children:a(t["module.base.error.fallback.title"])}),e.jsx(r,{variant:"h6",fontWeight:600,py:2,color:"error.main",children:a(t["module.base.error.fallback.content"])}),e.jsx(b,{onClick:n,variant:"outlined",size:"large",color:"error",children:a(t["module.base.error.fallback.retry"])}),c?e.jsx(r,{variant:"subtitle1",fontWeight:600,color:"error.main",pt:3,children:a(t["module.base.error.fallback.autoReload"],{second:d})}):null]}),e.jsx(s.Suspense,{fallback:null,children:e.jsx(p,{})})]})}export{C as default};
-//# sourceMappingURL=FallbackDefault-Q6MwdtNi.js.map
-function __vite__mapDeps(indexes) {
-  if (!__vite__mapDeps.viteFileDeps) {
-    __vite__mapDeps.viteFileDeps = ["assets/index-OHcFwXW2.js","assets/index-kmJqstLT.js","assets/index-eGg70zu3.css","assets/useTheme-kg2nTSMt.js"]
-  }
-  return indexes.map((i) => __vite__mapDeps.viteFileDeps[i])
-}
