@@ -176,7 +176,7 @@ const checkBot = (board: TypePokemonItem[][], first: TypePokemonItem, second: Ty
     const minY = Math.min(first.y, second.y);
 
     /** check dưới - dưới */
-    if (!hasValue(board, second.x - 1, second.y)) {
+    if (!hasValue(board, second.x + 1, second.y)) {
         for (let x = maxX + 1; x <= board.length; ++x) {
             if (
                 checkVertical(board, first.y, first.x + 1, x) &&
@@ -260,7 +260,7 @@ const checkLeft = (board: TypePokemonItem[][], first: TypePokemonItem, second: T
 
 /** check ăn phải */
 const checkRight = (board: TypePokemonItem[][], first: TypePokemonItem, second: TypePokemonItem) => {
-    if (hasValue(board, first.x, first.y - 1)) {
+    if (hasValue(board, first.x, first.y + 1)) {
         return false;
     }
 
@@ -270,8 +270,9 @@ const checkRight = (board: TypePokemonItem[][], first: TypePokemonItem, second: 
     const minY = Math.min(first.y, second.y);
 
     /** check phải - phải */
-    if (!hasValue(board, second.x, second.y - 1)) {
-        for (let y = maxX + 1; y <= board[0].length; ++y) {
+    if (!hasValue(board, second.x, second.y + 1)) {
+        for (let y = maxY + 1; y <= board[0].length; ++y) {
+            console.log('vaoooo');
             if (
                 checkVertical(board, y, minX + 1, maxX - 1) &&
                 checkHorizontal(board, first.x, first.y + 1, y) &&
