@@ -22,6 +22,7 @@ const PokemonStateDefault: PokemonContextProps['data'] = {
     level: 'easy',
     duration: GameLevel['easy'].duration,
     gameKey: 1,
+    point: 0,
 };
 
 const PokemonContext = React.createContext<PokemonContextProps>({
@@ -30,6 +31,7 @@ const PokemonContext = React.createContext<PokemonContextProps>({
         initGame: emptyFunction,
         stopGame: emptyFunction,
         restartGame: emptyFunction,
+        nextGame: emptyFunction,
         chooseItem: emptyFunction,
         getItemStatus: () => 'select',
     },

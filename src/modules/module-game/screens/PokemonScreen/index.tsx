@@ -12,9 +12,11 @@ import PokemonProvider from '@module-game/components/PokemonProvider';
 import PokemonTimer from '@module-game/components/PokemonTimer';
 import PokemonBoardGame from '@module-game/components/PokemonBoardGame';
 import PokemonGameOver from '@module-game/components/PokemonGameOver';
+import PokemonGameVictory from '@module-game/components/PokemonGameVictory';
 
 /** styles */
 import useStyles from './styles';
+import PokemonPoint from '@module-game/components/PokemonPoint';
 
 export default function PokemonScreen() {
     const classes = useStyles();
@@ -24,11 +26,13 @@ export default function PokemonScreen() {
             <Stack className={classes.screen}>
                 <Stack className={classes.header}>
                     <PokemonTimer className={classes.lineDuration} />
+                    <PokemonPoint />
                 </Stack>
                 <Stack className={classes.body}>
                     <PokemonBoardGame className={classes.boardGame} />
                 </Stack>
                 <PokemonGameOver />
+                <PokemonGameVictory />
             </Stack>
         </PokemonProvider>
     );

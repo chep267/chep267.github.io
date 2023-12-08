@@ -15,11 +15,14 @@ const useStyles = makeStyles(({ spacing }) => ({
         overflow: 'auto',
     },
     header: {
+        flexDirection: 'row',
         width: '100%',
         alignItems: 'center',
-        justifyContent: 'center',
+        justifyContent: 'space-between',
         height: 100,
         minHeight: 100,
+        gap: spacing(2),
+        padding: `0 ${spacing(2)}`,
     },
     lineDuration: {
         width: '70%',

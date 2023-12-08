@@ -48,7 +48,9 @@ export default ({ mode }) => {
             },
         },
         server: {
-            https: process.env.VITE_APP_HTTPS === 'true',
+            // https: {
+            //     insecureHTTPParser: process.env.VITE_APP_HTTPS === 'true',
+            // },
             host: process.env.VITE_APP_HOST,
             port,
         },

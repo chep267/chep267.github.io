@@ -8,11 +8,7 @@ import classnames from 'classnames';
 import { useIntl } from 'react-intl';
 
 /** lib components */
-import { Link } from 'react-router-dom';
 import { Stack, Typography, Button } from '@mui/material';
-
-/** constants */
-import { SCREEN } from '@module-global/constants/screen';
 
 /** utils */
 import { gameMessage } from '@module-game/utils/messages';
@@ -28,26 +24,24 @@ type PokemonTimerProps = {
     className?: string;
 };
 
-export default function PokemonGameOver(props: PokemonTimerProps) {
+export default function PokemonGameVictory(props: PokemonTimerProps) {
     const { className } = props;
     const classes = useStyles();
     const { data, method } = usePokemon();
     const { formatMessage } = useIntl();
 
     return (
-        <Stack className={classnames(classes.gameOver, { [classes.gameOverShow]: data.status === 'stop' }, className)}>
+        <Stack className={classnames(classes.gameVictory, { [classes.gameVictoryShow]: data.status === 'next' }, className)}>
             <Typography variant="h1" color="warning.main" textAlign="center">
-                {formatMessage(gameMessage['module.game.pokemon.text.game.over'])}
+                {formatMessage(gameMessage['module.game.pokemon.text.game.victory'])}
             </Typography>
             <Stack direction="row" gap={2}>
                 <Button variant="outlined" onClick={method.restartGame}>
                     {formatMessage(gameMessage['module.game.pokemon.button.restart'])}
                 </Button>
-                <Link to={SCREEN.GAME}>
-                    <Button variant="outlined" color="error">
-                        {formatMessage(gameMessage['module.game.pokemon.button.exit'])}
-                    </Button>
-                </Link>
+                <Button variant="outlined" color="success" onClick={method.nextGame}>
+                    {formatMessage(gameMessage['module.game.pokemon.button.next'])}
+                </Button>
             </Stack>
         </Stack>
     );

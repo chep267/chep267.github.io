@@ -8,7 +8,7 @@ import makeStyles from '@mui/styles/makeStyles';
 import { alpha } from '@mui/material/styles';
 
 const useStyles = makeStyles(({ palette, zIndex, spacing }) => ({
-    gameOver: {
+    gameVictory: {
         position: 'absolute',
         alignItems: 'center',
         justifyContent: 'center',
@@ -21,7 +21,7 @@ const useStyles = makeStyles(({ palette, zIndex, spacing }) => ({
         visibility: 'hidden',
         gap: spacing(2),
     },
-    gameOverShow: {
+    gameVictoryShow: {
         zIndex: zIndex.drawer,
         visibility: 'visible',
     },

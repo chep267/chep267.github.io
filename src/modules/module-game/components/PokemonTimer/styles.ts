@@ -37,7 +37,6 @@ const useStyles = makeStyles({
         '&:before': {
             backgroundImage: 'linear-gradient(to right, red,orange,yellow,green)',
             animationName: '$timing',
-            animationTimingFunction: 'linear',
         },
     },
     lineStop: {

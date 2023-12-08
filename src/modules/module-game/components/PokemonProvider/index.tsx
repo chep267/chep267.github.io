@@ -24,13 +24,22 @@ export default function PokemonProvider(props: PropsWithChildren) {
     const [boardGame, setBoardGame] = React.useState<PokemonContextProps['data']['boardGame']>(PokemonStateDefault.boardGame);
     const [items, setItems] = React.useState<PokemonContextProps['data']['items']>(PokemonStateDefault.items);
     const [itemStatus, setItemStatus] = React.useState<TypePokemonItemStatus>('select');
-    const [gameKey, setGameKey] = React.useState(PokemonStateDefault.gameKey);
+    const [point, setPoint] = React.useState<PokemonContextProps['data']['point']>(PokemonStateDefault.point);
+    const [gameKey, setGameKey] = React.useState<PokemonContextProps['data']['gameKey']>(PokemonStateDefault.gameKey);
     const COUNT_DOWN = useCountdown({ numberCountdown: 0 });
 
     /** Effect init game */
     React.useEffect(() => {
         initGame(level);
+        setPoint(0);
     }, [gameKey]);
+
+    /** Effect victory game */
+    React.useEffect(() => {
+        if (point >= GameLevel[level].point) {
+            setStatus('next');
+        }
+    }, [point]);
 
     /** Effect stop game */
     React.useEffect(() => {
@@ -61,6 +70,9 @@ export default function PokemonProvider(props: PropsWithChildren) {
             }, 1000);
         }
         setItemStatus(statusPresent);
+        if (statusPresent === 'success') {
+            setTimeout(() => setPoint((prev) => prev + 2), 1200);
+        }
     }, [items]);
 
     const initGame = React.useCallback<PokemonContextProps['method']['initGame']>((level) => {
@@ -71,6 +83,11 @@ export default function PokemonProvider(props: PropsWithChildren) {
     }, []);
 
     const restartGame = React.useCallback<PokemonContextProps['method']['restartGame']>(() => {
+        setGameKey((prev) => (prev + 1) % 7);
+    }, []);
+
+    const nextGame = React.useCallback<PokemonContextProps['method']['nextGame']>(() => {
+        setLevel((prev) => (prev === 'easy' ? 'normal' : 'hard'));
         setGameKey((prev) => (prev + 1) % 7);
     }, []);
 
@@ -103,10 +120,11 @@ export default function PokemonProvider(props: PropsWithChildren) {
                 level,
                 duration: GameLevel[level].duration,
                 gameKey,
+                point,
             },
-            method: { initGame, restartGame, stopGame, chooseItem, getItemStatus },
+            method: { initGame, restartGame, stopGame, chooseItem, nextGame, getItemStatus },
         }),
-        [status, boardGame, items, level, itemStatus]
+        [status, boardGame, items, level, itemStatus, point]
     );
 
     return <PokemonContext.Provider value={store}>{children}</PokemonContext.Provider>;

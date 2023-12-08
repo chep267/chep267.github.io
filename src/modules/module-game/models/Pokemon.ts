@@ -9,7 +9,7 @@ type TypePokemonLevel = 'easy' | 'normal' | 'hard';
 
 type TypePokemonItemStatus = 'select' | 'success' | 'error';
 
-type TypePokemonGameStatus = 'pending' | 'start' | 'stop';
+type TypePokemonGameStatus = 'pending' | 'start' | 'stop' | 'next';
 
 type TypePokemonItem = {
     x: number;
@@ -25,11 +25,13 @@ type PokemonContextProps = {
         duration: number;
         status: TypePokemonGameStatus;
         gameKey: number;
+        point: number;
     };
     method: {
         initGame: (level: TypePokemonLevel) => void;
         stopGame: () => void;
         restartGame: () => void;
+        nextGame: () => void;
         chooseItem: (item: TypePokemonItem) => void;
         getItemStatus: (item: TypePokemonItem) => TypePokemonItemStatus | undefined;
     };
