@@ -1,0 +1,8 @@
+import{r as t,M as o,j as e}from"./index-IB_t8ZZG.js";import{R as s,e as r,f as a}from"./index-IFCHMsdT.js";import"./createSvgIcon-zqE4A-Ry.js";import"./makeStyles-IPi12HdX.js";import"./useTheme-i1bJO4gb.js";import"./index-EZATgvU3.js";const n=t.lazy(()=>o(()=>import("./index-FoW3_w4N.js"),__vite__mapDeps([0,1,2,3,4,5,6,7]))),i=t.lazy(()=>o(()=>import("./index-qZd3hMjc.js"),__vite__mapDeps([8,1,2,3,4,6,7,9,10,5,11,12,13]))),_=t.lazy(()=>o(()=>import("./index-12vg949F.js"),__vite__mapDeps([14,1,2,3,4,6,7,10,9,5,11,12])));function c(){return e.jsx(t.Suspense,{fallback:null,children:e.jsxs(s,{children:[e.jsx(r,{index:!0,element:e.jsx(i,{})}),e.jsx(r,{path:a.CALENDAR_INFO,element:e.jsx(_,{})}),e.jsx(r,{path:"*",element:e.jsx(n,{})})]})})}export{c as default};
+//# sourceMappingURL=index-RiNkPrA6.js.map
+function __vite__mapDeps(indexes) {
+  if (!__vite__mapDeps.viteFileDeps) {
+    __vite__mapDeps.viteFileDeps = ["assets/index-FoW3_w4N.js","assets/index-IB_t8ZZG.js","assets/index-eGg70zu3.css","assets/index-EZATgvU3.js","assets/makeStyles-IPi12HdX.js","assets/index-IFCHMsdT.js","assets/createSvgIcon-zqE4A-Ry.js","assets/useTheme-i1bJO4gb.js","assets/index-qZd3hMjc.js","assets/IconButton-Z4Ysyre_.js","assets/index-lYwqzCqj.js","assets/TextField-Bf6_xMlc.js","assets/InputAdornment-mWtFJKgK.js","assets/message-2KgGgF8f.js","assets/index-12vg949F.js"]
+  }
+  return indexes.map((i) => __vite__mapDeps.viteFileDeps[i])
+}
