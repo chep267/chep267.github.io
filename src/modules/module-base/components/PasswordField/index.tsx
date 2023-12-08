@@ -14,31 +14,20 @@ import InputAdornment from '@mui/material/InputAdornment';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 
-/** utils */
-import { focusInput } from '@module-base/utils/helpers/focusInput';
-
 /** types */
 import type { TextFieldProps } from '@mui/material/TextField';
 
-const PasswordField = React.forwardRef((props: TextFieldProps, ref) => {
-    const { InputProps, ...inputProps } = props;
-    const inputRef = React.useRef<HTMLInputElement>(null);
-
-    React.useImperativeHandle(
-        ref,
-        () => ({
-            ...inputRef,
-            ...ref,
-        }),
-        [inputRef]
-    );
-
+export default function PasswordField(props: TextFieldProps & { setFocus?(): void }) {
+    const { InputProps, setFocus, ...inputProps } = props;
     const [showPassword, setShowPassword] = React.useState(false);
+
+    React.useEffect(() => {
+        setFocus?.();
+    }, [showPassword]);
 
     const toggleShowPassword = React.useCallback(() => {
         setShowPassword((prev) => !prev);
-        focusInput(inputRef.current);
-    }, [inputRef]);
+    }, []);
 
     const endAdornment = React.useMemo(() => {
         return (
@@ -52,16 +41,12 @@ const PasswordField = React.forwardRef((props: TextFieldProps, ref) => {
 
     return (
         <TextField
-            inputRef={inputRef}
-            type={showPassword ? 'text' : 'password'}
+            {...inputProps}
             InputProps={{
                 ...InputProps,
                 endAdornment,
             }}
-            {...inputProps}
+            type={showPassword ? 'text' : 'password'}
         />
     );
-});
-
-PasswordField.displayName = 'PasswordField';
-export default PasswordField;
+}

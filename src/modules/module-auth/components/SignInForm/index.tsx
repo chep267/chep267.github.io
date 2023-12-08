@@ -45,6 +45,7 @@ export default function SignInForm() {
         handleSubmit,
         control,
         formState: { errors },
+        setFocus,
     } = useForm<FormAuthDataType>({
         defaultValues: {
             email: Decrypt(localStorageBase.get(emailLocalKey)),
@@ -77,6 +78,7 @@ export default function SignInForm() {
                                 variant="outlined"
                                 spellCheck={false}
                                 fullWidth
+                                autoComplete="email"
                                 autoFocus // eslint-disable-line jsx-a11y/no-autofocus
                                 error={error}
                                 helperText={errorMessage && formatMessage(authMessage[errorMessage])}
@@ -87,18 +89,21 @@ export default function SignInForm() {
                 <Controller
                     name="password"
                     control={control}
-                    render={({ field }) => {
+                    render={({ field: { ref, ...field } }) => {
                         const error = Boolean(errors.password);
                         const errorMessage = errors.password?.message as keyof typeof authMessage;
                         return (
                             <PasswordField
                                 {...field}
+                                inputRef={ref}
                                 label={formatMessage(authMessage['module.auth.form.input.label.password'])}
                                 variant="outlined"
                                 spellCheck={false}
                                 fullWidth
+                                autoComplete="password"
                                 error={error}
                                 helperText={errorMessage && formatMessage(authMessage[errorMessage])}
+                                setFocus={() => setFocus('password')}
                             />
                         );
                     }}
