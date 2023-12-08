@@ -280,7 +280,6 @@ const checkRight = (board: TypePokemonItem[][], first: TypePokemonItem, second: 
     /** check phải - phải */
     if (!hasValue(board, second.x, second.y + 1)) {
         for (let y = maxY + 1; y <= board[0].length; ++y) {
-            console.log('vaoooo');
             if (
                 checkVertical(board, y, minX + 1, maxX - 1) &&
                 checkHorizontal(board, first.x, first.y + 1, y) &&
