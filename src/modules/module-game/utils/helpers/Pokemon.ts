@@ -50,7 +50,7 @@ const genBoardGame = (level: PokemonContextProps['data']['level']) => {
             ++count;
             const px = row - 1 - x;
             const py = col - 1 - y;
-            const value = 2 || random();
+            const value = random();
             board[x][y] = { x, y, value };
             board[px][py] = { x: px, y: py, value };
             if (count >= total / 2) {
