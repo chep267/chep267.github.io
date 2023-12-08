@@ -62,11 +62,19 @@ const genBoardGame = (level: PokemonContextProps['data']['level']) => {
         }
     }
 
+    /** đảo vị trí */
     for (let x = 0; x + 1 < row; ++x) {
         for (let y = 0; y + 2 < col; ++y) {
             const tg = board[x][y].value;
             board[x][y].value = board[x + 1][y].value;
             board[x + 1][y].value = tg;
+        }
+    }
+    for (let y = 0; y + 1 < col; ++y) {
+        for (let x = 0; x + 2 < row; ++x) {
+            const tg = board[x][y].value;
+            board[x][y].value = board[x][y + 1].value;
+            board[x][y + 1].value = tg;
         }
     }
     return board;
