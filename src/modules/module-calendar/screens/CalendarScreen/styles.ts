@@ -6,12 +6,12 @@
 
 import makeStyles from '@mui/styles/makeStyles';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(({ spacing }) => ({
     screen: {
         flexDirection: 'row',
         width: '100%',
         height: '100%',
-        padding: '6%',
+        padding: spacing(2),
     },
     mainContent: {
         display: 'flex',
@@ -22,6 +22,6 @@ const useStyles = makeStyles({
         borderRadius: 8,
         overflow: 'hidden',
     },
-});
+}));
 
 export default useStyles;

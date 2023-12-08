@@ -32,6 +32,7 @@ const useStyles = makeStyles({
         width: `calc(100% - ${SCREEN_SIZE.APP_BAR_MAX_WIDTH}px)`,
         maxWidth: `calc(100% - ${SCREEN_SIZE.APP_BAR_MAX_WIDTH}px)`,
         height: '100%',
+        transition: 'all 0.6s',
     },
     mainContentWithAppbarClose: {
         width: `calc(100% - ${SCREEN_SIZE.APP_BAR_MIN_WIDTH}px)`,

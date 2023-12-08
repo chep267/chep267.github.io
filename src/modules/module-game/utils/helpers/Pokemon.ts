@@ -341,4 +341,14 @@ const hasPruneItem = (board: TypePokemonItem[][], items: TypePokemonItem[]) => {
     );
 };
 
-export { GameLevel, isItemInArray, genBoardGame, hasPruneItem };
+const getItemPosition = (x: number, y: number) => {
+    const item = document.getElementById(`pokemon-item-${x}-${y}`);
+    if (!item) return;
+
+    const rect = item.getBoundingClientRect();
+    const posX = rect.left + window.scrollX;
+    const posY = rect.top + window.scrollY;
+    return { posX, posY };
+};
+
+export { GameLevel, isItemInArray, genBoardGame, hasPruneItem, getItemPosition };

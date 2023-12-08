@@ -37,6 +37,7 @@ export default function PokemonBoardGame(props: PokemonBoardGameProps) {
                             return (
                                 <PokemonItem
                                     key={`boardGame-${data.gameKey}-row-${rowIndex}-col-${colIndex}`}
+                                    id={`pokemon-item-${rowIndex}-${colIndex}`}
                                     status={status}
                                     item={item}
                                     onSelect={method.chooseItem}

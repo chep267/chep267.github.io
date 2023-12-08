@@ -13,7 +13,7 @@ const useStyles = makeStyles(({ spacing, palette }) => ({
         justifyContent: 'space-between',
         alignItems: 'center',
         width: '100%',
-        padding: `${spacing(3)} ${spacing(2)}`,
+        padding: spacing(2),
         textAlign: 'center',
     },
     today: {

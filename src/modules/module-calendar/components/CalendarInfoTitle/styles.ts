@@ -12,7 +12,6 @@ const useStyles = makeStyles(({ spacing }) => ({
         justifyContent: 'space-between',
         alignItems: 'center',
         width: '100%',
-        padding: `${spacing(3)} ${spacing(2)}`,
         textAlign: 'center',
     },
     titleIcon: {

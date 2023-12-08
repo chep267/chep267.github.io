@@ -20,7 +20,7 @@ export default function CalendarInfoScreen() {
     return (
         <Stack className={classes.screen}>
             <Paper className={classes.mainContent}>
-                <CalendarInfoTitle />
+                <CalendarInfoTitle className={classes.title} />
                 <CalendarInfoBody />
                 <CalendarInfoFooter />
             </Paper>

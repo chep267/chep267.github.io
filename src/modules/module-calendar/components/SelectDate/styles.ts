@@ -12,7 +12,7 @@ const useStyles = makeStyles(({ spacing, palette }) => ({
         alignItems: 'center',
         justifyContent: 'center',
         position: 'relative',
-        padding: `${spacing(1)} ${spacing(2)}`,
+        padding: spacing(1),
         borderRadius: 8,
         cursor: 'pointer',
         '&:hover': {

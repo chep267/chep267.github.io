@@ -13,6 +13,7 @@ const useStyles = makeStyles(({ palette }) => ({
         justifyContent: 'center',
         width: '100%',
         height: '70%',
+        minHeight: 300,
         padding: 8,
     },
     selectDay: {

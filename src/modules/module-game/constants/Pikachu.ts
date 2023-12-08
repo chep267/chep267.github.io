@@ -41,7 +41,10 @@ import pokemon_34 from '@module-game/assets/images/pokemon_34.png';
 import pokemon_35 from '@module-game/assets/images/pokemon_35.png';
 import pokemon_36 from '@module-game/assets/images/pokemon_36.png';
 
-export const PIKACHU_LOGO: Record<number, string> = Object.freeze({
+import pokemon_vertical from '@module-game/assets/images/pokemon_vertical.png';
+import pokemon_horizontal from '@module-game/assets/images/pokemon_horizontal.png';
+
+export const POKEMON_LOGO: Record<number, string> = Object.freeze({
     1: pokemon_1,
     2: pokemon_2,
     3: pokemon_3,
@@ -79,3 +82,8 @@ export const PIKACHU_LOGO: Record<number, string> = Object.freeze({
     35: pokemon_35,
     36: pokemon_36,
 });
+
+export const POKEMON_LINE = {
+    vertical: pokemon_vertical,
+    horizontal: pokemon_horizontal,
+};

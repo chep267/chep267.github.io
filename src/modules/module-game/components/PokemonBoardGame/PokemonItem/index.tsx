@@ -12,7 +12,7 @@ import { Button } from '@mui/material';
 
 /** constants */
 import { emptyObject } from '@module-base/constants/defaultValue';
-import { PIKACHU_LOGO } from '@module-game/constants';
+import { POKEMON_LOGO } from '@module-game/constants';
 
 /** styles */
 import useStyles from './styles';
@@ -21,22 +21,24 @@ import useStyles from './styles';
 import type { TypePokemonItem, TypePokemonItemStatus } from '@module-game/models';
 
 type Props = {
+    id: string;
     status?: TypePokemonItemStatus;
     item: TypePokemonItem;
     onSelect(item: TypePokemonItem): void;
 };
 
 export default function PokemonItem(props: Props) {
-    const { status, item, onSelect } = props;
+    const { id, status, item, onSelect } = props;
     const classes = useStyles();
     const isEmpty = item.value === 0;
 
     const itemStyle = React.useMemo(() => {
-        return isEmpty ? emptyObject : { backgroundImage: `url(${PIKACHU_LOGO[item.value]})` };
+        return isEmpty ? emptyObject : { backgroundImage: `url(${POKEMON_LOGO[item.value]})` };
     }, [isEmpty]);
 
     return (
         <Button
+            id={id}
             disabled={isEmpty}
             className={classnames(
                 classes.item,
