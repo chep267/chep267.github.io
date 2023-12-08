@@ -50,7 +50,7 @@ const genBoardGame = (level: PokemonContextProps['data']['level']) => {
             ++count;
             const px = row - 1 - x;
             const py = col - 1 - y;
-            const value = random();
+            const value = 2 || random();
             board[x][y] = { x, y, value };
             board[px][py] = { x: px, y: py, value };
             if (count >= total / 2) {
@@ -165,7 +165,10 @@ const checkTop = (board: TypePokemonItem[][], first: TypePokemonItem, second: Ty
 
     /** check trên - trái - phải */
     if (first.x > second.x && (!hasValue(board, second.x, second.y - 1) || !hasValue(board, second.x, second.y + 1))) {
-        if (checkVertical(board, first.y, first.x - 1, second.x) && checkHorizontal(board, second.x, minY + 1, maxY - 1)) {
+        if (
+            checkVertical(board, first.y, first.x - 1, second.x) &&
+            (minY + 1 === maxY || checkHorizontal(board, second.x, minY + 1, maxY - 1))
+        ) {
             return true;
         }
     }
@@ -210,8 +213,11 @@ const checkBot = (board: TypePokemonItem[][], first: TypePokemonItem, second: Ty
     }
 
     /** check dưới - trái - phải */
-    if (first.x < second.x && (!hasValue(board, second.x, second.y - 1) || !hasValue(board, second.x, second.y + 1))) {
-        if (checkVertical(board, first.y, first.x + 1, second.x) && checkHorizontal(board, second.x, minY + 1, maxY - 1)) {
+    if (first.x < second.x && !hasValue(board, second.x, second.y - 1)) {
+        if (
+            checkVertical(board, first.y, first.x + 1, second.x) &&
+            (minY + 1 === maxY || checkHorizontal(board, second.x, minY + 1, maxY - 1))
+        ) {
             return true;
         }
     }
@@ -258,7 +264,10 @@ const checkLeft = (board: TypePokemonItem[][], first: TypePokemonItem, second: T
 
     /** check trái - trên - dưới  */
     if (first.y > second.y && (!hasValue(board, second.x - 1, second.y) || !hasValue(board, second.x + 1, second.y))) {
-        if (checkHorizontal(board, first.x, first.y - 1, second.y) && checkVertical(board, second.y, minX + 1, maxX - 1)) {
+        if (
+            checkHorizontal(board, first.x, first.y - 1, second.y) &&
+            (minX + 1 === maxX || checkVertical(board, second.y, minX + 1, maxX - 1))
+        ) {
             return true;
         }
     }
@@ -305,7 +314,10 @@ const checkRight = (board: TypePokemonItem[][], first: TypePokemonItem, second: 
 
     /** check phải - trên - dưới  */
     if (first.y < second.y && (!hasValue(board, second.x - 1, second.y) || !hasValue(board, second.x + 1, second.y))) {
-        if (checkHorizontal(board, first.x, first.y + 1, second.y) && checkVertical(board, second.y, minX + 1, maxX - 1)) {
+        if (
+            checkHorizontal(board, first.x, first.y + 1, second.y) &&
+            (minX + 1 === maxX || checkVertical(board, second.y, minX + 1, maxX - 1))
+        ) {
             return true;
         }
     }
