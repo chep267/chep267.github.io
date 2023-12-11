@@ -41,20 +41,16 @@ export default ({ mode }) => {
         ],
         resolve: {
             alias: resolveAlias(),
+            extensions: ['.tsx', '.ts', '.js', '.jsx'],
         },
         build: {
             target: 'esnext',
             sourcemap: isDevMode,
-            rollupOptions: {
-                treeshake: true,
-            },
         },
         server: {
-            // https: {
-            //     insecureHTTPParser: process.env.VITE_APP_HTTPS === 'true',
-            // },
             host: process.env.VITE_APP_HOST,
             port,
+            open: true,
         },
         esbuild: {
             target: 'esnext',

@@ -38,7 +38,7 @@ const ThreadListSearch = React.memo(
         const { itemIds, items } = LIST_USER.data ?? {};
 
         const onClickItem = React.useCallback((user: UserInfo) => {
-            navigate(genPath(SCREEN.MESSENGER, SCREEN.MESSENGER_CONVERSATION.replace(':tid', `/tid_${user.uid}`)));
+            navigate(genPath(SCREEN.MESSENGER, SCREEN.MESSENGER_CONVERSATION.replace(':tid', `tid_${user.uid}`)));
         }, []);
 
         const renderItem = React.useCallback(

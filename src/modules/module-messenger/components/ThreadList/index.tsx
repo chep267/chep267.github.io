@@ -43,6 +43,14 @@ const ThreadList = React.memo(
             }
         }, [currentTid, firstId]);
 
+        const onClickItem = React.useCallback((tid: string) => {
+            navigate(genPath(SCREEN.MESSENGER, SCREEN.MESSENGER_CONVERSATION.replace(':tid', tid)));
+        }, []);
+
+        const stopPropagation = React.useCallback((event: React.MouseEvent<HTMLButtonElement>) => {
+            event.stopPropagation();
+        }, []);
+
         const renderItem = React.useCallback(
             (tid: string, index: number) => {
                 const threadData = items[tid];
@@ -50,16 +58,14 @@ const ThreadList = React.memo(
                     <ListItem
                         key={index}
                         className={classnames(classes.listItem, { [classes.listItemSelected]: tid === currentTid })}
-                        onClick={() =>
-                            navigate(genPath(SCREEN.MESSENGER, SCREEN.MESSENGER_CONVERSATION.replace(':tid', tid)))
-                        }>
+                        onClick={() => onClickItem(tid)}>
                         <ListItemAvatar>
                             <Avatar>
                                 <ImageIcon />
                             </Avatar>
                         </ListItemAvatar>
                         <ListItemText primary={threadData.name} secondary={new Date(Number(tid)).toString()} />
-                        <IconButton className={classes.itemOption} onClick={(e) => e.stopPropagation()}>
+                        <IconButton className={classes.itemOption} onClick={stopPropagation}>
                             <MoreHorizIcon />
                         </IconButton>
                     </ListItem>

@@ -48,6 +48,7 @@ const useStyles = makeStyles(({ palette, breakpoints, zIndex }) => ({
     },
     right: {
         display: 'flex',
+        flexDirection: 'column',
         justifyContent: 'center',
         width: '100%',
         height: '100%',

@@ -6,6 +6,7 @@
     "homepage": "https://chep267.github.io",
     "scripts": {
         "dev": "vite",
+        "dev:debug": "DEBUG=\"vite:transform\" vite",
         "build": "tsc && vite build && cp dist/index.html dist/404.html",
         "preview": "vite preview",
         "lint": "eslint . --ext js,jsx,ts,tsx --report-unused-disable-directives --max-warnings 0",

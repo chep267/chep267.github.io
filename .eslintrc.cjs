@@ -48,7 +48,7 @@ module.exports = {
         'import/resolver': {
             node: {
                 paths: [resolve(__dirname, '')],
-                extensions: ['.js', '.jsx', '.ts', '.tsx'],
+                extensions: ['.tsx', '.ts', '.js', '.jsx'],
             },
             typescript: {
                 project: resolve(__dirname, './tsconfig.json'),

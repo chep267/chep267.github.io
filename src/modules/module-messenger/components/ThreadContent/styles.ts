@@ -6,13 +6,7 @@
 
 import makeStyles from '@mui/styles/makeStyles';
 
-const useStyles = makeStyles(({ spacing }) => ({
-    thread_title: {
-        width: '100%',
-        alignItems: 'flex-start',
-        padding: `${spacing(3)} ${spacing(2)}`,
-    },
-
+const useStyles = makeStyles({
     thread_content: {
         display: 'flex',
         justifyContent: 'flex-end',
@@ -44,6 +38,6 @@ const useStyles = makeStyles(({ spacing }) => ({
             visibility: 'visible',
         },
     },
-}));
+});
 
 export default useStyles;
