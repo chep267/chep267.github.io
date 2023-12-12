@@ -9,6 +9,7 @@ import * as React from 'react';
 /** lib components */
 import TextField from '@mui/material/TextField';
 import InputAdornment from '@mui/material/InputAdornment';
+import IconButton from '@mui/material/IconButton';
 
 /** icons */
 import VisibilityIcon from '@mui/icons-material/Visibility';
@@ -19,21 +20,25 @@ import type { TextFieldProps } from '@mui/material/TextField';
 
 export default function PasswordField(props: TextFieldProps & { setFocus?(): void }) {
     const { InputProps, setFocus, ...inputProps } = props;
-    const [showPassword, setShowPassword] = React.useState(false);
+    const [showPassword, setShowPassword] = React.useState(-1);
 
     React.useEffect(() => {
-        setFocus?.();
+        if (showPassword > -1) {
+            setFocus?.();
+        }
     }, [showPassword]);
 
     const toggleShowPassword = React.useCallback(() => {
-        setShowPassword((prev) => !prev);
+        setShowPassword((prev) => (prev === 1 ? 0 : 1));
     }, []);
 
     const endAdornment = React.useMemo(() => {
         return (
             InputProps?.endAdornment || (
-                <InputAdornment position="end" style={{ cursor: 'pointer' }} onClick={toggleShowPassword}>
-                    {showPassword ? <VisibilityOffIcon /> : <VisibilityIcon />}
+                <InputAdornment position="end">
+                    <IconButton onClick={toggleShowPassword}>
+                        {showPassword === 1 ? <VisibilityOffIcon /> : <VisibilityIcon />}
+                    </IconButton>
                 </InputAdornment>
             )
         );
@@ -46,7 +51,7 @@ export default function PasswordField(props: TextFieldProps & { setFocus?(): voi
                 ...InputProps,
                 endAdornment,
             }}
-            type={showPassword ? 'text' : 'password'}
+            type={showPassword === 1 ? 'text' : 'password'}
         />
     );
 }
