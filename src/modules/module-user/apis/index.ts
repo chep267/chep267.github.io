@@ -33,6 +33,8 @@ const apiGetUser = async (payload: UserApiProps['Get']['Payload']): Promise<User
     const { timer = TIMING_API_PENDING, uid } = payload;
     const docRef = doc(firestore, ROOT_REF, USER_DB_ROOT_REF, USER_DB_USER_ID_REF, uid);
     const [response] = await Promise.all([getDoc(docRef), debounce(timer)]);
+
+    console.log('apiGetUser');
     return response.exists() ? (response.data() as UserInfo) : undefined;
 };
 

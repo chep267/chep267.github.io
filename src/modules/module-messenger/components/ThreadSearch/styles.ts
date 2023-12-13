@@ -8,7 +8,7 @@ import makeStyles from '@mui/styles/makeStyles';
 
 const useStyles = makeStyles(({ zIndex, spacing }) => ({
     listSearch: {
-        position: 'sticky',
+        position: 'relative',
         top: 0,
         zIndex: zIndex.appBar,
         width: '100%',
@@ -19,21 +19,26 @@ const useStyles = makeStyles(({ zIndex, spacing }) => ({
         padding: spacing(1),
         '& > .MuiTextField-root': {
             width: '100%',
+            marginLeft: 50,
+            transition: 'margin 0.3s',
             '& > .MuiInputBase-root': {
                 borderRadius: 20,
             },
         },
         '& > .MuiIconButton-root': {
-            transition: 'all 0.25s linear',
+            position: 'absolute',
+            zIndex: 1,
+            transform: 'scale(1)',
+            transition: 'transform 0.2s',
         },
     },
     listSearch_hidden: {
         gap: spacing(0),
+        '& > .MuiTextField-root': {
+            marginLeft: 0,
+        },
         '& > .MuiIconButton-root': {
-            visibility: 'hidden',
-            overflow: 'hidden',
-            width: 0,
-            padding: 0,
+            transform: 'scale(0)',
         },
     },
 }));

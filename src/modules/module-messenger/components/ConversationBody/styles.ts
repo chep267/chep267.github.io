@@ -5,16 +5,16 @@
  */
 
 import makeStyles from '@mui/styles/makeStyles';
-
-/** constants */
 import { alpha } from '@mui/material/styles';
 
-const useStyles = makeStyles(({ palette, typography }) => ({
-    list: {
-        '& div[class*="listLoading"]': {
-            paddingTop: 40,
-            justifyContent: 'flex-start',
-        },
+const useStyles = makeStyles(({ spacing, palette, typography }) => ({
+    body: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        width: '100%',
+        height: '100%',
+        padding: `${spacing(3)} ${spacing(2)}`,
     },
     listItem: {
         '& .MuiListItemText-primary': {

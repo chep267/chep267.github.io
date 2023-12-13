@@ -22,7 +22,7 @@ import { SCREEN } from '@module-global/constants/screen';
 import { genPath } from '@module-base/utils/helpers/genPath';
 
 /** hooks */
-import { useListThread } from '@module-messenger/hooks/useListThread';
+import { useMessenger } from '@module-messenger/hooks/useMessenger';
 
 /** styles */
 import useStyles from './styles';
@@ -32,10 +32,11 @@ const ThreadList = React.memo(
         const navigate = useNavigate();
         const { tid: currentTid } = useParams();
         const classes = useStyles();
-        const LIST_THREAD = useListThread();
+        const {
+            data: { threadIds, threads, loadingThread },
+        } = useMessenger();
 
-        const { itemIds, items } = LIST_THREAD.data;
-        const firstId = itemIds[0];
+        const firstId = threadIds[0];
 
         React.useEffect(() => {
             if (firstId && (!currentTid || currentTid === '0')) {
@@ -53,7 +54,7 @@ const ThreadList = React.memo(
 
         const renderItem = React.useCallback(
             (tid: string, index: number) => {
-                const threadData = items[tid];
+                const threadData = threads[tid];
                 return !threadData ? null : (
                     <ListItem
                         key={index}
@@ -64,21 +65,21 @@ const ThreadList = React.memo(
                                 <ImageIcon />
                             </Avatar>
                         </ListItemAvatar>
-                        <ListItemText primary={threadData.name} secondary={new Date(Number(tid)).toString()} />
+                        <ListItemText primary={threadData.name} secondary="You: Xin chao!" />
                         <IconButton className={classes.itemOption} onClick={stopPropagation}>
                             <MoreHorizIcon />
                         </IconButton>
                     </ListItem>
                 );
             },
-            [currentTid, items]
+            [currentTid, threads]
         );
 
         return (
             <ListBase
                 className={classnames(classes.list, 'messenger_left_thread_list_default')}
-                loading={LIST_THREAD.isLoading}
-                data={itemIds}
+                loading={loadingThread}
+                data={threadIds}
                 renderItem={renderItem}
             />
         );

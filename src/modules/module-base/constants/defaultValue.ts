@@ -6,7 +6,7 @@
 
 const emptyFunction = Object.freeze(() => {});
 
-const emptyObject = Object.freeze<Record<string, undefined>>({});
+const emptyObject = Object.freeze<Record<any, any>>({});
 
 const emptyArray = Object.freeze([]) as [];
 

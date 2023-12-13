@@ -5,7 +5,6 @@
  */
 
 import { useMutation } from '@tanstack/react-query';
-import { useIntl } from 'react-intl';
 
 /** apis */
 import { apiCreateThread } from '@module-messenger/apis';
@@ -24,7 +23,6 @@ type Props = { onSuccess?(tid: string): void };
 
 export function useCreateThread(props?: Props) {
     const { onSuccess } = props ?? {};
-    const intl = useIntl();
     const { me } = useAuth();
     const { notify } = useBase();
 
@@ -41,7 +39,7 @@ export function useCreateThread(props?: Props) {
             notify.toggleNotify({
                 open: true,
                 mode: 'error',
-                message: intl.formatMessage(baseMessage['module.base.error.server.busy']),
+                intlMessage: baseMessage['module.base.error.server.busy'],
             });
         },
     });

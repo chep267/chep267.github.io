@@ -5,7 +5,6 @@
  */
 
 import { useMutation } from '@tanstack/react-query';
-import { useIntl } from 'react-intl';
 
 /** apis */
 import { apiRegister } from '@module-auth/apis';
@@ -26,7 +25,6 @@ import { useBase } from '@module-base/hooks/useBase';
 import type { FirebaseError } from 'firebase/app';
 
 export function useRegister() {
-    const intl = useIntl();
     const { notify } = useBase();
 
     return useMutation({
@@ -36,7 +34,7 @@ export function useRegister() {
             notify.toggleNotify({
                 open: true,
                 mode: 'success',
-                message: intl.formatMessage(authMessage[`module.auth.form.status.register.success`]),
+                intlMessage: authMessage[`module.auth.form.status.register.success`],
             });
         },
         onError: (error: FirebaseError) => {
@@ -44,7 +42,7 @@ export function useRegister() {
             notify.toggleNotify({
                 open: true,
                 mode: 'error',
-                message: intl.formatMessage(authMessage[`module.auth.form.status.register.${code}`]),
+                intlMessage: authMessage[`module.auth.form.status.register.${code}`],
             });
         },
     });

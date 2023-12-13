@@ -8,6 +8,7 @@ import * as React from 'react';
 import classnames from 'classnames';
 
 /** lib components */
+import { FormattedMessage } from 'react-intl';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
 import AlertTitle from '@mui/material/AlertTitle';
@@ -26,7 +27,7 @@ import type { SnackbarProps } from '@mui/material/Snackbar';
 
 const NotifyBoundary = React.memo((props: SnackbarProps) => {
     const { notify } = useBase();
-    const { open, message, mode, close, duration = TIMING_NOTIFY_DURATION } = notify;
+    const { open, message, intlMessage, mode, close, duration = TIMING_NOTIFY_DURATION } = notify;
     const classes = useStyles();
 
     const closeSnackbar = React.useCallback(() => notify.toggleNotify(), []);
@@ -48,7 +49,7 @@ const NotifyBoundary = React.memo((props: SnackbarProps) => {
                 elevation={6}
                 variant="filled">
                 <AlertTitle className={classes.title}>{mode}!</AlertTitle>
-                {message}
+                {intlMessage ? <FormattedMessage {...intlMessage} /> : message}
             </Alert>
         </Snackbar>
     );

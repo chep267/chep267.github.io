@@ -4,7 +4,7 @@
  *
  */
 
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
 
 /** apis */
 import { apiGetListUser } from '@module-user/apis';
@@ -12,9 +12,14 @@ import { apiGetListUser } from '@module-user/apis';
 /** types */
 
 export function useListUser() {
+    const queryClient = useQueryClient();
+    const data = queryClient.getQueryData(['useListUser']);
+
     return useQuery({
         queryKey: ['useListUser'],
         queryFn: () => apiGetListUser({}),
         refetchOnWindowFocus: false,
+        refetchOnMount: false,
+        enabled: !data,
     });
 }

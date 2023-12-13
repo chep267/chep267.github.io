@@ -16,14 +16,17 @@ const useStyles = makeStyles(({ palette, breakpoints, zIndex }) => ({
         width: '100%',
         height: '100%',
     },
-    left: {
+    layoutDefault: {
         display: 'flex',
         position: 'relative',
         flexDirection: 'column',
         alignItems: 'center',
+        justifyContent: 'space-between',
         width: '100%',
         height: '100%',
         borderRadius: 0,
+    },
+    left: {
         maxWidth: SCREEN_SIZE.MESSENGER_LEFT_RIGHT_MAX_WIDTH,
         transition: 'all 0.3s ease-in-out',
         [breakpoints.down('xl')]: {
@@ -47,12 +50,7 @@ const useStyles = makeStyles(({ palette, breakpoints, zIndex }) => ({
         },
     },
     right: {
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        width: '100%',
-        height: '100%',
-        borderRadius: 0,
+        borderLeft: `1px solid ${palette.divider}`,
         maxWidth: SCREEN_SIZE.MESSENGER_LEFT_RIGHT_MAX_WIDTH,
         transition: 'all 0.3s ease-in-out, height 0s',
         [breakpoints.down('lg')]: {
@@ -70,15 +68,14 @@ const useStyles = makeStyles(({ palette, breakpoints, zIndex }) => ({
             maxWidth: SCREEN_SIZE.MESSENGER_LEFT_MEDIUM_WIDTH,
         },
     },
-    mainContent: {
-        display: 'flex',
-        flex: 1,
-        justifyContent: 'center',
-        width: '100%',
-        height: '100%',
-        borderRadius: 0,
-        borderLeft: `3px solid ${palette.divider}`,
-        borderRight: `3px solid ${palette.divider}`,
+    center: {
+        borderLeft: `1px solid ${palette.divider}`,
+    },
+    right_hidden: {
+        minWidth: 0,
+        maxWidth: 0,
+        visibility: 'hidden',
+        zIndex: -1,
     },
 }));
 

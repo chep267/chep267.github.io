@@ -6,7 +6,6 @@
 
 import Cookies from 'js-cookie';
 import { useMutation } from '@tanstack/react-query';
-import { useIntl } from 'react-intl';
 
 /** apis */
 import { apiSignIn } from '@module-auth/apis';
@@ -24,7 +23,6 @@ import { useBase } from '@module-base/hooks/useBase';
 import { useAuth } from '@module-auth/hooks/useAuth';
 
 export function useSignIn() {
-    const intl = useIntl();
     const auth = useAuth();
     const { notify } = useBase();
 
@@ -41,7 +39,7 @@ export function useSignIn() {
             notify.toggleNotify({
                 open: true,
                 mode: 'error',
-                message: intl.formatMessage(authMessage[`module.auth.form.status.email.incorrect`]),
+                intlMessage: authMessage['module.auth.form.status.email.incorrect'],
             });
         },
     });

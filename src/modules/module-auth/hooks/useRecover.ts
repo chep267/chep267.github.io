@@ -5,7 +5,6 @@
  */
 
 import { useMutation } from '@tanstack/react-query';
-import { useIntl } from 'react-intl';
 
 /** apis */
 import { apiRecover } from '@module-auth/apis';
@@ -23,7 +22,6 @@ import { useBase } from '@module-base/hooks/useBase';
 import type { FirebaseError } from '@firebase/app';
 
 export function useRecover() {
-    const intl = useIntl();
     const { notify } = useBase();
 
     return useMutation({
@@ -32,7 +30,7 @@ export function useRecover() {
             notify.toggleNotify({
                 open: true,
                 mode: 'success',
-                message: intl.formatMessage(authMessage[`module.auth.form.status.recover.success`]),
+                intlMessage: authMessage[`module.auth.form.status.recover.success`],
             });
         },
         onError: (error: FirebaseError) => {
@@ -40,7 +38,7 @@ export function useRecover() {
             notify.toggleNotify({
                 open: true,
                 mode: 'error',
-                message: intl.formatMessage(authMessage[`module.auth.form.status.${code}`]),
+                intlMessage: authMessage[`module.auth.form.status.${code}`],
             });
         },
     });

@@ -98,12 +98,14 @@ const AppMenu = React.memo(() => {
         );
     };
 
+    const onClick = React.useCallback(() => toggleSider((prev) => !prev), []);
+
     return (
         <Drawer
             variant="permanent"
             open={open}
             className={classnames(classes.drawer, { [classes.drawerOpen]: open }, { [classes.drawerClose]: !open })}>
-            <Button size="large" onClick={() => toggleSider(!open)}>
+            <Button size="large" onClick={onClick}>
                 {open ? <KeyboardDoubleArrowLeftIcon /> : <KeyboardDoubleArrowRightIcon />}
             </Button>
             <Divider />

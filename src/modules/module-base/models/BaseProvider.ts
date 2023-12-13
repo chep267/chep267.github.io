@@ -5,12 +5,14 @@
  */
 
 /** types */
-import type { ReactNode } from 'react';
+import type { ReactNode, Dispatch, SetStateAction } from 'react';
 import type { AlertColor } from '@mui/material/Alert';
+import type { MessageDescriptor } from '@formatjs/intl';
 
 type BaseNotifyType = {
     open?: boolean;
     message?: ReactNode;
+    intlMessage?: MessageDescriptor;
     mode?: AlertColor;
     close?: boolean;
     duration?: number;
@@ -22,7 +24,11 @@ type BaseContextProps = {
     };
     sider: {
         open: boolean;
-        toggleSider: (open?: boolean) => void;
+        toggleSider: Dispatch<SetStateAction<boolean>>;
+    };
+    messenger: {
+        openThreadInfo: boolean;
+        toggleThreadInfo: Dispatch<SetStateAction<boolean>>;
     };
 };
 
