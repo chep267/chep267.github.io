@@ -33,7 +33,8 @@ const ThreadList = React.memo(
         const { tid: currentTid } = useParams();
         const classes = useStyles();
         const {
-            data: { threadIds, threads, loadingThread },
+            ui: { loadingThread },
+            data: { threadIds, threads },
         } = useMessenger();
 
         const firstId = threadIds[0];

@@ -26,10 +26,6 @@ type BaseContextProps = {
         open: boolean;
         toggleSider: Dispatch<SetStateAction<boolean>>;
     };
-    messenger: {
-        openThreadInfo: boolean;
-        toggleThreadInfo: Dispatch<SetStateAction<boolean>>;
-    };
 };
 
 export type { BaseContextProps, BaseNotifyType };

@@ -12,18 +12,15 @@ import { apiGetListThread } from '@module-messenger/apis';
 
 /** hooks */
 import { useAuth } from '@module-auth/hooks/useAuth';
+import { messengerDataDefault } from '@module-messenger/hooks/useMessenger';
 
-/** types */
-import type { TypeItemIds, TypeItems } from '@module-base/models';
-import type { TypeThreadData } from '@module-messenger/models';
-
-export function useListThread() {
+export function useListenListMessage() {
     const { me } = useAuth();
-    const [itemIds, setItemIds] = React.useState<TypeItemIds>([]);
-    const [items, setItems] = React.useState<TypeItems<TypeThreadData>>({});
+    const [itemIds, setItemIds] = React.useState(messengerDataDefault.data.threadIds);
+    const [items, setItems] = React.useState(messengerDataDefault.data.threads);
 
-    const LIST_THREAD = useQuery({
-        queryKey: ['useListThread'],
+    const LIST_MESSAGE = useQuery({
+        queryKey: ['useListenListMessage'],
         queryFn: () => {
             return apiGetListThread({
                 uid: me!.uid,
@@ -33,12 +30,12 @@ export function useListThread() {
                 },
             });
         },
-        enabled: !!me!.uid,
+        enabled: !!me?.uid,
         refetchOnWindowFocus: false,
     });
 
     return {
-        ...LIST_THREAD,
-        data: { itemIds, items, unsubscribe: LIST_THREAD.data?.unsubscribe },
+        ...LIST_MESSAGE,
+        data: { itemIds, items, unsubscribe: LIST_MESSAGE.data?.unsubscribe },
     };
 }

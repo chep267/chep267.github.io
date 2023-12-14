@@ -19,6 +19,8 @@ const useStyles = makeStyles(({ spacing, palette }) => ({
     footer_left: {
         position: 'absolute',
         left: spacing(2),
+        top: 0,
+        bottom: spacing(2),
         flexDirection: 'row',
         alignItems: 'flex-end',
         justifyContent: 'space-between',
@@ -62,9 +64,6 @@ const useStyles = makeStyles(({ spacing, palette }) => ({
         justifyContent: 'space-between',
         height: '100%',
         gap: spacing(1),
-    },
-    endAdornment: {
-        marginBottom: 12,
     },
 }));
 

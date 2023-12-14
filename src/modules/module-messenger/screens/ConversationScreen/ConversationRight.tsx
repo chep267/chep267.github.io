@@ -13,19 +13,19 @@ import { Paper } from '@mui/material';
 import ThreadInfo from '@module-messenger/components/ThreadInfo';
 
 /** hooks */
-import { useBase } from '@module-base/hooks/useBase';
+import { useMessenger } from '@module-messenger/hooks/useMessenger';
 
 /** styles */
 import useStyles from './styles';
 
 export default function ConversationRight() {
     const classes = useStyles();
-    const { messenger } = useBase();
+    const { ui } = useMessenger();
 
     return (
         <Paper
             className={classnames(classes.layoutDefault, classes.right, {
-                [classes.right_hidden]: !messenger.openThreadInfo,
+                [classes.right_hidden]: !ui.openThreadInfo,
             })}>
             <ThreadInfo />
         </Paper>

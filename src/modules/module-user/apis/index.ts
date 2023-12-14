@@ -18,7 +18,7 @@ import { debounce } from '@module-base/utils/helpers/debounce';
 /** types */
 import type { UserInfo } from '@firebase/auth';
 import type { UserApiProps } from '@module-user/models';
-import type { ItemIdsType, ItemsType } from '@module-base/models';
+import type { TypeItemIds, TypeItems } from '@module-base/models';
 
 const apiCreateUser = async (payload: UserApiProps['Create']['Payload']): Promise<UserApiProps['Create']['Response']> => {
     const { timer = TIMING_API_PENDING, user } = payload;
@@ -45,8 +45,8 @@ const apiGetListUser = async (payload: UserApiProps['GetList']['Payload']): Prom
 
         const querySnapshot = await getDocs(query(docRef, limit(_limit)));
 
-        const itemIds: ItemIdsType = [];
-        const items: ItemsType<UserInfo> = {};
+        const itemIds: TypeItemIds = [];
+        const items: TypeItems<UserInfo> = {};
         querySnapshot.forEach((doc) => {
             const uid = doc.id;
             itemIds.unshift(uid);

@@ -16,11 +16,11 @@ import { messengerDataDefault } from '@module-messenger/hooks/useMessenger';
 
 export function useListenListThread() {
     const { me } = useAuth();
-    const [itemIds, setItemIds] = React.useState(messengerDataDefault.threadIds);
-    const [items, setItems] = React.useState(messengerDataDefault.threads);
+    const [itemIds, setItemIds] = React.useState(messengerDataDefault.data.threadIds);
+    const [items, setItems] = React.useState(messengerDataDefault.data.threads);
 
     const LIST_THREAD = useQuery({
-        queryKey: ['useListenListThread'],
+        queryKey: ['useListenListThread', { uid: me?.uid }],
         queryFn: () => {
             return apiGetListThread({
                 uid: me!.uid,
@@ -30,7 +30,7 @@ export function useListenListThread() {
                 },
             });
         },
-        enabled: !!me!.uid,
+        enabled: !!me?.uid,
         refetchOnWindowFocus: false,
     });
 

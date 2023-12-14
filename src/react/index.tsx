@@ -23,6 +23,7 @@ import ThemeProvider from '@module-theme/components/ThemeProvider';
 import LanguageProvider from '@module-language/components/LanguageProvider';
 import AuthProvider from '@module-auth/components/AuthProvider';
 import CalendarProvider from '@module-calendar/components/CalendarProvider';
+import MessengerProvider from '@module-messenger/components/MessengerProvider';
 
 const App = () => (
     <QueryClientProvider client={queryClient}>
@@ -30,9 +31,11 @@ const App = () => (
             <LanguageProvider messages={messages}>
                 <AuthProvider>
                     <CalendarProvider>
-                        <BaseProvider>
-                            <RootScreen />
-                        </BaseProvider>
+                        <MessengerProvider>
+                            <BaseProvider>
+                                <RootScreen />
+                            </BaseProvider>
+                        </MessengerProvider>
                     </CalendarProvider>
                 </AuthProvider>
             </LanguageProvider>

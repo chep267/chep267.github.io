@@ -19,7 +19,6 @@ import type { BaseContextProps, BaseNotifyType } from '@module-base/models';
 function BaseProvider(props: PropsWithChildren) {
     const [notify, setNotify] = React.useState<BaseNotifyType>(defaultNotify);
     const [openSider, setOpenSider] = React.useState(true);
-    const [openThreadInfo, setOpenThreadInfo] = React.useState(true);
 
     const toggleNotify = React.useCallback((options: BaseNotifyType = defaultNotify) => setNotify(options), []);
 
@@ -33,12 +32,8 @@ function BaseProvider(props: PropsWithChildren) {
                 open: openSider,
                 toggleSider: setOpenSider,
             },
-            messenger: {
-                openThreadInfo,
-                toggleThreadInfo: setOpenThreadInfo,
-            },
         }),
-        [notify, openSider, openThreadInfo]
+        [notify, openSider]
     );
 
     return (

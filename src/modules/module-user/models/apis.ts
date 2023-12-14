@@ -6,7 +6,7 @@
 
 /** types */
 import type { UserInfo } from '@firebase/auth';
-import type { CallApiPayloadType, ItemIdsType, ItemsType } from '@module-base/models';
+import type { CallApiPayloadType, TypeItemIds, TypeItems } from '@module-base/models';
 
 interface UserApiProps {
     Create: {
@@ -19,7 +19,7 @@ interface UserApiProps {
     };
     GetList: {
         Payload: CallApiPayloadType<{ limit?: number }>;
-        Response?: { itemIds: ItemIdsType; items: ItemsType<UserInfo> };
+        Response?: { itemIds: TypeItemIds; items: TypeItems<UserInfo> };
     };
 }
 

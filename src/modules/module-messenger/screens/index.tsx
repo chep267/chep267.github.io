@@ -6,9 +6,6 @@
 import * as React from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 
-/** components */
-import MessengerProvider from '@module-messenger/components/MessengerProvider';
-
 /** constants */
 import { SCREEN } from '@module-global/constants/screen';
 
@@ -21,19 +18,15 @@ const ConversationScreen = React.lazy(() => import('./ConversationScreen'));
 
 export default function MessengerRouter() {
     return (
-        <MessengerProvider>
-            <React.Suspense fallback={null}>
-                <Routes>
-                    <Route
-                        index
-                        element={
-                            <Navigate to={genPath(SCREEN.MESSENGER, SCREEN.MESSENGER_CONVERSATION.replace(':tid', '0'))} />
-                        }
-                    />
-                    <Route path={SCREEN.MESSENGER_CONVERSATION} element={<ConversationScreen />} />
-                    <Route path="*" element={<NotFoundScreen />} />
-                </Routes>
-            </React.Suspense>
-        </MessengerProvider>
+        <React.Suspense fallback={null}>
+            <Routes>
+                <Route
+                    index
+                    element={<Navigate to={genPath(SCREEN.MESSENGER, SCREEN.MESSENGER_CONVERSATION.replace(':tid', '0'))} />}
+                />
+                <Route path={SCREEN.MESSENGER_CONVERSATION} element={<ConversationScreen />} />
+                <Route path="*" element={<NotFoundScreen />} />
+            </Routes>
+        </React.Suspense>
     );
 }

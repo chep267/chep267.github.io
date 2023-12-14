@@ -12,8 +12,9 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 
 /** hooks */
 import { useLanguage } from '@module-language/hooks/useLanguage';
-import { MessengerContext } from '@module-messenger/hooks/useMessenger';
+import { MessengerContext, messengerDataDefault } from '@module-messenger/hooks/useMessenger';
 import { useListenListThread } from '@module-messenger/hooks/useListenListThread';
+import { useListenListMessage } from '@module-messenger/hooks/useListenListMessage';
 
 /** types */
 import type { PropsWithChildren } from 'react';
@@ -23,10 +24,12 @@ export default function MessengerProvider(props: PropsWithChildren) {
     const { children } = props;
     const { locale } = useLanguage();
     const LIST_THREAD = useListenListThread();
+    const LIST_MESSAGE = useListenListMessage();
 
-    const threadIds = LIST_THREAD.data.itemIds;
-    const threads = LIST_THREAD.data.items;
     const unsubscribe = LIST_THREAD.data.unsubscribe;
+
+    const [openThreadInfo, setOpenThreadInfo] = React.useState(true);
+    const [drafts, setDrafts] = React.useState(messengerDataDefault.ui.drafts);
 
     React.useEffect(() => {
         return () => {
@@ -34,25 +37,25 @@ export default function MessengerProvider(props: PropsWithChildren) {
         };
     }, [unsubscribe]);
 
-    const getThread = React.useCallback<MessengerContextProps['method']['getThread']>(
-        (id) => {
-            return id ? threads[id] : undefined;
-        },
-        [threads]
-    );
-
     const store = React.useMemo<MessengerContextProps>(
         () => ({
+            ui: {
+                openThreadInfo,
+                drafts,
+                loadingThread: LIST_THREAD.isLoading || LIST_THREAD.isFetching,
+                loadingMessage: LIST_MESSAGE.isLoading || LIST_MESSAGE.isFetching,
+            },
             data: {
-                threadIds,
-                threads,
-                loadingThread: LIST_THREAD.isLoading,
+                threadIds: LIST_THREAD.data.itemIds,
+                threads: LIST_THREAD.data.items,
+                allMessages: {},
             },
             method: {
-                getThread,
+                setDrafts,
+                setOpenThreadInfo,
             },
         }),
-        [threadIds, threads, LIST_THREAD.isLoading]
+        [LIST_THREAD, LIST_MESSAGE, openThreadInfo]
     );
 
     return (

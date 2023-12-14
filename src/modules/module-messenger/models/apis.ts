@@ -6,9 +6,9 @@
 
 /** types */
 import type { Unsubscribe } from '@firebase/firestore';
-import type { CallApiPayloadType, ItemIdsType, ItemsType } from '@module-base/models';
+import type { CallApiPayloadType, TypeItemIds, TypeItems } from '@module-base/models';
 
-type DocumentThreadDataType = {
+type DocumentTypeThreadData = {
     tid: string;
     name: string;
     type: 'thread' | 'group';
@@ -19,7 +19,7 @@ interface MessengerApiProps {
     GetListThread: {
         Payload: CallApiPayloadType<{
             uid: string;
-            fnCallback(data: { itemIds: ItemIdsType; items: ItemsType<any> }): void;
+            fnCallback(data: { itemIds: TypeItemIds; items: TypeItems<any> }): void;
         }>;
         Response?: { unsubscribe: Unsubscribe };
     };
@@ -27,7 +27,7 @@ interface MessengerApiProps {
         Payload: CallApiPayloadType<{
             uid: string;
             tid: string;
-            data: DocumentThreadDataType;
+            data: DocumentTypeThreadData;
         }>;
         Response?: void;
     };
@@ -40,4 +40,4 @@ interface MessengerApiProps {
     };
 }
 
-export type { MessengerApiProps, DocumentThreadDataType };
+export type { MessengerApiProps, DocumentTypeThreadData };

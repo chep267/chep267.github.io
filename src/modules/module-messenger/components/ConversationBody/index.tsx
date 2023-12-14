@@ -16,8 +16,7 @@ import ListBase from '@module-base/components/ListBase';
 import Message from '@module-messenger/components/Message';
 
 /** hooks */
-import { useBase } from '@module-base/hooks/useBase';
-import { useUser } from '@module-user/hooks/useUser';
+import { useMessenger } from '@module-messenger/hooks/useMessenger';
 
 /** styles */
 import useStyles from './styles';
@@ -25,25 +24,27 @@ import useStyles from './styles';
 export default function ConversationBody() {
     const classes = useStyles();
     const { tid } = useParams();
-    const user = useUser({ uid: tid });
+    const { data } = useMessenger();
 
-    const { messenger } = useBase();
+    const messengerData = tid ? data.allMessages[tid] : null;
 
-    const arr = Array.from({ length: 20 });
-
-    const renderItem = React.useCallback((mid: string, index: number) => {
-        return (
-            <ListItem key={index} className={classnames(classes.listItem)}>
-                <Message />
-            </ListItem>
-        );
-    }, []);
+    const renderItem = React.useCallback(
+        (_mid: string, index: number) => {
+            const message = tid ? messengerData?.messages[tid] : null;
+            return !message ? null : (
+                <ListItem key={index} className={classnames(classes.listItem)}>
+                    <Message />
+                </ListItem>
+            );
+        },
+        [messengerData, tid]
+    );
 
     return (
         <ListBase
             className={classnames(classes.body, 'messenger_left_thread_list_default')}
             loading={false}
-            data={arr}
+            data={messengerData?.messageIds}
             renderItem={renderItem}
         />
     );

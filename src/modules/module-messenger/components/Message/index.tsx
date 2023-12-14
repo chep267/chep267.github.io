@@ -11,7 +11,6 @@ import { Typography, Stack, IconButton } from '@mui/material';
 import { Info as InfoIcon, Call as CallIcon, Videocam as VideoCallIcon } from '@mui/icons-material';
 
 /** hooks */
-import { useBase } from '@module-base/hooks/useBase';
 import { useUser } from '@module-user/hooks/useUser';
 
 /** styles */
@@ -21,8 +20,6 @@ export default function Message() {
     const classes = useStyles();
     const { tid } = useParams();
     const user = useUser({ uid: tid });
-
-    const { messenger } = useBase();
 
     return (
         <Stack className={classes.header}>
@@ -34,7 +31,7 @@ export default function Message() {
                 <IconButton>
                     <VideoCallIcon color="primary" />
                 </IconButton>
-                <IconButton onClick={() => messenger.toggleThreadInfo((prev) => !prev)}>
+                <IconButton onClick={() => {}}>
                     <InfoIcon color="primary" />
                 </IconButton>
             </Stack>

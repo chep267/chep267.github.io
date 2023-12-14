@@ -4,5 +4,5 @@
  *
  */
 
-export type ItemIdsType = string[];
-export type ItemsType<T> = Record<string, T>;
+export type TypeItemIds = string[];
+export type TypeItems<T> = Record<string, T>;

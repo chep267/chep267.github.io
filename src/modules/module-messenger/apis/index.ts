@@ -16,8 +16,8 @@ import { debounce } from '@module-base/utils/helpers/debounce';
 import { firestore } from '@module-base/utils/firebase';
 
 /** types */
-import type { ItemIdsType, ItemsType } from '@module-base/models';
-import type { MessengerApiProps, ThreadDataType } from '@module-messenger/models';
+import type { TypeItemIds, TypeItems } from '@module-base/models';
+import type { MessengerApiProps, TypeThreadData } from '@module-messenger/models';
 
 const apiGetListThread = async (
     payload: MessengerApiProps['GetListThread']['Payload']
@@ -33,12 +33,12 @@ const apiGetListThread = async (
             MESSENGER_DB_THREAD_ID_REF
         );
         const unsubscribe = onSnapshot(query(docRef, limit(20)), (querySnapshot) => {
-            const itemIds: ItemIdsType = [];
-            const items: ItemsType<ThreadDataType> = {};
+            const itemIds: TypeItemIds = [];
+            const items: TypeItems<TypeThreadData> = {};
             querySnapshot.forEach((doc) => {
                 const tid = doc.id;
                 itemIds.unshift(tid);
-                items[tid] = doc.data() as ThreadDataType;
+                items[tid] = doc.data() as TypeThreadData;
             });
             fnCallback({ itemIds, items });
         });

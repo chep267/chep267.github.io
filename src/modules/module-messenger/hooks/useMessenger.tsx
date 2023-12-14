@@ -7,21 +7,34 @@
 import * as React from 'react';
 
 /** constants */
-import { emptyArray, emptyObject } from '@module-base/constants/defaultValue';
+import { emptyArray, emptyObject, emptyFunction } from '@module-base/constants/defaultValue';
 
 /** types */
 import type { ComponentType } from 'react';
 import type { MessengerContextProps } from '@module-messenger/models';
 
-const messengerDataDefault: MessengerContextProps['data'] = {
-    threadIds: emptyArray,
-    threads: emptyObject,
-    loadingThread: false,
+const messengerDataDefault: {
+    ui: MessengerContextProps['ui'];
+    data: MessengerContextProps['data'];
+} = {
+    ui: {
+        openThreadInfo: true,
+        drafts: emptyObject,
+        loadingThread: true,
+        loadingMessage: true,
+    },
+    data: {
+        threadIds: emptyArray,
+        threads: emptyObject,
+        allMessages: emptyObject,
+    },
 };
 const MessengerContext = React.createContext<MessengerContextProps>({
-    data: messengerDataDefault,
+    ui: messengerDataDefault.ui,
+    data: messengerDataDefault.data,
     method: {
-        getThread: () => undefined,
+        setOpenThreadInfo: emptyFunction,
+        setDrafts: emptyFunction,
     },
 });
 

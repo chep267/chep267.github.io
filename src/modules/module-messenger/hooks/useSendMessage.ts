@@ -21,7 +21,7 @@ import type { DocumentTypeThreadData } from '@module-messenger/models';
 
 type Props = { onSuccess?(tid: string): void };
 
-export function useCreateThread(props?: Props) {
+export function useSendMessage(props?: Props) {
     const { onSuccess } = props ?? {};
     const { me } = useAuth();
     const { notify } = useBase();
