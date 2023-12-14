@@ -5,17 +5,13 @@
  */
 
 import * as React from 'react';
-import classnames from 'classnames';
 
 /** lib components */
-import { Stack, Paper } from '@mui/material';
+import { Stack } from '@mui/material';
 
 /** components */
-import ThreadTitle from '@module-messenger/components/ThreadTitle';
-import ThreadContent from '@module-messenger/components/ThreadContent';
-import ConversationHeader from '@module-messenger/components/ConversationHeader';
-import ConversationBody from '@module-messenger/components/ConversationBody';
-import ConversationFooter from '@module-messenger/components/ConversationFooter';
+import ConversationLeft from './ConversationLeft';
+import ConversationCenter from './ConversationCenter';
 import ConversationRight from './ConversationRight';
 
 /** styles */
@@ -26,15 +22,8 @@ const ConversationScreen = React.memo(() => {
 
     return (
         <Stack className={classes.screen}>
-            <Paper className={classnames(classes.layoutDefault, classes.left)}>
-                <ThreadTitle />
-                <ThreadContent />
-            </Paper>
-            <Paper className={classnames(classes.layoutDefault, classes.center)}>
-                <ConversationHeader />
-                <ConversationBody />
-                <ConversationFooter />
-            </Paper>
+            <ConversationLeft />
+            <ConversationCenter />
             <ConversationRight />
         </Stack>
     );

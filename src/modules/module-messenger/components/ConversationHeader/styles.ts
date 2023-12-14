@@ -19,6 +19,9 @@ const useStyles = makeStyles(({ spacing, palette }) => ({
         minHeight: SCREEN_SIZE.MESSENGER_CENTER_HEADER_HEIGHT,
         maxHeight: SCREEN_SIZE.MESSENGER_CENTER_HEADER_HEIGHT,
     },
+    header_left: {
+        width: '100%',
+    },
     header_right: {
         flexDirection: 'row',
         alignItems: 'center',

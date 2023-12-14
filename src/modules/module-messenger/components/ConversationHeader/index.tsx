@@ -9,8 +9,8 @@ import { Stack, IconButton } from '@mui/material';
 import { Call as CallIcon, Videocam as VideoCallIcon } from '@mui/icons-material';
 
 /** components */
-import ThreadName from '@module-messenger/components/ConversationHeader/ThreadName';
-import IconThreadInfo from '@module-messenger/components/ConversationHeader/IconThreadInfo';
+import ConversationName from './ConversationName';
+import IconThreadInfo from './IconThreadInfo';
 
 /** styles */
 import useStyles from './styles';
@@ -20,7 +20,7 @@ export default function ConversationHeader() {
 
     return (
         <Stack className={classes.header}>
-            <ThreadName />
+            <ConversationName />
             <Stack className={classes.header_right}>
                 <IconButton>
                     <CallIcon color="primary" />

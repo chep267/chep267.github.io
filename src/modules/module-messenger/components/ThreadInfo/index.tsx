@@ -7,28 +7,21 @@
 import { useParams } from 'react-router-dom';
 
 /** lib components */
-import { Stack, Avatar, Typography } from '@mui/material';
-import { Image as ImageIcon } from '@mui/icons-material';
-
-/** hooks */
-import { useUser } from '@module-user/hooks/useUser';
+import { Stack } from '@mui/material';
 
 /** styles */
 import useStyles from './styles';
+import ThreadName from '@module-messenger/components/ThreadName';
+import ThreadAvatar from '@module-messenger/components/ThreadAvatar';
 
 export default function ThreadInfo() {
     const classes = useStyles();
     const { tid } = useParams();
-    const user = useUser({ uid: tid });
 
     return (
         <Stack className={classes.thread_info}>
-            <Avatar alt="avt" className={classes.avatar} src={user?.data?.photoURL || ''}>
-                <ImageIcon />
-            </Avatar>
-            <Typography variant="h6" pt={2}>
-                {user?.data?.displayName}
-            </Typography>
+            <ThreadAvatar className={classes.avatar} alt="avt" />
+            <ThreadName tid={tid} variant="h6" pt={2} />
         </Stack>
     );
 }
