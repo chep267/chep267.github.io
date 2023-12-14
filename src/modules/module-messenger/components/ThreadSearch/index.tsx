@@ -25,7 +25,7 @@ export default function ThreadSearch(props: ThreadSearchProps) {
     const classes = useStyles();
 
     return (
-        <Stack className={classnames(classes.listSearch, { [classes.listSearch_hidden]: !isFocusSearch })}>
+        <Stack className={classnames('.ThreadSearch', classes.listSearch, { [classes.listSearch_hidden]: !isFocusSearch })}>
             <IconButton onClick={() => setFocusSearch(false)}>
                 <WestIcon />
             </IconButton>

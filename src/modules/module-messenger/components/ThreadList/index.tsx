@@ -59,7 +59,9 @@ const ThreadList = React.memo(
                 return !threadData ? null : (
                     <ListItem
                         key={index}
-                        className={classnames(classes.listItem, { [classes.listItemSelected]: tid === currentTid })}
+                        className={classnames('.ThreadItem', classes.listItem, {
+                            [classes.listItemSelected]: tid === currentTid,
+                        })}
                         onClick={() => onClickItem(tid)}>
                         <ListItemAvatar>
                             <Avatar>

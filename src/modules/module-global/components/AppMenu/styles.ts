@@ -16,7 +16,9 @@ const useStyles = makeStyles(({ palette }) => ({
         flexShrink: 0,
         whiteSpace: 'nowrap',
         boxSizing: 'border-box',
+        transition: 'width 0.6s',
         '& .MuiDrawer-paper': {
+            transition: 'width 0.6s',
             top: SCREEN_SIZE.HEADER_HEIGHT,
             '&:hover': {
                 '&::-webkit-scrollbar-thumb': {
@@ -42,21 +44,17 @@ const useStyles = makeStyles(({ palette }) => ({
     },
     drawerOpen: {
         width: SCREEN_SIZE.APP_BAR_MAX_WIDTH,
-        transition: 'width 0.6s',
         overflowX: 'hidden',
         '& .MuiDrawer-paper': {
             width: SCREEN_SIZE.APP_BAR_MAX_WIDTH,
-            transition: 'width 0.6s',
             overflowX: 'hidden',
         },
     },
     drawerClose: {
         width: SCREEN_SIZE.APP_BAR_MIN_WIDTH,
-        transition: 'width 0.6s',
         overflowX: 'hidden',
         '& .MuiDrawer-paper': {
             width: SCREEN_SIZE.APP_BAR_MIN_WIDTH,
-            transition: 'width 0.6s',
             overflowX: 'hidden',
         },
     },

@@ -7,6 +7,7 @@
 import * as React from 'react';
 
 /** components */
+import { useMediaQuery } from '@mui/material';
 import ErrorBoundary from '@module-base/components/ErrorBoundary';
 
 /** utils */
@@ -17,11 +18,14 @@ import type { PropsWithChildren } from 'react';
 import type { BaseContextProps, BaseNotifyType } from '@module-base/models';
 
 function BaseProvider(props: PropsWithChildren) {
+    const matches = useMediaQuery('(max-width:720px)');
+
     const [notify, setNotify] = React.useState<BaseNotifyType>(defaultNotify);
     const [openSider, setOpenSider] = React.useState(true);
 
     const toggleNotify = React.useCallback((options: BaseNotifyType = defaultNotify) => setNotify(options), []);
 
+    const open = matches ? false : openSider;
     const store = React.useMemo<BaseContextProps>(
         () => ({
             notify: {
@@ -29,11 +33,11 @@ function BaseProvider(props: PropsWithChildren) {
                 toggleNotify,
             },
             sider: {
-                open: openSider,
+                open,
                 toggleSider: setOpenSider,
             },
         }),
-        [notify, openSider]
+        [notify, openSider, open]
     );
 
     return (

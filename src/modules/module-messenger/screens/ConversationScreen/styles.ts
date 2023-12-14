@@ -25,6 +25,7 @@ const useStyles = makeStyles(({ palette, breakpoints, zIndex }) => ({
         width: '100%',
         height: '100%',
         borderRadius: 0,
+        overflow: 'hidden',
     },
     left: {
         maxWidth: SCREEN_SIZE.MESSENGER_LEFT_RIGHT_MAX_WIDTH,
@@ -36,6 +37,17 @@ const useStyles = makeStyles(({ palette, breakpoints, zIndex }) => ({
         [breakpoints.down('md')]: {
             minWidth: SCREEN_SIZE.MESSENGER_LEFT_MIN_WIDTH,
             maxWidth: SCREEN_SIZE.MESSENGER_LEFT_MIN_WIDTH,
+            '& div[class*=".ThreadTitle"], div[class*=".ThreadSearch"]': {
+                position: 'absolute',
+                zIndex: -1,
+                visibility: 'hidden',
+            },
+            '& li[class*=".ThreadItem"]': {
+                '& > div:last-of-type, button': {
+                    visibility: 'hidden',
+                    width: 0,
+                },
+            },
         },
         [breakpoints.down('sm')]: {
             minWidth: 0,
@@ -53,19 +65,18 @@ const useStyles = makeStyles(({ palette, breakpoints, zIndex }) => ({
         borderLeft: `1px solid ${palette.divider}`,
         maxWidth: SCREEN_SIZE.MESSENGER_LEFT_RIGHT_MAX_WIDTH,
         transition: 'all 0.3s ease-in-out, height 0s',
-        [breakpoints.down('lg')]: {
-            position: 'absolute',
-            top: SCREEN_SIZE.HEADER_HEIGHT,
-            right: 10,
-            zIndex: zIndex.drawer,
-            border: '1px dashed red',
-            minWidth: SCREEN_SIZE.MESSENGER_LEFT_MEDIUM_WIDTH,
-            maxWidth: SCREEN_SIZE.MESSENGER_LEFT_MEDIUM_WIDTH,
-            height: `calc(100vh - ${SCREEN_SIZE.HEADER_HEIGHT * 2}px - 20px)`,
-        },
         [breakpoints.down('xl')]: {
             minWidth: SCREEN_SIZE.MESSENGER_LEFT_MEDIUM_WIDTH,
             maxWidth: SCREEN_SIZE.MESSENGER_LEFT_MEDIUM_WIDTH,
+        },
+        [breakpoints.down('lg')]: {
+            position: 'fixed',
+            top: SCREEN_SIZE.HEADER_HEIGHT + SCREEN_SIZE.MESSENGER_CENTER_HEADER_HEIGHT,
+            right: 0,
+            zIndex: zIndex.drawer,
+            minWidth: SCREEN_SIZE.MESSENGER_LEFT_MEDIUM_WIDTH,
+            maxWidth: SCREEN_SIZE.MESSENGER_LEFT_MEDIUM_WIDTH,
+            maxHeight: `calc(100% - ${SCREEN_SIZE.HEADER_HEIGHT + SCREEN_SIZE.MESSENGER_CENTER_HEADER_HEIGHT}px)`,
         },
     },
     center: {

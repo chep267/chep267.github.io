@@ -13,12 +13,13 @@ import { messengerMessage } from '@module-messenger/utils/messages';
 
 /** styles */
 import useStyles from './styles';
+import classnames from 'classnames';
 
 export default function ThreadTitle() {
     const classes = useStyles();
 
     return (
-        <Box className={classes.thread_title}>
+        <Box className={classnames('.ThreadTitle', classes.thread_title)}>
             <Typography variant="h5">
                 <FormattedMessage {...messengerMessage['module.messenger.component.thread.title']} />
             </Typography>

@@ -45,7 +45,10 @@ const ThreadListSearch = React.memo(
             (uid: string, index: number) => {
                 const user = items?.[uid];
                 return !user ? null : (
-                    <ListItem key={index} className={classnames(classes.listItem)} onClick={() => onClickItem(user)}>
+                    <ListItem
+                        key={index}
+                        className={classnames('.ThreadItem', classes.listItem)}
+                        onClick={() => onClickItem(user)}>
                         <ListItemAvatar>
                             <Avatar>
                                 <ImageIcon />

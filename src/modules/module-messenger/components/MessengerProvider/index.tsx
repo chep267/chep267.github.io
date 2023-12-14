@@ -6,12 +6,7 @@
 
 import * as React from 'react';
 
-/** lib components */
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-
 /** hooks */
-import { useLanguage } from '@module-language/hooks/useLanguage';
 import { MessengerContext, messengerDataDefault } from '@module-messenger/hooks/useMessenger';
 import { useListenListThread } from '@module-messenger/hooks/useListenListThread';
 import { useListenListMessage } from '@module-messenger/hooks/useListenListMessage';
@@ -22,7 +17,6 @@ import type { MessengerContextProps } from '@module-messenger/models';
 
 export default function MessengerProvider(props: PropsWithChildren) {
     const { children } = props;
-    const { locale } = useLanguage();
     const LIST_THREAD = useListenListThread();
     const LIST_MESSAGE = useListenListMessage();
 
@@ -58,11 +52,5 @@ export default function MessengerProvider(props: PropsWithChildren) {
         [LIST_THREAD, LIST_MESSAGE, openThreadInfo]
     );
 
-    return (
-        <MessengerContext.Provider value={store}>
-            <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale={locale}>
-                {children}
-            </LocalizationProvider>
-        </MessengerContext.Provider>
-    );
+    return <MessengerContext.Provider value={store}>{children}</MessengerContext.Provider>;
 }
