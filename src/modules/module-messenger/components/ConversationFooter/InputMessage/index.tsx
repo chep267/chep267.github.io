@@ -8,8 +8,10 @@ import * as React from 'react';
 import { useParams } from 'react-router-dom';
 
 /** lib components */
-import { IconButton, InputAdornment, TextField } from '@mui/material';
-import { EmojiEmotions as EmojiEmotionsIcon } from '@mui/icons-material';
+import { InputAdornment, TextField } from '@mui/material';
+
+/** components */
+import ButtonChooseEmoji from '../ButtonChooseEmoji';
 
 /** utils */
 import { focusInput } from '@module-base/utils/helpers/focusInput';
@@ -62,9 +64,7 @@ export default function InputMessage() {
         return {
             endAdornment: (
                 <InputAdornment position="end" className={classes.endAdornment}>
-                    <IconButton>
-                        <EmojiEmotionsIcon color="primary" />
-                    </IconButton>
+                    <ButtonChooseEmoji />
                 </InputAdornment>
             ),
         };
