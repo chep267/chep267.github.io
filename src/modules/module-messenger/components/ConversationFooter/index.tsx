@@ -32,10 +32,10 @@ export default function ConversationFooter() {
     return (
         <Stack className={classes.footer}>
             <Stack className={classnames(classes.footer_left, { [classes.footer_left_hidden]: text })}>
-                <IconButton>
+                <IconButton onClick={() => {}}>
                     <PhotoIcon color="primary" />
                 </IconButton>
-                <IconButton onClick={() => messenger.toggleThreadInfo((prev) => !prev)}>
+                <IconButton onClick={() => {}}>
                     <MicIcon color="primary" />
                 </IconButton>
             </Stack>
