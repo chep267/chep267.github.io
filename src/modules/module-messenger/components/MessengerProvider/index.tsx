@@ -6,10 +6,11 @@
 
 import * as React from 'react';
 
+/** constants */
+import { emptyObject } from '@module-base/constants/defaultValue';
+
 /** hooks */
-import { MessengerContext, messengerDataDefault } from '@module-messenger/hooks/useMessenger';
-import { useListenListThread } from '@module-messenger/hooks/useListenListThread';
-import { useListenListMessage } from '@module-messenger/hooks/useListenListMessage';
+import { MessengerContext } from '@module-messenger/hooks/useMessenger';
 
 /** types */
 import type { PropsWithChildren } from 'react';
@@ -17,39 +18,22 @@ import type { MessengerContextProps } from '@module-messenger/models';
 
 export default function MessengerProvider(props: PropsWithChildren) {
     const { children } = props;
-    const LIST_THREAD = useListenListThread();
-    const LIST_MESSAGE = useListenListMessage();
-
-    const unsubscribe = LIST_THREAD.data.unsubscribe;
 
     const [openThreadInfo, setOpenThreadInfo] = React.useState(true);
-    const [drafts, setDrafts] = React.useState(messengerDataDefault.ui.drafts);
-
-    React.useEffect(() => {
-        return () => {
-            unsubscribe?.();
-        };
-    }, [unsubscribe]);
+    const [drafts, setDrafts] = React.useState<MessengerContextProps['ui']['drafts']>(emptyObject);
 
     const store = React.useMemo<MessengerContextProps>(
         () => ({
             ui: {
                 openThreadInfo,
                 drafts,
-                loadingThread: LIST_THREAD.isLoading || LIST_THREAD.isFetching,
-                loadingMessage: LIST_MESSAGE.isLoading || LIST_MESSAGE.isFetching,
-            },
-            data: {
-                threadIds: LIST_THREAD.data.itemIds,
-                threads: LIST_THREAD.data.items,
-                allMessages: {},
             },
             method: {
                 setDrafts,
                 setOpenThreadInfo,
             },
         }),
-        [LIST_THREAD, LIST_MESSAGE, openThreadInfo]
+        [drafts, openThreadInfo]
     );
 
     return <MessengerContext.Provider value={store}>{children}</MessengerContext.Provider>;

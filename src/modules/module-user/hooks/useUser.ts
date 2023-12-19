@@ -4,6 +4,9 @@
  *
  */
 
+/** utils */
+import { checkUid } from '@module-user/utils/helpers/checkUid';
+
 /** hooks */
 import { useListUser } from '@module-user/hooks/useListUser';
 
@@ -15,7 +18,8 @@ type UseUserProps = {
 };
 
 export function useUser(props: UseUserProps) {
-    const { uid } = props;
+    const { uid: Uid } = props;
+    const uid = checkUid(Uid);
     const LIST_USER = useListUser();
 
     return {

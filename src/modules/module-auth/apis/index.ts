@@ -25,6 +25,7 @@ import { debounce } from '@module-base/utils/helpers/debounce';
 
 /** types */
 import type { AuthApiProps } from '@module-auth/models';
+import { checkUid } from '@module-user/utils/helpers/checkUid.ts';
 
 const authentication = getAuth(firebaseApp);
 
@@ -32,10 +33,11 @@ const apiSignIn = async (payload: AuthApiProps['SignIn']['Payload']): Promise<Au
     const { timer = TIMING_API_PENDING, email, password } = payload;
     const [response] = await Promise.all([signInWithEmailAndPassword(authentication, email, password), debounce(timer)]);
     if (response?.user) {
-        let user = await apiGetUser({ uid: response.user.uid, timer: 0 });
+        const uid = checkUid(response.user.uid);
+        let user = await apiGetUser({ uid, timer: 0 });
         if (!user) {
             user = {
-                uid: response.user.uid,
+                uid,
                 email: response.user.email || email,
                 displayName: response.user.displayName || email.slice(0, email.indexOf('@')),
                 providerId: response.user.providerId,

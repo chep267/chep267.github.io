@@ -8,18 +8,21 @@ import { useQuery, useQueryClient } from '@tanstack/react-query';
 
 /** apis */
 import { apiGetListUser } from '@module-user/apis';
+import { useAuth } from '@module-auth/hooks/useAuth.tsx';
 
 /** types */
 
 export function useListUser() {
     const queryClient = useQueryClient();
-    const data = queryClient.getQueryData(['useListUser']);
+    const { me } = useAuth();
+    const uid = `${me?.uid}`;
+    const data = queryClient.getQueryData(['useListUser', { uid }]);
 
     return useQuery({
-        queryKey: ['useListUser'],
+        queryKey: ['useListUser', { uid }],
         queryFn: () => apiGetListUser({}),
         refetchOnWindowFocus: false,
         refetchOnMount: false,
-        enabled: !data,
+        enabled: !!uid && !data,
     });
 }

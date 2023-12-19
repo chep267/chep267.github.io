@@ -15,6 +15,7 @@ const useStyles = makeStyles(({ spacing, palette, typography }) => ({
         width: '100%',
         height: '100%',
         padding: `${spacing(3)} ${spacing(2)}`,
+        scrollBehavior: 'smooth',
     },
     listItem: {
         '& .MuiListItemText-primary': {

@@ -10,7 +10,7 @@ const useStyles = makeStyles(({ spacing }) => ({
     thread_title: {
         width: '100%',
         alignItems: 'flex-start',
-        padding: `${spacing(3)} ${spacing(2)}`,
+        padding: `20px ${spacing(2)}`,
     },
 }));
 

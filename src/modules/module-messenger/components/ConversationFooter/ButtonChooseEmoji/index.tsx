@@ -5,12 +5,13 @@
  */
 
 import * as React from 'react';
-import data from '@emoji-mart/data';
-import Picker from '@emoji-mart/react';
 
 /** lib components */
 import { IconButton, Popover, Tooltip } from '@mui/material';
 import { EmojiEmotions as EmojiEmotionsIcon } from '@mui/icons-material';
+
+/** components */
+import EmojiPicker from '@module-messenger/components/EmojiPicker';
 
 /** styles */
 import useStyles from './styles';
@@ -50,7 +51,7 @@ export default function ButtonChooseEmoji() {
                     vertical: 'bottom',
                     horizontal: 'center',
                 }}>
-                <Picker data={data} onEmojiSelect={console.log} />
+                <EmojiPicker />
             </Popover>
         </>
     );

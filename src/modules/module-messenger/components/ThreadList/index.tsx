@@ -22,7 +22,7 @@ import { SCREEN } from '@module-global/constants/screen';
 import { genPath } from '@module-base/utils/helpers/genPath';
 
 /** hooks */
-import { useMessenger } from '@module-messenger/hooks/useMessenger';
+import { useListenListThread } from '@module-messenger/hooks/useListenListThread';
 
 /** styles */
 import useStyles from './styles';
@@ -32,12 +32,9 @@ const ThreadList = React.memo(
         const navigate = useNavigate();
         const { tid: currentTid } = useParams();
         const classes = useStyles();
-        const {
-            ui: { loadingThread },
-            data: { threadIds, threads },
-        } = useMessenger();
+        const LIST_THREAD = useListenListThread();
 
-        const firstId = threadIds[0];
+        const firstId = LIST_THREAD.data.itemIds[0];
 
         React.useEffect(() => {
             if (firstId && (!currentTid || currentTid === '0')) {
@@ -55,7 +52,7 @@ const ThreadList = React.memo(
 
         const renderItem = React.useCallback(
             (tid: string, index: number) => {
-                const threadData = threads[tid];
+                const threadData = LIST_THREAD.data.items[tid];
                 return !threadData ? null : (
                     <ListItem
                         key={index}
@@ -75,14 +72,14 @@ const ThreadList = React.memo(
                     </ListItem>
                 );
             },
-            [currentTid, threads]
+            [currentTid, LIST_THREAD.data.items]
         );
 
         return (
             <ListBase
                 className={classnames(classes.list, 'messenger_left_thread_list_default')}
-                loading={loadingThread}
-                data={threadIds}
+                loading={LIST_THREAD.isFetching}
+                data={LIST_THREAD.data.itemIds}
                 renderItem={renderItem}
             />
         );

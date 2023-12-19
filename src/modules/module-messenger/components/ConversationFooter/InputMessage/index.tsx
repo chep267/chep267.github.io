@@ -17,7 +17,6 @@ import ButtonChooseEmoji from '../ButtonChooseEmoji';
 import { focusInput } from '@module-base/utils/helpers/focusInput';
 
 /** hooks */
-import { useSendMessage } from '@module-messenger/hooks/useSendMessage';
 import { useMessenger } from '@module-messenger/hooks/useMessenger';
 
 /** styles */
@@ -29,9 +28,6 @@ import type { TypeMessage } from '@module-messenger/models';
 export default function InputMessage() {
     const { tid } = useParams();
     const classes = useStyles();
-    // @ts-ignore
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const SEND_MESSAGE = useSendMessage();
     const { ui, method } = useMessenger();
 
     const inputRef = React.useRef<HTMLInputElement>(null);
@@ -44,7 +40,7 @@ export default function InputMessage() {
             setText(draft?.text || '');
         }
         focusInput(inputRef.current);
-    }, [tid]);
+    }, [tid, draft]);
 
     /** effect change text */
     React.useEffect(() => {
@@ -63,7 +59,7 @@ export default function InputMessage() {
     const InputProps = React.useMemo(() => {
         return {
             endAdornment: (
-                <InputAdornment position="end" className={classes.endAdornment}>
+                <InputAdornment position="end">
                     <ButtonChooseEmoji />
                 </InputAdornment>
             ),
@@ -73,6 +69,7 @@ export default function InputMessage() {
     return (
         <TextField
             inputRef={inputRef}
+            className={classes.input}
             placeholder="Aa"
             size="small"
             multiline

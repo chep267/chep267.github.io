@@ -19,8 +19,8 @@ import useStyles from './styles';
 /** types */
 import type { ListBaseProps } from '@module-base/models';
 
-const ListBase = React.memo(function <T>(props: ListBaseProps<T>) {
-    const { data, renderItem, className, loading, emptyText, ...listProps } = props;
+const ListBase = React.memo(function <T>(props: ListBaseProps<T> & { listRef?: ListBaseProps<T>['ref'] }) {
+    const { listRef, data, renderItem, className, loading, emptyText, ...listProps } = props;
     const classes = useStyles();
 
     const renderList = React.useMemo(() => {
@@ -28,7 +28,7 @@ const ListBase = React.memo(function <T>(props: ListBaseProps<T>) {
     }, [data, renderItem]);
 
     return (
-        <List className={classnames(classes.list, className)} {...listProps}>
+        <List ref={listRef} className={classnames(classes.list, className)} {...listProps}>
             <ListLoading loading={loading} empty={!data?.length} emptyText={emptyText} />
             {renderList}
         </List>

@@ -4,7 +4,4 @@
  *
  */
 
-export const USER_DB_ROOT_REF = 'user';
-
-export const USER_DB_USER_ID_REF = 'user_id';
-export const USER_DB_THREAD_ID_REF = 'thread_id';
+export const USER_DB_ROOT_REF = 'users';

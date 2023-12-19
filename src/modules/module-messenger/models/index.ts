@@ -6,8 +6,7 @@
 
 /** types */
 import type { Dispatch, SetStateAction } from 'react';
-import type { TypeItemIds, TypeItems } from '@module-base/models';
-// import type { UserInfo } from '@firebase/auth';
+import type { TypeItems } from '@module-base/models';
 
 export * from './apis';
 
@@ -24,16 +23,6 @@ export type MessengerContextProps = {
     ui: {
         openThreadInfo: boolean;
         drafts: TypeItems<TypeMessage>;
-        loadingThread: boolean;
-        loadingMessage: boolean;
-    };
-    data: {
-        threadIds: TypeItemIds;
-        threads: TypeItems<TypeThreadData>;
-        allMessages: TypeItems<{
-            messageIds: TypeItemIds;
-            messages: TypeItems<TypeMessage>;
-        }>;
     };
     method: {
         setOpenThreadInfo: Dispatch<SetStateAction<boolean>>;

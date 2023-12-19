@@ -7,15 +7,29 @@
 /** lib components */
 import { Skeleton, Typography } from '@mui/material';
 
-/** hooks */
-import { useUser } from '@module-user/hooks/useUser';
+/** components */
+import UserName from '@module-user/components/UserName';
+
+/** utils */
+import { checkUid } from '@module-user/utils/helpers/checkUid';
 
 /** types */
 import type { TypographyProps } from '@mui/material';
+import type { UserInfo } from '@firebase/auth';
 
-export default function ThreadName(props: TypographyProps & { tid?: string }) {
-    const { tid, ...textProps } = props;
-    const user = useUser({ uid: tid });
+type ThreadNameProps = TypographyProps & { tid?: UserInfo['uid']; name?: UserInfo['displayName'] };
 
-    return <Typography {...textProps}>{user?.data?.displayName || <Skeleton width={100} />}</Typography>;
+export default function ThreadName(props: ThreadNameProps) {
+    const { tid, name, ...otherProps } = props;
+
+    if (!name && !tid) {
+        return (
+            <Typography {...otherProps}>
+                <Skeleton width={100} />
+            </Typography>
+        );
+    }
+
+    const uid = checkUid(tid);
+    return <UserName uid={uid} name={name} {...otherProps} />;
 }

@@ -16,7 +16,7 @@ import ListBase from '@module-base/components/ListBase';
 import Message from '@module-messenger/components/Message';
 
 /** hooks */
-import { useMessenger } from '@module-messenger/hooks/useMessenger';
+import { useListenListMessage } from '@module-messenger/hooks/useListenListMessage';
 
 /** styles */
 import useStyles from './styles';
@@ -24,27 +24,33 @@ import useStyles from './styles';
 export default function ConversationBody() {
     const classes = useStyles();
     const { tid } = useParams();
-    const { data } = useMessenger();
+    const LIST_MESSAGE = useListenListMessage({ tid });
+    const listRef = React.useRef<HTMLUListElement>(null);
 
-    const messengerData = tid ? data.allMessages[tid] : null;
+    React.useEffect(() => {
+        if (listRef.current) {
+            listRef.current.scrollTop = listRef.current.scrollHeight;
+        }
+    }, [LIST_MESSAGE.data.itemIds, listRef.current]);
 
     const renderItem = React.useCallback(
-        (_mid: string, index: number) => {
-            const message = tid ? messengerData?.messages[tid] : null;
+        (mid: string, index: number) => {
+            const message = LIST_MESSAGE.data.items[mid];
             return !message ? null : (
                 <ListItem key={index} className={classnames(classes.listItem)}>
-                    <Message />
+                    <Message data={message} />
                 </ListItem>
             );
         },
-        [messengerData, tid]
+        [LIST_MESSAGE.data.itemIds, tid]
     );
 
     return (
         <ListBase
+            listRef={listRef}
             className={classnames(classes.body, 'messenger_left_thread_list_default')}
-            loading={false}
-            data={messengerData?.messageIds}
+            loading={LIST_MESSAGE.isFetching}
+            data={LIST_MESSAGE.data.itemIds}
             renderItem={renderItem}
         />
     );

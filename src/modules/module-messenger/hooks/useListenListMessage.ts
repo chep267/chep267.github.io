@@ -8,34 +8,51 @@ import * as React from 'react';
 import { useQuery } from '@tanstack/react-query';
 
 /** apis */
-import { apiGetListThread } from '@module-messenger/apis';
+import { apiOnGetListMessage } from '@module-messenger/apis/Message';
+
+/** constants */
+import { emptyArray, emptyObject } from '@module-base/constants/defaultValue';
 
 /** hooks */
 import { useAuth } from '@module-auth/hooks/useAuth';
-import { messengerDataDefault } from '@module-messenger/hooks/useMessenger';
 
-export function useListenListMessage() {
+/** types */
+import type { TypeItemIds, TypeItems } from '@module-base/models';
+import type { TypeMessage } from '@module-messenger/models';
+
+export function useListenListMessage({ tid }: { tid?: string }) {
     const { me } = useAuth();
-    const [itemIds, setItemIds] = React.useState(messengerDataDefault.data.threadIds);
-    const [items, setItems] = React.useState(messengerDataDefault.data.threads);
+    const [itemIds, setItemIds] = React.useState<TypeItemIds>(emptyArray);
+    const [items, setItems] = React.useState<TypeItems<TypeMessage>>(emptyObject);
+    const uid = `${me?.uid}`;
 
     const LIST_MESSAGE = useQuery({
-        queryKey: ['useListenListMessage'],
+        queryKey: ['useListenListMessage', { tid }],
         queryFn: () => {
-            return apiGetListThread({
-                uid: me!.uid,
+            return apiOnGetListMessage({
+                tid: `${tid}`,
+                uid,
                 fnCallback: (data) => {
                     setItemIds(data.itemIds);
                     setItems(data.items);
                 },
             });
         },
-        enabled: !!me?.uid,
+        enabled: false,
         refetchOnWindowFocus: false,
     });
 
+    React.useEffect(() => {
+        if (uid && tid) {
+            LIST_MESSAGE.refetch().then();
+        }
+        return () => {
+            LIST_MESSAGE.data?.unsubscribe?.();
+        };
+    }, [uid, tid]);
+
     return {
         ...LIST_MESSAGE,
-        data: { itemIds, items, unsubscribe: LIST_MESSAGE.data?.unsubscribe },
+        data: { itemIds, items },
     };
 }

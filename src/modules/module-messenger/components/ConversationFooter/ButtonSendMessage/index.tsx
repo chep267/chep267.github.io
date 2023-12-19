@@ -22,15 +22,24 @@ export default function ButtonSendMessage() {
     const { tid } = useParams();
     const classes = useStyles();
 
-    // @ts-ignore
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const SEND_MESSAGE = useSendMessage();
 
-    const { ui } = useMessenger();
+    const { ui, method } = useMessenger();
     const draft = tid ? ui.drafts[tid] : null;
 
     const onSend = () => {
-        // do
+        tid &&
+            SEND_MESSAGE.mutate(
+                { tid, draft },
+                {
+                    onSuccess: () => {
+                        method.setDrafts({});
+                    },
+                    onError: () => {
+                        method.setDrafts({});
+                    },
+                }
+            );
     };
 
     return (

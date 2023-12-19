@@ -4,37 +4,44 @@
  *
  */
 
-import { useMutation } from '@tanstack/react-query';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 
 /** apis */
-import { apiCreateThread } from '@module-messenger/apis';
+import { apiCreateMessage } from '@module-messenger/apis/Message';
 
 /** utils */
 import { baseMessage } from '@module-base/utils/messages';
+import { genMessage } from '@module-messenger/utils/helpers/genMessage';
 
 /** hooks */
 import { useBase } from '@module-base/hooks/useBase';
 import { useAuth } from '@module-auth/hooks/useAuth';
+import { useCreateThread } from '@module-messenger/hooks/useCreateThread';
 
-/** types */
-import type { DocumentTypeThreadData } from '@module-messenger/models';
-
-type Props = { onSuccess?(tid: string): void };
-
-export function useSendMessage(props?: Props) {
-    const { onSuccess } = props ?? {};
+export function useSendMessage() {
+    const queryClient = useQueryClient();
     const { me } = useAuth();
     const { notify } = useBase();
+    const CREATE_THREAD = useCreateThread();
+    const uid = `${me?.uid}`;
+
+    const LIST_THREAD: any = queryClient.getQueryData(['useListThread', { uid }]);
 
     return useMutation({
-        mutationFn: ({ tid, name, type, members }: DocumentTypeThreadData) => {
-            return apiCreateThread({
-                uid: me!.uid,
+        mutationFn: ({ tid, draft }: { tid: string; draft: any }) => {
+            const data = genMessage({ tid, uid, ...draft });
+            return apiCreateMessage({
+                uid,
                 tid,
-                data: { tid, name, type, members },
+                mid: data.mid,
+                data,
             });
         },
-        onSuccess: (_data, variables) => onSuccess?.(variables.tid),
+        onSuccess: (_data, { tid }) => {
+            if (!LIST_THREAD?.itemIds?.includes?.(tid)) {
+                CREATE_THREAD.mutate({ tid });
+            }
+        },
         onError: () => {
             notify.toggleNotify({
                 open: true,

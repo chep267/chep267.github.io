@@ -7,8 +7,10 @@
 import makeStyles from '@mui/styles/makeStyles';
 
 const useStyles = makeStyles({
-    endAdornment: {
-        marginBottom: 12,
+    input: {
+        '& .MuiInputAdornment-root': {
+            marginBottom: 12,
+        },
     },
 });
 

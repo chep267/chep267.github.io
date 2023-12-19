@@ -20,7 +20,7 @@ export default function ThreadInfo() {
 
     return (
         <Stack className={classes.thread_info}>
-            <ThreadAvatar className={classes.avatar} alt="avt" />
+            <ThreadAvatar tid={tid} className={classes.avatar} />
             <ThreadName tid={tid} variant="h6" pt={2} />
         </Stack>
     );

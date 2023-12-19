@@ -5,37 +5,61 @@
  */
 
 import * as React from 'react';
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
 
 /** apis */
-import { apiGetListThread } from '@module-messenger/apis';
+import { apiOnGetListThread } from '@module-messenger/apis';
+
+/** constants */
+import { emptyArray, emptyObject } from '@module-base/constants/defaultValue';
 
 /** hooks */
 import { useAuth } from '@module-auth/hooks/useAuth';
-import { messengerDataDefault } from '@module-messenger/hooks/useMessenger';
+
+/** types */
+import type { TypeItemIds, TypeItems } from '@module-base/models';
+import type { TypeThreadData } from '@module-messenger/models';
 
 export function useListenListThread() {
+    const queryClient = useQueryClient();
     const { me } = useAuth();
-    const [itemIds, setItemIds] = React.useState(messengerDataDefault.data.threadIds);
-    const [items, setItems] = React.useState(messengerDataDefault.data.threads);
+    const [itemIds, setItemIds] = React.useState<TypeItemIds>(emptyArray);
+    const [items, setItems] = React.useState<TypeItems<TypeThreadData>>(emptyObject);
+    const uid = `${me?.uid}`;
 
     const LIST_THREAD = useQuery({
-        queryKey: ['useListenListThread', { uid: me?.uid }],
+        queryKey: ['useListenListThread', { uid }],
         queryFn: () => {
-            return apiGetListThread({
-                uid: me!.uid,
+            return apiOnGetListThread({
+                uid,
                 fnCallback: (data) => {
                     setItemIds(data.itemIds);
                     setItems(data.items);
                 },
             });
         },
-        enabled: !!me?.uid,
+        enabled: false,
         refetchOnWindowFocus: false,
     });
 
+    React.useEffect(() => {
+        if (uid) {
+            LIST_THREAD.refetch().then();
+        }
+        return () => {
+            LIST_THREAD.data?.unsubscribe?.();
+        };
+    }, [uid]);
+
+    React.useEffect(() => {
+        queryClient.setQueryData(['useListThread', { uid }], {
+            itemIds,
+            items,
+        });
+    }, [itemIds, items]);
+
     return {
         ...LIST_THREAD,
-        data: { itemIds, items, unsubscribe: LIST_THREAD.data?.unsubscribe },
+        data: { itemIds, items },
     };
 }

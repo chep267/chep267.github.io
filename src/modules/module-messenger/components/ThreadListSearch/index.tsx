@@ -9,17 +9,19 @@ import classnames from 'classnames';
 import { useNavigate } from 'react-router-dom';
 
 /** lib components */
-import { ListItem, ListItemText, ListItemAvatar, Avatar } from '@mui/material';
-import { Image as ImageIcon } from '@mui/icons-material';
+import { ListItem, ListItemText, ListItemAvatar } from '@mui/material';
 
 /** components */
 import ListBase from '@module-base/components/ListBase';
+import ThreadAvatar from '@module-messenger/components/ThreadAvatar';
+import ThreadName from '@module-messenger/components/ThreadName';
 
 /** constants */
 import { SCREEN } from '@module-global/constants/screen';
 
 /** utils */
 import { genPath } from '@module-base/utils/helpers/genPath';
+import { checkTid } from '@module-messenger/utils/helpers/checkTid';
 
 /** hooks */
 import { useListUser } from '@module-user/hooks/useListUser';
@@ -37,24 +39,23 @@ const ThreadListSearch = React.memo(
         const LIST_USER = useListUser();
         const { itemIds, items } = LIST_USER.data ?? {};
 
-        const onClickItem = React.useCallback((user: UserInfo) => {
-            navigate(genPath(SCREEN.MESSENGER, SCREEN.MESSENGER_CONVERSATION.replace(':tid', `${user.uid}`)));
+        const onClickItem = React.useCallback((uid: UserInfo['uid']) => {
+            const tid = checkTid(uid);
+            navigate(genPath(SCREEN.MESSENGER, SCREEN.MESSENGER_CONVERSATION.replace(':tid', tid)));
         }, []);
 
         const renderItem = React.useCallback(
-            (uid: string, index: number) => {
+            (uid: UserInfo['uid']) => {
                 const user = items?.[uid];
                 return !user ? null : (
                     <ListItem
-                        key={index}
+                        key={uid}
                         className={classnames('.ThreadItem', classes.listItem)}
-                        onClick={() => onClickItem(user)}>
+                        onClick={() => onClickItem(uid)}>
                         <ListItemAvatar>
-                            <Avatar>
-                                <ImageIcon />
-                            </Avatar>
+                            <ThreadAvatar tid={uid} src={user.photoURL || undefined} alt={user.displayName || undefined} />
                         </ListItemAvatar>
-                        <ListItemText primary={user.displayName} />
+                        <ListItemText primary={<ThreadName tid={uid} name={user.displayName} />} />
                     </ListItem>
                 );
             },

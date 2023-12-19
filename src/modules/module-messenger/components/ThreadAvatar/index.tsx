@@ -7,19 +7,29 @@
 /** lib components */
 import { Avatar, Skeleton } from '@mui/material';
 
-/** hooks */
-import { useUser } from '@module-user/hooks/useUser';
+/** components */
+import UserAvatar from '@module-user/components/UserAvatar';
+
+/** utils */
+import { checkUid } from '@module-user/utils/helpers/checkUid';
 
 /** types */
 import type { AvatarProps } from '@mui/material';
+import type { UserInfo } from '@firebase/auth';
 
-export default function ThreadAvatar(props: AvatarProps & { tid?: string }) {
-    const { tid, ...otherProps } = props;
-    const user = useUser({ uid: tid });
-    const src = user?.data?.displayName || undefined;
+type ThreadAvatarProps = AvatarProps & { tid?: UserInfo['uid'] };
 
-    if (!src) {
-        return <Skeleton variant="circular" className={otherProps.className} />;
+export default function ThreadAvatar(props: ThreadAvatarProps) {
+    const { tid, src, ...otherProps } = props;
+
+    if (!src && !tid) {
+        return (
+            <Skeleton variant="circular">
+                <Avatar className={otherProps.className} />
+            </Skeleton>
+        );
     }
-    return <Avatar alt="avt" src={src} {...otherProps} />;
+
+    const uid = checkUid(tid);
+    return <UserAvatar uid={uid} src={src} {...otherProps} />;
 }
