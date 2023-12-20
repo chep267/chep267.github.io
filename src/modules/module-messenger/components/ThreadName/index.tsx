@@ -10,6 +10,9 @@ import { Skeleton, Typography } from '@mui/material';
 /** components */
 import UserName from '@module-user/components/UserName';
 
+/** constants */
+import { MESSENGER_CHAT_BOT_AI_ID, MESSENGER_CHAT_BOT_AI_NAME } from '@module-messenger/constants/ref';
+
 /** utils */
 import { checkUid } from '@module-user/utils/helpers/checkUid';
 
@@ -21,6 +24,10 @@ type ThreadNameProps = TypographyProps & { tid?: UserInfo['uid']; name?: UserInf
 
 export default function ThreadName(props: ThreadNameProps) {
     const { tid, name, ...otherProps } = props;
+
+    if (tid === MESSENGER_CHAT_BOT_AI_ID) {
+        return <Typography {...otherProps}>{MESSENGER_CHAT_BOT_AI_NAME}</Typography>;
+    }
 
     if (!name && !tid) {
         return (

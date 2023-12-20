@@ -53,13 +53,6 @@ const useStyles = makeStyles(({ palette, breakpoints, zIndex }) => ({
             minWidth: 0,
             maxWidth: 0,
         },
-        '&:hover > ul[class*="list"]': {
-            overflow: 'hidden',
-            height: 0,
-            padding: 0,
-            margin: 0,
-            borderRadius: '50%',
-        },
     },
     right: {
         borderLeft: `1px solid ${palette.divider}`,

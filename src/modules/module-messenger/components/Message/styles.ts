@@ -7,19 +7,34 @@
 import makeStyles from '@mui/styles/makeStyles';
 
 const useStyles = makeStyles(({ spacing, palette }) => ({
-    header: {
+    message_view: {
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
         width: '100%',
-        padding: `${spacing(3)} ${spacing(2)}`,
-        borderBottom: `1px solid ${palette.divider}`,
     },
-    header_right: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        gap: spacing(1),
+    partnerView: {
+        justifyContent: 'flex-start',
+    },
+    meView: {
+        justifyContent: 'flex-end',
+    },
+    partnerMessage: {
+        textAlign: 'left',
+        justifyContent: 'flex-start',
+    },
+    meMessage: {
+        justifyContent: 'flex-end',
+        backgroundColor: palette.primary.main,
+    },
+    message: {
+        width: 'auto',
+        maxWidth: '70%',
+        padding: `5px ${spacing(2)}`,
+        border: `1px solid ${palette.divider}`,
+        borderRadius: 20,
+        wordBreak: 'break-word',
+        whiteSpace: 'pre-wrap',
     },
 }));
 

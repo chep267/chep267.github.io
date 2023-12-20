@@ -23,7 +23,7 @@ import { useMessenger } from '@module-messenger/hooks/useMessenger';
 import useStyles from './styles';
 
 /** type */
-import type { TypeMessage } from '@module-messenger/models';
+import type { TypeDocumentMessageData } from '@module-messenger/models';
 
 export default function InputMessage() {
     const { tid } = useParams();
@@ -45,7 +45,7 @@ export default function InputMessage() {
     /** effect change text */
     React.useEffect(() => {
         if (tid && text !== draft?.text) {
-            const message: TypeMessage = {
+            const message: Pick<TypeDocumentMessageData, 'text'> = {
                 text,
             };
             method.setDrafts((prev) => ({ ...prev, [tid]: message }));

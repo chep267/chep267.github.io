@@ -14,14 +14,14 @@ const useStyles = makeStyles({
         width: '100%',
         height: '100%',
         overflow: 'hidden',
-        '& > ul[class*="messenger_left_thread_list_default"]': {
+        '& > div[class*="messenger_left_thread_list_default"]': {
             position: 'absolute',
             zIndex: 1,
             top: 0,
             right: 0,
             transition: 'right 0.3s',
         },
-        '& > ul[class*="messenger_left_thread_list_search"]': {
+        '& > div[class*="messenger_left_thread_list_search"]': {
             position: 'absolute',
             zIndex: 1,
             top: 0,
@@ -30,10 +30,10 @@ const useStyles = makeStyles({
         },
     },
     thread_content_focus_search: {
-        '& > ul[class*="messenger_left_thread_list_default"]': {
+        '& > div[class*="messenger_left_thread_list_default"]': {
             right: '100%',
         },
-        '& > ul[class*="messenger_left_thread_list_search"]': {
+        '& > div[class*="messenger_left_thread_list_search"]': {
             left: 0,
         },
     },

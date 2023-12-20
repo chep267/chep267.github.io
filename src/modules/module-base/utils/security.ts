@@ -4,49 +4,34 @@
  *
  */
 
+import { AES } from 'crypto-es/lib/aes';
+import { Utf8 } from 'crypto-es/lib/core';
+
 /**
  * func Encrypt
  * return: chuỗi mã hóa
  */
-const Encrypt = (value = ''): string => {
-    let result = '';
 
-    if (!value) return result;
+const CIPHER_KEY = 'to-la-chep';
+
+function Encrypt(message = '', key = CIPHER_KEY) {
     try {
-        const text = window.btoa(value);
-        for (let i = 0, length = text.length; i < length; i += 1) {
-            if (i < length - 1) {
-                result += text.charCodeAt(i) + 10;
-                result += '-';
-            } else {
-                result += text.charCodeAt(i) + 10;
-            }
-        }
-        return window.btoa(result);
-    } catch (e) {
-        console.log('Encrypt error: ', e);
-        return value;
+        return AES.encrypt(message, key).toString();
+    } catch {
+        return message;
     }
-};
+}
 
 /**
  * func Decrypt
  * return: chuỗi giải mã hóa
  */
-const Decrypt = (value: null | undefined | string = ''): string => {
-    let result = '';
-
-    if (!value) return result;
+function Decrypt(message = '', key = CIPHER_KEY) {
     try {
-        const array: string[] = window.atob(value).split('-');
-        for (let i = 0, length = array.length; i < length; i += 1) {
-            result += String.fromCharCode(Number(array[i]) - 10);
-        }
-        return window.atob(result);
-    } catch (e) {
-        console.log('Decrypt error: ', e);
-        return value;
+        return AES.decrypt(message, key).toString(Utf8);
+    } catch {
+        return message;
     }
-};
+}
 
 export { Encrypt, Decrypt };

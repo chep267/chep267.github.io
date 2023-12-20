@@ -7,7 +7,6 @@
 /** types */
 import type { Unsubscribe } from '@firebase/firestore';
 import type { CallApiPayloadType, TypeItemIds, TypeItems } from '@module-base/models';
-import { TypeMessage } from '@module-messenger/models/index.ts';
 
 type TypeDocumentThreadData = {
     tid: string;
@@ -21,10 +20,11 @@ type TypeDocumentMessageData = {
     tid: string;
     mid: string;
     text: string;
-    photos: TypeItems<any>;
-    videos: TypeItems<any>;
+    attachmentIds: TypeItemIds | null;
+    attachments: TypeItems<any> | null;
     createdTime: number;
     updatedTime: number;
+    type: 'text' | 'emoji' | 'attachment';
 };
 
 interface MessengerApiProps {
@@ -57,7 +57,7 @@ interface MessengerApiProps {
         Payload: CallApiPayloadType<{
             uid: string;
             tid: string;
-            fnCallback(data: { itemIds: TypeItemIds; items: TypeItems<TypeMessage> }): void;
+            fnCallback(data: { itemIds: TypeItemIds; items: TypeItems<TypeDocumentMessageData> }): void;
         }>;
         Response?: { unsubscribe: Unsubscribe };
     };

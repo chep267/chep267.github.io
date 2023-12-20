@@ -17,6 +17,7 @@ const useStyles = makeStyles(({ palette, typography }) => ({
         },
     },
     listItem: {
+        height: 80,
         '& .MuiListItemText-primary': {
             ...typography.h6,
         },

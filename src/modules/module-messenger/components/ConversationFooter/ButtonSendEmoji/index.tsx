@@ -19,18 +19,19 @@ import { useMessenger } from '@module-messenger/hooks/useMessenger';
 import useStyles from './styles';
 
 export default function ButtonSendEmoji() {
-    const { tid } = useParams();
+    const { tid: TID } = useParams();
     const classes = useStyles();
+    const tid = `${TID}`;
 
     // @ts-ignore
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const SEND_MESSAGE = useSendMessage();
 
     const { ui } = useMessenger();
-    const draft = tid ? ui.drafts[tid] : null;
+    const draft = ui.drafts[tid];
 
     const onSend = () => {
-        // do
+        SEND_MESSAGE.mutate({ tid, draft: { text: '', type: 'emoji' } });
     };
 
     return (

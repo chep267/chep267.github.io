@@ -25,7 +25,7 @@ import { debounce } from '@module-base/utils/helpers/debounce';
 
 /** types */
 import type { AuthApiProps } from '@module-auth/models';
-import { checkUid } from '@module-user/utils/helpers/checkUid.ts';
+import { checkUid } from '@module-user/utils/helpers/checkUid';
 
 const authentication = getAuth(firebaseApp);
 

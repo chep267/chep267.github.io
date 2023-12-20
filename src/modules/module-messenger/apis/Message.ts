@@ -4,7 +4,7 @@
  *
  */
 
-import { collection, doc, limit, onSnapshot, query, setDoc } from '@firebase/firestore';
+import { collection, doc, onSnapshot, query, setDoc } from '@firebase/firestore';
 
 /** constants */
 import { TIMING_API_PENDING } from '@module-base/constants/defaultValue';
@@ -15,7 +15,7 @@ import { firestore } from '@module-base/utils/firebase';
 import { debounce } from '@module-base/utils/helpers/debounce';
 
 /** types */
-import type { MessengerApiProps, TypeMessage } from '@module-messenger/models';
+import type { MessengerApiProps, TypeDocumentMessageData } from '@module-messenger/models';
 import type { TypeItemIds, TypeItems } from '@module-base/models';
 
 const apiOnGetListMessage = async (
@@ -32,13 +32,13 @@ const apiOnGetListMessage = async (
     );
 
     const onGet = () => {
-        const unsubscribe = onSnapshot(query(docRef, limit(20)), (querySnapshot) => {
+        const unsubscribe = onSnapshot(query(docRef), (querySnapshot) => {
             const itemIds: TypeItemIds = [];
-            const items: TypeItems<TypeMessage> = {};
+            const items: TypeItems<TypeDocumentMessageData> = {};
             querySnapshot.forEach((doc) => {
                 const tid = doc.id;
                 itemIds.push(tid);
-                items[tid] = doc.data() as TypeMessage;
+                items[tid] = doc.data() as TypeDocumentMessageData;
             });
             fnCallback({ itemIds, items });
         });

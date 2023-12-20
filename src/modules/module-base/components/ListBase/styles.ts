@@ -10,9 +10,20 @@ import makeStyles from '@mui/styles/makeStyles';
 import { alpha } from '@mui/material/styles';
 
 const useStyles = makeStyles(({ palette }) => ({
-    list: {
+    list_wrap: {
+        position: 'relative',
         width: '100%',
         height: '100%',
+    },
+    list: {
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        bottom: 0,
+        right: 0,
+        width: '100%',
+        height: '100%',
+        zIndex: 1,
         overflow: 'hidden auto',
         '&::-webkit-scrollbar': {
             width: '7px',
@@ -37,12 +48,13 @@ const useStyles = makeStyles(({ palette }) => ({
         position: 'absolute',
         justifyContent: 'center',
         alignItems: 'center',
-        width: '100%',
         zIndex: 1,
         top: 0,
         left: 0,
         bottom: 0,
         right: 0,
+        width: '100%',
+        height: '100%',
         backgroundColor: alpha(palette.common.black, 0.2),
     },
 }));

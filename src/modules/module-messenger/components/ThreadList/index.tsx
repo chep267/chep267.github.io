@@ -9,11 +9,13 @@ import classnames from 'classnames';
 import { useNavigate, useParams } from 'react-router-dom';
 
 /** lib components */
-import { ListItem, ListItemText, ListItemAvatar, Avatar, IconButton } from '@mui/material';
-import { Image as ImageIcon, MoreHoriz as MoreHorizIcon } from '@mui/icons-material';
+import { ListItem, ListItemText, ListItemAvatar, IconButton } from '@mui/material';
+import { MoreHoriz as MoreHorizIcon } from '@mui/icons-material';
 
 /** components */
 import ListBase from '@module-base/components/ListBase';
+import ThreadName from '@module-messenger/components/ThreadName';
+import ThreadAvatar from '@module-messenger/components/ThreadAvatar';
 
 /** constants */
 import { SCREEN } from '@module-global/constants/screen';
@@ -52,8 +54,7 @@ const ThreadList = React.memo(
 
         const renderItem = React.useCallback(
             (tid: string, index: number) => {
-                const threadData = LIST_THREAD.data.items[tid];
-                return !threadData ? null : (
+                return (
                     <ListItem
                         key={index}
                         className={classnames('.ThreadItem', classes.listItem, {
@@ -61,11 +62,9 @@ const ThreadList = React.memo(
                         })}
                         onClick={() => onClickItem(tid)}>
                         <ListItemAvatar>
-                            <Avatar>
-                                <ImageIcon />
-                            </Avatar>
+                            <ThreadAvatar tid={tid} />
                         </ListItemAvatar>
-                        <ListItemText primary={threadData.name} secondary="You: Xin chao!" />
+                        <ListItemText primary={<ThreadName tid={tid} variant="h6" />} secondary="You: Xin chao!" />
                         <IconButton className={classes.itemOption} onClick={stopPropagation}>
                             <MoreHorizIcon />
                         </IconButton>

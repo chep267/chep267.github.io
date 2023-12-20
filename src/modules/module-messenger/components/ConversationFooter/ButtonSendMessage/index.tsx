@@ -19,27 +19,27 @@ import { useMessenger } from '@module-messenger/hooks/useMessenger';
 import useStyles from './styles';
 
 export default function ButtonSendMessage() {
-    const { tid } = useParams();
+    const { tid: TID } = useParams();
     const classes = useStyles();
+    const tid = `${TID}`;
 
     const SEND_MESSAGE = useSendMessage();
 
     const { ui, method } = useMessenger();
-    const draft = tid ? ui.drafts[tid] : null;
+    const draft = ui.drafts[tid];
 
     const onSend = () => {
-        tid &&
-            SEND_MESSAGE.mutate(
-                { tid, draft },
-                {
-                    onSuccess: () => {
-                        method.setDrafts({});
-                    },
-                    onError: () => {
-                        method.setDrafts({});
-                    },
-                }
-            );
+        SEND_MESSAGE.mutate(
+            { tid, draft },
+            {
+                onSuccess: () => {
+                    method.setDrafts({});
+                },
+                onError: () => {
+                    method.setDrafts({});
+                },
+            }
+        );
     };
 
     return (

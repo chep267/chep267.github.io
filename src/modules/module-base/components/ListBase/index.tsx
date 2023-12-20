@@ -8,6 +8,7 @@ import * as React from 'react';
 import classnames from 'classnames';
 
 /** lib components */
+import Stack from '@mui/material/Stack';
 import List from '@mui/material/List';
 
 /** components */
@@ -28,10 +29,12 @@ const ListBase = React.memo(function <T>(props: ListBaseProps<T> & { listRef?: L
     }, [data, renderItem]);
 
     return (
-        <List ref={listRef} className={classnames(classes.list, className)} {...listProps}>
+        <Stack className={classnames(classes.list_wrap, className)}>
             <ListLoading loading={loading} empty={!data?.length} emptyText={emptyText} />
-            {renderList}
-        </List>
+            <List ref={listRef} className={classnames(classes.list)} {...listProps}>
+                {renderList}
+            </List>
+        </Stack>
     );
 });
 

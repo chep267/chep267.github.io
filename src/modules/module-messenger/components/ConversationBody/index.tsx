@@ -36,7 +36,7 @@ export default function ConversationBody() {
     const renderItem = React.useCallback(
         (mid: string, index: number) => {
             const message = LIST_MESSAGE.data.items[mid];
-            return !message ? null : (
+            return (
                 <ListItem key={index} className={classnames(classes.listItem)}>
                     <Message data={message} />
                 </ListItem>

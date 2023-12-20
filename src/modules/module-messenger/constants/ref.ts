@@ -13,3 +13,7 @@ export const MESSENGER_DB_USERS_REF = 'users';
 export const MESSENGER_DB_THREADS_REF = 'threads';
 
 export const MESSENGER_DB_THREAD_INFO_REF = 'infos';
+
+export const MESSENGER_CHAT_BOT_AI_ID = 'tid.tolachepAI';
+
+export const MESSENGER_CHAT_BOT_AI_NAME = 'Chep GPT';

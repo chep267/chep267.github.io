@@ -4,4 +4,4 @@
  *
  */
 
-export * from './Thread.ts';
+export * from './Thread';
