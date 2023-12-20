@@ -1,2 +1,0 @@
-import{r as e}from"./index-zfTJ3vRg.js";const p=c=>{const{numberCountdown:t=10,timer:u=1e3,callback:a,isContinue:l}=c,r=e.useRef(),[f,s]=e.useState(t),[d,i]=e.useState(0),o=e.useCallback(()=>clearInterval(r.current),[]),C=e.useCallback((n=t)=>{o(),s(n),i(k=>(k+1)%7)},[]),b=e.useCallback(()=>{s(n=>{if(n<=1){if(a?.(),l)return t;o()}return n-1})},[t]);return e.useEffect(()=>(r.current=setInterval(b,u),()=>{clearInterval(r.current)}),[d]),{second:f,onRefresh:C,onStop:o}};export{p as u};
-//# sourceMappingURL=useCountdown-XvwjurmL.js.map
