@@ -16,7 +16,7 @@ import { AUTH_ERROR_CODES } from '@module-auth/constants/error';
 import { authMessage } from '@module-auth/utils/messages';
 
 /** hooks */
-import { useBase } from '@module-base/hooks/useBase.ts';
+import { useBase } from '@module-base/hooks/useBase';
 
 /** types */
 import type { FirebaseError } from '@firebase/app';

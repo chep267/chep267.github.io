@@ -14,8 +14,8 @@ import { baseMessage } from '@module-base/utils/messages';
 import { checkUid } from '@module-user/utils/helpers/checkUid';
 
 /** hooks */
-import { useBase } from '@module-base/hooks/useBase.ts';
-import { useAuth } from '@module-auth/hooks/useAuth.ts';
+import { useBase } from '@module-base/hooks/useBase';
+import { useAuth } from '@module-auth/hooks/useAuth';
 
 /** types */
 import type { UserInfo } from '@firebase/auth';

@@ -17,7 +17,7 @@ import AlertTitle from '@mui/material/AlertTitle';
 import { TIMING_NOTIFY_DURATION } from '@module-base/constants/defaultValue';
 
 /** utils */
-import { useBase } from '@module-base/hooks/useBase.ts';
+import { useBase } from '@module-base/hooks/useBase';
 
 /** styles */
 import useStyles from './styles';

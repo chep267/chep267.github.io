@@ -10,7 +10,7 @@ import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { apiGetListUser } from '@module-user/apis';
 
 /** hooks */
-import { useAuth } from '@module-auth/hooks/useAuth.ts';
+import { useAuth } from '@module-auth/hooks/useAuth';
 
 export function useListUser() {
     const queryClient = useQueryClient();

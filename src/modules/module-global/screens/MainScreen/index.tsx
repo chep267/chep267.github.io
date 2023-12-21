@@ -20,7 +20,7 @@ import AppMenu from '@module-global/components/AppMenu';
 import { SCREEN } from '@module-global/constants/screen';
 
 /** hooks */
-import { useBase } from '@module-base/hooks/useBase.ts';
+import { useBase } from '@module-base/hooks/useBase';
 
 /** styles */
 import useStyles from './styles';

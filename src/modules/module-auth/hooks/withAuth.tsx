@@ -5,7 +5,7 @@
  */
 
 /** hooks */
-import { useAuth } from '@module-auth/hooks/useAuth.ts';
+import { useAuth } from '@module-auth/hooks/useAuth';
 
 /** types */
 import type { ComponentType } from 'react';

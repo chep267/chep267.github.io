@@ -12,7 +12,7 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 
 /** hooks */
 import { useLanguage } from '@module-language/hooks/useLanguage';
-import { CalendarContext, today } from '@module-calendar/hooks/useCalendar.ts';
+import { CalendarContext, today } from '@module-calendar/hooks/useCalendar';
 
 /** types */
 import type { PropsWithChildren } from 'react';

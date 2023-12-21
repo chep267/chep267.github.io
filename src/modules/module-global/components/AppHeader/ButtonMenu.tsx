@@ -49,7 +49,7 @@ import { authMessage } from '@module-auth/utils/messages';
 import { useTheme } from '@module-theme/hooks/useTheme';
 import { useSignOut } from '@module-auth/hooks/useSignOut';
 import { useLanguage } from '@module-language/hooks/useLanguage';
-import { useCalendar } from '@module-calendar/hooks/useCalendar.ts';
+import { useCalendar } from '@module-calendar/hooks/useCalendar';
 
 /** styles */
 import useStyles from './styles';

@@ -15,7 +15,7 @@ import { Favorite as FavoriteIcon } from '@mui/icons-material';
 import { Decrypt } from '@module-base/utils/security';
 
 /** hooks */
-import { useAuth } from '@module-auth/hooks/useAuth.ts';
+import { useAuth } from '@module-auth/hooks/useAuth';
 import { useLanguage } from '@module-language/hooks/useLanguage';
 
 /** styles */

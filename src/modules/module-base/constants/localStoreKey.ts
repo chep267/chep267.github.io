@@ -4,12 +4,8 @@
  *
  */
 
-/** utils */
-import { Encrypt } from '@module-base/utils/security';
-
-export const accessTokenCookieKey = Encrypt('access_token', 'tola_local');
-export const refreshTokenCookieKey = Encrypt('refresh_token', 'tola_local');
-export const emailLocalKey = Encrypt('email', 'tola_local');
-export const localeLocalKey = Encrypt('locale', 'tola_local');
-export const themeLocalKey = Encrypt('theme', 'tola_local');
-export const routerLocalKey = Encrypt('router', 'tola_local');
+export const accessTokenCookieKey = 'access_token';
+export const emailLocalKey = 'tola_local_email';
+export const localeLocalKey = 'tola_local_locale';
+export const themeLocalKey = 'tola_local_theme';
+export const routerLocalKey = 'tola_local_router';

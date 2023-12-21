@@ -10,7 +10,7 @@ import classnames from 'classnames';
 import { Stack, Typography } from '@mui/material';
 
 /** hooks */
-import { useCalendar } from '@module-calendar/hooks/useCalendar.ts';
+import { useCalendar } from '@module-calendar/hooks/useCalendar';
 import { useLanguage } from '@module-language/hooks/useLanguage';
 
 /** styles */

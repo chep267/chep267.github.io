@@ -11,7 +11,7 @@ import { useMediaQuery } from '@mui/material';
 import ErrorBoundary from '@module-base/components/ErrorBoundary';
 
 /** utils */
-import { BaseContext, defaultNotify } from '@module-base/hooks/useBase.ts';
+import { BaseContext, defaultNotify } from '@module-base/hooks/useBase';
 
 /** types */
 import type { PropsWithChildren } from 'react';

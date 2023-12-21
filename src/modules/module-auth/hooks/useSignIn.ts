@@ -19,8 +19,8 @@ import { localStorageBase } from '@module-base/utils/storages';
 import { authMessage } from '@module-auth/utils/messages';
 
 /** hooks */
-import { useBase } from '@module-base/hooks/useBase.ts';
-import { useAuth } from '@module-auth/hooks/useAuth.ts';
+import { useBase } from '@module-base/hooks/useBase';
+import { useAuth } from '@module-auth/hooks/useAuth';
 
 export function useSignIn() {
     const auth = useAuth();

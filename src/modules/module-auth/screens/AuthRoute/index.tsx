@@ -20,7 +20,7 @@ import { ACCOUNT_STATE } from '@module-auth/constants/accountState';
 import { AUTH_SCREEN } from '@module-auth/constants/screen';
 
 /** hooks */
-import { useAuth } from '@module-auth/hooks/useAuth.ts';
+import { useAuth } from '@module-auth/hooks/useAuth';
 
 /** types */
 import type { PropsWithChildren } from 'react';

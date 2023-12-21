@@ -18,8 +18,8 @@ import { baseMessage } from '@module-base/utils/messages';
 import { genMessage } from '@module-messenger/utils/helpers/genMessage';
 
 /** hooks */
-import { useBase } from '@module-base/hooks/useBase.ts';
-import { useAuth } from '@module-auth/hooks/useAuth.ts';
+import { useBase } from '@module-base/hooks/useBase';
+import { useAuth } from '@module-auth/hooks/useAuth';
 import { useCreateThread } from '@module-messenger/hooks/useCreateThread';
 
 /** types */

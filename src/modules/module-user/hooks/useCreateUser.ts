@@ -13,7 +13,7 @@ import { apiCreateUser } from '@module-user/apis';
 import { baseMessage } from '@module-base/utils/messages';
 
 /** hooks */
-import { useBase } from '@module-base/hooks/useBase.ts';
+import { useBase } from '@module-base/hooks/useBase';
 
 export function useCreateUser() {
     const { notify } = useBase();

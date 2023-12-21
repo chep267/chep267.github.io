@@ -5,7 +5,7 @@
  */
 
 /** hooks */
-import { useBase } from '@module-base/hooks/useBase.ts';
+import { useBase } from '@module-base/hooks/useBase';
 
 /** types */
 import type { ComponentType } from 'react';

@@ -14,7 +14,7 @@ import { apiSignOut } from '@module-auth/apis';
 import { accessTokenCookieKey } from '@module-base/constants/localStoreKey';
 
 /** hooks */
-import { useAuth } from '@module-auth/hooks/useAuth.ts';
+import { useAuth } from '@module-auth/hooks/useAuth';
 
 type UseSignOutProps = {
     onSuccess?(): void;

@@ -14,8 +14,8 @@ import MessageIcon from '@mui/icons-material/Message';
 import ButtonMenu from './ButtonMenu';
 
 /** utils */
-import { useBase } from '@module-base/hooks/useBase.ts';
-import { useAuth } from '@module-auth/hooks/useAuth.ts';
+import { useBase } from '@module-base/hooks/useBase';
+import { useAuth } from '@module-auth/hooks/useAuth';
 
 /** styles */
 import useStyles from './styles';
