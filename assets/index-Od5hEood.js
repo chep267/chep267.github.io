@@ -1,0 +1,8 @@
+import{r,N as I,z as u,A as E,j as s}from"./index-WwqnOKRV.js";import{u as S,a as T,b as A,c as f,S as R}from"./index-6qL-DtpF.js";const e=Object.freeze({SIGNED_IN:"ACCOUNT_STATE_SIGNED_IN",RE_SIGN_IN:"ACCOUNT_STATE_RE_SIGN_IN",SIGN_IN:"ACCOUNT_STATE_SIGN_IN"}),o=Object.freeze({HOME:"",SIGN_IN:"/signin",VERIFY_OTP:"/verify-code",REGISTER:"/register",RECOVER:"/recover",RESET_PASS:"password/reset-verification"}),l=r.lazy(()=>I(()=>import("./index-UqmfQWWK.js"),__vite__mapDeps([0,1,2,3,4,5,6,7])));function d(_){const{pathname:c}=S(),n=T(),a=u(),N=A.get(E),t=a.data.isAuth?e.SIGNED_IN:N?e.RE_SIGN_IN:e.SIGN_IN;switch(r.useEffect(()=>{t===e.RE_SIGN_IN&&f({fnCallback:i=>a.method.setAuth({isAuth:!0,me:i})}).then(),t===e.SIGNED_IN&&Object.values(o).includes(c)&&n(o.HOME,{replace:!0})},[t]),t){case e.SIGNED_IN:return _?.children;case e.RE_SIGN_IN:return s.jsx(R,{});default:return s.jsx(l,{})}}var G=d;const h=Object.freeze(Object.defineProperty({__proto__:null,default:G},Symbol.toStringTag,{value:"Module"}));export{o as A,h as i};
+//# sourceMappingURL=index-Od5hEood.js.map
+function __vite__mapDeps(indexes) {
+  if (!__vite__mapDeps.viteFileDeps) {
+    __vite__mapDeps.viteFileDeps = ["assets/index-UqmfQWWK.js","assets/index-WwqnOKRV.js","assets/index-eGg70zu3.css","assets/index-6qL-DtpF.js","assets/createSvgIcon-mWxOUt0n.js","assets/makeStyles-5aoJXQ5f.js","assets/useTheme-JxtkRMi6.js","assets/index-YHEFtB5e.js"]
+  }
+  return indexes.map((i) => __vite__mapDeps.viteFileDeps[i])
+}
