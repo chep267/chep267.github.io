@@ -4,12 +4,12 @@
  *
  */
 
+import * as React from 'react';
 import dayjs from 'dayjs';
 import classnames from 'classnames';
 
 /** lib components */
-import { Typography, Stack, Tooltip } from '@mui/material';
-import { Favorite as FavoriteIcon } from '@mui/icons-material';
+import { Stack, Tooltip } from '@mui/material';
 
 /** utils */
 import { Decrypt } from '@module-base/utils/security';
@@ -23,6 +23,10 @@ import useStyles from './styles';
 
 /** types */
 import type { TypeDocumentMessageData } from '@module-messenger/models';
+
+/** lazy components */
+const EmojiMessage = React.lazy(() => import('./EmojiMessage'));
+const TextMessage = React.lazy(() => import('./TextMessage'));
 
 type MessageProps = {
     data: TypeDocumentMessageData;
@@ -44,18 +48,10 @@ export default function Message(props: MessageProps) {
             <Tooltip
                 title={dayjs(data.createdTime).locale(locale).format('hh:mm dddd, DD/MM/YYYY')}
                 placement={isMe ? 'right' : 'left'}>
-                {data.type === 'emoji' ? (
-                    <FavoriteIcon color="primary" fontSize="large" />
-                ) : (
-                    <Stack
-                        className={classnames(
-                            classes.message,
-                            { [classes.meMessage]: isMe },
-                            { [classes.partnerMessage]: !isMe }
-                        )}>
-                        <Typography variant="h5">{Decrypt(data.text)}</Typography>
-                    </Stack>
-                )}
+                <React.Suspense>
+                    {data.type === 'emoji' ? <EmojiMessage /> : null}
+                    {data.type === 'text' ? <TextMessage isMe={isMe} text={Decrypt(data.text)} /> : null}
+                </React.Suspense>
             </Tooltip>
         </Stack>
     );

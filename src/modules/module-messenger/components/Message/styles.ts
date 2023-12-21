@@ -6,7 +6,7 @@
 
 import makeStyles from '@mui/styles/makeStyles';
 
-const useStyles = makeStyles(({ spacing, palette }) => ({
+const useStyles = makeStyles(({ spacing, palette, breakpoints }) => ({
     message_view: {
         flexDirection: 'row',
         alignItems: 'center',
@@ -29,12 +29,15 @@ const useStyles = makeStyles(({ spacing, palette }) => ({
     },
     message: {
         width: 'auto',
-        maxWidth: '70%',
+        maxWidth: '50%',
         padding: `5px ${spacing(2)}`,
         border: `1px solid ${palette.divider}`,
         borderRadius: 20,
         wordBreak: 'break-word',
         whiteSpace: 'pre-wrap',
+        [breakpoints.down('md')]: {
+            maxWidth: '70%',
+        },
     },
 }));
 
