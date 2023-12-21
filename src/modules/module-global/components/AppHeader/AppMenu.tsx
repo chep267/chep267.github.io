@@ -14,14 +14,16 @@ import MessageIcon from '@mui/icons-material/Message';
 import ButtonMenu from './ButtonMenu';
 
 /** utils */
-import { useBase } from '@module-base/hooks/useBase';
-import { useAuth } from '@module-auth/hooks/useAuth';
+import { useBase } from '@module-base/hooks/useBase.ts';
+import { useAuth } from '@module-auth/hooks/useAuth.ts';
 
 /** styles */
 import useStyles from './styles';
 
 function AppMenu() {
-    const { isAuth } = useAuth();
+    const {
+        data: { isAuth },
+    } = useAuth();
     const { notify } = useBase();
     const classes = useStyles();
 

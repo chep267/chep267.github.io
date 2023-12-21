@@ -39,20 +39,20 @@ function LanguageProvider(props: LanguageProviderProps) {
         return getDeviceLanguage();
     });
 
-    const toggleLanguage = React.useCallback((value: LocaleType) => {
-        setLocale((prev) => {
-            if (prev !== value) {
-                localStorageBase.set(localeLocalKey, Encrypt(value));
-            }
-            return value;
-        });
+    const setLanguage = React.useCallback<LanguageContextProps['method']['setLanguage']>((value) => {
+        localStorageBase.set(localeLocalKey, Encrypt(value));
+        setLocale(value);
     }, []);
 
     const store = React.useMemo<LanguageContextProps>(
         () => ({
-            locale,
-            messages: messages[locale],
-            toggleLanguage,
+            data: {
+                locale,
+                messages: messages[locale],
+            },
+            method: {
+                setLanguage,
+            },
         }),
         [locale]
     );

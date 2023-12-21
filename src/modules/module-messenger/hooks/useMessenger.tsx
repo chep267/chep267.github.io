@@ -36,8 +36,8 @@ const useMessenger = () => React.useContext(MessengerContext);
 
 function withMessenger<Props>(WrappedComponent: ComponentType<Props>) {
     return function EnhancedComponent(props: Props) {
-        const language = useMessenger();
-        return <WrappedComponent {...props} useMessenger={language} />;
+        const messenger = useMessenger();
+        return <WrappedComponent {...props} messenger={messenger} />;
     };
 }
 

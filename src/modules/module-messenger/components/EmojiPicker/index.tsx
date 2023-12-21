@@ -14,8 +14,12 @@ import { useLanguage } from '@module-language/hooks/useLanguage';
 import { useTheme } from '@module-theme/hooks/useTheme';
 
 export default function EmojiPicker() {
-    const { locale } = useLanguage();
-    const { mode } = useTheme();
+    const {
+        data: { locale },
+    } = useLanguage();
+    const {
+        data: { mode },
+    } = useTheme();
 
     return <Picker data={data} onEmojiSelect={console.log} locale={locale} theme={mode} />;
 }

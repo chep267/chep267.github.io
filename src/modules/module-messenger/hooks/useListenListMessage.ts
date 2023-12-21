@@ -14,14 +14,16 @@ import { apiOnGetListMessage } from '@module-messenger/apis/Message';
 import { emptyArray, emptyObject } from '@module-base/constants/defaultValue';
 
 /** hooks */
-import { useAuth } from '@module-auth/hooks/useAuth';
+import { useAuth } from '@module-auth/hooks/useAuth.ts';
 
 /** types */
 import type { TypeItemIds, TypeItems } from '@module-base/models';
 import type { TypeDocumentMessageData } from '@module-messenger/models';
 
 export function useListenListMessage({ tid }: { tid?: string }) {
-    const { me } = useAuth();
+    const {
+        data: { me },
+    } = useAuth();
     const [itemIds, setItemIds] = React.useState<TypeItemIds>(emptyArray);
     const [items, setItems] = React.useState<TypeItems<TypeDocumentMessageData>>(emptyObject);
     const uid = `${me?.uid}`;

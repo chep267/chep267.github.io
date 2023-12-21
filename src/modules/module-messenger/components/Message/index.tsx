@@ -15,7 +15,7 @@ import { Favorite as FavoriteIcon } from '@mui/icons-material';
 import { Decrypt } from '@module-base/utils/security';
 
 /** hooks */
-import { useAuth } from '@module-auth/hooks/useAuth';
+import { useAuth } from '@module-auth/hooks/useAuth.ts';
 import { useLanguage } from '@module-language/hooks/useLanguage';
 
 /** styles */
@@ -31,8 +31,12 @@ type MessageProps = {
 export default function Message(props: MessageProps) {
     const { data } = props;
     const classes = useStyles();
-    const { me } = useAuth();
-    const { locale } = useLanguage();
+    const {
+        data: { me },
+    } = useAuth();
+    const {
+        data: { locale },
+    } = useLanguage();
     const isMe = data.uid === me?.uid;
 
     return (

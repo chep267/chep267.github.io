@@ -12,25 +12,27 @@ import { checkUid } from '@module-user/utils/helpers/checkUid';
 
 /** types */
 import type { PropsWithChildren } from 'react';
-import type { AuthContextProps, AuthStateType } from '@module-auth/models';
+import type { AuthContextProps } from '@module-auth/models';
 
 function AuthProvider(props: PropsWithChildren) {
-    const [auth, setAuth] = React.useState<AuthStateType>(defaultAuthState);
+    const { children } = props;
+    const [auth, setAuth] = React.useState<AuthContextProps['data']>(defaultAuthState);
 
-    const toggleAuth = React.useCallback(({ isAuth, me }: AuthStateType = defaultAuthState) => {
-        const user: AuthStateType['me'] = me ? { ...me, uid: checkUid(me.uid) } : undefined;
+    const changeAuth = React.useCallback<AuthContextProps['method']['setAuth']>(({ isAuth, me } = defaultAuthState) => {
+        const user: AuthContextProps['data']['me'] = me ? { ...me, uid: checkUid(me.uid) } : undefined;
         setAuth({ isAuth, me: user });
     }, []);
 
-    const store = React.useMemo<AuthContextProps>(
-        () => ({
-            ...auth,
-            toggleAuth,
-        }),
-        [auth]
-    );
+    const store = React.useMemo<AuthContextProps>(() => {
+        return {
+            data: auth,
+            method: {
+                setAuth: changeAuth,
+            },
+        };
+    }, [auth]);
 
-    return <AuthContext.Provider value={store}>{props?.children}</AuthContext.Provider>;
+    return <AuthContext.Provider value={store}>{children}</AuthContext.Provider>;
 }
 
 export default AuthProvider;

@@ -4,25 +4,20 @@
  *
  */
 
-import dayjs from 'dayjs';
-
 /** lib components */
 import { Stack, Typography } from '@mui/material';
 
 /** components */
 import IconBase from '@module-base/components/IconBase';
+import TimeToday from '@module-global/components/AppHeader/TimeToday';
 
 /** constants */
 import { APP_NAME } from '@root/utils/config';
-
-/** utils */
-import { useLanguage } from '@module-language/hooks/useLanguage';
 
 /** styles */
 import useStyles from './styles';
 
 function AppInfo() {
-    const { locale } = useLanguage();
     const classes = useStyles();
 
     return (
@@ -32,9 +27,7 @@ function AppInfo() {
                 {APP_NAME}
             </Typography>
             <span className={classes.infoDot} />
-            <Typography variant="body2" fontWeight={600} textTransform="capitalize">
-                {dayjs().locale(locale).format('dddd, DD/MM/YYYY')}
-            </Typography>
+            <TimeToday />
         </Stack>
     );
 }

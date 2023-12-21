@@ -14,8 +14,8 @@ import { baseMessage } from '@module-base/utils/messages';
 import { checkUid } from '@module-user/utils/helpers/checkUid';
 
 /** hooks */
-import { useBase } from '@module-base/hooks/useBase';
-import { useAuth } from '@module-auth/hooks/useAuth';
+import { useBase } from '@module-base/hooks/useBase.ts';
+import { useAuth } from '@module-auth/hooks/useAuth.ts';
 
 /** types */
 import type { UserInfo } from '@firebase/auth';
@@ -23,7 +23,9 @@ import type { TypeDocumentThreadData } from '@module-messenger/models';
 
 export function useCreateThread() {
     const queryClient = useQueryClient();
-    const { me } = useAuth();
+    const {
+        data: { me },
+    } = useAuth();
     const { notify } = useBase();
     const uid = `${me?.uid}`;
 

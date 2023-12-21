@@ -10,7 +10,6 @@ import * as React from 'react';
 import { emptyFunction } from '@module-base/constants/defaultValue';
 
 /** types */
-import type { ComponentType } from 'react';
 import type { BaseContextProps } from '@module-base/models';
 
 const defaultNotify = Object.freeze({ open: false, message: '', mode: undefined, close: false, duration: undefined });
@@ -22,16 +21,8 @@ const BaseContext = React.createContext<BaseContextProps>({
         toggleSider: emptyFunction,
     },
 });
+BaseContext.displayName = 'BaseContext';
 
 const useBase = () => React.useContext(BaseContext);
 
-function withBase<Props>(WrappedComponent: ComponentType<Props>) {
-    return function EnhancedComponent(props: Props) {
-        const language = useBase();
-        return <WrappedComponent {...props} useBase={language} />;
-    };
-}
-
-BaseContext.displayName = 'BaseContext';
-// eslint-disable-next-line react-refresh/only-export-components
-export { defaultNotify, BaseContext, useBase, withBase };
+export { BaseContext, useBase, defaultNotify };

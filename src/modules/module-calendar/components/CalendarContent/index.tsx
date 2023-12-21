@@ -17,7 +17,7 @@ import { genMatrixCalendarDayJS } from '@module-calendar/utils/helpers/genMatrix
 import { reverseMatrix } from '@module-calendar/utils/helpers/reverseMatrix';
 
 /** hooks */
-import { useCalendar } from '@module-calendar/hooks/useCalendar';
+import { useCalendar } from '@module-calendar/hooks/useCalendar.ts';
 
 /** styles */
 import useStyles from './styles';

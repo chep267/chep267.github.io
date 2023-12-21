@@ -25,7 +25,7 @@ import { calendarMessage } from '@module-calendar/utils/messages';
 
 /** hooks */
 import { useLanguage } from '@module-language/hooks/useLanguage';
-import { useCalendar } from '@module-calendar/hooks/useCalendar';
+import { useCalendar } from '@module-calendar/hooks/useCalendar.ts';
 
 /** styles */
 import useStyles from './styles';
@@ -40,7 +40,9 @@ type CalendarInfoTitleProps = {
 export default function CalendarInfoTitle(props: CalendarInfoTitleProps) {
     const { className } = props;
     const { formatMessage } = useIntl();
-    const { locale } = useLanguage();
+    const {
+        data: { locale },
+    } = useLanguage();
     const CALENDAR = useCalendar();
     const classes = useStyles();
 

@@ -11,10 +11,10 @@ import dayjs from 'dayjs';
 import { emptyFunction } from '@module-base/constants/defaultValue';
 
 /** types */
-import type { ComponentType } from 'react';
 import type { CalendarContextProps } from '@module-calendar/models';
 
 const today = dayjs();
+
 const CalendarContext = React.createContext<CalendarContextProps>({
     data: {
         display: 'sun',
@@ -29,16 +29,8 @@ const CalendarContext = React.createContext<CalendarContextProps>({
         isToday: () => false,
     },
 });
+CalendarContext.displayName = 'CalendarContext';
 
 const useCalendar = () => React.useContext(CalendarContext);
 
-function withCalendar<Props>(WrappedComponent: ComponentType<Props>) {
-    return function EnhancedComponent(props: Props) {
-        const language = useCalendar();
-        return <WrappedComponent {...props} useCalendar={language} />;
-    };
-}
-
-CalendarContext.displayName = 'CalendarContext';
-// eslint-disable-next-line react-refresh/only-export-components
-export { CalendarContext, useCalendar, withCalendar, today };
+export { CalendarContext, useCalendar, today };

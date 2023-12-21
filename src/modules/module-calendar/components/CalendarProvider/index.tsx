@@ -12,7 +12,7 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 
 /** hooks */
 import { useLanguage } from '@module-language/hooks/useLanguage';
-import { CalendarContext, today } from '@module-calendar/hooks/useCalendar';
+import { CalendarContext, today } from '@module-calendar/hooks/useCalendar.ts';
 
 /** types */
 import type { PropsWithChildren } from 'react';
@@ -20,7 +20,9 @@ import type { CalendarContextProps } from '@module-calendar/models';
 
 function CalendarProvider(props: PropsWithChildren) {
     const { children } = props;
-    const { locale } = useLanguage();
+    const {
+        data: { locale },
+    } = useLanguage();
 
     const [display, setDisplay] = React.useState<CalendarContextProps['data']['display']>('sun');
     const [isOnlyMonth, setIsOnlyMonth] = React.useState(false);

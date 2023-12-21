@@ -10,7 +10,7 @@ import classnames from 'classnames';
 import { Stack, Typography } from '@mui/material';
 
 /** hooks */
-import { useCalendar } from '@module-calendar/hooks/useCalendar';
+import { useCalendar } from '@module-calendar/hooks/useCalendar.ts';
 import { useLanguage } from '@module-language/hooks/useLanguage';
 
 /** styles */
@@ -21,7 +21,9 @@ import { Dayjs } from 'dayjs';
 
 export default function CalendarInfoScreen() {
     const CALENDAR = useCalendar();
-    const { locale } = useLanguage();
+    const {
+        data: { locale },
+    } = useLanguage();
     const classes = useStyles();
 
     const solar = CALENDAR.data.time;

@@ -19,7 +19,7 @@ import { localStorageBase } from '@module-base/utils/storages';
 import { authMessage } from '@module-auth/utils/messages';
 
 /** hooks */
-import { useBase } from '@module-base/hooks/useBase';
+import { useBase } from '@module-base/hooks/useBase.ts';
 
 /** types */
 import type { FirebaseError } from 'firebase/app';

@@ -12,9 +12,13 @@ type LocaleType = keyof typeof localeObject;
 type MessagesType = Readonly<{ [key in LocaleType]: Record<string, string> }>;
 
 type LanguageContextProps = {
-    locale: LocaleType;
-    messages: Record<string, string>;
-    toggleLanguage: (value: LocaleType) => void;
+    data: {
+        locale: LocaleType;
+        messages: Record<string, string>;
+    };
+    method: {
+        setLanguage: (value: LocaleType) => void;
+    };
 };
 
 export type { LocaleType, MessagesType, LanguageContextProps };

@@ -9,23 +9,17 @@ import dayjs from 'dayjs';
 /** lib components */
 import { Typography } from '@mui/material';
 
-/** hooks */
+/** utils */
 import { useLanguage } from '@module-language/hooks/useLanguage';
 
-/** types */
-type CalendarLabelType = {
-    day: number;
-};
-
-export default function CalendarLabel(props: CalendarLabelType) {
-    const { day } = props;
+export default function TimeToday() {
     const {
         data: { locale },
     } = useLanguage();
 
     return (
-        <Typography variant="h6" color={day === 0 || day === 6 ? 'error.main' : ''}>
-            {dayjs().day(day).locale(locale).format('ddd')}
+        <Typography variant="body2" fontWeight={600} textTransform="capitalize">
+            {dayjs().locale(locale).format('dddd, DD/MM/YYYY')}
         </Typography>
     );
 }

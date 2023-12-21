@@ -49,7 +49,7 @@ import { authMessage } from '@module-auth/utils/messages';
 import { useTheme } from '@module-theme/hooks/useTheme';
 import { useSignOut } from '@module-auth/hooks/useSignOut';
 import { useLanguage } from '@module-language/hooks/useLanguage';
-import { useCalendar } from '@module-calendar/hooks/useCalendar';
+import { useCalendar } from '@module-calendar/hooks/useCalendar.ts';
 
 /** styles */
 import useStyles from './styles';
@@ -144,13 +144,13 @@ export default function ButtonMenu() {
                         id: 'Theme-Dark',
                         title: intl.formatMessage(themeMessage['module.theme.theme.dark']),
                         icon: <DarkModeIcon color="disabled" />,
-                        onClick: () => theme.toggleTheme('dark'),
+                        onClick: () => theme.method.setTheme('dark'),
                     },
                     {
                         id: 'Theme-Light',
                         title: intl.formatMessage(themeMessage['module.theme.theme.light']),
                         icon: <LightModeIcon color="warning" />,
-                        onClick: () => theme.toggleTheme('light'),
+                        onClick: () => theme.method.setTheme('light'),
                     },
                 ],
             },
@@ -164,18 +164,18 @@ export default function ButtonMenu() {
                         id: 'Language-Vi',
                         title: intl.formatMessage(langMessage['module.language.lang.vi']),
                         icon: <span className={classes.flagIcon}>🇻🇳</span>,
-                        onClick: () => LANGUAGE.toggleLanguage('vi'),
+                        onClick: () => LANGUAGE.method.setLanguage('vi'),
                     },
                     {
                         id: 'Language-En',
                         title: intl.formatMessage(langMessage['module.language.lang.en']),
                         icon: <span className={classes.flagIcon}>🇬🇧</span>,
-                        onClick: () => LANGUAGE.toggleLanguage('en'),
+                        onClick: () => LANGUAGE.method.setLanguage('en'),
                     },
                 ],
             },
         ],
-        [LANGUAGE.locale]
+        [LANGUAGE.data.locale]
     );
 
     const menuAuth = React.useMemo<MenuItemProps[]>(() => {
@@ -222,7 +222,7 @@ export default function ButtonMenu() {
                 ],
             },
         ];
-    }, [LANGUAGE.locale, SIGN_OUT.isAuth]);
+    }, [LANGUAGE.data.locale, SIGN_OUT.isAuth]);
 
     const menuSignOut = React.useMemo<MenuItemProps[]>(() => {
         if (!SIGN_OUT.isAuth) {
@@ -238,7 +238,7 @@ export default function ButtonMenu() {
                 loading: SIGN_OUT.isPending,
             },
         ];
-    }, [LANGUAGE.locale, SIGN_OUT.isAuth, SIGN_OUT.isPending]);
+    }, [LANGUAGE.data.locale, SIGN_OUT.isAuth, SIGN_OUT.isPending]);
 
     const menu = React.useMemo<MenuItemProps[]>(() => {
         return ([] as MenuItemProps[]).concat(menuBase, menuAuth, menuSignOut);

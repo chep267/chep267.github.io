@@ -18,8 +18,8 @@ import { baseMessage } from '@module-base/utils/messages';
 import { genMessage } from '@module-messenger/utils/helpers/genMessage';
 
 /** hooks */
-import { useBase } from '@module-base/hooks/useBase';
-import { useAuth } from '@module-auth/hooks/useAuth';
+import { useBase } from '@module-base/hooks/useBase.ts';
+import { useAuth } from '@module-auth/hooks/useAuth.ts';
 import { useCreateThread } from '@module-messenger/hooks/useCreateThread';
 
 /** types */
@@ -27,7 +27,9 @@ import type { TypeDocumentMessageData } from '@module-messenger/models';
 
 export function useSendMessage() {
     const queryClient = useQueryClient();
-    const { me } = useAuth();
+    const {
+        data: { me },
+    } = useAuth();
     const { notify } = useBase();
     const CREATE_THREAD = useCreateThread();
     const uid = `${me?.uid}`;

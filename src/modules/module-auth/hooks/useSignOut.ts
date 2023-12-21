@@ -14,7 +14,7 @@ import { apiSignOut } from '@module-auth/apis';
 import { accessTokenCookieKey } from '@module-base/constants/localStoreKey';
 
 /** hooks */
-import { useAuth } from '@module-auth/hooks/useAuth';
+import { useAuth } from '@module-auth/hooks/useAuth.ts';
 
 type UseSignOutProps = {
     onSuccess?(): void;
@@ -28,10 +28,10 @@ export function useSignOut(props: UseSignOutProps) {
         retry: 3,
         onSuccess: () => {
             Cookies.remove(accessTokenCookieKey);
-            auth.toggleAuth();
+            auth.method.setAuth();
             props.onSuccess?.();
         },
     });
 
-    return { isAuth: auth.isAuth, ...SIGN_OUT };
+    return { isAuth: auth.data.isAuth, ...SIGN_OUT };
 }

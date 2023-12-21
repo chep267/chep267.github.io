@@ -73,8 +73,12 @@ declare module '@mui/styles/defaultTheme' {
 type ThemeModeType = PaletteMode;
 
 type ThemeContextProps = {
-    mode: ThemeModeType;
-    toggleTheme: (value: ThemeModeType) => void;
+    data: {
+        mode: ThemeModeType;
+    };
+    method: {
+        setTheme: (value: ThemeModeType) => void;
+    };
 };
 
 export type { ThemeModeType, ThemeContextProps };

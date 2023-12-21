@@ -7,13 +7,14 @@
 /** types */
 import type { User } from '@firebase/auth';
 
-type AuthStateType = {
-    isAuth: boolean;
-    me?: User;
+type AuthContextProps = {
+    data: {
+        isAuth: boolean;
+        me?: User;
+    };
+    method: {
+        setAuth(options?: AuthContextProps['data']): void;
+    };
 };
 
-type AuthContextProps = AuthStateType & {
-    toggleAuth(options?: AuthStateType): void;
-};
-
-export type { AuthContextProps, AuthStateType };
+export type { AuthContextProps };

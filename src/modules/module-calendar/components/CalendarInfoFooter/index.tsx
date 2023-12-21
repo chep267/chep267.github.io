@@ -14,7 +14,7 @@ import { calendarMessage } from '@module-calendar/utils/messages';
 import VietnameseDate from '@module-calendar/utils/helpers/Lunar';
 
 /** hooks */
-import { useCalendar } from '@module-calendar/hooks/useCalendar';
+import { useCalendar } from '@module-calendar/hooks/useCalendar.ts';
 
 /** styles */
 import useStyles from './styles';

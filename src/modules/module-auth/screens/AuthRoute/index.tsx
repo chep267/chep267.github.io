@@ -20,7 +20,7 @@ import { ACCOUNT_STATE } from '@module-auth/constants/accountState';
 import { AUTH_SCREEN } from '@module-auth/constants/screen';
 
 /** hooks */
-import { useAuth } from '@module-auth/hooks/useAuth';
+import { useAuth } from '@module-auth/hooks/useAuth.ts';
 
 /** types */
 import type { PropsWithChildren } from 'react';
@@ -34,7 +34,7 @@ function AuthRoute(props: PropsWithChildren) {
     const auth = useAuth();
     const accessToken = Cookies.get(accessTokenCookieKey);
 
-    const accountState = auth.isAuth
+    const accountState = auth.data.isAuth
         ? ACCOUNT_STATE.SIGNED_IN
         : accessToken
           ? ACCOUNT_STATE.RE_SIGN_IN
@@ -44,7 +44,7 @@ function AuthRoute(props: PropsWithChildren) {
         if (accountState === ACCOUNT_STATE.RE_SIGN_IN) {
             /** đã đăng nhập từ trước, lấy phiên đăng nhập */
             apiRestart({
-                fnCallback: (me) => auth.toggleAuth({ isAuth: true, me }),
+                fnCallback: (me) => auth.method.setAuth({ isAuth: true, me }),
             }).then();
         }
         if (accountState === ACCOUNT_STATE.SIGNED_IN && Object.values(AUTH_SCREEN).includes(pathname as any)) {

@@ -32,7 +32,7 @@ import { calendarMessage } from '@module-calendar/utils/messages';
 import { gameMessage } from '@module-game/utils/messages';
 
 /** hooks */
-import { useBase } from '@module-base/hooks/useBase';
+import { useBase } from '@module-base/hooks/useBase.ts';
 
 /** styles */
 import useStyles from './styles';

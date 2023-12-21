@@ -19,7 +19,7 @@ import { calendarMessage } from '@module-calendar/utils/messages';
 
 /** hooks */
 import { useLanguage } from '@module-language/hooks/useLanguage';
-import { useCalendar } from '@module-calendar/hooks/useCalendar';
+import { useCalendar } from '@module-calendar/hooks/useCalendar.ts';
 
 /** styles */
 import useStyles from './styles';
@@ -29,7 +29,9 @@ import type { Dayjs } from 'dayjs';
 
 export default function CalendarTitle() {
     const { formatMessage } = useIntl();
-    const { locale } = useLanguage();
+    const {
+        data: { locale },
+    } = useLanguage();
     const CALENDAR = useCalendar();
     const classes = useStyles();
     const isToday = CALENDAR.method.isToday(CALENDAR.data.time);

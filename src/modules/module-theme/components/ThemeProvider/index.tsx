@@ -30,10 +30,16 @@ import { ThemeContext } from '@module-theme/hooks/useTheme';
 
 /** types */
 import type { PropsWithChildren } from 'react';
+import type { ThemeOptions } from '@mui/material';
 import type { ThemeModeType, ThemeContextProps } from '@module-theme/models';
 
-function ThemeProvider(props: PropsWithChildren) {
+export default function ThemeProvider(props: PropsWithChildren) {
+    const { children } = props;
     const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
+    const themeOptions = React.useRef<Record<ThemeModeType, ThemeOptions>>({
+        dark: { palette: paletteDark, breakpoints } as ThemeOptions,
+        light: { palette: paletteLight, breakpoints } as ThemeOptions,
+    }).current;
 
     const [mode, setMode] = React.useState<ThemeModeType>(() => {
         const modeLocal = Decrypt(localStorageBase.get(themeLocalKey)) as ThemeModeType;
@@ -43,7 +49,7 @@ function ThemeProvider(props: PropsWithChildren) {
         return prefersDarkMode ? themeObject.dark : themeObject.light;
     });
 
-    const toggleTheme = React.useCallback<ThemeContextProps['toggleTheme']>((value) => {
+    const setTheme = React.useCallback<ThemeContextProps['method']['setTheme']>((value) => {
         setMode((prev) => {
             if (prev !== value) {
                 localStorageBase.set(themeLocalKey, Encrypt(value));
@@ -52,23 +58,17 @@ function ThemeProvider(props: PropsWithChildren) {
         });
     }, []);
 
-    const store = React.useMemo<ThemeContextProps>(
-        () => ({
-            mode,
-            toggleTheme,
-        }),
-        [mode]
-    );
+    const store = React.useMemo<ThemeContextProps>(() => {
+        return {
+            data: {
+                mode,
+            },
+            method: {
+                setTheme,
+            },
+        };
+    }, [mode]);
 
-    const themeOptions = React.useMemo(
-        () => ({
-            dark: { palette: paletteDark, breakpoints },
-            light: { palette: paletteLight, breakpoints },
-        }),
-        []
-    );
-
-    // @ts-ignore
     const theme = createTheme(themeOptions[mode]);
 
     return (
@@ -76,11 +76,9 @@ function ThemeProvider(props: PropsWithChildren) {
             <StyledEngineProvider injectFirst>
                 <ThemeProviderMUI theme={theme}>
                     <CssBaseline />
-                    {props?.children}
+                    {children}
                 </ThemeProviderMUI>
             </StyledEngineProvider>
         </ThemeContext.Provider>
     );
 }
-
-export default ThemeProvider;

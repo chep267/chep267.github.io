@@ -10,11 +10,13 @@ import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { apiGetListUser } from '@module-user/apis';
 
 /** hooks */
-import { useAuth } from '@module-auth/hooks/useAuth';
+import { useAuth } from '@module-auth/hooks/useAuth.ts';
 
 export function useListUser() {
     const queryClient = useQueryClient();
-    const { me } = useAuth();
+    const {
+        data: { me },
+    } = useAuth();
     const uid = `${me?.uid}`;
     const data = queryClient.getQueryData(['useListUser', { uid }]);
 

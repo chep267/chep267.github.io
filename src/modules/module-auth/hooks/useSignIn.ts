@@ -19,8 +19,8 @@ import { localStorageBase } from '@module-base/utils/storages';
 import { authMessage } from '@module-auth/utils/messages';
 
 /** hooks */
-import { useBase } from '@module-base/hooks/useBase';
-import { useAuth } from '@module-auth/hooks/useAuth';
+import { useBase } from '@module-base/hooks/useBase.ts';
+import { useAuth } from '@module-auth/hooks/useAuth.ts';
 
 export function useSignIn() {
     const auth = useAuth();
@@ -33,7 +33,7 @@ export function useSignIn() {
             const accessToken = (await me.getIdToken()) || '';
             localStorageBase.set(emailLocalKey, Encrypt(email));
             Cookies.set(accessTokenCookieKey, accessToken, { expires: 1 });
-            auth.toggleAuth({ isAuth: true, me });
+            auth.method.setAuth({ isAuth: true, me });
         },
         onError: () => {
             notify.toggleNotify({
