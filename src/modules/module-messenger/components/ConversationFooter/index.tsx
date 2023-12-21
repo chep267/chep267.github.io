@@ -12,7 +12,6 @@ import { Mic as MicIcon, Photo as PhotoIcon } from '@mui/icons-material';
 
 /** components */
 import ButtonSendMessage from '@module-messenger/components/ConversationFooter/ButtonSendMessage';
-import ButtonSendEmoji from '@module-messenger/components/ConversationFooter/ButtonSendEmoji';
 import InputMessage from '@module-messenger/components/ConversationFooter/InputMessage';
 
 /** styles */
@@ -36,7 +35,6 @@ export default function ConversationFooter() {
             </Stack>
             <Stack className={classes.footer_right}>
                 <ButtonSendMessage />
-                <ButtonSendEmoji />
             </Stack>
         </Stack>
     );

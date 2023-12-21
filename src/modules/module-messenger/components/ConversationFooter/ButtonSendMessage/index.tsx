@@ -4,12 +4,13 @@
  *
  */
 
+import * as React from 'react';
 import classnames from 'classnames';
 import { useParams } from 'react-router-dom';
 
 /** lib components */
 import { IconButton } from '@mui/material';
-import { Send as SendIcon } from '@mui/icons-material';
+import { Favorite as FavoriteIcon, Send as SendIcon } from '@mui/icons-material';
 
 /** hooks */
 import { useSendMessage } from '@module-messenger/hooks/useSendMessage';
@@ -28,7 +29,7 @@ export default function ButtonSendMessage() {
     const { ui, method } = useMessenger();
     const draft = ui.drafts[tid];
 
-    const onSend = () => {
+    const onSendMessage = () => {
         SEND_MESSAGE.mutate(
             { tid, draft },
             {
@@ -42,9 +43,24 @@ export default function ButtonSendMessage() {
         );
     };
 
+    const onSendEmoji = React.useCallback(() => {
+        SEND_MESSAGE.mutate({ tid, draft: { text: '', type: 'emoji' } });
+    }, []);
+
     return (
-        <IconButton onClick={onSend} className={classnames(classes.btnSend, { [classes.btnVisible]: !!draft?.text })}>
-            <SendIcon color="primary" />
-        </IconButton>
+        <>
+            <IconButton
+                disabled={SEND_MESSAGE.isPending}
+                onClick={onSendMessage}
+                className={classnames(classes.btnSend, { [classes.btnVisible]: !!draft?.text })}>
+                <SendIcon color="primary" />
+            </IconButton>
+            <IconButton
+                disabled={SEND_MESSAGE.isPending}
+                onClick={onSendEmoji}
+                className={classnames(classes.btnSend, { [classes.btnVisible]: !draft?.text })}>
+                <FavoriteIcon color="primary" />
+            </IconButton>
+        </>
     );
 }

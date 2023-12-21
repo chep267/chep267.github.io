@@ -61,7 +61,8 @@ const useStyles = makeStyles(({ spacing, palette }) => ({
     footer_right: {
         flexDirection: 'row',
         alignItems: 'flex-end',
-        justifyContent: 'space-between',
+        justifyContent: 'center',
+        width: 60,
         height: '100%',
         gap: spacing(1),
     },
