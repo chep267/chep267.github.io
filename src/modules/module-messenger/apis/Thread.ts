@@ -20,16 +20,11 @@ import {
 /** utils */
 import { debounce } from '@module-base/utils/helpers/debounce';
 import { firestore } from '@module-base/utils/firebase';
-import { checkUid } from '@module-user/utils/helpers/checkUid';
 
 /** types */
 import type { TypeItemIds, TypeItems } from '@module-base/models';
-import type { MessengerApiProps, TypeThreadData } from '@module-messenger/models';
-import { genMessage } from '@module-messenger/utils/helpers/genMessage';
-import { apiCreateMessage } from '@module-messenger/apis/Message';
-import { MessageGPT } from '@module-messenger/constants/chatGPT';
+import type { MessengerApiProps, TypeDocumentThreadData } from '@module-messenger/models';
 
-let checkGPT = false;
 const apiOnGetListThread = async (
     payload: MessengerApiProps['GetListThread']['Payload']
 ): Promise<MessengerApiProps['GetListThread']['Response']> => {
@@ -44,40 +39,47 @@ const apiOnGetListThread = async (
     const onGet = () => {
         const unsubscribe = onSnapshot(query(docRef), (querySnapshot) => {
             const itemIds: TypeItemIds = [];
-            const items: TypeItems<TypeThreadData> = {};
+            const items: TypeItems<TypeDocumentThreadData> = {};
             querySnapshot.forEach((doc) => {
                 const tid = doc.id;
                 itemIds.unshift(tid);
-                items[tid] = doc.data() as TypeThreadData;
+                items[tid] = doc.data() as TypeDocumentThreadData;
             });
-            const posChatBot = itemIds.indexOf(MESSENGER_CHAT_BOT_AI_ID);
-            if (posChatBot > -1) {
-                itemIds.splice(posChatBot, 1);
+            if (!itemIds.includes(MESSENGER_CHAT_BOT_AI_ID)) {
                 itemIds.unshift(MESSENGER_CHAT_BOT_AI_ID);
-            } else if (!checkGPT) {
-                checkGPT = true;
-                const dataGPT = genMessage({
-                    tid: MESSENGER_CHAT_BOT_AI_ID,
-                    uid: MESSENGER_CHAT_BOT_AI_ID,
-                    text: MessageGPT['start'],
-                });
-                apiCreateMessage({
-                    uid,
-                    tid: MESSENGER_CHAT_BOT_AI_ID,
-                    mid: dataGPT.mid,
-                    data: dataGPT,
-                });
-                return apiCreateThread({
-                    tid: MESSENGER_CHAT_BOT_AI_ID,
-                    uid,
-                    data: {
-                        type: 'thread',
-                        tid: MESSENGER_CHAT_BOT_AI_ID,
-                        name: 'Chep GPT',
-                        members: [uid, checkUid(MESSENGER_CHAT_BOT_AI_ID)],
-                    },
-                });
             }
+            // const posChatBot = itemIds.indexOf(MESSENGER_CHAT_BOT_AI_ID);
+            // if (posChatBot > -1) {
+            //     itemIds.splice(posChatBot, 1);
+            //     itemIds.unshift(MESSENGER_CHAT_BOT_AI_ID);
+            // } else if (!checkGPT) {
+            //     checkGPT = true;
+            //     const dataGPT = genMessage(
+            //         {
+            //             tid: MESSENGER_CHAT_BOT_AI_ID,
+            //             uid: MESSENGER_CHAT_BOT_AI_ID,
+            //             text: MessageGPT['start'],
+            //             mid: 'mid.tolachepAI_start',
+            //         },
+            //         true
+            //     );
+            //     apiCreateMessage({
+            //         uid,
+            //         tid: MESSENGER_CHAT_BOT_AI_ID,
+            //         mid: dataGPT.mid,
+            //         data: dataGPT,
+            //     });
+            //     return apiCreateThread({
+            //         tid: MESSENGER_CHAT_BOT_AI_ID,
+            //         uid,
+            //         data: {
+            //             type: 'thread',
+            //             tid: MESSENGER_CHAT_BOT_AI_ID,
+            //             name: 'Chep GPT',
+            //             members: [uid, checkUid(MESSENGER_CHAT_BOT_AI_ID)],
+            //         },
+            //     });
+            // }
             fnCallback({ itemIds, items });
         });
         return { unsubscribe };

@@ -7,7 +7,7 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 
 /** apis */
-import { apiCreateMessage } from '@module-messenger/apis/Message';
+import { apiCreateMessage, apiSendFile } from '@module-messenger/apis/Message';
 
 /** constants */
 import { MESSENGER_CHAT_BOT_AI_ID } from '@module-messenger/constants/ref';
@@ -37,8 +37,24 @@ export function useSendMessage() {
     const LIST_THREAD: any = queryClient.getQueryData(['useListThread', { uid }]);
 
     return useMutation({
-        mutationFn: ({ tid, draft }: { tid: string; draft: Partial<TypeDocumentMessageData> }) => {
-            const data = genMessage({ ...draft, tid, uid });
+        mutationFn: async ({ tid, draft }: { tid: string; draft: TypeDocumentMessageData }) => {
+            const data = genMessage({ ...draft, tid, uid, isEncrypt: true });
+            if (draft.fileIds.length) {
+                // send file
+                const response = await Promise.all(
+                    draft.fileIds.map((fid) => apiSendFile({ tid, mid: data.mid, fid, file: draft.files![fid] }))
+                );
+                const files: any = {};
+                response?.map((value) => {
+                    if (value) {
+                        files[value.fid] = {
+                            url: value.url,
+                            ...draft.files[value.fid],
+                        };
+                    }
+                });
+                data.files = files;
+            }
             return apiCreateMessage({
                 uid,
                 tid,
@@ -48,7 +64,7 @@ export function useSendMessage() {
                 if (tid === MESSENGER_CHAT_BOT_AI_ID) {
                     const arrText = MessageGPT['random'];
                     const text = arrText[Math.floor(Math.random() * arrText.length)];
-                    const dataGPT = genMessage({ tid, uid: tid, text });
+                    const dataGPT = genMessage({ tid, uid: tid, text, isEncrypt: true });
                     return apiCreateMessage({
                         uid,
                         tid,

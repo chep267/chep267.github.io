@@ -20,11 +20,11 @@ type TypeDocumentMessageData = {
     tid: string;
     mid: string;
     text: string;
-    attachmentIds: TypeItemIds | null;
-    attachments: TypeItems<any> | null;
+    fileIds: TypeItemIds;
+    files: TypeItems<File & { url: string }>;
     createdTime: number;
     updatedTime: number;
-    type: 'text' | 'emoji' | 'attachment';
+    type: 'text' | 'emoji';
 };
 
 interface MessengerApiProps {
@@ -32,7 +32,7 @@ interface MessengerApiProps {
     GetListThread: {
         Payload: CallApiPayloadType<{
             uid: string;
-            fnCallback(data: { itemIds: TypeItemIds; items: TypeItems<any> }): void;
+            fnCallback(data: { itemIds: TypeItemIds; items: TypeItems<TypeDocumentThreadData> }): void;
         }>;
         Response?: { unsubscribe: Unsubscribe };
     };
@@ -69,6 +69,15 @@ interface MessengerApiProps {
             data: TypeDocumentMessageData;
         }>;
         Response?: void;
+    };
+    SendFile: {
+        Payload: CallApiPayloadType<{
+            tid: string;
+            mid: string;
+            fid: string;
+            file: File;
+        }>;
+        Response?: { fid: string; url: string };
     };
 }
 

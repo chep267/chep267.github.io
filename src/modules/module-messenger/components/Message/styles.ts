@@ -12,6 +12,13 @@ const useStyles = makeStyles(({ spacing, palette, breakpoints }) => ({
         alignItems: 'center',
         justifyContent: 'space-between',
         width: '100%',
+        gap: spacing(2),
+        '& > button': {
+            visibility: 'hidden',
+        },
+        '&:hover > button': {
+            visibility: 'visible',
+        },
     },
     partnerView: {
         justifyContent: 'flex-start',
@@ -19,25 +26,44 @@ const useStyles = makeStyles(({ spacing, palette, breakpoints }) => ({
     meView: {
         justifyContent: 'flex-end',
     },
-    partnerMessage: {
-        textAlign: 'left',
-        justifyContent: 'flex-start',
-    },
-    meMessage: {
-        justifyContent: 'flex-end',
-        backgroundColor: palette.primary.main,
-    },
+
     message: {
         width: 'auto',
         maxWidth: '50%',
+        justifyContent: 'center',
+        gap: 4,
+        [breakpoints.down('md')]: {
+            maxWidth: '70%',
+        },
+    },
+    partnerMessage: {
+        alignItems: 'flex-start',
+    },
+    meMessage: {
+        alignItems: 'flex-end',
+        '& > div[class*="textMessage"]': {
+            backgroundColor: palette.primary.main,
+            color: palette.common.white,
+        },
+    },
+    textMessage: {
+        width: 'auto',
         padding: `5px ${spacing(2)}`,
         border: `1px solid ${palette.divider}`,
         borderRadius: 20,
         wordBreak: 'break-word',
         whiteSpace: 'pre-wrap',
-        [breakpoints.down('md')]: {
-            maxWidth: '70%',
-        },
+    },
+    imageListMessage: {
+        width: 'auto',
+    },
+    imageMessage: {
+        borderRadius: 6,
+        overflow: 'hidden',
+        minWidth: 100,
+        minHeight: 100,
+        backgroundColor: palette.divider,
+        border: `1px solid ${palette.divider}`,
     },
 }));
 

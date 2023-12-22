@@ -25,7 +25,7 @@ export const paletteLight: DeepPartial<Palette> = {
 export const paletteDark: DeepPartial<Palette> = {
     mode: 'dark',
     primary: {
-        main: '#669DF6',
+        main: '#038cf5',
     },
     background: { paper: '#051E34' },
 };

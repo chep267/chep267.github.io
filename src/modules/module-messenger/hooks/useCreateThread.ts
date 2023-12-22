@@ -12,6 +12,7 @@ import { apiCreateThread } from '@module-messenger/apis';
 /** utils */
 import { baseMessage } from '@module-base/utils/messages';
 import { checkUid } from '@module-user/utils/helpers/checkUid';
+import { checkTid } from '@module-messenger/utils/helpers/checkTid';
 
 /** hooks */
 import { useBase } from '@module-base/hooks/useBase';
@@ -33,20 +34,32 @@ export function useCreateThread() {
         mutationFn: (payload: Partial<Omit<TypeDocumentThreadData, 'tid'>> & Pick<TypeDocumentThreadData, 'tid'>) => {
             const { tid, name, type, members } = payload;
             const LIST_USER: any = queryClient.getQueryData(['useListUser', { uid }]);
-            const partnerId = checkUid(tid);
-            const partner: UserInfo = LIST_USER?.items?.[partnerId];
+            const pid = checkUid(tid);
+            const partner: UserInfo = LIST_USER?.items?.[pid];
+            const pTid = checkTid(uid);
 
-            console.log('CREATE_THREAD: ', partner);
-            return apiCreateThread({
-                uid: me!.uid,
-                tid,
-                data: {
+            return Promise.all([
+                apiCreateThread({
+                    uid: me!.uid,
                     tid,
-                    name: name || partner?.displayName || '',
-                    type: type || 'thread',
-                    members: members || [uid, partnerId],
-                },
-            });
+                    data: {
+                        tid,
+                        name: name || partner?.displayName || '',
+                        type: type || 'thread',
+                        members: members || [uid, pid],
+                    },
+                }),
+                apiCreateThread({
+                    uid: pid,
+                    tid: pTid,
+                    data: {
+                        tid: pTid,
+                        name: me?.displayName || '',
+                        type: type || 'thread',
+                        members: members || [uid, pid],
+                    },
+                }),
+            ]);
         },
         onError: (error) => {
             console.log('error: ', error);

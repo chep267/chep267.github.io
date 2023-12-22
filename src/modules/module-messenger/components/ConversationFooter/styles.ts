@@ -39,12 +39,14 @@ const useStyles = makeStyles(({ spacing, palette }) => ({
     footer_center: {
         zIndex: 999,
         width: '100%',
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'space-between',
+        flexDirection: 'column',
+        alignItems: 'flex-start',
+        justifyContent: 'center',
         padding: `0 ${spacing(2)}`,
+        gap: spacing(2),
         marginLeft: 80,
         transition: 'margin 0.3s',
+        overflow: 'hidden',
 
         '& > .MuiTextField-root': {
             width: '100%',

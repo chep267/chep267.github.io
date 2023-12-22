@@ -5,13 +5,14 @@
  */
 
 import { collection, doc, onSnapshot, query, setDoc } from '@firebase/firestore';
+import { getDownloadURL, ref, uploadBytes } from '@firebase/storage';
 
 /** constants */
 import { TIMING_API_PENDING } from '@module-base/constants/defaultValue';
 import { MESSENGER_DB_MESSAGE_REF, MESSENGER_DB_ROOT_REF, MESSENGER_DB_THREADS_REF } from '@module-messenger/constants/ref';
 
 /** utils */
-import { firestore } from '@module-base/utils/firebase';
+import { firestore, storage } from '@module-base/utils/firebase';
 import { debounce } from '@module-base/utils/helpers/debounce';
 
 /** types */
@@ -65,4 +66,17 @@ const apiCreateMessage = async (
     return setDoc(docRef, data, { merge: true });
 };
 
-export { apiCreateMessage, apiOnGetListMessage };
+const apiSendFile = async (
+    payload: MessengerApiProps['SendFile']['Payload']
+): Promise<MessengerApiProps['SendFile']['Response']> => {
+    const { tid, mid, fid, file } = payload;
+    const storageRef = ref(
+        storage,
+        `${MESSENGER_DB_ROOT_REF}/${MESSENGER_DB_THREADS_REF}/${tid}/${MESSENGER_DB_MESSAGE_REF}/${mid}/${fid}`
+    );
+    const snapshot = await uploadBytes(storageRef, file);
+    const url = await getDownloadURL(snapshot.ref);
+    return { fid, url };
+};
+
+export { apiCreateMessage, apiOnGetListMessage, apiSendFile };

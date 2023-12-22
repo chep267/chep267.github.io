@@ -18,7 +18,7 @@ import { useAuth } from '@module-auth/hooks/useAuth';
 
 /** types */
 import type { TypeItemIds, TypeItems } from '@module-base/models';
-import type { TypeThreadData } from '@module-messenger/models';
+import type { TypeDocumentThreadData } from '@module-messenger/models';
 
 export function useListenListThread() {
     const queryClient = useQueryClient();
@@ -26,7 +26,7 @@ export function useListenListThread() {
         data: { me },
     } = useAuth();
     const [itemIds, setItemIds] = React.useState<TypeItemIds>(emptyArray);
-    const [items, setItems] = React.useState<TypeItems<TypeThreadData>>(emptyObject);
+    const [items, setItems] = React.useState<TypeItems<TypeDocumentThreadData>>(emptyObject);
     const uid = `${me?.uid}`;
 
     const LIST_THREAD = useQuery({

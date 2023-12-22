@@ -9,6 +9,9 @@ import classnames from 'classnames';
 /** lib components */
 import { Typography, Stack } from '@mui/material';
 
+/** utils */
+import { Decrypt } from '@module-base/utils/security';
+
 /** styles */
 import useStyles from './styles';
 
@@ -18,12 +21,12 @@ type TextMessageProps = {
 };
 
 export default function TextMessage(props: TextMessageProps) {
-    const { isMe, text } = props;
+    const { text } = props;
     const classes = useStyles();
 
     return (
-        <Stack className={classnames(classes.message, { [classes.meMessage]: isMe }, { [classes.partnerMessage]: !isMe })}>
-            <Typography variant="body1">{text}</Typography>
+        <Stack className={classnames(classes.textMessage, 'textMessage')}>
+            <Typography variant="body1">{Decrypt(text)}</Typography>
         </Stack>
     );
 }

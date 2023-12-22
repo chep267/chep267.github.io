@@ -6,7 +6,7 @@
 
 import makeStyles from '@mui/styles/makeStyles';
 
-const useStyles = makeStyles(({ spacing, typography }) => ({
+const useStyles = makeStyles(({ spacing }) => ({
     body: {
         '& > ul': {
             scrollBehavior: 'smooth',
@@ -14,9 +14,7 @@ const useStyles = makeStyles(({ spacing, typography }) => ({
         },
     },
     listItem: {
-        '& .MuiListItemText-primary': {
-            ...typography.h6,
-        },
+        width: '100%',
     },
 }));
 

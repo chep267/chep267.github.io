@@ -4,8 +4,9 @@
  *
  */
 
-import { getApps, initializeApp } from '@firebase/app';
+import { initializeApp } from '@firebase/app';
 import { getFirestore } from '@firebase/firestore';
+import { getStorage } from 'firebase/storage';
 
 const firebaseConfig = Object.freeze({
     apiKey: 'AIzaSyBYZKhAWUgxDLqNZFMONEBCc05-7YQVt6Q',
@@ -18,8 +19,8 @@ const firebaseConfig = Object.freeze({
     measurementId: 'G-YTD0GEHL7R',
 });
 
-if (!getApps().length) initializeApp(firebaseConfig);
-
 const firebaseApp = initializeApp(firebaseConfig);
 const firestore = getFirestore(firebaseApp);
-export { firebaseApp, firestore };
+const storage = getStorage(firebaseApp);
+
+export { firebaseApp, firestore, storage };

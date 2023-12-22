@@ -42,13 +42,7 @@ export default function ButtonChooseEmoji() {
             if (!tid || !emoji?.native) {
                 return;
             }
-            method.setDrafts((prev) => {
-                const draft = {
-                    ...prev[tid],
-                    text: prev[tid].text + emoji.native,
-                };
-                return { ...prev, [tid]: draft };
-            });
+            method.setText({ tid, text: emoji.native, type: 'emoji' });
         },
         [tid]
     );

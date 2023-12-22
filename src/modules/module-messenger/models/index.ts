@@ -11,18 +11,18 @@ import type { TypeDocumentMessageData } from '@module-messenger/models';
 
 export * from './apis';
 
-export type TypeThreadData = {
-    id: string;
-    name: string;
-};
-
 export type MessengerContextProps = {
     ui: {
         openThreadInfo: boolean;
-        drafts: TypeItems<Partial<TypeDocumentMessageData>>;
+        drafts: TypeItems<TypeDocumentMessageData>;
     };
     method: {
         setOpenThreadInfo: Dispatch<SetStateAction<boolean>>;
-        setDrafts: Dispatch<SetStateAction<TypeItems<Partial<TypeDocumentMessageData>>>>;
+        setText(
+            payload: Pick<TypeDocumentMessageData, 'tid' | 'text'> & Partial<Pick<TypeDocumentMessageData, 'type'>>
+        ): void;
+        setFiles(payload: Pick<TypeDocumentMessageData, 'tid' | 'fileIds' | 'files'>): void;
+        removeFiles(payload: Pick<TypeDocumentMessageData, 'tid' | 'fileIds'>): void;
+        setEmptyThread(tid: string): void;
     };
 };

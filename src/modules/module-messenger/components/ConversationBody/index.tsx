@@ -29,15 +29,19 @@ export default function ConversationBody() {
 
     React.useEffect(() => {
         if (listRef.current) {
-            listRef.current.scrollTop = listRef.current.scrollHeight;
+            setTimeout(() => {
+                if (listRef.current) {
+                    listRef.current.scrollTop = listRef.current.scrollHeight;
+                }
+            }, 200);
         }
-    }, [LIST_MESSAGE.data.itemIds, listRef.current]);
+    }, [LIST_MESSAGE.isFetching, LIST_MESSAGE.data.itemIds]);
 
     const renderItem = React.useCallback(
-        (mid: string, index: number) => {
+        (mid: string) => {
             const message = LIST_MESSAGE.data.items[mid];
             return (
-                <ListItem key={index} className={classnames(classes.listItem)}>
+                <ListItem key={`${tid}-${mid}`} className={classnames(classes.listItem)}>
                     <Message data={message} />
                 </ListItem>
             );

@@ -4,29 +4,41 @@
  *
  */
 
-/** constants */
-import { emptyArray, emptyObject } from '@module-base/constants/defaultValue';
-
 /** utils */
 import { Encrypt } from '@module-base/utils/security';
 
 /** types */
 import type { TypeDocumentMessageData } from '@module-messenger/models';
 
-export const genMessage = (payload: Partial<TypeDocumentMessageData>): TypeDocumentMessageData => {
-    const { tid, uid, type = 'text', text = '', attachments = emptyObject, attachmentIds = emptyArray } = payload;
-    const createdTime = Date.now();
-    const mid = `mid.${Date.now()}`;
+type TypeGenMessage = Pick<TypeDocumentMessageData, 'tid'> &
+    Partial<Omit<TypeDocumentMessageData, 'tid'>> & { isEncrypt?: boolean; isEmpty?: boolean };
+
+export const genMessage = (payload: TypeGenMessage): TypeDocumentMessageData => {
+    const {
+        tid,
+        uid = '',
+        createdTime,
+        mid,
+        updatedTime = createdTime,
+        type = 'text',
+        text = '',
+        fileIds = [],
+        files = {},
+        isEmpty = false,
+        isEncrypt = false,
+    } = payload;
+
+    const time = Date.now();
 
     return {
-        tid: `${tid}`,
-        uid: `${uid}`,
-        mid,
+        tid,
+        uid,
+        mid: !isEmpty ? mid || `mid.${time}` : '',
+        text: !isEncrypt ? text : text ? Encrypt(text) : '',
+        fileIds,
+        files,
+        createdTime: !isEmpty ? createdTime || time : 0,
+        updatedTime: !isEmpty ? updatedTime || time : 0,
         type,
-        text: Encrypt(text),
-        attachmentIds,
-        attachments,
-        createdTime,
-        updatedTime: createdTime,
     };
 };

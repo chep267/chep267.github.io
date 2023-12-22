@@ -19,7 +19,10 @@ const MessengerContext = React.createContext<MessengerContextProps>({
     },
     method: {
         setOpenThreadInfo: emptyFunction,
-        setDrafts: emptyFunction,
+        setText: emptyFunction,
+        setFiles: emptyFunction,
+        removeFiles: emptyFunction,
+        setEmptyThread: emptyFunction,
     },
 });
 MessengerContext.displayName = 'MessengerContext';
