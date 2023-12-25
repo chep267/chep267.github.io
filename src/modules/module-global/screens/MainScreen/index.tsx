@@ -14,7 +14,7 @@ import { Box } from '@mui/material';
 /** components */
 import StartLoading from '@module-base/components/StartLoading';
 import AppHeader from '@module-global/components/AppHeader';
-import AppMenu from '@module-global/components/AppMenu';
+import AppSider from '@module-global/components/AppSider';
 
 /** constants */
 import { SCREEN } from '@module-global/constants/screen';
@@ -39,7 +39,7 @@ function MainRoute() {
 
     return (
         <Box className={classes.mainBody} component="section">
-            <AppMenu />
+            <AppSider />
             <Box
                 className={classnames(classes.mainContent, { [classes.mainContentWithAppbarClose]: !sider.open })}
                 component="main">

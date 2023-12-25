@@ -8,6 +8,7 @@ import makeStyles from '@mui/styles/makeStyles';
 
 /** constants */
 import { SCREEN_SIZE } from '@module-global/constants/screen';
+import { alpha } from '@mui/material/styles';
 
 const useStyles = makeStyles(({ palette }) => ({
     drawer: {
@@ -31,14 +32,17 @@ const useStyles = makeStyles(({ palette }) => ({
             },
             '&::-webkit-scrollbar-track': {
                 borderRadius: '10px',
-                backgroundColor: 'transparent',
+                backgroundColor: alpha(palette.common.black, 0.1),
             },
             '&::-webkit-scrollbar-thumb': {
                 borderRadius: '10px',
-                backgroundColor: 'transparent',
+                backgroundColor: alpha(palette.common.black, 0.2),
+            },
+            '&::-webkit-scrollbar-thumb:hover': {
+                backgroundColor: alpha(palette.common.black, 0.4),
             },
             '&::-webkit-scrollbar-thumb:active': {
-                backgroundColor: palette.grey[500],
+                backgroundColor: alpha(palette.common.black, 0.9),
             },
         },
     },
@@ -57,37 +61,36 @@ const useStyles = makeStyles(({ palette }) => ({
             width: SCREEN_SIZE.APP_BAR_MIN_WIDTH,
             overflowX: 'hidden',
         },
+        '& li[class*="app-sider-item"]': {
+            width: '100%',
+            paddingLeft: 6,
+            paddingRight: 6,
+            '& .MuiListItemText-root': {
+                visibility: 'hidden',
+            },
+            '& .MuiListItemButton-root': {
+                justifyContent: 'center',
+                alignItems: 'center',
+                '& .MuiListItemIcon-root': {
+                    minWidth: 'unset',
+                },
+            },
+        },
     },
-
-    menu: {
+    sider: {
         width: '100%',
         '& .MuiListItemButton-root': {
             borderRadius: 8,
         },
     },
-    menuItem: {
+    siderItem: {
         width: '100%',
         '& .MuiListItemButton-root': {
             borderRadius: 8,
             minHeight: 50,
         },
     },
-    menuItemClose: {
-        width: '100%',
-        paddingLeft: 6,
-        paddingRight: 6,
-        '& .MuiListItemText-root': {
-            visibility: 'hidden',
-        },
-        '& .MuiListItemButton-root': {
-            justifyContent: 'center',
-            alignItems: 'center',
-            '& .MuiListItemIcon-root': {
-                minWidth: 'unset',
-            },
-        },
-    },
-    menuItemSelected: {
+    siderItemSelected: {
         '& .MuiListItemButton-root': {
             backgroundColor: palette.primary.dark,
             '& .MuiListItemText-root, .MuiSvgIcon-root': {

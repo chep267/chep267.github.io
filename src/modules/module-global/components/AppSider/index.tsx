@@ -10,7 +10,7 @@ import { useIntl } from 'react-intl';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 /** lib components */
-import { Drawer, Button, Divider, Tooltip, List, ListItem, ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
+import { Drawer, Button, Divider, Tooltip, ListItem, ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
 
 /** icons */
 import {
@@ -21,6 +21,9 @@ import {
     KeyboardDoubleArrowLeft as KeyboardDoubleArrowLeftIcon,
     Games as GamesIcon,
 } from '@mui/icons-material';
+
+/** components */
+import ListBase from '@module-base/components/ListBase';
 
 /** constants */
 import { SCREEN } from '@module-global/constants/screen';
@@ -37,7 +40,7 @@ import { useBase } from '@module-base/hooks/useBase';
 /** styles */
 import useStyles from './styles';
 
-const AppMenu = React.memo(() => {
+const AppSider = React.memo(() => {
     const { pathname } = useLocation();
     const navigate = useNavigate();
     const { formatMessage } = useIntl();
@@ -72,31 +75,28 @@ const AppMenu = React.memo(() => {
         []
     );
 
-    const renderMenu = () => {
-        return (
-            <List className={classes.menu}>
-                {MENU_ROUTER.map((item) => {
-                    const title = formatMessage(item.name);
-                    return (
-                        <ListItem
-                            key={item.path}
-                            className={classnames(
-                                classes.menuItem,
-                                { [classes.menuItemSelected]: pathname.includes(item.path) },
-                                { [classes.menuItemClose]: !open }
-                            )}>
-                            <Tooltip title={title} placement="right" disableHoverListener={open}>
-                                <ListItemButton onClick={() => navigate(item.path)}>
-                                    <ListItemIcon>{item.icon}</ListItemIcon>
-                                    <ListItemText primary={title} />
-                                </ListItemButton>
-                            </Tooltip>
-                        </ListItem>
-                    );
-                })}
-            </List>
-        );
-    };
+    const renderList = React.useCallback(() => {
+        const renderItem = (item: (typeof MENU_ROUTER)[number]) => {
+            const title = formatMessage(item.name);
+            return (
+                <ListItem
+                    key={item.path}
+                    className={classnames(
+                        classes.siderItem,
+                        { [classes.siderItemSelected]: pathname.includes(item.path) },
+                        'app-sider-item'
+                    )}>
+                    <Tooltip title={title} placement="right" disableHoverListener={open}>
+                        <ListItemButton onClick={() => navigate(item.path)}>
+                            <ListItemIcon>{item.icon}</ListItemIcon>
+                            <ListItemText primary={title} />
+                        </ListItemButton>
+                    </Tooltip>
+                </ListItem>
+            );
+        };
+        return <ListBase className={classes.sider} data={MENU_ROUTER} renderItem={renderItem} />;
+    }, [MENU_ROUTER, pathname]);
 
     const onClick = React.useCallback(() => toggleSider((prev) => !prev), []);
 
@@ -109,10 +109,10 @@ const AppMenu = React.memo(() => {
                 {open ? <KeyboardDoubleArrowLeftIcon /> : <KeyboardDoubleArrowRightIcon />}
             </Button>
             <Divider />
-            {renderMenu()}
+            {renderList()}
         </Drawer>
     );
 });
 
-AppMenu.displayName = 'AppMenu';
-export default AppMenu;
+AppSider.displayName = 'AppSider';
+export default AppSider;

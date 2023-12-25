@@ -6,11 +6,17 @@
 
 import makeStyles from '@mui/styles/makeStyles';
 
+/** constants */
+import { SCREEN_SIZE } from '@module-global/constants/screen.ts';
+
 const useStyles = makeStyles(({ spacing }) => ({
     thread_title: {
         width: '100%',
-        alignItems: 'flex-start',
-        padding: `20px ${spacing(2)}`,
+        justifyContent: 'flex-end',
+        padding: `0px ${spacing(2)} 5px`,
+        height: SCREEN_SIZE.MESSENGER_LEFT_HEADER_HEIGHT,
+        minHeight: SCREEN_SIZE.MESSENGER_LEFT_HEADER_HEIGHT,
+        maxHeight: SCREEN_SIZE.MESSENGER_LEFT_HEADER_HEIGHT,
     },
 }));
 

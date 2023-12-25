@@ -80,6 +80,7 @@ const useStyles = makeStyles(({ palette, breakpoints, zIndex }) => ({
         maxWidth: 0,
         visibility: 'hidden',
         zIndex: -1,
+        border: 'none',
     },
 }));
 
