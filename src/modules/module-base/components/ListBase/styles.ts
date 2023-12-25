@@ -55,7 +55,7 @@ const useStyles = makeStyles(({ palette }) => ({
         right: 0,
         width: '100%',
         height: '100%',
-        backgroundColor: alpha(palette.common.black, 0.2),
+        backgroundColor: alpha(palette.divider, 0.05),
     },
 }));
 
