@@ -7,7 +7,7 @@
 import * as React from 'react';
 import Particles from 'react-tsparticles';
 import { loadSlim } from 'tsparticles-slim';
-import { useTheme as useThemeMUI } from '@mui/material/styles';
+import { useTheme } from '@mui/material/styles';
 
 /** constants */
 import { getOption } from '@module-base/utils/helpers/particleOptions';
@@ -18,7 +18,7 @@ import type { IParticlesProps } from 'react-tsparticles/types/IParticlesProps';
 
 const Particle = React.memo((props: IParticlesProps) => {
     const { options: Options } = props;
-    const theme = useThemeMUI();
+    const theme = useTheme();
     const id = React.useId();
 
     const particlesInit = React.useCallback(async (engine: Engine) => {

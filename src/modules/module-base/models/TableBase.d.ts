@@ -6,12 +6,11 @@
 
 /** types */
 import type { UIEvent, ReactNode } from 'react';
-import type { SxProps, Theme, TableRowProps } from '@mui/material';
+import type { TableRowProps } from '@mui/material';
 
 type OrderType = 'asc' | 'desc';
 
 interface TableBaseProps<T = unknown> {
-    sx?: SxProps<Theme>;
     className?: string;
 
     data?: T[];
@@ -34,4 +33,6 @@ interface TableBaseProps<T = unknown> {
     tableRowProps?: TableRowProps;
 }
 
-export type { OrderType, TableBaseProps };
+type TableLoadingProps = Pick<TableBaseProps, 'loading' | 'emptyText'> & { empty?: boolean };
+
+export type { OrderType, TableBaseProps, TableLoadingProps };

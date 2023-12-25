@@ -20,7 +20,7 @@ import useStyles from './styles';
 /** types */
 import type { ListBaseProps } from '@module-base/models';
 
-const ListBase = React.memo(function <T>(props: ListBaseProps<T> & { listRef?: ListBaseProps<T>['ref'] }) {
+const ListBase = React.memo(function <T>(props: ListBaseProps<T>) {
     const { listRef, data, renderItem, className, loading, emptyText, ...listProps } = props;
     const classes = useStyles();
 

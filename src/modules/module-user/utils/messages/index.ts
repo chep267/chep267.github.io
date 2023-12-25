@@ -9,6 +9,6 @@ import { createMessageIntl } from '@module-base/utils/helpers/createIntl';
 import { VI } from './vi';
 import { EN } from './en';
 
-const messengerMessage = createMessageIntl(VI);
+const userMessage = createMessageIntl(VI);
 
-export { VI, EN, messengerMessage };
+export { VI, EN, userMessage };

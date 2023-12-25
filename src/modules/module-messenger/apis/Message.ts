@@ -74,7 +74,7 @@ const apiSendFile = async (
         storage,
         `${MESSENGER_DB_ROOT_REF}/${MESSENGER_DB_THREADS_REF}/${tid}/${MESSENGER_DB_MESSAGE_REF}/${mid}/${fid}`
     );
-    const snapshot = await uploadBytes(storageRef, file);
+    const snapshot = await uploadBytes(storageRef, file.fileData as File);
     const url = await getDownloadURL(snapshot.ref);
     return { fid, url };
 };

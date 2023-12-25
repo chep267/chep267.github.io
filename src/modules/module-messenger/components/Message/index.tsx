@@ -27,7 +27,7 @@ import type { TypeDocumentMessageData } from '@module-messenger/models';
 /** lazy components */
 const EmojiMessage = React.lazy(() => import('./EmojiMessage'));
 const TextMessage = React.lazy(() => import('./TextMessage'));
-const ImageMessage = React.lazy(() => import('./ImageMessage'));
+const ImageMessage = React.lazy(() => import('./ListImageMessage'));
 
 type MessageProps = {
     data: TypeDocumentMessageData;
@@ -45,11 +45,11 @@ export default function Message(props: MessageProps) {
     const isMe = data.uid === me?.uid;
 
     return (
-        <Tooltip
-            title={dayjs(data.createdTime).locale(locale).format('hh:mm dddd, DD/MM/YYYY')}
-            placement={isMe ? 'right' : 'left'}>
-            <Stack className={classnames(classes.message_view, { [classes.meView]: isMe }, { [classes.partnerView]: !isMe })}>
-                {isMe ? <OptionMessage /> : null}
+        <Stack className={classnames(classes.message_view, { [classes.meView]: isMe }, { [classes.partnerView]: !isMe })}>
+            {isMe ? <OptionMessage /> : null}
+            <Tooltip
+                title={dayjs(data.createdTime).locale(locale).format('hh:mm dddd, DD/MM/YYYY')}
+                placement={isMe ? 'right-end' : 'left-end'}>
                 <Stack
                     className={classnames(
                         classes.message,
@@ -62,8 +62,8 @@ export default function Message(props: MessageProps) {
                         {data.fileIds.length > 0 ? <ImageMessage fileIds={data.fileIds} files={data.files} /> : null}
                     </React.Suspense>
                 </Stack>
-                {!isMe ? <OptionMessage /> : null}
-            </Stack>
-        </Tooltip>
+            </Tooltip>
+            {!isMe ? <OptionMessage /> : null}
+        </Stack>
     );
 }

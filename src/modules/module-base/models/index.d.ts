@@ -18,3 +18,6 @@ export * from './InputSearch';
 export * from './TableBase';
 export * from './ListBase';
 export * from './ButtonOpenDialog';
+export * from './ImageBase';
+export * from './NotifyBoundary';
+export * from './PasswordField';

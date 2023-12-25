@@ -15,11 +15,11 @@ import { Photo as PhotoIcon } from '@mui/icons-material';
 import { useMessenger } from '@module-messenger/hooks/useMessenger';
 
 /** styles */
-import useStyles from './styles.ts';
+import useStyles from './styles';
 
 /** types */
 import type { ChangeEvent } from 'react';
-import type { TypeItemIds, TypeItems } from '@module-base/models';
+import type { TypeDocumentMessageData } from '@module-messenger/models';
 
 export default function ButtonChooseFile() {
     const { tid } = useParams();
@@ -33,12 +33,18 @@ export default function ButtonChooseFile() {
                 return;
             }
 
-            const fileIds: TypeItemIds = [];
-            const files: TypeItems<File> = {};
+            const fileIds: TypeDocumentMessageData['fileIds'] = [];
+            const files: TypeDocumentMessageData['files'] = {};
             for (let i = 0, n = data.length; i < n; ++i) {
                 const fid = `fid.${window.crypto.randomUUID()}`;
                 fileIds.push(fid);
-                files[fid] = data[i];
+                files[fid] = {
+                    fileData: data[i],
+                    url: '',
+                    name: data[i].name,
+                    size: data[i].size,
+                    type: data[i].type,
+                };
             }
             method.setFiles({ tid, fileIds, files });
         },

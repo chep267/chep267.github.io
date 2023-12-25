@@ -19,9 +19,9 @@ import { baseMessage } from '@module-base/utils/messages';
 import useStyles from './styles';
 
 /** types */
-import type { TableBaseProps } from '@module-base/models';
+import type { ListLoadingProps } from '@module-base/models';
 
-const ListLoading = React.memo((props: Pick<TableBaseProps, 'loading' | 'emptyText'> & { empty?: boolean }) => {
+const ListLoading = React.memo((props: ListLoadingProps) => {
     const { loading, empty, emptyText } = props;
     const classes = useStyles();
 

@@ -6,14 +6,15 @@
 
 /** lib components */
 import { Stack, IconButton } from '@mui/material';
-import { Mic as MicIcon } from '@mui/icons-material';
+import { Close as CloseIcon } from '@mui/icons-material';
 
 /** styles */
 import useStyles from './styles';
+import { TypeDocumentMessageData } from '@module-messenger/models';
 
 type ImagePreviewProps = {
     fid: string;
-    file?: File;
+    file?: TypeDocumentMessageData['files'][string];
     onRemoveFile(fid: string): void;
 };
 
@@ -27,10 +28,10 @@ export default function ImagePreview(props: ImagePreviewProps) {
 
     return (
         <Stack className={classes.list_item}>
-            <IconButton className={classes.iconRemove} onClick={() => onRemoveFile(fid)}>
-                <MicIcon color="primary" />
+            <IconButton className={classes.iconRemove} onClick={() => onRemoveFile(fid)} size="small">
+                <CloseIcon fontSize="small" />
             </IconButton>
-            <img alt="" src={URL.createObjectURL(file)} />
+            <img alt="" src={URL.createObjectURL(file.fileData)} />
         </Stack>
     );
 }

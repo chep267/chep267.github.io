@@ -27,7 +27,10 @@ const axiosDefaultFormDataConfig = {
     headers: { 'Content-Type': 'multipart/form-data' },
 };
 
+/** for default api */
 const axiosClient = axios.create(axiosDefaultConfig);
+
+/** for file api */
 const axiosClientCDN = axios.create(axiosDefaultFormDataConfig);
 
 // Add a request interceptor

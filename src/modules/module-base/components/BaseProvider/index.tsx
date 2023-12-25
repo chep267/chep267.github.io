@@ -5,9 +5,9 @@
  */
 
 import * as React from 'react';
+import { useMediaQuery } from '@mui/material';
 
 /** components */
-import { useMediaQuery } from '@mui/material';
 import ErrorBoundary from '@module-base/components/ErrorBoundary';
 
 /** utils */
@@ -15,15 +15,16 @@ import { BaseContext, defaultNotify } from '@module-base/hooks/useBase';
 
 /** types */
 import type { PropsWithChildren } from 'react';
-import type { BaseContextProps, BaseNotifyType } from '@module-base/models';
+import type { BaseContextProps, TypeBaseNotify } from '@module-base/models';
 
 function BaseProvider(props: PropsWithChildren) {
+    const { children } = props;
     const matches = useMediaQuery('(max-width:720px)');
 
-    const [notify, setNotify] = React.useState<BaseNotifyType>(defaultNotify);
+    const [notify, setNotify] = React.useState<TypeBaseNotify>(defaultNotify);
     const [openSider, setOpenSider] = React.useState(true);
 
-    const toggleNotify = React.useCallback((options: BaseNotifyType = defaultNotify) => setNotify(options), []);
+    const toggleNotify = React.useCallback((options: TypeBaseNotify = defaultNotify) => setNotify(options), []);
 
     const open = matches ? false : openSider;
     const store = React.useMemo<BaseContextProps>(
@@ -42,7 +43,7 @@ function BaseProvider(props: PropsWithChildren) {
 
     return (
         <BaseContext.Provider value={store}>
-            <ErrorBoundary isAutoReload>{props?.children}</ErrorBoundary>
+            <ErrorBoundary isAutoReload>{children}</ErrorBoundary>
         </BaseContext.Provider>
     );
 }

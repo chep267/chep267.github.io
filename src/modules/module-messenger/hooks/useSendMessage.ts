@@ -44,12 +44,13 @@ export function useSendMessage() {
                 const response = await Promise.all(
                     draft.fileIds.map((fid) => apiSendFile({ tid, mid: data.mid, fid, file: draft.files![fid] }))
                 );
-                const files: any = {};
+                const files: TypeDocumentMessageData['files'] = {};
                 response?.map((value) => {
                     if (value) {
                         files[value.fid] = {
-                            url: value.url,
                             ...draft.files[value.fid],
+                            fileData: null,
+                            url: value.url,
                         };
                     }
                 });

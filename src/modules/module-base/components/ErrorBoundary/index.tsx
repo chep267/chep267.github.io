@@ -8,8 +8,7 @@ import * as React from 'react';
 
 /** types */
 import type { ErrorInfo } from 'react';
-import type { ErrorBoundaryProps } from '@module-base/models';
-import { ErrorBoundaryStates } from '@module-base/models';
+import type { ErrorBoundaryProps, ErrorBoundaryStates } from '@module-base/models';
 
 /** lazy components */
 const FallbackDefault = React.lazy(() => import('./FallbackDefault'));
@@ -29,11 +28,11 @@ class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundarySta
     componentDidCatch(error: Error, errorInfo: ErrorInfo) {
         // You can also log the error to an error reporting service
         // logErrorToMyService(error, errorInfo);
-        console.log('App error: ', error, '\n--\n', errorInfo, '\n--');
+        console.log('ErrorBoundary: ', error, '\n--\n', errorInfo, '\n--');
     }
 
     render() {
-        const { children, fallback: FallBack = FallbackDefault, isAutoReload = true } = this.props;
+        const { children, fallback: FallBack = FallbackDefault, isAutoReload } = this.props;
         const { hasError } = this.state;
 
         return (

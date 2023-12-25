@@ -54,9 +54,19 @@ const useStyles = makeStyles(({ spacing, palette }) => ({
     iconRemove: {
         position: 'absolute',
         visibility: 'hidden',
-        top: 0,
-        right: 0,
-        border: `1px solid ${palette.primary.main}`,
+        top: 2,
+        right: 2,
+        border: `1px solid ${palette.error.main}`,
+        padding: 0,
+        '& > svg': {
+            color: palette.error.main,
+        },
+        '&:hover': {
+            backgroundColor: palette.error.main,
+            '& > svg': {
+                color: palette.common.white,
+            },
+        },
     },
 }));
 

@@ -9,7 +9,7 @@ import type { ReactNode, Dispatch, SetStateAction } from 'react';
 import type { AlertColor } from '@mui/material/Alert';
 import type { MessageDescriptor } from '@formatjs/intl';
 
-type BaseNotifyType = {
+type TypeBaseNotify = {
     open?: boolean;
     message?: ReactNode;
     intlMessage?: MessageDescriptor;
@@ -19,8 +19,8 @@ type BaseNotifyType = {
 };
 
 type BaseContextProps = {
-    notify: BaseNotifyType & {
-        toggleNotify(notify?: BaseNotifyType): void;
+    notify: TypeBaseNotify & {
+        toggleNotify(notify?: TypeBaseNotify): void;
     };
     sider: {
         open: boolean;
@@ -28,4 +28,4 @@ type BaseContextProps = {
     };
 };
 
-export type { BaseContextProps, BaseNotifyType };
+export type { BaseContextProps, TypeBaseNotify };

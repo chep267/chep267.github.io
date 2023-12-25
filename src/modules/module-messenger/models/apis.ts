@@ -6,7 +6,7 @@
 
 /** types */
 import type { Unsubscribe } from '@firebase/firestore';
-import type { CallApiPayloadType, TypeItemIds, TypeItems } from '@module-base/models';
+import type { TypeCallApiPayloadType, TypeItemIds, TypeItems } from '@module-base/models';
 
 type TypeDocumentThreadData = {
     tid: string;
@@ -21,7 +21,13 @@ type TypeDocumentMessageData = {
     mid: string;
     text: string;
     fileIds: TypeItemIds;
-    files: TypeItems<File & { url: string }>;
+    files: TypeItems<{
+        fileData?: File | null;
+        url: string;
+        name: File['name'];
+        size: File['size'];
+        type: File['type'];
+    }>;
     createdTime: number;
     updatedTime: number;
     type: 'text' | 'emoji';
@@ -30,14 +36,14 @@ type TypeDocumentMessageData = {
 interface MessengerApiProps {
     /** thread */
     GetListThread: {
-        Payload: CallApiPayloadType<{
+        Payload: TypeCallApiPayloadType<{
             uid: string;
             fnCallback(data: { itemIds: TypeItemIds; items: TypeItems<TypeDocumentThreadData> }): void;
         }>;
         Response?: { unsubscribe: Unsubscribe };
     };
     CreateThread: {
-        Payload: CallApiPayloadType<{
+        Payload: TypeCallApiPayloadType<{
             uid: string;
             tid: string;
             data: TypeDocumentThreadData;
@@ -45,7 +51,7 @@ interface MessengerApiProps {
         Response?: void;
     };
     MoveThread: {
-        Payload: CallApiPayloadType<{
+        Payload: TypeCallApiPayloadType<{
             uid: string;
             tid: string;
         }>;
@@ -54,7 +60,7 @@ interface MessengerApiProps {
 
     /** message */
     GetListMessage: {
-        Payload: CallApiPayloadType<{
+        Payload: TypeCallApiPayloadType<{
             uid: string;
             tid: string;
             fnCallback(data: { itemIds: TypeItemIds; items: TypeItems<TypeDocumentMessageData> }): void;
@@ -62,7 +68,7 @@ interface MessengerApiProps {
         Response?: { unsubscribe: Unsubscribe };
     };
     CreateMessage: {
-        Payload: CallApiPayloadType<{
+        Payload: TypeCallApiPayloadType<{
             uid: string;
             tid: string;
             mid: string;
@@ -71,11 +77,11 @@ interface MessengerApiProps {
         Response?: void;
     };
     SendFile: {
-        Payload: CallApiPayloadType<{
+        Payload: TypeCallApiPayloadType<{
             tid: string;
             mid: string;
             fid: string;
-            file: File;
+            file: TypeDocumentMessageData['files'][string];
         }>;
         Response?: { fid: string; url: string };
     };

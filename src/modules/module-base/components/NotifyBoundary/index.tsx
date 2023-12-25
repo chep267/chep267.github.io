@@ -23,9 +23,9 @@ import { useBase } from '@module-base/hooks/useBase';
 import useStyles from './styles';
 
 /** types */
-import type { SnackbarProps } from '@mui/material/Snackbar';
+import type { NotifyBoundaryProps } from '@module-base/models';
 
-const NotifyBoundary = React.memo((props: SnackbarProps) => {
+const NotifyBoundary = React.memo((props: NotifyBoundaryProps) => {
     const { notify } = useBase();
     const { open, message, intlMessage, mode, close, duration = TIMING_NOTIFY_DURATION } = notify;
     const classes = useStyles();

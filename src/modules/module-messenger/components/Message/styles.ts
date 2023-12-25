@@ -54,17 +54,6 @@ const useStyles = makeStyles(({ spacing, palette, breakpoints }) => ({
         wordBreak: 'break-word',
         whiteSpace: 'pre-wrap',
     },
-    imageListMessage: {
-        width: 'auto',
-    },
-    imageMessage: {
-        borderRadius: 6,
-        overflow: 'hidden',
-        minWidth: 100,
-        minHeight: 100,
-        backgroundColor: palette.divider,
-        border: `1px solid ${palette.divider}`,
-    },
 }));
 
 export default useStyles;

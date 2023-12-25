@@ -17,7 +17,7 @@ type ErrorBoundaryStates = {
 };
 
 type FallbackDefaultProps = {
-    isAutoReload: boolean;
+    isAutoReload?: boolean;
 };
 
 export type { ErrorBoundaryProps, ErrorBoundaryStates, FallbackDefaultProps };

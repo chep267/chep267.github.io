@@ -9,6 +9,7 @@ import type { ReactNode } from 'react';
 import type { ListProps } from '@mui/material/List';
 
 interface ListBaseProps<T = unknown> extends ListProps {
+    listRef?: ListProps['ref'];
     loading?: boolean;
     empty?: boolean;
     emptyText?: string;
@@ -16,4 +17,6 @@ interface ListBaseProps<T = unknown> extends ListProps {
     renderItem?(item: T, index: number): ReactNode;
 }
 
-export type { ListBaseProps };
+type ListLoadingProps = Pick<ListBaseProps, 'loading' | 'emptyText'> & { empty?: boolean };
+
+export type { ListBaseProps, ListLoadingProps };

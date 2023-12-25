@@ -12,6 +12,9 @@ import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 
+/** components */
+import IconBase from '@module-base/components/IconBase';
+
 /** constants */
 import { SECOND_COUNT_DOWN_ERROR } from '@module-base/constants/defaultValue';
 
@@ -26,13 +29,12 @@ import useStyles from './styles';
 
 /** types */
 import type { FallbackDefaultProps } from '@module-base/models';
-import IconBase from '@module-base/components/IconBase';
 
 /** lazy components */
 const Particle = React.lazy(() => import('@module-base/components/Particles'));
 
 export default function FallbackDefault(props: FallbackDefaultProps) {
-    const { isAutoReload } = props;
+    const { isAutoReload = true } = props;
     const classes = useStyles();
     const { formatMessage } = useIntl();
 

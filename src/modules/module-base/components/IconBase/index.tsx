@@ -10,10 +10,9 @@ import * as React from 'react';
 import Skeleton from '@mui/material/Skeleton';
 
 /** types */
-import type { LazyExoticComponent } from 'react';
-import type { IconBaseProps, IconBaseType } from '@module-base/models';
+import type { IconBaseProps, TypeIcons } from '@module-base/models';
 
-const Icons: Readonly<Record<IconBaseType, LazyExoticComponent<(props: IconBaseProps) => JSX.Element>>> = Object.freeze({
+const Icons: TypeIcons = Object.freeze({
     /** app icon */
     appLogo: React.lazy(() => import('./svg/AppLogo')),
 
@@ -26,7 +25,7 @@ const IconBase = React.memo((props: IconBaseProps) => {
     const Icon = Icons[name];
 
     return (
-        <React.Suspense fallback={<Skeleton width={24} height={24} variant="circular" />}>
+        <React.Suspense fallback={<Skeleton width={size} height={size} variant="circular" />}>
             <Icon name={name} width={size} height={size} viewBox={viewBox} {...iconProps} />
         </React.Suspense>
     );
