@@ -38,7 +38,7 @@ function MainRoute() {
     const { sider } = useBase();
 
     return (
-        <Box className={classes.mainBody}>
+        <Box className={classes.mainBody} component="section">
             <AppMenu />
             <Box
                 className={classnames(classes.mainContent, { [classes.mainContentWithAppbarClose]: !sider.open })}

@@ -4,6 +4,4 @@
  *
  */
 
-/** types */
-
 export const typography = {};

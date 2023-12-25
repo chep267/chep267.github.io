@@ -11,9 +11,6 @@ import { useLocation, useNavigate } from 'react-router-dom';
 /** apis */
 import { apiRestart } from '@module-auth/apis';
 
-/** components */
-import StartLoading from '@module-base/components/StartLoading';
-
 /** constants */
 import { accessTokenCookieKey } from '@module-base/constants/localStoreKey';
 import { ACCOUNT_STATE } from '@module-auth/constants/accountState';
@@ -26,6 +23,7 @@ import { useAuth } from '@module-auth/hooks/useAuth';
 import type { PropsWithChildren } from 'react';
 
 /** screens */
+const StartScreen = React.lazy(() => import('@module-base/components/StartLoading'));
 const SignInScreen = React.lazy(() => import('@module-auth/screens/SignInScreen'));
 
 function AuthRoute(props: PropsWithChildren) {
@@ -56,7 +54,7 @@ function AuthRoute(props: PropsWithChildren) {
         case ACCOUNT_STATE.SIGNED_IN:
             return props?.children;
         case ACCOUNT_STATE.RE_SIGN_IN:
-            return <StartLoading />;
+            return <StartScreen />;
         default:
             return <SignInScreen />;
     }

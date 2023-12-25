@@ -11,10 +11,7 @@ import { Avatar, Skeleton } from '@mui/material';
 import { useUser } from '@module-user/hooks/useUser';
 
 /** types */
-import type { AvatarProps } from '@mui/material';
-import type { UserInfo } from '@firebase/auth';
-
-type UserAvatarProps = AvatarProps & { uid?: UserInfo['uid'] };
+import type { UserAvatarProps } from '@module-user/models';
 
 function UserAvatarGet(props: UserAvatarProps) {
     const { uid, alt, ...otherProps } = props;

@@ -11,7 +11,7 @@ import { Avatar, Skeleton } from '@mui/material';
 import UserAvatar from '@module-user/components/UserAvatar';
 
 /** utils */
-import { checkUid } from '@module-user/utils/helpers/checkUid';
+import { checkId } from '@module-base/utils/helpers/checkId';
 
 /** types */
 import type { AvatarProps } from '@mui/material';
@@ -30,6 +30,6 @@ export default function ThreadAvatar(props: ThreadAvatarProps) {
         );
     }
 
-    const uid = checkUid(tid);
+    const uid = checkId(`${tid}`, 'uid');
     return <UserAvatar uid={uid} src={src} {...otherProps} />;
 }

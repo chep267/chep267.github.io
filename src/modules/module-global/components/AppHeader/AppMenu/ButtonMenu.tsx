@@ -52,7 +52,7 @@ import { useLanguage } from '@module-language/hooks/useLanguage';
 import { useCalendar } from '@module-calendar/hooks/useCalendar';
 
 /** styles */
-import useStyles from './styles';
+import useStyles from '../styles';
 
 /** types */
 import type { ElementClickEvent } from '@module-base/models';

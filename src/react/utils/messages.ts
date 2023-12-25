@@ -19,9 +19,9 @@ import { VI as VI_GAME, EN as EN_GAME } from '@module-game/utils/messages';
 import { VI as VI_GLOBAL, EN as EN_GLOBAL } from '@module-global/utils/messages';
 
 /** types */
-import type { MessagesType } from '@module-language/models';
+import type { TypeMessages } from '@module-language/models';
 
-const messages: MessagesType = Object.freeze({
+const messages: TypeMessages = Object.freeze({
     [localeObject.vi]: Object.assign(
         {},
         VI_BASE,

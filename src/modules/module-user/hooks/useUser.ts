@@ -5,13 +5,13 @@
  */
 
 /** utils */
-import { checkUid } from '@module-user/utils/helpers/checkUid';
+import { checkId } from '@module-base/utils/helpers/checkId';
 
 /** hooks */
 import { useListUser } from '@module-user/hooks/useListUser';
 
 /** types */
-import { UserInfo } from '@firebase/auth';
+import type { UserInfo } from '@firebase/auth';
 
 type UseUserProps = {
     uid?: UserInfo['uid'];
@@ -19,7 +19,7 @@ type UseUserProps = {
 
 export function useUser(props: UseUserProps) {
     const { uid: Uid } = props;
-    const uid = checkUid(Uid);
+    const uid = checkId(`${Uid}`, 'uid');
     const LIST_USER = useListUser();
 
     return {

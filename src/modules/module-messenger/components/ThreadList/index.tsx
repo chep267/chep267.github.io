@@ -29,62 +29,59 @@ import { useListenListThread } from '@module-messenger/hooks/useListenListThread
 /** styles */
 import useStyles from './styles';
 
-const ThreadList = React.memo(
-    () => {
-        const navigate = useNavigate();
-        const { tid: currentTid } = useParams();
-        const classes = useStyles();
-        const LIST_THREAD = useListenListThread();
+const ThreadList = React.memo(() => {
+    const navigate = useNavigate();
+    const { tid: currentTid } = useParams();
+    const classes = useStyles();
+    const LIST_THREAD = useListenListThread();
 
-        const firstId = LIST_THREAD.data.itemIds[0];
+    const firstId = LIST_THREAD.data.itemIds[0];
 
-        React.useEffect(() => {
-            if (firstId && (!currentTid || currentTid === '0')) {
-                navigate(genPath(SCREEN.MESSENGER, SCREEN.MESSENGER_CONVERSATION.replace(':tid', firstId)));
-            }
-        }, [currentTid, firstId]);
+    React.useEffect(() => {
+        if (firstId && (!currentTid || currentTid === '0')) {
+            navigate(genPath(SCREEN.MESSENGER, SCREEN.MESSENGER_CONVERSATION.replace(':tid', firstId)));
+        }
+    }, [currentTid, firstId]);
 
-        const onClickItem = React.useCallback((tid: string) => {
-            navigate(genPath(SCREEN.MESSENGER, SCREEN.MESSENGER_CONVERSATION.replace(':tid', tid)));
-        }, []);
+    const onClickItem = React.useCallback((tid: string) => {
+        navigate(genPath(SCREEN.MESSENGER, SCREEN.MESSENGER_CONVERSATION.replace(':tid', tid)));
+    }, []);
 
-        const stopPropagation = React.useCallback((event: React.MouseEvent<HTMLButtonElement>) => {
-            event.stopPropagation();
-        }, []);
+    const stopPropagation = React.useCallback((event: React.MouseEvent<HTMLButtonElement>) => {
+        event.stopPropagation();
+    }, []);
 
-        const renderItem = React.useCallback(
-            (tid: string, index: number) => {
-                return (
-                    <ListItem
-                        key={index}
-                        className={classnames('.ThreadItem', classes.listItem, {
-                            [classes.listItemSelected]: tid === currentTid,
-                        })}
-                        onClick={() => onClickItem(tid)}>
-                        <ListItemAvatar>
-                            <ThreadAvatar tid={tid} />
-                        </ListItemAvatar>
-                        <ListItemText primary={<ThreadName tid={tid} variant="h6" />} secondary="You: Xin chao!" />
-                        <IconButton className={classes.itemOption} onClick={stopPropagation}>
-                            <MoreHorizIcon />
-                        </IconButton>
-                    </ListItem>
-                );
-            },
-            [currentTid, LIST_THREAD.data.items]
-        );
+    const renderItem = React.useCallback(
+        (tid: string, index: number) => {
+            return (
+                <ListItem
+                    key={index}
+                    className={classnames('.ThreadItem', classes.listItem, {
+                        [classes.listItemSelected]: tid === currentTid,
+                    })}
+                    onClick={() => onClickItem(tid)}>
+                    <ListItemAvatar>
+                        <ThreadAvatar tid={tid} />
+                    </ListItemAvatar>
+                    <ListItemText primary={<ThreadName tid={tid} variant="h6" />} secondary="You: Xin chao!" />
+                    <IconButton className={classes.itemOption} onClick={stopPropagation}>
+                        <MoreHorizIcon />
+                    </IconButton>
+                </ListItem>
+            );
+        },
+        [currentTid, LIST_THREAD.data.items]
+    );
 
-        return (
-            <ListBase
-                className={classnames(classes.list, 'messenger_left_thread_list_default')}
-                loading={LIST_THREAD.isFetching}
-                data={LIST_THREAD.data.itemIds}
-                renderItem={renderItem}
-            />
-        );
-    },
-    () => true
-);
+    return (
+        <ListBase
+            className={classnames(classes.list, 'messenger_left_thread_list_default')}
+            loading={LIST_THREAD.isFetching}
+            data={LIST_THREAD.data.itemIds}
+            renderItem={renderItem}
+        />
+    );
+});
 
 ThreadList.displayName = 'ThreadList';
 export default ThreadList;

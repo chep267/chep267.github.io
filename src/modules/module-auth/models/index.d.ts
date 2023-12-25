@@ -7,7 +7,14 @@
 /** types */
 import type { User } from '@firebase/auth';
 
-type AuthContextProps = {
+export * from './apis';
+
+export type FormAuthDataType = {
+    email: string;
+    password: string;
+};
+
+export type AuthContextProps = {
     data: {
         isAuth: boolean;
         me?: User;
@@ -16,5 +23,3 @@ type AuthContextProps = {
         setAuth(options?: AuthContextProps['data']): void;
     };
 };
-
-export type { AuthContextProps };

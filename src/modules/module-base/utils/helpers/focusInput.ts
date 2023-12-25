@@ -4,7 +4,7 @@
  *
  */
 
-const focusInput = (elem?: HTMLInputElement | null) => {
+export const focusInput = (elem?: HTMLInputElement | null) => {
     if (!elem) {
         return false;
     }
@@ -13,5 +13,3 @@ const focusInput = (elem?: HTMLInputElement | null) => {
         elem?.focus?.();
     }, 1);
 };
-
-export { focusInput };

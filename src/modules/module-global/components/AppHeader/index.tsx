@@ -14,21 +14,18 @@ import AppMenu from './AppMenu';
 /** styles */
 import useStyles from './styles';
 
-const AppHeader = React.memo(
-    () => {
-        const classes = useStyles();
+const AppHeader = React.memo(() => {
+    const classes = useStyles();
 
-        return (
-            <AppBar position="sticky" className={classes.header}>
-                <Toolbar>
-                    <AppInfo />
-                    <AppMenu />
-                </Toolbar>
-            </AppBar>
-        );
-    },
-    () => true
-);
+    return (
+        <AppBar position="sticky" className={classes.header}>
+            <Toolbar>
+                <AppInfo />
+                <AppMenu />
+            </Toolbar>
+        </AppBar>
+    );
+});
 
 AppHeader.displayName = 'AppHeader';
 export default AppHeader;

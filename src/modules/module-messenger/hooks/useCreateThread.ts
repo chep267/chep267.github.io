@@ -11,8 +11,7 @@ import { apiCreateThread } from '@module-messenger/apis';
 
 /** utils */
 import { baseMessage } from '@module-base/utils/messages';
-import { checkUid } from '@module-user/utils/helpers/checkUid';
-import { checkTid } from '@module-messenger/utils/helpers/checkTid';
+import { checkId } from '@module-base/utils/helpers/checkId';
 
 /** hooks */
 import { useBase } from '@module-base/hooks/useBase';
@@ -34,9 +33,9 @@ export function useCreateThread() {
         mutationFn: (payload: Partial<Omit<TypeDocumentThreadData, 'tid'>> & Pick<TypeDocumentThreadData, 'tid'>) => {
             const { tid, name, type, members } = payload;
             const LIST_USER: any = queryClient.getQueryData(['useListUser', { uid }]);
-            const pid = checkUid(tid);
+            const pid = checkId(tid, 'uid');
             const partner: UserInfo = LIST_USER?.items?.[pid];
-            const pTid = checkTid(uid);
+            const pTid = checkId(uid, 'tid');
 
             return Promise.all([
                 apiCreateThread({

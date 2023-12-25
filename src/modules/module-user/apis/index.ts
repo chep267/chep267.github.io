@@ -16,8 +16,8 @@ import { debounce } from '@module-base/utils/helpers/debounce';
 
 /** types */
 import type { UserInfo } from '@firebase/auth';
-import type { UserApiProps } from '@module-user/models';
 import type { TypeItemIds, TypeItems } from '@module-base/models';
+import type { UserApiProps } from '@module-user/models';
 
 const apiCreateUser = async (payload: UserApiProps['Create']['Payload']): Promise<UserApiProps['Create']['Response']> => {
     const { timer = TIMING_API_PENDING, user } = payload;

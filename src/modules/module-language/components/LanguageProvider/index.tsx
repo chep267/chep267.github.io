@@ -15,24 +15,19 @@ import { localeLocalKey } from '@module-base/constants/localStoreKey';
 /** utils */
 import { Decrypt, Encrypt } from '@module-base/utils/security';
 import { localStorageBase } from '@module-base/utils/storages';
-import { getDeviceLanguage } from '@module-language/utils/helpers';
+import { getDeviceLanguage } from '@module-language/utils/helpers/getDeviceLanguage';
 
 /** hooks */
 import { LanguageContext } from '@module-language/hooks/useLanguage';
 
 /** types */
-import type { PropsWithChildren } from 'react';
-import type { LocaleType, MessagesType, LanguageContextProps } from '@module-language/models';
-
-type LanguageProviderProps = PropsWithChildren<{
-    messages: MessagesType;
-}>;
+import type { TypeLocale, LanguageProviderProps, LanguageContextProps } from '@module-language/models';
 
 function LanguageProvider(props: LanguageProviderProps) {
     const { children, messages } = props;
 
-    const [locale, setLocale] = React.useState<LocaleType>(() => {
-        const localeCookie = Decrypt(localStorageBase.get(localeLocalKey)) as LocaleType;
+    const [locale, setLocale] = React.useState<TypeLocale>(() => {
+        const localeCookie = Decrypt(localStorageBase.get(localeLocalKey)) as TypeLocale;
         if (localeCookie && localeCookie in localeObject) {
             return localeCookie;
         }

@@ -20,7 +20,7 @@ import { useAuth } from '@module-auth/hooks/useAuth';
 /** styles */
 import useStyles from './styles';
 
-function AppMenu() {
+export default function AppMenu() {
     const {
         data: { isAuth },
     } = useAuth();
@@ -32,7 +32,7 @@ function AppMenu() {
     };
 
     return (
-        <Stack className={classes.info}>
+        <Stack className={classes.menu}>
             {isAuth ? (
                 <>
                     <Tooltip title="Messenger">
@@ -51,5 +51,3 @@ function AppMenu() {
         </Stack>
     );
 }
-
-export default AppMenu;

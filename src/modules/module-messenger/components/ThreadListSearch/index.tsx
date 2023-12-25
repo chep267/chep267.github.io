@@ -21,7 +21,7 @@ import { SCREEN } from '@module-global/constants/screen';
 
 /** utils */
 import { genPath } from '@module-base/utils/helpers/genPath';
-import { checkTid } from '@module-messenger/utils/helpers/checkTid';
+import { checkId } from '@module-base/utils/helpers/checkId';
 
 /** hooks */
 import { useListUser } from '@module-user/hooks/useListUser';
@@ -32,47 +32,41 @@ import useStyles from '@module-messenger/components/ThreadList/styles';
 /** type */
 import type { UserInfo } from '@firebase/auth';
 
-const ThreadListSearch = React.memo(
-    () => {
-        const navigate = useNavigate();
-        const classes = useStyles();
-        const LIST_USER = useListUser();
-        const { itemIds, items } = LIST_USER.data ?? {};
+const ThreadListSearch = React.memo(() => {
+    const navigate = useNavigate();
+    const classes = useStyles();
+    const LIST_USER = useListUser();
+    const { itemIds, items } = LIST_USER.data ?? {};
 
-        const onClickItem = React.useCallback((uid: UserInfo['uid']) => {
-            const tid = checkTid(uid);
-            navigate(genPath(SCREEN.MESSENGER, SCREEN.MESSENGER_CONVERSATION.replace(':tid', tid)));
-        }, []);
+    const onClickItem = React.useCallback((uid: UserInfo['uid']) => {
+        const tid = checkId(uid, 'tid');
+        navigate(genPath(SCREEN.MESSENGER, SCREEN.MESSENGER_CONVERSATION.replace(':tid', tid)));
+    }, []);
 
-        const renderItem = React.useCallback(
-            (uid: UserInfo['uid']) => {
-                const user = items?.[uid];
-                return !user ? null : (
-                    <ListItem
-                        key={uid}
-                        className={classnames('.ThreadItem', classes.listItem)}
-                        onClick={() => onClickItem(uid)}>
-                        <ListItemAvatar>
-                            <ThreadAvatar tid={uid} src={user.photoURL || undefined} alt={user.displayName || undefined} />
-                        </ListItemAvatar>
-                        <ListItemText primary={<ThreadName tid={uid} name={user.displayName} />} />
-                    </ListItem>
-                );
-            },
-            [items]
-        );
+    const renderItem = React.useCallback(
+        (uid: UserInfo['uid']) => {
+            const user = items?.[uid];
+            return !user ? null : (
+                <ListItem key={uid} className={classnames('.ThreadItem', classes.listItem)} onClick={() => onClickItem(uid)}>
+                    <ListItemAvatar>
+                        <ThreadAvatar tid={uid} src={user.photoURL || undefined} alt={user.displayName || undefined} />
+                    </ListItemAvatar>
+                    <ListItemText primary={<ThreadName tid={uid} name={user.displayName} />} />
+                </ListItem>
+            );
+        },
+        [items]
+    );
 
-        return (
-            <ListBase
-                className={classnames(classes.list, 'messenger_left_thread_list_search')}
-                loading={LIST_USER.isLoading}
-                data={itemIds}
-                renderItem={renderItem}
-            />
-        );
-    },
-    () => true
-);
+    return (
+        <ListBase
+            className={classnames(classes.list, 'messenger_left_thread_list_search')}
+            loading={LIST_USER.isLoading}
+            data={itemIds}
+            renderItem={renderItem}
+        />
+    );
+});
 
 ThreadListSearch.displayName = 'ThreadListSearch';
 export default ThreadListSearch;

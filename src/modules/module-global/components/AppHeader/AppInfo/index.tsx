@@ -9,7 +9,7 @@ import { Stack, Typography } from '@mui/material';
 
 /** components */
 import IconBase from '@module-base/components/IconBase';
-import TimeToday from '@module-global/components/AppHeader/TimeToday';
+import TimeToday from '@module-global/components/AppHeader/AppInfo/TimeToday';
 
 /** constants */
 import { APP_NAME } from '@root/utils/config';
@@ -17,7 +17,7 @@ import { APP_NAME } from '@root/utils/config';
 /** styles */
 import useStyles from './styles';
 
-function AppInfo() {
+export default function AppInfo() {
     const classes = useStyles();
 
     return (
@@ -31,5 +31,3 @@ function AppInfo() {
         </Stack>
     );
 }
-
-export default AppInfo;

@@ -5,7 +5,7 @@
  */
 
 /** types */
-import { TextFieldProps } from '@mui/material/TextField';
+import type { TextFieldProps } from '@mui/material/TextField';
 
 type InputSearchProps = Omit<TextFieldProps, 'value' | 'onChange'> & {
     timer?: number;

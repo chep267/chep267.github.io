@@ -5,7 +5,6 @@
  */
 
 import {
-    getAuth,
     createUserWithEmailAndPassword,
     signInWithEmailAndPassword,
     signOut,
@@ -20,20 +19,18 @@ import { apiCreateUser, apiGetUser } from '@module-user/apis';
 import { TIMING_API_PENDING } from '@module-base/constants/defaultValue';
 
 /** utils */
-import { firebaseApp } from '@module-base/utils/firebase';
+import { authentication } from '@module-base/utils/firebase';
 import { debounce } from '@module-base/utils/helpers/debounce';
+import { checkId } from '@module-base/utils/helpers/checkId';
 
 /** types */
 import type { AuthApiProps } from '@module-auth/models';
-import { checkUid } from '@module-user/utils/helpers/checkUid';
-
-const authentication = getAuth(firebaseApp);
 
 const apiSignIn = async (payload: AuthApiProps['SignIn']['Payload']): Promise<AuthApiProps['SignIn']['Response']> => {
     const { timer = TIMING_API_PENDING, email, password } = payload;
     const [response] = await Promise.all([signInWithEmailAndPassword(authentication, email, password), debounce(timer)]);
     if (response?.user) {
-        const uid = checkUid(response.user.uid);
+        const uid = checkId(response.user.uid, 'uid');
         let user = await apiGetUser({ uid, timer: 0 });
         if (!user) {
             user = {

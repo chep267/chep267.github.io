@@ -14,7 +14,7 @@ import UserName from '@module-user/components/UserName';
 import { MESSENGER_CHAT_BOT_AI_ID, MESSENGER_CHAT_BOT_AI_NAME } from '@module-messenger/constants/ref';
 
 /** utils */
-import { checkUid } from '@module-user/utils/helpers/checkUid';
+import { checkId } from '@module-base/utils/helpers/checkId';
 
 /** types */
 import type { TypographyProps } from '@mui/material';
@@ -37,6 +37,6 @@ export default function ThreadName(props: ThreadNameProps) {
         );
     }
 
-    const uid = checkUid(tid);
+    const uid = checkId(`${tid}`, 'uid');
     return <UserName uid={uid} name={name} {...otherProps} />;
 }

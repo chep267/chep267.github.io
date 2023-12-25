@@ -5,3 +5,5 @@
  */
 
 export * from './apis';
+export * from './UserAvatar';
+export * from './UserName';

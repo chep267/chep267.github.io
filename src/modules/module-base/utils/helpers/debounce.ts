@@ -4,10 +4,8 @@
  *
  */
 
-const debounce = (timer = 1000) => {
+export const debounce = (timer = 1000) => {
     return new Promise((resolve) => {
         setTimeout(() => resolve(true), timer);
     });
 };
-
-export { debounce };

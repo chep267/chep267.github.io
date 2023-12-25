@@ -19,7 +19,7 @@ import { baseMessage } from '@module-base/utils/messages';
 import useStyles from './styles';
 
 /** types */
-import { TableLoadingProps } from '@module-base/models';
+import type { TableLoadingProps } from '@module-base/models';
 
 const TableLoading = React.memo((props: TableLoadingProps) => {
     const { loading, empty, emptyText } = props;

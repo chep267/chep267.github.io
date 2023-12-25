@@ -11,10 +11,7 @@ import { Skeleton, Typography } from '@mui/material';
 import { useUser } from '@module-user/hooks/useUser';
 
 /** types */
-import type { TypographyProps } from '@mui/material';
-import type { UserInfo } from '@firebase/auth';
-
-type UserNameProps = TypographyProps & { uid?: UserInfo['uid']; name?: UserInfo['displayName'] };
+import type { UserNameProps } from '@module-user/models';
 
 function UserNameGet(props: Omit<UserNameProps, 'name'>) {
     const { uid, ...textProps } = props;
