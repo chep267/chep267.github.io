@@ -22,7 +22,7 @@ export default function ImagePreview(props: ImagePreviewProps) {
     const { file, fid, onRemoveFile } = props;
     const classes = useStyles();
 
-    if (!file) {
+    if (!file?.fileData) {
         return null;
     }
 
