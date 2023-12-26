@@ -39,6 +39,7 @@ import { useBase } from '@module-base/hooks/useBase';
 
 /** styles */
 import useStyles from './styles';
+import { baseMessage } from '@module-base/utils/messages';
 
 const AppSider = React.memo(() => {
     const { pathname } = useLocation();
@@ -96,18 +97,20 @@ const AppSider = React.memo(() => {
             );
         };
         return <ListBase className={classes.sider} data={MENU_ROUTER} renderItem={renderItem} />;
-    }, [MENU_ROUTER, pathname]);
-
-    const onClick = React.useCallback(() => toggleSider((prev) => !prev), []);
+    }, [MENU_ROUTER, pathname, open]);
 
     return (
         <Drawer
             variant="permanent"
             open={open}
             className={classnames(classes.drawer, { [classes.drawerOpen]: open }, { [classes.drawerClose]: !open })}>
-            <Button size="large" onClick={onClick}>
-                {open ? <KeyboardDoubleArrowLeftIcon /> : <KeyboardDoubleArrowRightIcon />}
-            </Button>
+            <Tooltip
+                title={formatMessage(baseMessage[`module.base.component.sider.button.${open ? 'collapse' : 'open'}.tooltip`])}
+                placement="right">
+                <Button size="large" onClick={() => toggleSider((prev) => !prev)}>
+                    {open ? <KeyboardDoubleArrowLeftIcon /> : <KeyboardDoubleArrowRightIcon />}
+                </Button>
+            </Tooltip>
             <Divider />
             {renderList()}
         </Drawer>

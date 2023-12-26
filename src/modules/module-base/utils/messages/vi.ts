@@ -25,5 +25,7 @@ export const VI = Object.freeze({
     'module.base.component.button.close.text': 'Close',
     'module.base.component.button.back.text': 'Back',
 
+    'module.base.component.sider.button.collapse.tooltip': 'Thu lại',
+    'module.base.component.sider.button.open.tooltip': 'Mở rộng',
     'module.base.component.table.empty.text': 'No data!',
 });

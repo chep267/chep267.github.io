@@ -24,5 +24,7 @@ export const EN = Object.freeze({
     'module.base.component.button.close.text': 'Close',
     'module.base.component.button.back.text': 'Back',
 
+    'module.base.component.sider.button.collapse.tooltip': 'Collapse',
+    'module.base.component.sider.button.open.tooltip': 'Open',
     'module.base.component.table.empty.text': 'No data!',
 });

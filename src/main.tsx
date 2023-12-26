@@ -11,7 +11,7 @@ import ReactDOM from 'react-dom/client';
 import App from '@root/index';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-    <React.Suspense>
+    <React.StrictMode>
         <App />
-    </React.Suspense>
+    </React.StrictMode>
 );

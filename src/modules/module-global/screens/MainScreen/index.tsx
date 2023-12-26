@@ -61,9 +61,9 @@ export default function MainScreen() {
     const classes = useStyles();
 
     return (
-        <Box className={classes.main}>
-            <AppHeader />
-            <BrowserRouter>
+        <BrowserRouter>
+            <Box className={classes.main}>
+                <AppHeader />
                 <React.Suspense fallback={<StartLoading />}>
                     <Routes>
                         <Route
@@ -76,7 +76,7 @@ export default function MainScreen() {
                         />
                     </Routes>
                 </React.Suspense>
-            </BrowserRouter>
-        </Box>
+            </Box>
+        </BrowserRouter>
     );
 }
