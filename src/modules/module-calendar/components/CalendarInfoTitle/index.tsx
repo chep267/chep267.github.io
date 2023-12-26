@@ -64,7 +64,7 @@ export default function CalendarInfoTitle(props: CalendarInfoTitleProps) {
 
     const renderButtonLeft = React.useMemo(() => {
         return (
-            <Stack className={classes.titleIcon}>
+            <Stack className={classes.titleIcon} direction="row">
                 <IconButton onClick={() => onChangeTime('prev', 'year')}>
                     <KeyboardDoubleArrowLeftIcon color="primary" />
                 </IconButton>
@@ -77,7 +77,7 @@ export default function CalendarInfoTitle(props: CalendarInfoTitleProps) {
 
     const renderButtonRight = React.useMemo(() => {
         return (
-            <Stack className={classes.titleIcon}>
+            <Stack className={classes.titleIcon} direction="row">
                 <IconButton onClick={() => onChangeTime('next', 'month')}>
                     <KeyboardArrowRightIcon color="primary" />
                 </IconButton>
