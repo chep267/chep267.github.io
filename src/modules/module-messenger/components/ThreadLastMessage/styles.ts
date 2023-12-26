@@ -15,6 +15,9 @@ const useStyles = makeStyles({
             overflow: 'hidden',
             textOverflow: 'ellipsis',
         },
+        '& > svg': {
+            marginTop: 2,
+        },
     },
 });
 

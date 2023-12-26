@@ -9,11 +9,13 @@ import classnames from 'classnames';
 import { useParams } from 'react-router-dom';
 
 /** lib components */
-import { IconButton } from '@mui/material';
+import { FormattedMessage } from 'react-intl';
+import { IconButton, Tooltip } from '@mui/material';
 import { Favorite as FavoriteIcon, Send as SendIcon } from '@mui/icons-material';
 
 /** utils */
 import { genMessage } from '@module-messenger/utils/helpers/genMessage';
+import { messengerMessage } from '@module-messenger/utils/messages';
 
 /** hooks */
 import { useSendMessage } from '@module-messenger/hooks/useSendMessage';
@@ -52,18 +54,24 @@ export default function ButtonSendMessage() {
     const hasContent = !!draft?.text || !!draft?.fileIds?.length;
     return (
         <>
-            <IconButton
-                disabled={SEND_MESSAGE.isPending}
-                onClick={onSendMessage}
-                className={classnames(classes.btnSend, { [classes.btnVisible]: hasContent })}>
-                <SendIcon color="primary" />
-            </IconButton>
-            <IconButton
-                disabled={SEND_MESSAGE.isPending}
-                onClick={onSendEmoji}
-                className={classnames(classes.btnSend, { [classes.btnVisible]: !hasContent })}>
-                <FavoriteIcon color="primary" />
-            </IconButton>
+            <Tooltip
+                title={<FormattedMessage {...messengerMessage['module.messenger.component.button.sendMessage.tooltip']} />}>
+                <IconButton
+                    disabled={SEND_MESSAGE.isPending}
+                    onClick={onSendMessage}
+                    className={classnames(classes.btnSend, { [classes.btnVisible]: hasContent })}>
+                    <SendIcon color="primary" />
+                </IconButton>
+            </Tooltip>
+            <Tooltip
+                title={<FormattedMessage {...messengerMessage['module.messenger.component.button.sendEmoji.tooltip']} />}>
+                <IconButton
+                    disabled={SEND_MESSAGE.isPending}
+                    onClick={onSendEmoji}
+                    className={classnames(classes.btnSend, { [classes.btnVisible]: !hasContent })}>
+                    <FavoriteIcon color="primary" />
+                </IconButton>
+            </Tooltip>
         </>
     );
 }

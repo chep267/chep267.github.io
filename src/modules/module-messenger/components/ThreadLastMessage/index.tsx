@@ -10,7 +10,7 @@ import { Skeleton, Stack, Typography } from '@mui/material';
 
 /** components */
 import UserName from '@module-user/components/UserName';
-import Index from '@module-messenger/components/Message/EmojiMessage';
+import EmojiMessage from '@module-messenger/components/Message/EmojiMessage';
 
 /** utils */
 import { Decrypt } from '@module-base/utils/security';
@@ -54,7 +54,7 @@ export default function ThreadLastMessage(props: ThreadLastMessageProps) {
     const numberFile = message.fileIds?.length;
     switch (true) {
         case message.type === 'emoji':
-            text = <Index fontSize="small" />;
+            text = <EmojiMessage fontSize="small" />;
             break;
         case numberFile > 0:
             text = (

@@ -15,6 +15,11 @@ export const VI = Object.freeze({
     'module.messenger.component.message.option.revoke': 'Thu hồi',
     'module.messenger.component.message.option.delete': 'Xóa',
 
+    'module.messenger.component.button.chooseFile.tooltip': 'Chọn tập tin',
+    'module.messenger.component.button.chooseEmoji.tooltip': 'Chọn biểu tượng cảm xúc',
+    'module.messenger.component.button.sendEmoji.tooltip': 'Cảm xúc',
+    'module.messenger.component.button.sendMessage.tooltip': 'Gửi',
+
     'module.messenger.component.thread.lastMessage.you': 'Bạn',
     'module.messenger.component.thread.lastMessage.sent': 'đã gửi',
     'module.messenger.component.thread.lastMessage.single.image': '{number} ảnh',

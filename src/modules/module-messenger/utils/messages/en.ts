@@ -15,6 +15,11 @@ export const EN = Object.freeze({
     'module.messenger.component.message.option.revoke': 'Revoke',
     'module.messenger.component.message.option.delete': 'Delete',
 
+    'module.messenger.component.button.chooseFile.tooltip': 'Choose files',
+    'module.messenger.component.button.chooseEmoji.tooltip': 'Choose emoji',
+    'module.messenger.component.button.sendEmoji.tooltip': 'Emoji',
+    'module.messenger.component.button.sendMessage.tooltip': 'Send',
+
     'module.messenger.component.thread.lastMessage.you': 'You',
     'module.messenger.component.thread.lastMessage.sent': 'sent',
     'module.messenger.component.thread.lastMessage.single.image': '{number} image',

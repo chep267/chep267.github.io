@@ -8,11 +8,15 @@ import * as React from 'react';
 import { useParams } from 'react-router-dom';
 
 /** lib components */
+import { FormattedMessage } from 'react-intl';
 import { IconButton, Popover, Tooltip } from '@mui/material';
 import { EmojiEmotions as EmojiEmotionsIcon } from '@mui/icons-material';
 
 /** components */
 import EmojiPicker from '@module-messenger/components/EmojiPicker';
+
+/** utils */
+import { messengerMessage } from '@module-messenger/utils/messages';
 
 /** hooks */
 import { useMessenger } from '@module-messenger/hooks/useMessenger';
@@ -49,7 +53,8 @@ export default function ButtonChooseEmoji() {
 
     return (
         <>
-            <Tooltip title={'cx'}>
+            <Tooltip
+                title={<FormattedMessage {...messengerMessage['module.messenger.component.button.chooseEmoji.tooltip']} />}>
                 <IconButton aria-describedby={id} onClick={openMenu}>
                     <EmojiEmotionsIcon color="primary" />
                 </IconButton>
