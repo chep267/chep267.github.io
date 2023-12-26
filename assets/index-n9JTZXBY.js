@@ -1,0 +1,8 @@
+import{r as s,N as c,z as E,A as u,j as r}from"./index-wTNuoFk9.js";import{u as S,a as T,b as A,c as R}from"./index-i-PBVFAm.js";const e=Object.freeze({SIGNED_IN:"ACCOUNT_STATE_SIGNED_IN",RE_SIGN_IN:"ACCOUNT_STATE_RE_SIGN_IN",SIGN_IN:"ACCOUNT_STATE_SIGN_IN"}),o=Object.freeze({HOME:"",SIGN_IN:"/signin",VERIFY_OTP:"/verify-code",REGISTER:"/register",RECOVER:"/recover",RESET_PASS:"password/reset-verification"}),f=s.lazy(()=>c(()=>import("./index-i-PBVFAm.js").then(a=>a.a3),__vite__mapDeps([0,1,2,3,4,5,6]))),l=s.lazy(()=>c(()=>import("./index-sIU-8Drx.js"),__vite__mapDeps([7,1,2,0,3,4,5,6])));function d(a){const{pathname:n}=S(),N=T(),_=E(),i=A.get(u),t=_.data.isAuth?e.SIGNED_IN:i?e.RE_SIGN_IN:e.SIGN_IN;switch(s.useEffect(()=>{t===e.RE_SIGN_IN&&R({fnCallback:I=>_.method.setAuth({isAuth:!0,me:I})}).then(),t===e.SIGNED_IN&&Object.values(o).includes(n)&&N(o.HOME,{replace:!0})},[t]),t){case e.SIGNED_IN:return a?.children;case e.RE_SIGN_IN:return r.jsx(f,{});default:return r.jsx(l,{})}}var G=d;const h=Object.freeze(Object.defineProperty({__proto__:null,default:G},Symbol.toStringTag,{value:"Module"}));export{o as A,h as i};
+//# sourceMappingURL=index-n9JTZXBY.js.map
+function __vite__mapDeps(indexes) {
+  if (!__vite__mapDeps.viteFileDeps) {
+    __vite__mapDeps.viteFileDeps = ["assets/index-i-PBVFAm.js","assets/index-wTNuoFk9.js","assets/index-eGg70zu3.css","assets/createSvgIcon-u2aucdXk.js","assets/makeStyles-eTzYmt-v.js","assets/useTheme-ihJ8XFZy.js","assets/index-tG_hl2uL.js","assets/index-sIU-8Drx.js"]
+  }
+  return indexes.map((i) => __vite__mapDeps.viteFileDeps[i])
+}

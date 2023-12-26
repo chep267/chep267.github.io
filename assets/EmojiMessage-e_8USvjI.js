@@ -1,2 +1,0 @@
-import{j as o}from"./index-69dHWMRy.js";import{F as r}from"./index-2dbLw1Hg.js";import"./index-JnxP6gO5.js";import"./makeStyles-v2ltPf_K.js";import"./createSvgIcon-gobqiwYG.js";import"./useTheme-mpTOe25d.js";import"./index-7qbZ8rly.js";import"./IconButton-02BE0phI.js";import"./InputAdornment-t9IpGB7b.js";import"./TextField-hWES2uPD.js";import"./index-TchLxNfC.js";function x(){return o.jsx(r,{color:"primary",fontSize:"large"})}export{x as default};
-//# sourceMappingURL=EmojiMessage-e_8USvjI.js.map
