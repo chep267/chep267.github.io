@@ -13,7 +13,7 @@ import { Typography, Stack } from '@mui/material';
 import { Decrypt } from '@module-base/utils/security';
 
 /** styles */
-import useStyles from './styles';
+import useStyles from '../styles';
 
 type TextMessageProps = {
     isMe?: boolean;

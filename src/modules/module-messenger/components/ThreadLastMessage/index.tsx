@@ -9,7 +9,8 @@ import { FormattedMessage } from 'react-intl';
 import { Skeleton, Stack, Typography } from '@mui/material';
 
 /** components */
-import EmojiMessage from '@module-messenger/components/Message/EmojiMessage';
+import UserName from '@module-user/components/UserName';
+import Index from '@module-messenger/components/Message/EmojiMessage';
 
 /** utils */
 import { Decrypt } from '@module-base/utils/security';
@@ -25,7 +26,6 @@ import useStyles from './styles';
 import type { ReactNode } from 'react';
 import type { UserInfo } from '@firebase/auth';
 import type { TypeDocumentThreadData } from '@module-messenger/models';
-import UserName from '@module-user/components/UserName';
 
 type ThreadLastMessageProps = { tid?: UserInfo['uid']; message: TypeDocumentThreadData['lastMessage'] };
 
@@ -54,7 +54,7 @@ export default function ThreadLastMessage(props: ThreadLastMessageProps) {
     const numberFile = message.fileIds?.length;
     switch (true) {
         case message.type === 'emoji':
-            text = <EmojiMessage fontSize="small" />;
+            text = <Index fontSize="small" />;
             break;
         case numberFile > 0:
             text = (

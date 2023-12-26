@@ -11,12 +11,17 @@ const useStyles = makeStyles(({ palette }) => ({
         width: 'auto',
     },
     image: {
-        borderRadius: 6,
         overflow: 'hidden',
-        minWidth: 120,
-        minHeight: 120,
-        backgroundColor: palette.divider,
-        border: `1px solid ${palette.divider}`,
+        minWidth: 150,
+        maxWidth: 150,
+        maxHeight: 150,
+        minHeight: 150,
+        '& > img': {
+            width: '100%',
+            height: '100%',
+            border: `1px solid ${palette.divider}`,
+            borderRadius: 6,
+        },
     },
 }));
 
