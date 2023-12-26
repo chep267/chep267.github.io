@@ -25,12 +25,10 @@ import { useMessenger } from '@module-messenger/hooks/useMessenger';
 import useStyles from './styles';
 
 export default function ButtonSendMessage() {
-    const { tid: TID } = useParams();
+    const { tid = '' } = useParams();
     const classes = useStyles();
     const SEND_MESSAGE = useSendMessage();
     const { ui, method } = useMessenger();
-
-    const tid = `${TID}`;
     const draft = ui.drafts[tid];
 
     const onSendMessage = () => {

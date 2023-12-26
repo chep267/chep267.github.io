@@ -25,7 +25,7 @@ import useStyles from './styles';
 /** type */
 
 export default function InputMessage() {
-    const { tid } = useParams();
+    const { tid = '' } = useParams();
     const classes = useStyles();
     const { ui, method } = useMessenger();
 

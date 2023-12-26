@@ -6,6 +6,9 @@
 
 import { collection, doc, onSnapshot, query, setDoc, deleteDoc, getDoc } from '@firebase/firestore';
 
+/** apis */
+import { apiCreateMessage } from '@module-messenger/apis/Message';
+
 /** constants */
 import { ROOT_REF } from '@module-base/constants/ref';
 import { TIMING_API_PENDING } from '@module-base/constants/defaultValue';
@@ -16,10 +19,13 @@ import {
     MESSENGER_DB_THREADS_REF,
     MESSENGER_DB_USERS_REF,
 } from '@module-messenger/constants/ref';
+import { MessageGPT, MID_GPT_START } from '@module-messenger/constants/chatGPT';
 
 /** utils */
-import { debounce } from '@module-base/utils/helpers/debounce';
 import { firestore } from '@module-base/utils/firebase';
+import { debounce } from '@module-base/utils/helpers/debounce';
+import { checkId } from '@module-base/utils/helpers/checkId';
+import { genMessage } from '@module-messenger/utils/helpers/genMessage';
 
 /** types */
 import type { TypeItemIds, TypeItems } from '@module-base/models';
@@ -47,39 +53,30 @@ const apiOnGetListThread = async (
             });
             if (!itemIds.includes(MESSENGER_CHAT_BOT_AI_ID)) {
                 itemIds.unshift(MESSENGER_CHAT_BOT_AI_ID);
+                const dataGPT = genMessage({
+                    tid: MESSENGER_CHAT_BOT_AI_ID,
+                    uid: MESSENGER_CHAT_BOT_AI_ID,
+                    text: MessageGPT['start'],
+                    mid: MID_GPT_START,
+                    isEncrypt: true,
+                });
+                apiCreateMessage({
+                    uid,
+                    tid: MESSENGER_CHAT_BOT_AI_ID,
+                    mid: dataGPT.mid,
+                    data: dataGPT,
+                });
+                return apiCreateThread({
+                    tid: MESSENGER_CHAT_BOT_AI_ID,
+                    uid,
+                    data: {
+                        type: 'thread',
+                        tid: MESSENGER_CHAT_BOT_AI_ID,
+                        name: 'Chep GPT',
+                        members: [uid, checkId(MESSENGER_CHAT_BOT_AI_ID, 'uid')],
+                    },
+                });
             }
-            // const posChatBot = itemIds.indexOf(MESSENGER_CHAT_BOT_AI_ID);
-            // if (posChatBot > -1) {
-            //     itemIds.splice(posChatBot, 1);
-            //     itemIds.unshift(MESSENGER_CHAT_BOT_AI_ID);
-            // } else if (!checkGPT) {
-            //     checkGPT = true;
-            //     const dataGPT = genMessage(
-            //         {
-            //             tid: MESSENGER_CHAT_BOT_AI_ID,
-            //             uid: MESSENGER_CHAT_BOT_AI_ID,
-            //             text: MessageGPT['start'],
-            //             mid: 'mid.tolachepAI_start',
-            //         },
-            //         true
-            //     );
-            //     apiCreateMessage({
-            //         uid,
-            //         tid: MESSENGER_CHAT_BOT_AI_ID,
-            //         mid: dataGPT.mid,
-            //         data: dataGPT,
-            //     });
-            //     return apiCreateThread({
-            //         tid: MESSENGER_CHAT_BOT_AI_ID,
-            //         uid,
-            //         data: {
-            //             type: 'thread',
-            //             tid: MESSENGER_CHAT_BOT_AI_ID,
-            //             name: 'Chep GPT',
-            //             members: [uid, checkUid(MESSENGER_CHAT_BOT_AI_ID)],
-            //         },
-            //     });
-            // }
             fnCallback({ itemIds, items });
         });
         return { unsubscribe };

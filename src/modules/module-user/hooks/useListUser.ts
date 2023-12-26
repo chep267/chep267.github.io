@@ -22,7 +22,9 @@ export function useListUser() {
         queryKey: ['useListUser', { uid }],
         queryFn: () => apiGetListUser({}),
         refetchOnWindowFocus: false,
-        refetchOnMount: false,
-        enabled: !!uid && !data,
+        refetchIntervalInBackground: false,
+        refetchOnReconnect: false,
+        refetchOnMount: !data,
+        refetchInterval: 1000 * 60 * 5, // 5 minutes
     });
 }

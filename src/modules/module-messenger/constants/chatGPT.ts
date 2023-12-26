@@ -4,8 +4,10 @@
  *
  */
 
+export const MID_GPT_START = new Date(2023, 11, 1).getTime().toString();
+
 export const MessageGPT = {
-    start: 'Chào bạn, tôi là ChepGPT! Cảm ơn bạn đã ghé thăm tôi!',
+    start: 'Chào bạn, tôi là Chep GPT! Cảm ơn bạn đã ghé thăm tôi!',
     help: ['Xin chào, tôi có thể giúp gì cho bạn?', 'Tôi ở đây để giúp bạn mà!!!'],
     miss: ['Tôi rất nhớ bạn!', 'Bạn có nhớ tôi không?'],
     weather: [

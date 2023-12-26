@@ -20,7 +20,7 @@ import { useMessenger } from '@module-messenger/hooks/useMessenger';
 import useStyles from './styles';
 
 export default function ListFiles() {
-    const { tid } = useParams();
+    const { tid = '' } = useParams();
     const classes = useStyles();
     const { ui, method } = useMessenger();
 
@@ -28,9 +28,7 @@ export default function ListFiles() {
 
     const onRemoveFile = React.useCallback(
         (fid: string) => {
-            if (tid) {
-                method.removeFiles({ tid, fileIds: [fid] });
-            }
+            method.removeFiles({ tid, fileIds: [fid] });
         },
         [tid]
     );

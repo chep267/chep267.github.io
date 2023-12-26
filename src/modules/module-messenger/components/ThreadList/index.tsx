@@ -68,6 +68,7 @@ const ThreadList = React.memo(() => {
                     <ListItemText
                         primary={<ThreadName tid={tid} variant="h6" />}
                         secondary={<ThreadLastMessage tid={tid} message={thread?.lastMessage} />}
+                        secondaryTypographyProps={{ component: 'div' }}
                     />
                     <IconButton className={classes.itemOption} onClick={stopPropagation}>
                         <MoreHorizIcon color="primary" />

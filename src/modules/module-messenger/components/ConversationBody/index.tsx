@@ -23,7 +23,7 @@ import useStyles from './styles';
 
 export default function ConversationBody() {
     const classes = useStyles();
-    const { tid } = useParams();
+    const { tid = '' } = useParams();
     const LIST_MESSAGE = useListenListMessage({ tid });
     const listRef = React.useRef<HTMLUListElement>(null);
 

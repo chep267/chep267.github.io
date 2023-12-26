@@ -9,7 +9,6 @@ import { FormattedMessage } from 'react-intl';
 import { Skeleton, Stack, Typography } from '@mui/material';
 
 /** components */
-import UserName from '@module-user/components/UserName';
 import EmojiMessage from '@module-messenger/components/Message/EmojiMessage';
 
 /** utils */
@@ -44,11 +43,7 @@ export default function ThreadLastMessage(props: ThreadLastMessageProps) {
             <Typography variant="body1">
                 <FormattedMessage {...messengerMessage['module.messenger.component.thread.lastMessage.you']} />:
             </Typography>
-        ) : (
-            <Typography variant="body1">
-                <UserName uid={message.uid} component="span" />:
-            </Typography>
-        );
+        ) : undefined;
 
     let text: ReactNode;
     const numberFile = message.fileIds?.length;

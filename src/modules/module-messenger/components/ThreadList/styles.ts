@@ -20,6 +20,11 @@ const useStyles = makeStyles(({ palette, typography }) => ({
         height: 80,
         '& .MuiListItemText-primary': {
             ...typography.h6,
+            '& > h6': {
+                whiteSpace: 'nowrap',
+                overflow: 'hidden',
+                textOverflow: 'ellipsis',
+            },
         },
         '&:hover': {
             cursor: 'pointer',

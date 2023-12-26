@@ -11,25 +11,28 @@ import { useQuery } from '@tanstack/react-query';
 import { apiOnGetListMessage } from '@module-messenger/apis/Message';
 
 /** constants */
-import { emptyArray, emptyObject } from '@module-base/constants/defaultValue';
+import { emptyArray, emptyFunction, emptyObject } from '@module-base/constants/defaultValue';
 
 /** hooks */
 import { useAuth } from '@module-auth/hooks/useAuth';
 
 /** types */
+import type { Unsubscribe } from '@firebase/firestore';
 import type { TypeItemIds, TypeItems } from '@module-base/models';
 import type { TypeDocumentMessageData } from '@module-messenger/models';
 
-export function useListenListMessage({ tid }: { tid?: string }) {
+export function useListenListMessage({ tid }: { tid: string }) {
     const AUTH = useAuth();
     const [itemIds, setItemIds] = React.useState<TypeItemIds>(emptyArray);
     const [items, setItems] = React.useState<TypeItems<TypeDocumentMessageData>>(emptyObject);
     const uid = AUTH.data.me.uid;
+    const listen = React.useRef<{ unsubscribe?: Unsubscribe }>({ unsubscribe: emptyFunction });
 
     const LIST_MESSAGE = useQuery({
         queryKey: ['useListenListMessage', { tid }],
-        queryFn: () => {
-            return apiOnGetListMessage({
+        queryFn: async () => {
+            listen.current?.unsubscribe?.();
+            const response = await apiOnGetListMessage({
                 tid: `${tid}`,
                 uid,
                 fnCallback: (data) => {
@@ -37,19 +40,12 @@ export function useListenListMessage({ tid }: { tid?: string }) {
                     setItems(data.items);
                 },
             });
+            listen.current.unsubscribe = response?.unsubscribe;
+            return response;
         },
-        enabled: false,
+        enabled: !!tid,
         refetchOnWindowFocus: false,
     });
-
-    React.useEffect(() => {
-        if (uid && tid) {
-            LIST_MESSAGE.refetch().then();
-        }
-        return () => {
-            LIST_MESSAGE.data?.unsubscribe?.();
-        };
-    }, [uid, tid]);
 
     return {
         ...LIST_MESSAGE,

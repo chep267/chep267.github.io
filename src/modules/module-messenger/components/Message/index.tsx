@@ -23,6 +23,7 @@ import useStyles from './styles';
 
 /** types */
 import type { TypeDocumentMessageData } from '@module-messenger/models';
+import StatusMessage from '@module-messenger/components/Message/StatusMessage';
 
 /** lazy components */
 const EmojiMessage = React.lazy(() => import('./EmojiMessage'));
@@ -42,6 +43,7 @@ export default function Message(props: MessageProps) {
 
     return (
         <Stack className={classnames(classes.message_view, { [classes.meView]: isMe }, { [classes.partnerView]: !isMe })}>
+            <StatusMessage isMe={isMe} />
             {isMe ? <OptionMessage /> : null}
             <Tooltip
                 title={dayjs(data.createdTime).locale(LANGUAGE.data.locale).format('hh:mm dddd, DD/MM/YYYY')}

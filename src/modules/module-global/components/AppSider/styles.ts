@@ -63,8 +63,8 @@ const useStyles = makeStyles(({ palette }) => ({
         },
         '& li[class*="app-sider-item"]': {
             width: '100%',
-            paddingLeft: 6,
-            paddingRight: 6,
+            // paddingLeft: 6,
+            // paddingRight: 6,
             '& .MuiListItemText-root': {
                 visibility: 'hidden',
             },

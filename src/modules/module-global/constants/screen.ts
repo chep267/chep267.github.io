@@ -23,7 +23,7 @@ const SCREEN = Object.freeze({
 const SCREEN_SIZE = Object.freeze({
     HEADER_HEIGHT: 60,
     HEADER_PADDING: 20,
-    APP_BAR_MIN_WIDTH: 65,
+    APP_BAR_MIN_WIDTH: 90,
     APP_BAR_MAX_WIDTH: 266,
     AUTH_FORM_MIN_WIDTH: 480,
     AUTH_FORM_MAX_WIDTH: 700,

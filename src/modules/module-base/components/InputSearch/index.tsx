@@ -45,8 +45,11 @@ const InputSearch = React.memo((props: InputSearchProps) => {
         if (nextValue !== prevValue.current) {
             if (timer > 0) {
                 /** xử lý loading khi bắt đầu nhập text */
-                timeout = setTimeout(() => onChangeValue?.(nextValue), timer);
                 onLoading?.(true);
+                timeout = setTimeout(() => {
+                    onChangeValue?.(nextValue);
+                    onLoading?.(false);
+                }, timer);
             } else {
                 /** thay đổi text ngay lập tức */
                 onChangeValue?.(nextValue);

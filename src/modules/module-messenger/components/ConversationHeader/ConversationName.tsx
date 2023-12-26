@@ -17,7 +17,7 @@ import useStyles from './styles';
 
 export default function ConversationName() {
     const classes = useStyles();
-    const { tid } = useParams();
+    const { tid = '' } = useParams();
 
     return (
         <Stack className={classes.header_left}>

@@ -20,6 +20,7 @@ import ThreadName from '@module-messenger/components/ThreadName';
 import { SCREEN } from '@module-global/constants/screen';
 
 /** utils */
+import { checkString } from '@module-base/utils/helpers/checkString';
 import { genPath } from '@module-base/utils/helpers/genPath';
 import { checkId } from '@module-base/utils/helpers/checkId';
 
@@ -32,7 +33,13 @@ import useStyles from '@module-messenger/components/ThreadList/styles';
 /** type */
 import type { UserInfo } from '@firebase/auth';
 
-const ThreadListSearch = React.memo(() => {
+type ThreadListSearchProps = {
+    isSearching: boolean;
+    searchKey: string;
+};
+
+const ThreadListSearch = React.memo((props: ThreadListSearchProps) => {
+    const { searchKey, isSearching } = props;
     const navigate = useNavigate();
     const classes = useStyles();
     const LIST_USER = useListUser();
@@ -46,7 +53,9 @@ const ThreadListSearch = React.memo(() => {
     const renderItem = React.useCallback(
         (uid: UserInfo['uid']) => {
             const user = items?.[uid];
-            return !user ? null : (
+            const isHidden = !user || !checkString(user.displayName || '', searchKey);
+
+            return isHidden ? null : (
                 <ListItem key={uid} className={classnames('.ThreadItem', classes.listItem)} onClick={() => onClickItem(uid)}>
                     <ListItemAvatar>
                         <ThreadAvatar tid={uid} src={user.photoURL || undefined} alt={user.displayName || undefined} />
@@ -55,13 +64,13 @@ const ThreadListSearch = React.memo(() => {
                 </ListItem>
             );
         },
-        [items]
+        [items, searchKey]
     );
 
     return (
         <ListBase
             className={classnames(classes.list, 'messenger_left_thread_list_search')}
-            loading={LIST_USER.isLoading}
+            loading={LIST_USER.isLoading || isSearching}
             data={itemIds}
             renderItem={renderItem}
         />

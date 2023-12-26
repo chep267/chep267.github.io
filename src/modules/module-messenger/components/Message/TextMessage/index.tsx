@@ -13,7 +13,7 @@ import { Typography, Stack } from '@mui/material';
 import { Decrypt } from '@module-base/utils/security';
 
 /** styles */
-import useStyles from '../styles';
+import useStyles from './styles';
 
 type TextMessageProps = {
     isMe?: boolean;
@@ -25,7 +25,7 @@ export default function TextMessage(props: TextMessageProps) {
     const classes = useStyles();
 
     return (
-        <Stack className={classnames(classes.textMessage, 'textMessage')}>
+        <Stack className={classnames(classes.textMessage)}>
             <Typography variant="body1">{Decrypt(text)}</Typography>
         </Stack>
     );

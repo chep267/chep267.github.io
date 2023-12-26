@@ -21,13 +21,20 @@ import useStyles from './styles';
 export default function ThreadContent() {
     const classes = useStyles();
     const [isFocusSearch, setFocusSearch] = React.useState(false);
+    const [searchKey, setSearchKey] = React.useState('');
+    const [isSearching, setSearching] = React.useState(false);
 
     return (
         <>
-            <ThreadSearch isFocusSearch={isFocusSearch} setFocusSearch={setFocusSearch} />
+            <ThreadSearch
+                isFocusSearch={isFocusSearch}
+                setFocusSearch={setFocusSearch}
+                setSearchKey={setSearchKey}
+                setSearching={setSearching}
+            />
             <Box className={classnames(classes.thread_content, { [classes.thread_content_focus_search]: isFocusSearch })}>
                 <ThreadList />
-                <ThreadListSearch />
+                <ThreadListSearch searchKey={searchKey} isSearching={isSearching} />
             </Box>
         </>
     );

@@ -26,7 +26,7 @@ import type { ChangeEvent } from 'react';
 import type { TypeDocumentMessageData } from '@module-messenger/models';
 
 export default function ButtonChooseFile() {
-    const { tid } = useParams();
+    const { tid = '' } = useParams();
     const classes = useStyles();
     const { method } = useMessenger();
 

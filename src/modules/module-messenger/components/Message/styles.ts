@@ -8,6 +8,7 @@ import makeStyles from '@mui/styles/makeStyles';
 
 const useStyles = makeStyles(({ spacing, palette, breakpoints }) => ({
     message_view: {
+        position: 'relative',
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
@@ -45,14 +46,6 @@ const useStyles = makeStyles(({ spacing, palette, breakpoints }) => ({
             backgroundColor: palette.primary.main,
             color: palette.common.white,
         },
-    },
-    textMessage: {
-        width: 'auto',
-        padding: `5px ${spacing(2)}`,
-        border: `1px solid ${palette.divider}`,
-        borderRadius: 20,
-        wordBreak: 'break-word',
-        whiteSpace: 'pre-wrap',
     },
 }));
 

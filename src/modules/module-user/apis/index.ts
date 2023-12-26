@@ -35,6 +35,8 @@ const apiGetUser = async (payload: UserApiProps['Get']['Payload']): Promise<User
 
 const apiGetListUser = async (payload: UserApiProps['GetList']['Payload']): Promise<UserApiProps['GetList']['Response']> => {
     const { timer = TIMING_API_PENDING, limit: _limit = 20 } = payload;
+    console.log('apiGetListUser call');
+
     const getListUser = async () => {
         const docRef = collection(firestore, USER_DB_ROOT_REF);
         const querySnapshot = await getDocs(query(docRef, limit(_limit)));

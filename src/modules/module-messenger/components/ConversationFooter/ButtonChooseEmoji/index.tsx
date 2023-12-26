@@ -28,7 +28,7 @@ import useStyles from './styles';
 import type { ElementClickEvent } from '@module-base/models';
 
 export default function ButtonChooseEmoji() {
-    const { tid } = useParams();
+    const { tid = '' } = useParams();
     const classes = useStyles();
     const { method } = useMessenger();
 

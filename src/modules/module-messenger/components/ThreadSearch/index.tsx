@@ -16,12 +16,16 @@ import InputSearch from '@module-base/components/InputSearch';
 /** styles */
 import useStyles from './styles';
 
+/** types */
 type ThreadSearchProps = {
     isFocusSearch: boolean;
     setFocusSearch(isFocusSearch: boolean): void;
+    setSearchKey(searchKey: string): void;
+    setSearching(isSearching: boolean): void;
 };
+
 export default function ThreadSearch(props: ThreadSearchProps) {
-    const { isFocusSearch, setFocusSearch } = props;
+    const { isFocusSearch, setFocusSearch, setSearchKey, setSearching } = props;
     const classes = useStyles();
 
     return (
@@ -29,7 +33,7 @@ export default function ThreadSearch(props: ThreadSearchProps) {
             <IconButton onClick={() => setFocusSearch(false)}>
                 <WestIcon />
             </IconButton>
-            <InputSearch onFocus={() => setFocusSearch(true)} />
+            <InputSearch onFocus={() => setFocusSearch(true)} onChangeValue={setSearchKey} onLoading={setSearching} />
         </Stack>
     );
 }

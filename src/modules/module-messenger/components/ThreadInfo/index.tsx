@@ -16,7 +16,7 @@ import ThreadAvatar from '@module-messenger/components/ThreadAvatar';
 
 export default function ThreadInfo() {
     const classes = useStyles();
-    const { tid } = useParams();
+    const { tid = '' } = useParams();
 
     return (
         <Stack className={classes.thread_info}>
