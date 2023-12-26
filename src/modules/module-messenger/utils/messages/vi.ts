@@ -15,8 +15,10 @@ export const VI = Object.freeze({
     'module.messenger.component.message.option.revoke': 'Thu hồi',
     'module.messenger.component.message.option.delete': 'Xóa',
 
-    'module.messenger.component.thread.lastMessage.single.image': 'đã gửi {number} ảnh',
-    'module.messenger.component.thread.lastMessage.multi.image': 'đã gửi {number} ảnh',
-
-    'module.messenger.component.thread.lastMessage.multi.file': 'đã gửi {number1} ảnh và {number2} video',
+    'module.messenger.component.thread.lastMessage.you': 'Bạn',
+    'module.messenger.component.thread.lastMessage.sent': 'đã gửi',
+    'module.messenger.component.thread.lastMessage.single.image': '{number} ảnh',
+    'module.messenger.component.thread.lastMessage.multi.image': '{number} ảnh',
+    'module.messenger.component.thread.lastMessage.single.video': '{number} video',
+    'module.messenger.component.thread.lastMessage.multi.video': '{number} video',
 });

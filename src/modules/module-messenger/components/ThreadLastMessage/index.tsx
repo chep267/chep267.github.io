@@ -25,6 +25,7 @@ import useStyles from './styles';
 import type { ReactNode } from 'react';
 import type { UserInfo } from '@firebase/auth';
 import type { TypeDocumentThreadData } from '@module-messenger/models';
+import UserName from '@module-user/components/UserName';
 
 type ThreadLastMessageProps = { tid?: UserInfo['uid']; message: TypeDocumentThreadData['lastMessage'] };
 
@@ -38,7 +39,16 @@ export default function ThreadLastMessage(props: ThreadLastMessageProps) {
         return <Skeleton width={100} />;
     }
 
-    const sender = <Typography variant="body1">{message.uid === uid ? 'You:' : 'Haha:'}</Typography>;
+    const sender =
+        message.uid === uid ? (
+            <Typography variant="body1">
+                <FormattedMessage {...messengerMessage['module.messenger.component.thread.lastMessage.you']} />:
+            </Typography>
+        ) : (
+            <Typography variant="body1">
+                <UserName uid={message.uid} component="span" />:
+            </Typography>
+        );
 
     let text: ReactNode;
     const numberFile = message.fileIds?.length;
@@ -49,6 +59,8 @@ export default function ThreadLastMessage(props: ThreadLastMessageProps) {
         case numberFile > 0:
             text = (
                 <Typography variant="body1">
+                    <FormattedMessage {...messengerMessage['module.messenger.component.thread.lastMessage.sent']} />
+                    &nbsp;
                     <FormattedMessage
                         {...messengerMessage[
                             `module.messenger.component.thread.lastMessage.${numberFile === 1 ? 'single' : 'multi'}.image`

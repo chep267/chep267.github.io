@@ -15,7 +15,10 @@ export const EN = Object.freeze({
     'module.messenger.component.message.option.revoke': 'Revoke',
     'module.messenger.component.message.option.delete': 'Delete',
 
-    'module.messenger.component.thread.lastMessage.single.image': 'sent {number} image',
-    'module.messenger.component.thread.lastMessage.multi.image': 'sent {number} images',
-    'module.messenger.component.thread.lastMessage.multi.file': 'sent {number1} {mime1} and {number2} {mime2}',
+    'module.messenger.component.thread.lastMessage.you': 'You',
+    'module.messenger.component.thread.lastMessage.sent': 'sent',
+    'module.messenger.component.thread.lastMessage.single.image': '{number} image',
+    'module.messenger.component.thread.lastMessage.multi.image': '{number} images',
+    'module.messenger.component.thread.lastMessage.single.video': '{number} video',
+    'module.messenger.component.thread.lastMessage.multi.video': '{number} videos',
 });
