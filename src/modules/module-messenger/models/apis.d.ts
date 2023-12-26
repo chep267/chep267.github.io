@@ -6,7 +6,6 @@
 
 /** types */
 import type { Unsubscribe } from '@firebase/firestore';
-import type { UserInfo } from '@firebase/auth';
 import type { TypeCallApiPayloadType, TypeItemIds, TypeItems } from '@module-base/models';
 
 type TypeDocumentThreadData = {
@@ -14,11 +13,7 @@ type TypeDocumentThreadData = {
     name?: string;
     type?: 'thread' | 'group';
     members?: TypeItemIds;
-    lastMessage?: {
-        uid: UserInfo['uid'];
-        mid: string;
-        text: string;
-    };
+    lastMessage?: TypeDocumentMessageData;
 };
 
 type TypeDocumentMessageData = {

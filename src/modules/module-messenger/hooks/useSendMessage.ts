@@ -24,7 +24,7 @@ import { useAuth } from '@module-auth/hooks/useAuth';
 import { useCreateThread } from '@module-messenger/hooks/useCreateThread';
 
 /** types */
-import type { TypeDocumentMessageData, TypeDocumentThreadData } from '@module-messenger/models';
+import type { TypeDocumentMessageData } from '@module-messenger/models';
 
 export function useSendMessage() {
     const AUTH = useAuth();
@@ -85,14 +85,9 @@ export function useSendMessage() {
             }
 
             /** update for thread */
-            const lastMessage: TypeDocumentThreadData['lastMessage'] = {
-                uid: message.uid,
-                mid: message.mid,
-                text: message.text || 'dong ne',
-            };
             CREATE_THREAD.mutate({
                 tid,
-                lastMessage,
+                lastMessage: message,
             });
         },
         onError: (error) => {
