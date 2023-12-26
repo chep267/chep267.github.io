@@ -17,7 +17,7 @@ export type FormAuthDataType = {
 export type AuthContextProps = {
     data: {
         isAuth: boolean;
-        me?: User;
+        me: User;
     };
     method: {
         setAuth(options?: AuthContextProps['data']): void;

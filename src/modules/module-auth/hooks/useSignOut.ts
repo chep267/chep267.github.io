@@ -21,17 +21,17 @@ type UseSignOutProps = {
 };
 
 export function useSignOut(props: UseSignOutProps) {
-    const auth = useAuth();
+    const AUTH = useAuth();
 
     const SIGN_OUT = useMutation({
         mutationFn: apiSignOut,
         retry: 3,
         onSuccess: () => {
             Cookies.remove(accessTokenCookieKey);
-            auth.method.setAuth();
+            AUTH.method.setAuth();
             props.onSuccess?.();
         },
     });
 
-    return { isAuth: auth.data.isAuth, ...SIGN_OUT };
+    return { isAuth: AUTH.data.isAuth, ...SIGN_OUT };
 }

@@ -14,10 +14,8 @@ import { useAuth } from '@module-auth/hooks/useAuth';
 
 export function useListUser() {
     const queryClient = useQueryClient();
-    const {
-        data: { me },
-    } = useAuth();
-    const uid = `${me?.uid}`;
+    const AUTH = useAuth();
+    const uid = AUTH.data.me.uid;
     const data = queryClient.getQueryData(['useListUser', { uid }]);
 
     return useQuery({

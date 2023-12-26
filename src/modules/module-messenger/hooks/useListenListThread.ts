@@ -22,12 +22,10 @@ import type { TypeDocumentThreadData } from '@module-messenger/models';
 
 export function useListenListThread() {
     const queryClient = useQueryClient();
-    const {
-        data: { me },
-    } = useAuth();
+    const AUTH = useAuth();
     const [itemIds, setItemIds] = React.useState<TypeItemIds>(emptyArray);
     const [items, setItems] = React.useState<TypeItems<TypeDocumentThreadData>>(emptyObject);
-    const uid = `${me?.uid}`;
+    const uid = AUTH.data.me.uid;
 
     const LIST_THREAD = useQuery({
         queryKey: ['useListenListThread', { uid }],

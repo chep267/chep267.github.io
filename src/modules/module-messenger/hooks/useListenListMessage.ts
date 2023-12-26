@@ -21,12 +21,10 @@ import type { TypeItemIds, TypeItems } from '@module-base/models';
 import type { TypeDocumentMessageData } from '@module-messenger/models';
 
 export function useListenListMessage({ tid }: { tid?: string }) {
-    const {
-        data: { me },
-    } = useAuth();
+    const AUTH = useAuth();
     const [itemIds, setItemIds] = React.useState<TypeItemIds>(emptyArray);
     const [items, setItems] = React.useState<TypeItems<TypeDocumentMessageData>>(emptyObject);
-    const uid = `${me?.uid}`;
+    const uid = AUTH.data.me.uid;
 
     const LIST_MESSAGE = useQuery({
         queryKey: ['useListenListMessage', { tid }],

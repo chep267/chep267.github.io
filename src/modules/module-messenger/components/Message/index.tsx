@@ -36,19 +36,15 @@ type MessageProps = {
 export default function Message(props: MessageProps) {
     const { data } = props;
     const classes = useStyles();
-    const {
-        data: { me },
-    } = useAuth();
-    const {
-        data: { locale },
-    } = useLanguage();
-    const isMe = data.uid === me?.uid;
+    const AUTH = useAuth();
+    const LANGUAGE = useLanguage();
+    const isMe = data.uid === AUTH.data.me.uid;
 
     return (
         <Stack className={classnames(classes.message_view, { [classes.meView]: isMe }, { [classes.partnerView]: !isMe })}>
             {isMe ? <OptionMessage /> : null}
             <Tooltip
-                title={dayjs(data.createdTime).locale(locale).format('hh:mm dddd, DD/MM/YYYY')}
+                title={dayjs(data.createdTime).locale(LANGUAGE.data.locale).format('hh:mm dddd, DD/MM/YYYY')}
                 placement={isMe ? 'right-end' : 'left-end'}>
                 <Stack
                     className={classnames(

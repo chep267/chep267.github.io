@@ -10,9 +10,10 @@ import * as React from 'react';
 import { emptyFunction } from '@module-base/constants/defaultValue';
 
 /** types */
+import type { User } from '@firebase/auth';
 import type { AuthContextProps } from '@module-auth/models';
 
-const defaultAuthState = Object.freeze({ isAuth: false, me: undefined });
+const defaultAuthState = Object.freeze({ isAuth: false, me: {} as User });
 
 const AuthContext = React.createContext<AuthContextProps>({
     data: defaultAuthState,

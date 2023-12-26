@@ -29,10 +29,10 @@ const SignInScreen = React.lazy(() => import('@module-auth/screens/SignInScreen'
 function AuthRoute(props: PropsWithChildren) {
     const { pathname } = useLocation();
     const navigate = useNavigate();
-    const auth = useAuth();
+    const AUTH = useAuth();
     const accessToken = Cookies.get(accessTokenCookieKey);
 
-    const accountState = auth.data.isAuth
+    const accountState = AUTH.data.isAuth
         ? ACCOUNT_STATE.SIGNED_IN
         : accessToken
           ? ACCOUNT_STATE.RE_SIGN_IN
@@ -42,7 +42,7 @@ function AuthRoute(props: PropsWithChildren) {
         if (accountState === ACCOUNT_STATE.RE_SIGN_IN) {
             /** đã đăng nhập từ trước, lấy phiên đăng nhập */
             apiRestart({
-                fnCallback: (me) => auth.method.setAuth({ isAuth: true, me }),
+                fnCallback: (me) => AUTH.method.setAuth({ isAuth: true, me }),
             }).then();
         }
         if (accountState === ACCOUNT_STATE.SIGNED_IN && Object.values(AUTH_SCREEN).includes(pathname as any)) {

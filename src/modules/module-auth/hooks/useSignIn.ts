@@ -23,7 +23,7 @@ import { useBase } from '@module-base/hooks/useBase';
 import { useAuth } from '@module-auth/hooks/useAuth';
 
 export function useSignIn() {
-    const auth = useAuth();
+    const AUTH = useAuth();
     const { notify } = useBase();
 
     return useMutation({
@@ -33,7 +33,7 @@ export function useSignIn() {
             const accessToken = (await me.getIdToken()) || '';
             localStorageBase.set(emailLocalKey, Encrypt(email));
             Cookies.set(accessTokenCookieKey, accessToken, { expires: 1 });
-            auth.method.setAuth({ isAuth: true, me });
+            AUTH.method.setAuth({ isAuth: true, me });
         },
         onError: () => {
             notify.toggleNotify({

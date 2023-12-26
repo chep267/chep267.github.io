@@ -21,9 +21,7 @@ import { useAuth } from '@module-auth/hooks/useAuth';
 import useStyles from './styles';
 
 export default function AppMenu() {
-    const {
-        data: { isAuth },
-    } = useAuth();
+    const AUTH = useAuth();
     const { notify } = useBase();
     const classes = useStyles();
 
@@ -33,7 +31,7 @@ export default function AppMenu() {
 
     return (
         <Stack className={classes.menu}>
-            {isAuth ? (
+            {AUTH.data.isAuth ? (
                 <>
                     <Tooltip title="Messenger">
                         <Button className={classes.button} variant="outlined" onClick={onDev}>

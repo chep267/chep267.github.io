@@ -6,13 +6,19 @@
 
 /** types */
 import type { Unsubscribe } from '@firebase/firestore';
+import type { UserInfo } from '@firebase/auth';
 import type { TypeCallApiPayloadType, TypeItemIds, TypeItems } from '@module-base/models';
 
 type TypeDocumentThreadData = {
     tid: string;
-    name: string;
-    type: 'thread' | 'group';
-    members: string[];
+    name?: string;
+    type?: 'thread' | 'group';
+    members?: TypeItemIds;
+    lastMessage?: {
+        uid: UserInfo['uid'];
+        mid: string;
+        text: string;
+    };
 };
 
 type TypeDocumentMessageData = {
@@ -74,7 +80,7 @@ interface MessengerApiProps {
             mid: string;
             data: TypeDocumentMessageData;
         }>;
-        Response?: void;
+        Response: { message: TypeDocumentMessageData };
     };
     SendFile: {
         Payload: TypeCallApiPayloadType<{

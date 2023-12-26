@@ -18,44 +18,57 @@ import { useBase } from '@module-base/hooks/useBase';
 import { useAuth } from '@module-auth/hooks/useAuth';
 
 /** types */
-import type { UserInfo } from '@firebase/auth';
 import type { TypeDocumentThreadData } from '@module-messenger/models';
+import type { TypeItemIds, TypeItems } from '@module-base/models';
+
+type TypeListThread =
+    | {
+          itemIds: TypeItemIds;
+          items: TypeItems<TypeDocumentThreadData>;
+      }
+    | undefined;
 
 export function useCreateThread() {
     const queryClient = useQueryClient();
-    const {
-        data: { me },
-    } = useAuth();
+    const AUTH = useAuth();
     const { notify } = useBase();
-    const uid = `${me?.uid}`;
+    const uid = AUTH.data.me.uid;
+    const LIST_THREAD: TypeListThread = queryClient.getQueryData(['useListThread', { uid }]);
 
     return useMutation({
-        mutationFn: (payload: Partial<Omit<TypeDocumentThreadData, 'tid'>> & Pick<TypeDocumentThreadData, 'tid'>) => {
-            const { tid, name, type, members } = payload;
-            const LIST_USER: any = queryClient.getQueryData(['useListUser', { uid }]);
-            const pid = checkId(tid, 'uid');
-            const partner: UserInfo = LIST_USER?.items?.[pid];
-            const pTid = checkId(uid, 'tid');
+        mutationFn: (payload: TypeDocumentThreadData) => {
+            const { tid } = payload;
+            const p_uid = checkId(tid, 'uid');
+            const p_tid = checkId(uid, 'tid');
+            let data: TypeDocumentThreadData = { ...payload };
+
+            if (LIST_THREAD?.itemIds?.includes?.(tid)) {
+                const thread = LIST_THREAD?.items?.[tid];
+                data = {
+                    ...thread,
+                    ...data,
+                };
+            }
 
             return Promise.all([
+                /** create for me */
                 apiCreateThread({
-                    uid: me!.uid,
+                    uid,
                     tid,
                     data: {
-                        tid,
-                        name: name || partner?.displayName || '',
-                        type: type || 'thread',
-                        members: members || [uid, pid],
+                        type: 'thread',
+                        members: [uid, p_uid],
+                        ...data,
                     },
                 }),
+                /** create for partner */
                 apiCreateThread({
-                    uid: pid,
-                    tid: pTid,
+                    uid: p_uid,
+                    tid: p_tid,
                     data: {
-                        tid: pTid,
-                        name: me?.displayName || '',
-                        type: type || 'thread',
-                        members: members || [uid, pid],
+                        members: [uid, p_uid],
+                        ...data,
+                        tid: p_tid,
                     },
                 }),
             ]);

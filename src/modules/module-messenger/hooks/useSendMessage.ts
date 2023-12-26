@@ -4,7 +4,7 @@
  *
  */
 
-import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { useMutation } from '@tanstack/react-query';
 
 /** apis */
 import { apiCreateMessage, apiSendFile } from '@module-messenger/apis/Message';
@@ -15,6 +15,7 @@ import { MessageGPT } from '@module-messenger/constants/chatGPT';
 
 /** utils */
 import { baseMessage } from '@module-base/utils/messages';
+import { checkId } from '@module-base/utils/helpers/checkId';
 import { genMessage } from '@module-messenger/utils/helpers/genMessage';
 
 /** hooks */
@@ -23,24 +24,19 @@ import { useAuth } from '@module-auth/hooks/useAuth';
 import { useCreateThread } from '@module-messenger/hooks/useCreateThread';
 
 /** types */
-import type { TypeDocumentMessageData } from '@module-messenger/models';
+import type { TypeDocumentMessageData, TypeDocumentThreadData } from '@module-messenger/models';
 
 export function useSendMessage() {
-    const queryClient = useQueryClient();
-    const {
-        data: { me },
-    } = useAuth();
+    const AUTH = useAuth();
     const { notify } = useBase();
     const CREATE_THREAD = useCreateThread();
-    const uid = `${me?.uid}`;
-
-    const LIST_THREAD: any = queryClient.getQueryData(['useListThread', { uid }]);
+    const uid = AUTH.data.me.uid;
 
     return useMutation({
         mutationFn: async ({ tid, draft }: { tid: string; draft: TypeDocumentMessageData }) => {
             const data = genMessage({ ...draft, tid, uid, isEncrypt: true });
             if (draft.fileIds.length) {
-                // send file
+                /** send file */
                 const response = await Promise.all(
                     draft.fileIds.map((fid) => apiSendFile({ tid, mid: data.mid, fid, file: draft.files![fid] }))
                 );
@@ -56,29 +52,48 @@ export function useSendMessage() {
                 });
                 data.files = files;
             }
+            /** send for me */
             return apiCreateMessage({
                 uid,
                 tid,
                 mid: data.mid,
                 data,
-            }).then(() => {
-                if (tid === MESSENGER_CHAT_BOT_AI_ID) {
-                    const arrText = MessageGPT['random'];
-                    const text = arrText[Math.floor(Math.random() * arrText.length)];
-                    const dataGPT = genMessage({ tid, uid: tid, text, isEncrypt: true });
-                    return apiCreateMessage({
-                        uid,
-                        tid,
-                        mid: dataGPT.mid,
-                        data: dataGPT,
-                    });
-                }
             });
         },
-        onSuccess: (_data, { tid }) => {
-            if (!LIST_THREAD?.itemIds?.includes?.(tid)) {
-                CREATE_THREAD.mutate({ tid });
+        onSuccess: ({ message }, { tid }) => {
+            if (tid === MESSENGER_CHAT_BOT_AI_ID) {
+                /** chatbot reply */
+                const arrText = MessageGPT['random'];
+                const text = arrText[Math.floor(Math.random() * arrText.length)];
+                const dataGPT = genMessage({ tid, uid: tid, text, isEncrypt: true });
+                apiCreateMessage({
+                    uid,
+                    tid,
+                    mid: dataGPT.mid,
+                    data: dataGPT,
+                }).then();
+            } else {
+                /** send for partner */
+                const p_uid = checkId(tid, 'uid');
+                const p_tid = checkId(uid, 'tid');
+                apiCreateMessage({
+                    uid: p_uid,
+                    tid: p_tid,
+                    mid: message.mid,
+                    data: message,
+                }).then();
             }
+
+            /** update for thread */
+            const lastMessage: TypeDocumentThreadData['lastMessage'] = {
+                uid: message.uid,
+                mid: message.mid,
+                text: message.text || 'dong ne',
+            };
+            CREATE_THREAD.mutate({
+                tid,
+                lastMessage,
+            });
         },
         onError: (error) => {
             console.log('error: ', error);

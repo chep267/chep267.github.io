@@ -19,7 +19,7 @@ function AuthProvider(props: PropsWithChildren) {
     const [auth, setAuth] = React.useState<AuthContextProps['data']>(defaultAuthState);
 
     const changeAuth = React.useCallback<AuthContextProps['method']['setAuth']>(({ isAuth, me } = defaultAuthState) => {
-        const user: AuthContextProps['data']['me'] = me ? { ...me, uid: checkId(me.uid, 'uid') } : undefined;
+        const user: AuthContextProps['data']['me'] = { ...me, uid: checkId(me.uid, 'uid') };
         setAuth({ isAuth, me: user });
     }, []);
 

@@ -16,6 +16,7 @@ import { MoreHoriz as MoreHorizIcon } from '@mui/icons-material';
 import ListBase from '@module-base/components/ListBase';
 import ThreadName from '@module-messenger/components/ThreadName';
 import ThreadAvatar from '@module-messenger/components/ThreadAvatar';
+import ThreadLastMessage from '@module-messenger/components/ThreadLastMessage';
 
 /** constants */
 import { SCREEN } from '@module-global/constants/screen';
@@ -52,10 +53,11 @@ const ThreadList = React.memo(() => {
     }, []);
 
     const renderItem = React.useCallback(
-        (tid: string, index: number) => {
+        (tid: string) => {
+            const thread = LIST_THREAD.data?.items?.[tid];
             return (
                 <ListItem
-                    key={index}
+                    key={tid}
                     className={classnames('.ThreadItem', classes.listItem, {
                         [classes.listItemSelected]: tid === currentTid,
                     })}
@@ -63,9 +65,12 @@ const ThreadList = React.memo(() => {
                     <ListItemAvatar>
                         <ThreadAvatar tid={tid} />
                     </ListItemAvatar>
-                    <ListItemText primary={<ThreadName tid={tid} variant="h6" />} secondary="You: Xin chao!" />
+                    <ListItemText
+                        primary={<ThreadName tid={tid} variant="h6" />}
+                        secondary={<ThreadLastMessage tid={tid} thread={thread} />}
+                    />
                     <IconButton className={classes.itemOption} onClick={stopPropagation}>
-                        <MoreHorizIcon />
+                        <MoreHorizIcon color="primary" />
                     </IconButton>
                 </ListItem>
             );

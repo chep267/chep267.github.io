@@ -63,7 +63,8 @@ const apiCreateMessage = async (
         MESSENGER_DB_MESSAGE_REF,
         mid
     );
-    return setDoc(docRef, data, { merge: true });
+    await setDoc(docRef, data, { merge: true });
+    return { message: data };
 };
 
 const apiSendFile = async (
