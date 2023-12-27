@@ -33,16 +33,16 @@ import { calendarMessage } from '@module-calendar/utils/messages';
 import { gameMessage } from '@module-game/utils/messages';
 
 /** hooks */
-import { useBase } from '@module-base/hooks/useBase';
+// import { useBase } from '@module-base/hooks/useBase';
 
 /** styles */
 import useStyles from './styles';
 
-export default function ListApp() {
+const ListApp = React.memo(() => {
     const { pathname } = useLocation();
     const navigate = useNavigate();
     const classes = useStyles();
-    const { sider: SIDER } = useBase();
+    // const { data } = useBase();
 
     const MENU_ROUTER = React.useRef([
         {
@@ -73,7 +73,11 @@ export default function ListApp() {
             <ListItem
                 key={item.path}
                 className={classnames(classes.listItem, { [classes.listItemSelected]: pathname.includes(item.path) })}>
-                <Tooltip title={title} placement="right" disableHoverListener={SIDER.open}>
+                <Tooltip
+                    title={title}
+                    placement="right"
+                    // disableHoverListener={data.openSider}
+                >
                     <ListItemButton onClick={() => navigate(item.path)}>
                         <ListItemIcon>{item.icon}</ListItemIcon>
                         <ListItemText primary={title} />
@@ -84,4 +88,7 @@ export default function ListApp() {
     };
 
     return <ListBase className={classes.listApp} data={MENU_ROUTER} renderItem={renderItem} />;
-}
+});
+
+ListApp.displayName = 'ListApp';
+export default ListApp;

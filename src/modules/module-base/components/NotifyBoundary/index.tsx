@@ -17,7 +17,7 @@ import AlertTitle from '@mui/material/AlertTitle';
 import { TIMING_NOTIFY_DURATION } from '@module-base/constants/defaultValue';
 
 /** utils */
-import { useBase } from '@module-base/hooks/useBase';
+import { useNotify } from '@module-base/hooks/useNotify';
 
 /** styles */
 import useStyles from './styles';
@@ -26,11 +26,11 @@ import useStyles from './styles';
 import type { NotifyBoundaryProps } from '@module-base/models';
 
 const NotifyBoundary = React.memo((props: NotifyBoundaryProps) => {
-    const { notify } = useBase();
-    const { open, message, intlMessage, mode, close, duration = TIMING_NOTIFY_DURATION } = notify;
+    const NOTIFY = useNotify();
+    const { open, message, intlMessage, mode, close, duration = TIMING_NOTIFY_DURATION } = NOTIFY.data;
     const classes = useStyles();
 
-    const closeSnackbar = React.useCallback(() => notify.toggleNotify(), []);
+    const closeSnackbar = React.useCallback(() => NOTIFY.method.toggleNotify(), []);
 
     const anchorOrigin = React.useRef(Object.freeze({ vertical: 'top', horizontal: 'center' })).current;
 

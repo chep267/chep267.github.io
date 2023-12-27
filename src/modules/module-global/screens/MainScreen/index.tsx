@@ -35,13 +35,13 @@ const GameScreen = React.lazy(() => import('@module-game/screens'));
 
 function MainRoute() {
     const classes = useStyles();
-    const { sider } = useBase();
+    const { data } = useBase();
 
     return (
         <Box className={classes.mainBody} component="section">
             <AppSider />
             <Box
-                className={classnames(classes.mainContent, { [classes.mainContentWithAppbarClose]: !sider.open })}
+                className={classnames(classes.mainContent, { [classes.mainContentWithAppbarClose]: !data.openSider })}
                 component="main">
                 <React.Suspense fallback={null}>
                     <Routes>

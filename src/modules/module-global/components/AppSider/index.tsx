@@ -31,24 +31,29 @@ import useStyles from './styles';
 
 const AppSider = React.memo(() => {
     const {
-        sider: { open, toggleSider },
+        data: { openSider },
+        method: { toggleSider },
     } = useBase();
     const classes = useStyles();
 
     return (
         <Drawer
             variant="permanent"
-            open={open}
-            className={classnames(classes.drawer, { [classes.drawerOpen]: open }, { [classes.drawerClose]: !open })}>
+            open={openSider}
+            className={classnames(
+                classes.drawer,
+                { [classes.drawerOpen]: openSider },
+                { [classes.drawerClose]: !openSider }
+            )}>
             <Tooltip
                 title={
                     <FormattedMessage
-                        {...baseMessage[`module.base.component.sider.button.${open ? 'collapse' : 'open'}.tooltip`]}
+                        {...baseMessage[`module.base.component.sider.button.${openSider ? 'collapse' : 'open'}.tooltip`]}
                     />
                 }
                 placement="right">
                 <Button size="large" onClick={() => toggleSider((prev) => !prev)}>
-                    {open ? <KeyboardDoubleArrowLeftIcon /> : <KeyboardDoubleArrowRightIcon />}
+                    {openSider ? <KeyboardDoubleArrowLeftIcon /> : <KeyboardDoubleArrowRightIcon />}
                 </Button>
             </Tooltip>
             <Divider />

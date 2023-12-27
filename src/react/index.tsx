@@ -19,6 +19,7 @@ const RootScreen = React.lazy(() => import('@module-global/screens/MainScreen'))
 
 /** providers */
 import BaseProvider from '@module-base/components/BaseProvider';
+import NotifyProvider from '@module-base/components/NotifyProvider';
 import ThemeProvider from '@module-theme/components/ThemeProvider';
 import LanguageProvider from '@module-language/components/LanguageProvider';
 import AuthProvider from '@module-auth/components/AuthProvider';
@@ -33,7 +34,9 @@ const App = () => (
                     <CalendarProvider>
                         <MessengerProvider>
                             <BaseProvider>
-                                <RootScreen />
+                                <NotifyProvider>
+                                    <RootScreen />
+                                </NotifyProvider>
                             </BaseProvider>
                         </MessengerProvider>
                     </CalendarProvider>

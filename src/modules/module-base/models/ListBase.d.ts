@@ -7,6 +7,7 @@
 /** types */
 import type { ReactNode } from 'react';
 import type { ListProps } from '@mui/material/List';
+import type { ElementClickEvent } from '@module-base/models/Event';
 
 interface ListBaseProps<T = unknown> extends ListProps {
     listRef?: ListProps['ref'];
@@ -19,4 +20,15 @@ interface ListBaseProps<T = unknown> extends ListProps {
 
 type ListLoadingProps = Pick<ListBaseProps, 'loading' | 'emptyText'> & { empty?: boolean };
 
-export type { ListBaseProps, ListLoadingProps };
+type NestedItemProps = {
+    id: string;
+    icon?: ReactNode;
+    loading?: boolean;
+    title?: ReactNode;
+    divide?: 'top' | 'bottom' | 'top-bottom';
+    subMenu?: NestedItemProps[];
+    subIndex?: number;
+    onClick?(event: ElementClickEvent<HTMLDivElement>, isExpand?: boolean): void;
+};
+
+export type { ListBaseProps, ListLoadingProps, NestedItemProps };

@@ -13,22 +13,22 @@ import { apiCreateUser } from '@module-user/apis';
 import { baseMessage } from '@module-base/utils/messages';
 
 /** hooks */
-import { useBase } from '@module-base/hooks/useBase';
+import { useNotify } from '@module-base/hooks/useNotify';
 
 export function useCreateUser() {
-    const { notify } = useBase();
+    const NOTIFY = useNotify();
 
     return useMutation({
         mutationFn: apiCreateUser,
         onSuccess: () => {
-            notify.toggleNotify({
+            NOTIFY.method.toggleNotify({
                 open: true,
                 mode: 'success',
                 message: 'ok',
             });
         },
         onError: () => {
-            notify.toggleNotify({
+            NOTIFY.method.toggleNotify({
                 open: true,
                 mode: 'error',
                 intlMessage: baseMessage['module.base.error.server.busy'],

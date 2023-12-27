@@ -11,10 +11,10 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import MessageIcon from '@mui/icons-material/Message';
 
 /** components */
-import ButtonMenu from './ButtonMenu';
+import ButtonSetting from './ButtonSetting';
 
 /** utils */
-import { useBase } from '@module-base/hooks/useBase';
+import { useNotify } from '@module-base/hooks/useNotify';
 import { useAuth } from '@module-auth/hooks/useAuth';
 
 /** styles */
@@ -22,11 +22,11 @@ import useStyles from './styles';
 
 export default function AppMenu() {
     const AUTH = useAuth();
-    const { notify } = useBase();
+    const NOTIFY = useNotify();
     const classes = useStyles();
 
     const onDev = () => {
-        notify.toggleNotify({ open: true, mode: 'warning', message: 'In developing!' });
+        NOTIFY.method.toggleNotify({ open: true, mode: 'warning', message: 'In developing!' });
     };
 
     return (
@@ -45,7 +45,7 @@ export default function AppMenu() {
                     </Tooltip>
                 </>
             ) : null}
-            <ButtonMenu />
+            <ButtonSetting />
         </Stack>
     );
 }

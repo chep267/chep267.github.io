@@ -16,11 +16,7 @@ import { accessTokenCookieKey } from '@module-base/constants/localStoreKey';
 /** hooks */
 import { useAuth } from '@module-auth/hooks/useAuth';
 
-type UseSignOutProps = {
-    onSuccess?(): void;
-};
-
-export function useSignOut(props: UseSignOutProps) {
+export function useSignOut() {
     const AUTH = useAuth();
 
     const SIGN_OUT = useMutation({
@@ -29,7 +25,6 @@ export function useSignOut(props: UseSignOutProps) {
         onSuccess: () => {
             Cookies.remove(accessTokenCookieKey);
             AUTH.method.setAuth();
-            props.onSuccess?.();
         },
     });
 

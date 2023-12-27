@@ -5,17 +5,22 @@
  */
 
 import * as React from 'react';
+import classnames from 'classnames';
 
 /** lib components */
 import Tooltip from '@mui/material/Tooltip';
 import Menu from '@mui/material/Menu';
 import IconButton from '@mui/material/IconButton';
 
+/** styles */
+import useStyles from './styles';
+
 /** types */
 import type { ElementClickEvent, MenuBaseProps } from '@module-base/models';
 
 const MenuBase = React.memo(function (props: MenuBaseProps) {
     const { iconButtonProps, tooltipProps, menuProps } = props;
+    const classes = useStyles();
 
     const menuId = React.useId();
     const [menuElem, setMenuElem] = React.useState<null | HTMLElement>(null);
@@ -48,6 +53,7 @@ const MenuBase = React.memo(function (props: MenuBaseProps) {
             <Menu
                 {...menuProps}
                 id={`menu-${menuId}`}
+                className={classnames(classes.menu, menuProps?.className)}
                 anchorEl={menuElem}
                 open={open}
                 onClose={closeMenu}

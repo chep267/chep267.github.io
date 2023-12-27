@@ -14,7 +14,7 @@ import { baseMessage } from '@module-base/utils/messages';
 import { checkId } from '@module-base/utils/helpers/checkId';
 
 /** hooks */
-import { useBase } from '@module-base/hooks/useBase';
+import { useNotify } from '@module-base/hooks/useNotify';
 import { useAuth } from '@module-auth/hooks/useAuth';
 
 /** types */
@@ -31,7 +31,7 @@ type TypeListThread =
 export function useCreateThread() {
     const queryClient = useQueryClient();
     const AUTH = useAuth();
-    const { notify } = useBase();
+    const NOTIFY = useNotify();
     const uid = AUTH.data.me.uid;
     const LIST_THREAD: TypeListThread = queryClient.getQueryData(['useListThread', { uid }]);
 
@@ -75,7 +75,7 @@ export function useCreateThread() {
         },
         onError: (error) => {
             console.log('error: ', error);
-            notify.toggleNotify({
+            NOTIFY.method.toggleNotify({
                 open: true,
                 mode: 'error',
                 intlMessage: baseMessage['module.base.error.server.busy'],

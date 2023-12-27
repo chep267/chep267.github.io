@@ -19,12 +19,12 @@ import { localStorageBase } from '@module-base/utils/storages';
 import { authMessage } from '@module-auth/utils/messages';
 
 /** hooks */
-import { useBase } from '@module-base/hooks/useBase';
+import { useNotify } from '@module-base/hooks/useNotify';
 import { useAuth } from '@module-auth/hooks/useAuth';
 
 export function useSignIn() {
     const AUTH = useAuth();
-    const { notify } = useBase();
+    const NOTIFY = useNotify();
 
     return useMutation({
         mutationFn: apiSignIn,
@@ -36,7 +36,7 @@ export function useSignIn() {
             AUTH.method.setAuth({ isAuth: true, me });
         },
         onError: () => {
-            notify.toggleNotify({
+            NOTIFY.method.toggleNotify({
                 open: true,
                 mode: 'error',
                 intlMessage: authMessage['module.auth.form.status.email.incorrect'],

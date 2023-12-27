@@ -12,12 +12,11 @@ import { emptyFunction } from '@module-base/constants/defaultValue';
 /** types */
 import type { BaseContextProps } from '@module-base/models';
 
-const defaultNotify = Object.freeze({ open: false, message: '', mode: undefined, close: false, duration: undefined });
-
 const BaseContext = React.createContext<BaseContextProps>({
-    notify: { ...defaultNotify, toggleNotify: emptyFunction },
-    sider: {
-        open: true,
+    data: {
+        openSider: true,
+    },
+    method: {
         toggleSider: emptyFunction,
     },
 });
@@ -25,4 +24,4 @@ BaseContext.displayName = 'BaseContext';
 
 const useBase = () => React.useContext(BaseContext);
 
-export { BaseContext, useBase, defaultNotify };
+export { BaseContext, useBase };
