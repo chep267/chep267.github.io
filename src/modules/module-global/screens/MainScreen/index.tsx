@@ -5,7 +5,6 @@
  */
 
 import * as React from 'react';
-import classnames from 'classnames';
 
 /** lib components */
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
@@ -18,9 +17,6 @@ import AppSider from '@module-global/components/AppSider';
 
 /** constants */
 import { SCREEN } from '@module-global/constants/screen';
-
-/** hooks */
-import { useBase } from '@module-base/hooks/useBase';
 
 /** styles */
 import useStyles from './styles';
@@ -35,24 +31,27 @@ const GameScreen = React.lazy(() => import('@module-game/screens'));
 
 function MainRoute() {
     const classes = useStyles();
-    const { data } = useBase();
+
+    const renderRouter = React.useMemo(() => {
+        return (
+            <React.Suspense fallback={null}>
+                <Routes>
+                    <Route path={SCREEN.HOME} element={<Navigate to={SCREEN.CALENDAR} />} />
+                    <Route path={`${SCREEN.FEED}/*`} element={<NewFeedScreen />} />
+                    <Route path={`${SCREEN.MESSENGER}/*`} element={<MessengerScreen />} />
+                    <Route path={`${SCREEN.CALENDAR}/*`} element={<CalendarScreen />} />
+                    <Route path={`${SCREEN.GAME}/*`} element={<GameScreen />} />
+                    <Route path="*" element={<NotFoundScreen />} />
+                </Routes>
+            </React.Suspense>
+        );
+    }, []);
 
     return (
         <Box className={classes.mainBody} component="section">
             <AppSider />
-            <Box
-                className={classnames(classes.mainContent, { [classes.mainContentWithAppbarClose]: !data.openSider })}
-                component="main">
-                <React.Suspense fallback={null}>
-                    <Routes>
-                        <Route path={SCREEN.HOME} element={<Navigate to={SCREEN.CALENDAR} />} />
-                        <Route path={`${SCREEN.FEED}/*`} element={<NewFeedScreen />} />
-                        <Route path={`${SCREEN.MESSENGER}/*`} element={<MessengerScreen />} />
-                        <Route path={`${SCREEN.CALENDAR}/*`} element={<CalendarScreen />} />
-                        <Route path={`${SCREEN.GAME}/*`} element={<GameScreen />} />
-                        <Route path="*" element={<NotFoundScreen />} />
-                    </Routes>
-                </React.Suspense>
+            <Box className={classes.mainContent} component="main">
+                {renderRouter}
             </Box>
         </Box>
     );

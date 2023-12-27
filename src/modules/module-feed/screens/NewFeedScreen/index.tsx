@@ -4,15 +4,12 @@
  *
  */
 
-import * as React from 'react';
-
-/** lib components */
 import { Stack, Paper } from '@mui/material';
 
 /** styles */
 import useStyles from './styles';
 
-const NewFeedScreen = React.memo(() => {
+export default function NewFeedScreen() {
     const classes = useStyles();
 
     return (
@@ -22,7 +19,4 @@ const NewFeedScreen = React.memo(() => {
             <Paper className={classes.left_right}>NewFeedScreen right</Paper>
         </Stack>
     );
-});
-
-NewFeedScreen.displayName = 'NewFeedScreen';
-export default NewFeedScreen;
+}

@@ -4,8 +4,6 @@
  *
  */
 
-import * as React from 'react';
-
 /** lib components */
 import { Stack } from '@mui/material';
 
@@ -17,7 +15,7 @@ import ConversationRight from './ConversationRight';
 /** styles */
 import useStyles from './styles';
 
-const ConversationScreen = React.memo(() => {
+export default function ConversationScreen() {
     const classes = useStyles();
 
     return (
@@ -27,7 +25,4 @@ const ConversationScreen = React.memo(() => {
             <ConversationRight />
         </Stack>
     );
-});
-
-ConversationScreen.displayName = 'ConversationScreen';
-export default ConversationScreen;
+}

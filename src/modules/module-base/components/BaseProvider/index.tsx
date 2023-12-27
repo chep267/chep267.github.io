@@ -5,7 +5,6 @@
  */
 
 import * as React from 'react';
-import { useMediaQuery } from '@mui/material';
 
 /** components */
 import ErrorBoundary from '@module-base/components/ErrorBoundary';
@@ -19,21 +18,19 @@ import type { BaseContextProps } from '@module-base/models';
 
 function BaseProvider(props: PropsWithChildren) {
     const { children } = props;
-    const matches = useMediaQuery('(max-width:720px)');
 
     const [openSider, setOpenSider] = React.useState(true);
 
-    const open = matches ? false : openSider;
     const store = React.useMemo<BaseContextProps>(
         () => ({
             data: {
-                openSider: open,
+                openSider,
             },
             method: {
                 toggleSider: setOpenSider,
             },
         }),
-        [open]
+        [openSider]
     );
 
     return (
