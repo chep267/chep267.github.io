@@ -5,13 +5,17 @@
  */
 
 import makeStyles from '@mui/styles/makeStyles';
+import { SCREEN_SIZE } from '@module-global/constants/screen.ts';
 
-const useStyles = makeStyles(({ spacing }) => ({
+const useStyles = makeStyles(({ spacing, breakpoints }) => ({
     screen: {
         flexDirection: 'row',
         width: '100%',
         height: '100%',
-        padding: spacing(2),
+        padding: `${spacing(5)} 10%`,
+        [breakpoints.down(SCREEN_SIZE.APP_BAR_BREAKPOINT)]: {
+            padding: 0,
+        },
     },
     mainContent: {
         display: 'flex',

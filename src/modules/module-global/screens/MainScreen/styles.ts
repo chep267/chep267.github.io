@@ -31,6 +31,7 @@ const useStyles = makeStyles({
         display: 'flex',
         width: '100%',
         height: '100%',
+        maxWidth: `calc(100% - ${SCREEN_SIZE.APP_BAR_MIN_WIDTH}px)`,
     },
 });
 

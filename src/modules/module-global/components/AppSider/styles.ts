@@ -29,7 +29,7 @@ const useStyles = makeStyles(({ breakpoints }) => ({
             width: SCREEN_SIZE.APP_BAR_MAX_WIDTH,
             overflowX: 'hidden',
         },
-        [breakpoints.down(720)]: {
+        [breakpoints.down(SCREEN_SIZE.APP_BAR_BREAKPOINT)]: {
             width: SCREEN_SIZE.APP_BAR_MIN_WIDTH,
             '& .MuiDrawer-paper': {
                 width: SCREEN_SIZE.APP_BAR_MIN_WIDTH,
