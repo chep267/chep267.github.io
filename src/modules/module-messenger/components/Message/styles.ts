@@ -14,10 +14,10 @@ const useStyles = makeStyles(({ spacing, palette, breakpoints }) => ({
         justifyContent: 'space-between',
         width: '100%',
         gap: spacing(2),
-        '& > button': {
+        '& button[class*="button-option-message"]': {
             visibility: 'hidden',
         },
-        '&:hover > button': {
+        '&:hover button[class*="button-option-message"]': {
             visibility: 'visible',
         },
     },

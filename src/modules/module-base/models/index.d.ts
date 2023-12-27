@@ -21,3 +21,4 @@ export * from './ButtonOpenDialog';
 export * from './ImageBase';
 export * from './NotifyBoundary';
 export * from './PasswordField';
+export * from './MenuBase';
