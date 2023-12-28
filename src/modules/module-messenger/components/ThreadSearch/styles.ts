@@ -7,7 +7,7 @@
 import makeStyles from '@mui/styles/makeStyles';
 
 const useStyles = makeStyles(({ zIndex, spacing }) => ({
-    listSearch: {
+    inputSearch: {
         position: 'relative',
         top: 0,
         zIndex: zIndex.appBar,
@@ -32,7 +32,7 @@ const useStyles = makeStyles(({ zIndex, spacing }) => ({
             transition: 'transform 0.2s',
         },
     },
-    listSearch_hidden: {
+    inputSearch_blur: {
         gap: spacing(0),
         '& > .MuiTextField-root': {
             marginLeft: 0,

@@ -26,6 +26,7 @@ import { checkId } from '@module-base/utils/helpers/checkId';
 
 /** hooks */
 import { useListUser } from '@module-user/hooks/useListUser';
+import { useUiThreadSearch } from '@module-messenger/hooks/useUiThreadSearch';
 
 /** styles */
 import useStyles from '@module-messenger/components/ThreadList/styles';
@@ -33,16 +34,14 @@ import useStyles from '@module-messenger/components/ThreadList/styles';
 /** type */
 import type { UserInfo } from '@firebase/auth';
 
-type ThreadListSearchProps = {
-    isSearching: boolean;
-    searchKey: string;
-};
-
-const ThreadListSearch = React.memo((props: ThreadListSearchProps) => {
-    const { searchKey, isSearching } = props;
+const ThreadListSearch = React.memo(() => {
     const navigate = useNavigate();
     const classes = useStyles();
     const LIST_USER = useListUser();
+    const {
+        data: { searchKey, isSearching },
+    } = useUiThreadSearch();
+
     const { itemIds, items } = LIST_USER.data ?? {};
 
     const onClickItem = React.useCallback((uid: UserInfo['uid']) => {

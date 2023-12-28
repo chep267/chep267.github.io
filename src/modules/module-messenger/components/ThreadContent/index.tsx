@@ -4,38 +4,31 @@
  *
  */
 
-import * as React from 'react';
 import classnames from 'classnames';
 
 /** lib components */
 import { Box } from '@mui/material';
 
 /** components */
-import ThreadSearch from '@module-messenger/components/ThreadSearch';
 import ThreadList from '@module-messenger/components/ThreadList';
 import ThreadListSearch from '@module-messenger/components/ThreadListSearch';
+
+/** hooks */
+import { useUiThreadSearch } from '@module-messenger/hooks/useUiThreadSearch';
 
 /** styles */
 import useStyles from './styles';
 
 export default function ThreadContent() {
     const classes = useStyles();
-    const [isFocusSearch, setFocusSearch] = React.useState(false);
-    const [searchKey, setSearchKey] = React.useState('');
-    const [isSearching, setSearching] = React.useState(false);
+    const {
+        data: { isFocusSearch },
+    } = useUiThreadSearch();
 
     return (
-        <>
-            <ThreadSearch
-                isFocusSearch={isFocusSearch}
-                setFocusSearch={setFocusSearch}
-                setSearchKey={setSearchKey}
-                setSearching={setSearching}
-            />
-            <Box className={classnames(classes.thread_content, { [classes.thread_content_focus_search]: isFocusSearch })}>
-                <ThreadList />
-                <ThreadListSearch searchKey={searchKey} isSearching={isSearching} />
-            </Box>
-        </>
+        <Box className={classnames(classes.thread_content, { [classes.thread_content_focus_search]: isFocusSearch })}>
+            <ThreadList />
+            <ThreadListSearch />
+        </Box>
     );
 }

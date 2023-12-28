@@ -9,7 +9,8 @@ import type { Dispatch, SetStateAction } from 'react';
 import type { TypeItems } from '@module-base/models';
 import type { TypeDocumentMessageData } from '@module-messenger/models/apis';
 
-export * from './apis.d';
+export * from './apis';
+export * from './ThreadSearchProvider';
 
 export type MessengerContextProps = {
     ui: {

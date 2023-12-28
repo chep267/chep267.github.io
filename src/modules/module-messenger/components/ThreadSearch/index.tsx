@@ -13,23 +13,21 @@ import { West as WestIcon } from '@mui/icons-material';
 /** components */
 import InputSearch from '@module-base/components/InputSearch';
 
+/** hooks */
+import { useUiThreadSearch } from '@module-messenger/hooks/useUiThreadSearch';
+
 /** styles */
 import useStyles from './styles';
 
-/** types */
-type ThreadSearchProps = {
-    isFocusSearch: boolean;
-    setFocusSearch(isFocusSearch: boolean): void;
-    setSearchKey(searchKey: string): void;
-    setSearching(isSearching: boolean): void;
-};
-
-export default function ThreadSearch(props: ThreadSearchProps) {
-    const { isFocusSearch, setFocusSearch, setSearchKey, setSearching } = props;
+export default function ThreadSearch() {
     const classes = useStyles();
+    const {
+        data: { isFocusSearch },
+        method: { setFocusSearch, setSearching, setSearchKey },
+    } = useUiThreadSearch();
 
     return (
-        <Stack className={classnames('.ThreadSearch', classes.listSearch, { [classes.listSearch_hidden]: !isFocusSearch })}>
+        <Stack className={classnames('.ThreadSearch', classes.inputSearch, { [classes.inputSearch_blur]: !isFocusSearch })}>
             <IconButton onClick={() => setFocusSearch(false)}>
                 <WestIcon />
             </IconButton>

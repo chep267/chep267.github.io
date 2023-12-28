@@ -8,15 +8,9 @@ import * as React from 'react';
 import classnames from 'classnames';
 import { useNavigate, useParams } from 'react-router-dom';
 
-/** lib components */
-import { ListItem, ListItemText, ListItemAvatar, IconButton } from '@mui/material';
-import { MoreHoriz as MoreHorizIcon } from '@mui/icons-material';
-
 /** components */
 import ListBase from '@module-base/components/ListBase';
-import ThreadName from '@module-messenger/components/ThreadName';
-import ThreadAvatar from '@module-messenger/components/ThreadAvatar';
-import ThreadLastMessage from '@module-messenger/components/ThreadLastMessage';
+import ThreadItem from '@module-messenger/components/ThreadList/ThreadItem';
 
 /** constants */
 import { SCREEN } from '@module-global/constants/screen';
@@ -48,36 +42,10 @@ const ThreadList = React.memo(() => {
         navigate(genPath(SCREEN.MESSENGER, SCREEN.MESSENGER_CONVERSATION.replace(':tid', tid)));
     }, []);
 
-    const stopPropagation = React.useCallback((event: React.MouseEvent<HTMLButtonElement>) => {
-        event.stopPropagation();
-    }, []);
-
-    const renderItem = React.useCallback(
-        (tid: string) => {
-            const thread = LIST_THREAD.data?.items?.[tid];
-            return (
-                <ListItem
-                    key={tid}
-                    className={classnames('.ThreadItem', classes.listItem, {
-                        [classes.listItemSelected]: tid === currentTid,
-                    })}
-                    onClick={() => onClickItem(tid)}>
-                    <ListItemAvatar>
-                        <ThreadAvatar tid={tid} />
-                    </ListItemAvatar>
-                    <ListItemText
-                        primary={<ThreadName tid={tid} variant="h6" />}
-                        secondary={<ThreadLastMessage tid={tid} message={thread?.lastMessage} />}
-                        secondaryTypographyProps={{ component: 'div' }}
-                    />
-                    <IconButton className={classes.itemOption} onClick={stopPropagation}>
-                        <MoreHorizIcon color="primary" />
-                    </IconButton>
-                </ListItem>
-            );
-        },
-        [currentTid, LIST_THREAD.data.items]
-    );
+    const renderItem = (tid: string) => {
+        const item = LIST_THREAD.data?.items?.[tid];
+        return <ThreadItem item={item} isSelected={item.tid === currentTid} onClick={() => onClickItem(item.tid)} />;
+    };
 
     return (
         <ListBase
