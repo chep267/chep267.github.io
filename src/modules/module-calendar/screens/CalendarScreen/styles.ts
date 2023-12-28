@@ -5,7 +5,9 @@
  */
 
 import makeStyles from '@mui/styles/makeStyles';
-import { SCREEN_SIZE } from '@module-global/constants/screen.ts';
+
+/** constants */
+import { SCREEN_SIZE } from '@module-global/constants/screen';
 
 const useStyles = makeStyles(({ spacing, breakpoints }) => ({
     screen: {

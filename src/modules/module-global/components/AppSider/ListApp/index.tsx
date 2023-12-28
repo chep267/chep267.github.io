@@ -5,12 +5,10 @@
  */
 
 import * as React from 'react';
-import classnames from 'classnames';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 /** lib components */
 import { FormattedMessage } from 'react-intl';
-import { Tooltip, ListItem, ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
 
 /** icons */
 import {
@@ -22,6 +20,7 @@ import {
 
 /** components */
 import ListBase from '@module-base/components/ListBase';
+import AppItem from './AppItem';
 
 /** constants */
 import { SCREEN } from '@module-global/constants/screen';
@@ -32,9 +31,6 @@ import { messengerMessage } from '@module-messenger/utils/messages';
 import { calendarMessage } from '@module-calendar/utils/messages';
 import { gameMessage } from '@module-game/utils/messages';
 
-/** hooks */
-// import { useBase } from '@module-base/hooks/useBase';
-
 /** styles */
 import useStyles from './styles';
 
@@ -42,49 +38,39 @@ const ListApp = React.memo(() => {
     const { pathname } = useLocation();
     const navigate = useNavigate();
     const classes = useStyles();
-    // const { data } = useBase();
+
+    const router = `/${pathname.split('/')[1]}`;
 
     const MENU_ROUTER = React.useRef([
         {
-            name: feedMessage['module.feed.router.name'],
+            name: <FormattedMessage {...feedMessage['module.feed.router.name']} />,
             path: SCREEN.FEED,
             icon: <HomeIcon />,
+            onClick: () => navigate(SCREEN.FEED),
         },
         {
-            name: messengerMessage['module.messenger.router.name'],
+            name: <FormattedMessage {...messengerMessage['module.messenger.router.name']} />,
             path: SCREEN.MESSENGER,
             icon: <TelegramIcon />,
+            onClick: () => navigate(SCREEN.MESSENGER),
         },
         {
-            name: calendarMessage['module.calendar.router.name'],
+            name: <FormattedMessage {...calendarMessage['module.calendar.router.name']} />,
             path: SCREEN.CALENDAR,
             icon: <CalendarMonthIcon />,
+
+            onClick: () => navigate(SCREEN.CALENDAR),
         },
         {
-            name: gameMessage['module.game.router.name'],
+            name: <FormattedMessage {...gameMessage['module.game.router.name']} />,
             path: SCREEN.GAME,
             icon: <GamesIcon />,
+            onClick: () => navigate(SCREEN.GAME),
         },
     ]).current;
 
     const renderItem = (item: (typeof MENU_ROUTER)[number]) => {
-        const title = <FormattedMessage {...item.name} />;
-        return (
-            <ListItem
-                key={item.path}
-                className={classnames(classes.listItem, { [classes.listItemSelected]: pathname.includes(item.path) })}>
-                <Tooltip
-                    title={title}
-                    placement="right"
-                    // disableHoverListener={data.openSider}
-                >
-                    <ListItemButton onClick={() => navigate(item.path)}>
-                        <ListItemIcon>{item.icon}</ListItemIcon>
-                        <ListItemText primary={title} />
-                    </ListItemButton>
-                </Tooltip>
-            </ListItem>
-        );
+        return <AppItem name={item.name} onClick={item.onClick} icon={item.icon} isSelected={item.path === router} />;
     };
 
     return <ListBase className={classes.listApp} data={MENU_ROUTER} renderItem={renderItem} />;

@@ -12,7 +12,7 @@ type BaseContextProps = {
         openSider: boolean;
     };
     method: {
-        toggleSider: Dispatch<SetStateAction<boolean>>;
+        setOpenSider: Dispatch<SetStateAction<boolean>>;
     };
 };
 

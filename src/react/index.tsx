@@ -4,18 +4,11 @@
  *
  */
 
-import * as React from 'react';
 import { QueryClientProvider } from '@tanstack/react-query';
 
 /** utils */
 import { queryClient } from '@root/utils/queryClient';
 import { messages } from '@root/utils/messages';
-
-/** global styles */
-import './global.css';
-
-/** screens */
-const RootScreen = React.lazy(() => import('@module-global/screens/MainScreen'));
 
 /** providers */
 import BaseProvider from '@module-base/components/BaseProvider';
@@ -26,6 +19,12 @@ import AuthProvider from '@module-auth/components/AuthProvider';
 import CalendarProvider from '@module-calendar/components/CalendarProvider';
 import MessengerProvider from '@module-messenger/components/MessengerProvider';
 
+/** screens */
+import RootScreen from '@module-global/screens/MainScreen';
+
+/** global styles */
+import './global.css';
+
 const App = () => (
     <QueryClientProvider client={queryClient}>
         <ThemeProvider>
@@ -33,11 +32,11 @@ const App = () => (
                 <AuthProvider>
                     <CalendarProvider>
                         <MessengerProvider>
-                            <BaseProvider>
-                                <NotifyProvider>
+                            <NotifyProvider>
+                                <BaseProvider>
                                     <RootScreen />
-                                </NotifyProvider>
-                            </BaseProvider>
+                                </BaseProvider>
+                            </NotifyProvider>
                         </MessengerProvider>
                     </CalendarProvider>
                 </AuthProvider>

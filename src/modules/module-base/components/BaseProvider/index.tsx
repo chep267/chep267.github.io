@@ -6,9 +6,6 @@
 
 import * as React from 'react';
 
-/** components */
-import ErrorBoundary from '@module-base/components/ErrorBoundary';
-
 /** utils */
 import { BaseContext } from '@module-base/hooks/useBase';
 
@@ -27,17 +24,13 @@ function BaseProvider(props: PropsWithChildren) {
                 openSider,
             },
             method: {
-                toggleSider: setOpenSider,
+                setOpenSider,
             },
         }),
         [openSider]
     );
 
-    return (
-        <BaseContext.Provider value={store}>
-            <ErrorBoundary isAutoReload>{children}</ErrorBoundary>
-        </BaseContext.Provider>
-    );
+    return <BaseContext.Provider value={store}>{children}</BaseContext.Provider>;
 }
 
 export default BaseProvider;

@@ -17,7 +17,7 @@ const BaseContext = React.createContext<BaseContextProps>({
         openSider: true,
     },
     method: {
-        toggleSider: emptyFunction,
+        setOpenSider: emptyFunction,
     },
 });
 BaseContext.displayName = 'BaseContext';

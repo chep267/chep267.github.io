@@ -32,7 +32,7 @@ import useStyles from './styles';
 const AppSider = React.memo(() => {
     const {
         data: { openSider },
-        method: { toggleSider },
+        method: { setOpenSider },
     } = useBase();
     const classes = useStyles();
 
@@ -52,7 +52,7 @@ const AppSider = React.memo(() => {
                     />
                 }
                 placement="right">
-                <Button size="large" onClick={() => toggleSider((prev) => !prev)}>
+                <Button size="large" onClick={() => setOpenSider((prev) => !prev)}>
                     {openSider ? <KeyboardDoubleArrowLeftIcon /> : <KeyboardDoubleArrowRightIcon />}
                 </Button>
             </Tooltip>

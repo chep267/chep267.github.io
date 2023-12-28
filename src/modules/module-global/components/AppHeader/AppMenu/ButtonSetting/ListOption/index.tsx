@@ -19,7 +19,8 @@ import {
     Translate as TranslateIcon,
 } from '@mui/icons-material';
 
-import NestedItem from '@module-base/components/ListBase/NestedItem.tsx';
+/** components */
+import NestedItem from '@module-base/components/ListBase/NestedItem';
 
 /** utils */
 import { themeMessage } from '@module-theme/utils/messages';
