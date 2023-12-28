@@ -14,7 +14,7 @@ import { Stack, Typography } from '@mui/material';
 import IconBase from '@module-base/components/IconBase';
 
 /** constants */
-import { APP_NAME } from '@root/utils/config';
+import { APP_NAME } from '@root/constants';
 import { SCREEN } from '@module-global/constants/screen';
 
 /** styles */

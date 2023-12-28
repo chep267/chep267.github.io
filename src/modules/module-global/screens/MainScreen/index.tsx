@@ -32,26 +32,20 @@ const GameScreen = React.lazy(() => import('@module-game/screens'));
 function MainRoute() {
     const classes = useStyles();
 
-    const renderRouter = React.useMemo(() => {
-        return (
-            <React.Suspense fallback={null}>
-                <Routes>
-                    <Route path={SCREEN.HOME} element={<Navigate to={SCREEN.CALENDAR} />} />
-                    <Route path={`${SCREEN.FEED}/*`} element={<NewFeedScreen />} />
-                    <Route path={`${SCREEN.MESSENGER}/*`} element={<MessengerScreen />} />
-                    <Route path={`${SCREEN.CALENDAR}/*`} element={<CalendarScreen />} />
-                    <Route path={`${SCREEN.GAME}/*`} element={<GameScreen />} />
-                    <Route path="*" element={<NotFoundScreen />} />
-                </Routes>
-            </React.Suspense>
-        );
-    }, []);
-
     return (
         <Box className={classes.mainBody} component="section">
             <AppSider />
             <Box className={classes.mainContent} component="main">
-                {renderRouter}
+                <React.Suspense fallback={null}>
+                    <Routes>
+                        <Route path={SCREEN.HOME} element={<Navigate to={SCREEN.CALENDAR} />} />
+                        <Route path={`${SCREEN.FEED}/*`} element={<NewFeedScreen />} />
+                        <Route path={`${SCREEN.MESSENGER}/*`} element={<MessengerScreen />} />
+                        <Route path={`${SCREEN.CALENDAR}/*`} element={<CalendarScreen />} />
+                        <Route path={`${SCREEN.GAME}/*`} element={<GameScreen />} />
+                        <Route path="*" element={<NotFoundScreen />} />
+                    </Routes>
+                </React.Suspense>
             </Box>
         </Box>
     );

@@ -182,7 +182,7 @@ export default function ListOption() {
 
     const renderMenuSignOut = React.useMemo(() => {
         return menuSignOut.map((item) => <NestedItem key={item?.id} {...item} />);
-    }, []);
+    }, [menuSignOut]);
 
     return (
         <List component="nav">

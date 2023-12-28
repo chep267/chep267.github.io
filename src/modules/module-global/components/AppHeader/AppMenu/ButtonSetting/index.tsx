@@ -27,6 +27,7 @@ import type { MenuBaseProps } from '@module-base/models';
 
 const ButtonSetting = React.memo(() => {
     const classes = useStyles();
+
     const tooltipProps = React.useRef<MenuBaseProps['tooltipProps']>({
         title: <FormattedMessage {...messengerMessage['module.messenger.component.message.option.tooltip']} />,
         placement: 'top',

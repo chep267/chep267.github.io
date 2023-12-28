@@ -58,7 +58,6 @@ const ListApp = React.memo(() => {
             name: <FormattedMessage {...calendarMessage['module.calendar.router.name']} />,
             path: SCREEN.CALENDAR,
             icon: <CalendarMonthIcon />,
-
             onClick: () => navigate(SCREEN.CALENDAR),
         },
         {

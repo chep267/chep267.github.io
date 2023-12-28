@@ -4,7 +4,7 @@
  *
  */
 
-import { Stack, Button, Tooltip } from '@mui/material';
+import { Stack } from '@mui/material';
 
 /** icons */
 import NotificationsIcon from '@mui/icons-material/Notifications';
@@ -12,9 +12,9 @@ import MessageIcon from '@mui/icons-material/Message';
 
 /** components */
 import ButtonSetting from './ButtonSetting';
+import ButtonDev from './ButtonDev';
 
 /** utils */
-import { useNotify } from '@module-base/hooks/useNotify';
 import { useAuth } from '@module-auth/hooks/useAuth';
 
 /** styles */
@@ -22,27 +22,14 @@ import useStyles from './styles';
 
 export default function AppMenu() {
     const AUTH = useAuth();
-    const NOTIFY = useNotify();
     const classes = useStyles();
-
-    const onDev = () => {
-        NOTIFY.method.toggleNotify({ open: true, mode: 'warning', message: 'In developing!' });
-    };
 
     return (
         <Stack className={classes.menu}>
             {AUTH.data.isAuth ? (
                 <>
-                    <Tooltip title="Messenger">
-                        <Button className={classes.button} variant="outlined" onClick={onDev}>
-                            <MessageIcon />
-                        </Button>
-                    </Tooltip>
-                    <Tooltip title="Notify">
-                        <Button className={classes.button} variant="outlined" onClick={onDev}>
-                            <NotificationsIcon />
-                        </Button>
-                    </Tooltip>
+                    <ButtonDev tooltip="Messenger" icon={<MessageIcon />} />
+                    <ButtonDev tooltip="Notify" icon={<NotificationsIcon />} />
                 </>
             ) : null}
             <ButtonSetting />
