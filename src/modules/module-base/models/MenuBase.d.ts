@@ -11,8 +11,8 @@ import type { MenuProps, TooltipProps, IconButtonProps } from '@mui/material';
 interface MenuBaseProps extends PropsWithChildren {
     mode?: 'button' | 'icon';
     menuProps?: Omit<MenuProps, 'open'>;
-    tooltipProps: TooltipProps;
-    iconButtonProps?: IconButtonProps;
+    tooltipProps?: TooltipProps;
+    iconButtonProps?: Omit<IconButtonProps, 'onClick'>;
 }
 
 export type { MenuBaseProps };

@@ -4,8 +4,6 @@
  *
  */
 
-type TypeCallApiDebounce = { timer?: number };
+export type TypeCallApiDebounce = { timer?: number };
 
-type TypeCallApiPayloadType<Data = unknown> = TypeCallApiDebounce & Data;
-
-export type { TypeCallApiPayloadType };
+export type TypeCallApiPayload<Data = unknown> = TypeCallApiDebounce & Data;

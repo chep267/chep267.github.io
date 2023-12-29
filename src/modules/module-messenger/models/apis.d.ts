@@ -6,7 +6,7 @@
 
 /** types */
 import type { Unsubscribe } from '@firebase/firestore';
-import type { TypeCallApiPayloadType, TypeItemIds, TypeItems } from '@module-base/models';
+import type { TypeCallApiPayload, TypeItemIds, TypeItems } from '@module-base/models';
 
 type TypeDocumentThreadData = {
     tid: string;
@@ -37,14 +37,14 @@ type TypeDocumentMessageData = {
 interface MessengerApiProps {
     /** thread */
     GetListThread: {
-        Payload: TypeCallApiPayloadType<{
+        Payload: TypeCallApiPayload<{
             uid: string;
             fnCallback(data: { itemIds: TypeItemIds; items: TypeItems<TypeDocumentThreadData> }): void;
         }>;
         Response?: { unsubscribe: Unsubscribe };
     };
     CreateThread: {
-        Payload: TypeCallApiPayloadType<{
+        Payload: TypeCallApiPayload<{
             uid: string;
             tid: string;
             data: TypeDocumentThreadData;
@@ -52,7 +52,7 @@ interface MessengerApiProps {
         Response?: void;
     };
     MoveThread: {
-        Payload: TypeCallApiPayloadType<{
+        Payload: TypeCallApiPayload<{
             uid: string;
             tid: string;
         }>;
@@ -61,7 +61,7 @@ interface MessengerApiProps {
 
     /** message */
     GetListMessage: {
-        Payload: TypeCallApiPayloadType<{
+        Payload: TypeCallApiPayload<{
             uid: string;
             tid: string;
             fnCallback(data: { itemIds: TypeItemIds; items: TypeItems<TypeDocumentMessageData> }): void;
@@ -69,7 +69,7 @@ interface MessengerApiProps {
         Response?: { unsubscribe: Unsubscribe };
     };
     CreateMessage: {
-        Payload: TypeCallApiPayloadType<{
+        Payload: TypeCallApiPayload<{
             uid: string;
             tid: string;
             mid: string;
@@ -78,7 +78,7 @@ interface MessengerApiProps {
         Response: { message: TypeDocumentMessageData };
     };
     SendFile: {
-        Payload: TypeCallApiPayloadType<{
+        Payload: TypeCallApiPayload<{
             tid: string;
             mid: string;
             fid: string;

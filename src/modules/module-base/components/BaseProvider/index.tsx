@@ -10,15 +10,14 @@ import * as React from 'react';
 import { BaseContext } from '@module-base/hooks/useBase';
 
 /** types */
-import type { PropsWithChildren } from 'react';
-import type { BaseContextProps } from '@module-base/models';
+import type { BaseProviderProps, TypeBaseContext } from '@module-base/models';
 
-function BaseProvider(props: PropsWithChildren) {
+export default function BaseProvider(props: BaseProviderProps) {
     const { children } = props;
 
     const [openSider, setOpenSider] = React.useState(true);
 
-    const store = React.useMemo<BaseContextProps>(
+    const store = React.useMemo<TypeBaseContext>(
         () => ({
             data: {
                 openSider,
@@ -32,5 +31,3 @@ function BaseProvider(props: PropsWithChildren) {
 
     return <BaseContext.Provider value={store}>{children}</BaseContext.Provider>;
 }
-
-export default BaseProvider;

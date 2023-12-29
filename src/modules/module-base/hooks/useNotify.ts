@@ -10,9 +10,9 @@ import * as React from 'react';
 import { emptyFunction } from '@module-base/constants/defaultValue';
 
 /** types */
-import type { NotifyContextProps, TypeNotify } from '@module-base/models';
+import type { TypeNotifyContext, TypeNotify } from '@module-base/models';
 
-const defaultNotify = Object.freeze<TypeNotify>({
+export const defaultNotify = Object.freeze<TypeNotify>({
     open: false,
     message: '',
     mode: undefined,
@@ -20,7 +20,7 @@ const defaultNotify = Object.freeze<TypeNotify>({
     duration: undefined,
 });
 
-const NotifyContext = React.createContext<NotifyContextProps>({
+export const NotifyContext = React.createContext<TypeNotifyContext>({
     data: defaultNotify,
     method: {
         toggleNotify: emptyFunction,
@@ -28,6 +28,4 @@ const NotifyContext = React.createContext<NotifyContextProps>({
 });
 NotifyContext.displayName = 'NotifyContext';
 
-const useNotify = () => React.useContext(NotifyContext);
-
-export { NotifyContext, useNotify, defaultNotify };
+export const useNotify = () => React.useContext(NotifyContext);

@@ -10,9 +10,9 @@ import * as React from 'react';
 import { emptyFunction } from '@module-base/constants/defaultValue';
 
 /** types */
-import type { BaseContextProps } from '@module-base/models';
+import type { TypeBaseContext } from '@module-base/models';
 
-const BaseContext = React.createContext<BaseContextProps>({
+export const BaseContext = React.createContext<TypeBaseContext>({
     data: {
         openSider: true,
     },
@@ -22,6 +22,4 @@ const BaseContext = React.createContext<BaseContextProps>({
 });
 BaseContext.displayName = 'BaseContext';
 
-const useBase = () => React.useContext(BaseContext);
-
-export { BaseContext, useBase };
+export const useBase = () => React.useContext(BaseContext);

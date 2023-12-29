@@ -33,7 +33,7 @@ import type { FallbackDefaultProps } from '@module-base/models';
 /** lazy components */
 const Particle = React.lazy(() => import('@module-base/components/Particles'));
 
-function ButtonRetry(props: FallbackDefaultProps) {
+function ButtonRetry(props: Pick<FallbackDefaultProps, 'isAutoReload'>) {
     const { isAutoReload = true } = props;
     const classes = useStyles();
     const { formatMessage } = useIntl();

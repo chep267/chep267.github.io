@@ -5,4 +5,5 @@
  */
 
 export type TypeItemIds = string[];
+
 export type TypeItems<T> = Record<string, T>;

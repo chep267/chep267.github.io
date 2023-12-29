@@ -17,6 +17,7 @@ import useStyles from './styles';
 
 /** types */
 import type { ElementClickEvent, MenuBaseProps } from '@module-base/models';
+import { emptyObject } from '@module-base/constants/defaultValue.ts';
 
 const MenuBase = React.memo(function (props: MenuBaseProps) {
     const { iconButtonProps, tooltipProps, menuProps } = props;
@@ -30,28 +31,24 @@ const MenuBase = React.memo(function (props: MenuBaseProps) {
 
     const closeMenu = React.useCallback(() => setMenuElem(null), []);
 
-    const renderChildren = () => {
-        const { children, ...other } = tooltipProps;
-        return (
-            <Tooltip {...other}>
+    const { children: tooltipChildren, title, ...tooltipOther } = tooltipProps ?? emptyObject;
+    const { children: iconButtonChildren, ...iconButtonOther } = iconButtonProps ?? emptyObject;
+    const { children: menuChildren, ...menuOther } = menuProps ?? emptyObject;
+    return (
+        <div>
+            <Tooltip title={title} {...tooltipOther}>
                 <IconButton
-                    {...iconButtonProps}
+                    {...iconButtonOther}
                     id={`button-${menuId}`}
                     aria-controls={open ? `menu-${menuId}` : undefined}
                     aria-haspopup="true"
                     aria-expanded={open ? 'true' : undefined}
                     onClick={openMenu}>
-                    {children}
+                    {tooltipChildren || iconButtonChildren}
                 </IconButton>
             </Tooltip>
-        );
-    };
-
-    return (
-        <div>
-            {renderChildren()}
             <Menu
-                {...menuProps}
+                {...menuOther}
                 id={`menu-${menuId}`}
                 className={classnames(classes.menu, menuProps?.className)}
                 anchorEl={menuElem}
@@ -60,7 +57,7 @@ const MenuBase = React.memo(function (props: MenuBaseProps) {
                 MenuListProps={{
                     'aria-labelledby': `button-${menuId}`,
                 }}>
-                {menuProps?.children}
+                {menuChildren}
             </Menu>
         </div>
     );

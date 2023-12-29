@@ -13,17 +13,16 @@ import ErrorBoundary from '@module-base/components/ErrorBoundary';
 import { NotifyContext, defaultNotify } from '@module-base/hooks/useNotify';
 
 /** types */
-import type { PropsWithChildren } from 'react';
-import type { NotifyContextProps, TypeNotify } from '@module-base/models';
+import type { TypeNotifyContext, TypeNotify, NotifyProviderProps } from '@module-base/models';
 
-export default function NotifyProvider(props: PropsWithChildren) {
+export default function NotifyProvider(props: NotifyProviderProps) {
     const { children } = props;
 
     const [notify, setNotify] = React.useState<TypeNotify>(defaultNotify);
 
     const toggleNotify = React.useCallback((options: TypeNotify = defaultNotify) => setNotify(options), []);
 
-    const store = React.useMemo<NotifyContextProps>(
+    const store = React.useMemo<TypeNotifyContext>(
         () => ({
             data: notify,
             method: {

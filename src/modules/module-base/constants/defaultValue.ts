@@ -4,29 +4,18 @@
  *
  */
 
-const emptyFunction = Object.freeze(() => {});
+export const emptyFunction = Object.freeze(() => {});
 
-const emptyObject = Object.freeze<Record<any, any>>({});
+export const emptyObject = Object.freeze<Record<any, any>>({});
 
-const emptyArray = Object.freeze([]) as [];
+export const emptyArray = Object.freeze([]) as [];
 
-const TIMING_SEARCHING = 300;
+export const TIMING_SEARCHING = 300;
 
-const TIMING_API_PENDING = 600;
+export const TIMING_API_PENDING = 600;
 
-const TIMING_APP_START = 1000;
+export const TIMING_APP_START = 1000;
 
-const TIMING_NOTIFY_DURATION = 2000;
+export const TIMING_NOTIFY_DURATION = 2000;
 
-const SECOND_COUNT_DOWN_ERROR = 99;
-
-export {
-    emptyFunction,
-    emptyObject,
-    emptyArray,
-    TIMING_SEARCHING,
-    TIMING_API_PENDING,
-    TIMING_APP_START,
-    TIMING_NOTIFY_DURATION,
-    SECOND_COUNT_DOWN_ERROR,
-};
+export const SECOND_COUNT_DOWN_ERROR = 99;

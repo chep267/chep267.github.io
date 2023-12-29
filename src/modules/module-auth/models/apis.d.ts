@@ -6,27 +6,27 @@
 
 /** types */
 import type { User, UserCredential, Unsubscribe } from '@firebase/auth';
-import type { TypeCallApiPayloadType } from '@module-base/models';
+import type { TypeCallApiPayload } from '@module-base/models';
 
 interface AuthApiProps {
     Restart: {
-        Payload: TypeCallApiPayloadType<{ fnCallback: (user: User) => void }>;
+        Payload: TypeCallApiPayload<{ fnCallback: (user: User) => void }>;
         Response: Unsubscribe;
     };
     SignIn: {
-        Payload: TypeCallApiPayloadType<{ email: string; password: string }>;
+        Payload: TypeCallApiPayload<{ email: string; password: string }>;
         Response: UserCredential;
     };
     SignOut: {
-        Payload: TypeCallApiPayloadType;
+        Payload: TypeCallApiPayload;
         Response: void;
     };
     Register: {
-        Payload: TypeCallApiPayloadType<{ email: string; password: string }>;
+        Payload: TypeCallApiPayload<{ email: string; password: string }>;
         Response: UserCredential;
     };
     Recover: {
-        Payload: TypeCallApiPayloadType<{ email: string }>;
+        Payload: TypeCallApiPayload<{ email: string }>;
         Response: void;
     };
 }
