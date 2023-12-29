@@ -8,7 +8,7 @@ import * as React from 'react';
 import classnames from 'classnames';
 
 /** lib components */
-import { ListItem, ListItemText, ListItemAvatar, IconButton, ListItemButton } from '@mui/material';
+import { ListItem, ListItemText, ListItemAvatar, IconButton, Tooltip } from '@mui/material';
 import { MoreHoriz as MoreHorizIcon } from '@mui/icons-material';
 
 /** components */
@@ -25,45 +25,55 @@ import useStyles from './styles';
 /** types */
 import { TypeDocumentThreadData } from '@module-messenger/models';
 
-type ThreadItemProps = { item?: TypeDocumentThreadData; isSelected: boolean; onClick(): void };
+type ThreadItemProps = { item?: TypeDocumentThreadData; isSelected: boolean; onClick(): void; isTooltip?: boolean };
 
 const ThreadItem = React.memo(
     (props: ThreadItemProps) => {
-        const { item = emptyObject, isSelected, onClick } = props;
+        const { item = emptyObject, isSelected, isTooltip, onClick } = props;
         const classes = useStyles();
 
         const stopPropagation = React.useCallback((event: React.MouseEvent<HTMLButtonElement>) => {
             event.stopPropagation();
         }, []);
 
+        const renderName = React.useMemo(() => {
+            return <ThreadName tid={item.tid} variant="h6" />;
+        }, [item.tid]);
+
         const renderItem = React.useMemo(() => {
             return (
-                <ListItemButton onClick={onClick}>
+                <>
                     <ListItemAvatar>
                         <ThreadAvatar tid={item.tid} />
                     </ListItemAvatar>
                     <ListItemText
-                        primary={<ThreadName tid={item.tid} variant="h6" />}
+                        primary={renderName}
                         secondary={<ThreadLastMessage tid={item.tid} message={item.lastMessage} />}
                         secondaryTypographyProps={{ component: 'div' }}
                     />
                     <IconButton className={classes.itemOption} onClick={stopPropagation}>
                         <MoreHorizIcon color="primary" />
                     </IconButton>
-                </ListItemButton>
+                </>
             );
         }, []);
 
         return (
-            <ListItem
-                className={classnames('.ThreadItem', classes.listItem, {
-                    [classes.listItemSelected]: isSelected,
-                })}>
-                {renderItem}
-            </ListItem>
+            <Tooltip title={renderName} placement="right" disableHoverListener={!isTooltip}>
+                <ListItem
+                    className={classnames('.ThreadItem', classes.listItem, {
+                        [classes.listItemSelected]: isSelected,
+                    })}
+                    onClick={onClick}>
+                    {renderItem}
+                </ListItem>
+            </Tooltip>
         );
     },
-    (prevProps, nextProps) => prevProps.isSelected === nextProps.isSelected && prevProps.item === nextProps.item
+    (prevProps, nextProps) =>
+        prevProps.isSelected === nextProps.isSelected &&
+        prevProps.item === nextProps.item &&
+        prevProps.isTooltip === nextProps.isTooltip
 );
 
 ThreadItem.displayName = 'ThreadItem';

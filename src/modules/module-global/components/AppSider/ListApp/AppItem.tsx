@@ -14,40 +14,29 @@ import { Tooltip, ListItem, ListItemButton, ListItemIcon, ListItemText } from '@
 import useStyles from './styles';
 
 /** types */
-import { ReactNode } from 'react';
+import type { AppItemProps } from '@module-global/models';
 
-type AppItemProps = {
-    path: string;
-    name: ReactNode;
-    icon: ReactNode;
-    isSelected: boolean;
-    onClick(): void;
-};
+const AppItem = React.memo((props: AppItemProps) => {
+    const { isSelected, isTooltip, item } = props;
+    const classes = useStyles();
 
-const AppItem = React.memo(
-    (props: Omit<AppItemProps, 'path'>) => {
-        const { name, icon, isSelected, onClick } = props;
-        const classes = useStyles();
-
-        const renderItem = React.useMemo(() => {
-            return (
-                <Tooltip title={name} placement="right">
-                    <ListItemButton onClick={onClick}>
-                        <ListItemIcon>{icon}</ListItemIcon>
-                        <ListItemText primary={name} />
-                    </ListItemButton>
-                </Tooltip>
-            );
-        }, []);
-
+    const renderItem = React.useMemo(() => {
         return (
-            <ListItem className={classnames(classes.listItem, { [classes.listItemSelected]: isSelected })}>
-                {renderItem}
-            </ListItem>
+            <ListItemButton onClick={item.onClick}>
+                <ListItemIcon>{item.icon}</ListItemIcon>
+                <ListItemText primary={item.name} />
+            </ListItemButton>
         );
-    },
-    (prevProps, nextProps) => prevProps.isSelected === nextProps.isSelected
-);
+    }, [item]);
+
+    return (
+        <ListItem className={classnames(classes.listItem, { [classes.listItemSelected]: isSelected })}>
+            <Tooltip title={item.name} placement="right" disableHoverListener={!isTooltip}>
+                {renderItem}
+            </Tooltip>
+        </ListItem>
+    );
+});
 
 AppItem.displayName = 'AppItem';
 export default AppItem;

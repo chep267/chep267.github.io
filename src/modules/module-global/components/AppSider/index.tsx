@@ -9,7 +9,7 @@ import classnames from 'classnames';
 
 /** lib components */
 import { FormattedMessage } from 'react-intl';
-import { Drawer, Button, Divider, Tooltip } from '@mui/material';
+import { Drawer, Button, Divider, Tooltip, useMediaQuery } from '@mui/material';
 
 /** icons */
 import {
@@ -29,12 +29,16 @@ import { useBase } from '@module-base/hooks/useBase';
 /** styles */
 import useStyles from './styles';
 
+/** types */
+import type { Theme } from '@mui/material';
+
 const AppSider = React.memo(() => {
     const {
         data: { openSider },
         method: { setOpenSider },
     } = useBase();
     const classes = useStyles();
+    const isTooltip = useMediaQuery<Theme>((theme) => theme.breakpoints.down('md'));
 
     return (
         <Drawer
@@ -57,7 +61,7 @@ const AppSider = React.memo(() => {
                 </Button>
             </Tooltip>
             <Divider />
-            <ListApp />
+            <ListApp isTooltip={!openSider || isTooltip} />
         </Drawer>
     );
 });

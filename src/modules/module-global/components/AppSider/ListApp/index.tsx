@@ -34,42 +34,46 @@ import { gameMessage } from '@module-game/utils/messages';
 /** styles */
 import useStyles from './styles';
 
-const ListApp = React.memo(() => {
+/** types */
+import type { ListAppProps, TypeAppItem } from '@module-global/models';
+
+const ListApp = React.memo((props: ListAppProps) => {
+    const { isTooltip } = props;
     const { pathname } = useLocation();
     const navigate = useNavigate();
     const classes = useStyles();
 
-    const router = `/${pathname.split('/')[1]}`;
-
-    const MENU_ROUTER = React.useRef([
+    const MENU_ROUTER = React.useRef<TypeAppItem[]>([
         {
-            name: <FormattedMessage {...feedMessage['module.feed.router.name']} />,
             path: SCREEN.FEED,
+            name: <FormattedMessage {...feedMessage['module.feed.router.name']} />,
             icon: <HomeIcon />,
             onClick: () => navigate(SCREEN.FEED),
         },
         {
-            name: <FormattedMessage {...messengerMessage['module.messenger.router.name']} />,
             path: SCREEN.MESSENGER,
+            name: <FormattedMessage {...messengerMessage['module.messenger.router.name']} />,
             icon: <TelegramIcon />,
             onClick: () => navigate(SCREEN.MESSENGER),
         },
         {
-            name: <FormattedMessage {...calendarMessage['module.calendar.router.name']} />,
             path: SCREEN.CALENDAR,
+            name: <FormattedMessage {...calendarMessage['module.calendar.router.name']} />,
             icon: <CalendarMonthIcon />,
             onClick: () => navigate(SCREEN.CALENDAR),
         },
         {
-            name: <FormattedMessage {...gameMessage['module.game.router.name']} />,
             path: SCREEN.GAME,
+            name: <FormattedMessage {...gameMessage['module.game.router.name']} />,
             icon: <GamesIcon />,
             onClick: () => navigate(SCREEN.GAME),
         },
     ]).current;
 
-    const renderItem = (item: (typeof MENU_ROUTER)[number]) => {
-        return <AppItem name={item.name} onClick={item.onClick} icon={item.icon} isSelected={item.path === router} />;
+    const router = `/${pathname.split('/')[1]}`;
+
+    const renderItem = (item: TypeAppItem) => {
+        return <AppItem key={item.path} isSelected={item.path === router} isTooltip={isTooltip} item={item} />;
     };
 
     return <ListBase className={classes.listApp} data={MENU_ROUTER} renderItem={renderItem} />;

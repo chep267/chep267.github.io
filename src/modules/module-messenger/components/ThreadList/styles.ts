@@ -18,7 +18,6 @@ const useStyles = makeStyles(({ palette, typography }) => ({
     },
     listItem: {
         height: 80,
-        padding: 0,
         '& .MuiListItemText-primary': {
             ...typography.h6,
             '& > h6': {
@@ -30,7 +29,7 @@ const useStyles = makeStyles(({ palette, typography }) => ({
         '&:hover': {
             cursor: 'pointer',
             backgroundColor: alpha(palette.common.black, 0.1),
-            '& > .MuiListItemButton-root > .MuiIconButton-root': {
+            '& > .MuiIconButton-root': {
                 display: 'flex',
             },
         },

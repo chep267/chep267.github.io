@@ -7,6 +7,7 @@
 import * as React from 'react';
 import classnames from 'classnames';
 import { useNavigate, useParams } from 'react-router-dom';
+import { useMediaQuery } from '@mui/material';
 
 /** components */
 import ListBase from '@module-base/components/ListBase';
@@ -24,10 +25,14 @@ import { useListenListThread } from '@module-messenger/hooks/useListenListThread
 /** styles */
 import useStyles from './styles';
 
+/** types */
+import { type Theme } from '@mui/material';
+
 const ThreadList = React.memo(() => {
     const navigate = useNavigate();
     const { tid: currentTid } = useParams();
     const classes = useStyles();
+    const isTooltip = useMediaQuery<Theme>((theme) => theme.breakpoints.down('md'));
     const LIST_THREAD = useListenListThread();
 
     const firstId = LIST_THREAD.data.itemIds[0];
@@ -44,7 +49,15 @@ const ThreadList = React.memo(() => {
 
     const renderItem = (tid: string) => {
         const item = LIST_THREAD.data?.items?.[tid];
-        return <ThreadItem item={item} isSelected={item.tid === currentTid} onClick={() => onClickItem(item.tid)} />;
+        return (
+            <ThreadItem
+                key={item.tid}
+                item={item}
+                isSelected={item.tid === currentTid}
+                isTooltip={isTooltip}
+                onClick={() => onClickItem(item.tid)}
+            />
+        );
     };
 
     return (
