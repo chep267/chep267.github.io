@@ -7,14 +7,15 @@
 import * as React from 'react';
 
 /** utils */
-import { AuthContext, defaultAuthState } from '@module-auth/hooks/useAuth';
 import { checkId } from '@module-base/utils/helpers/checkId';
 
-/** types */
-import type { PropsWithChildren } from 'react';
-import type { AuthContextProps } from '@module-auth/models';
+/** hooks */
+import { AuthContext, defaultAuthState } from '@module-auth/hooks/useAuth';
 
-function AuthProvider(props: PropsWithChildren) {
+/** types */
+import { AuthContextProps, AuthProviderProps } from '@module-auth/models';
+
+export default function AuthProvider(props: AuthProviderProps) {
     const { children } = props;
     const [auth, setAuth] = React.useState<AuthContextProps['data']>(defaultAuthState);
 
@@ -34,5 +35,3 @@ function AuthProvider(props: PropsWithChildren) {
 
     return <AuthContext.Provider value={store}>{children}</AuthContext.Provider>;
 }
-
-export default AuthProvider;

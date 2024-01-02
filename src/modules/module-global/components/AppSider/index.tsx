@@ -24,7 +24,7 @@ import ListApp from './ListApp';
 import { baseMessage } from '@module-base/utils/messages';
 
 /** hooks */
-import { useBase } from '@module-base/hooks/useBase';
+import { useSider } from '@module-global/hooks/useSider';
 
 /** styles */
 import useStyles from './styles';
@@ -36,7 +36,7 @@ const AppSider = React.memo(() => {
     const {
         data: { openSider },
         method: { setOpenSider },
-    } = useBase();
+    } = useSider();
     const classes = useStyles();
     const isTooltip = useMediaQuery<Theme>((theme) => theme.breakpoints.down('md'));
 

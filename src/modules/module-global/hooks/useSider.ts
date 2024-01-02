@@ -10,9 +10,9 @@ import * as React from 'react';
 import { emptyFunction } from '@module-base/constants/defaultValue';
 
 /** types */
-import type { TypeBaseContext } from '@module-base/models';
+import type { TypeSiderContext } from '@module-global/models';
 
-export const BaseContext = React.createContext<TypeBaseContext>({
+export const SiderContext = React.createContext<TypeSiderContext>({
     data: {
         openSider: true,
     },
@@ -20,6 +20,6 @@ export const BaseContext = React.createContext<TypeBaseContext>({
         setOpenSider: emptyFunction,
     },
 });
-BaseContext.displayName = 'BaseContext';
+SiderContext.displayName = 'SiderContext';
 
-export const useBase = () => React.useContext(BaseContext);
+export const useSider = () => React.useContext(SiderContext);

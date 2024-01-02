@@ -7,17 +7,17 @@
 import * as React from 'react';
 
 /** utils */
-import { BaseContext } from '@module-base/hooks/useBase';
+import { SiderContext } from '@module-global/hooks/useSider';
 
 /** types */
-import type { BaseProviderProps, TypeBaseContext } from '@module-base/models';
+import type { SiderProviderProps, TypeSiderContext } from '@module-global/models';
 
-export default function BaseProvider(props: BaseProviderProps) {
+export default function SiderProvider(props: SiderProviderProps) {
     const { children } = props;
 
     const [openSider, setOpenSider] = React.useState(true);
 
-    const store = React.useMemo<TypeBaseContext>(
+    const store = React.useMemo<TypeSiderContext>(
         () => ({
             data: {
                 openSider,
@@ -29,5 +29,5 @@ export default function BaseProvider(props: BaseProviderProps) {
         [openSider]
     );
 
-    return <BaseContext.Provider value={store}>{children}</BaseContext.Provider>;
+    return <SiderContext.Provider value={store}>{children}</SiderContext.Provider>;
 }

@@ -11,7 +11,6 @@ import { queryClient } from '@root/utils/queryClient';
 import { messages } from '@root/utils/messages';
 
 /** providers */
-import BaseProvider from '@module-base/components/BaseProvider';
 import NotifyProvider from '@module-base/components/NotifyProvider';
 import ThemeProvider from '@module-theme/components/ThemeProvider';
 import LanguageProvider from '@module-language/components/LanguageProvider';
@@ -33,9 +32,7 @@ const App = () => (
                     <CalendarProvider>
                         <MessengerProvider>
                             <NotifyProvider>
-                                <BaseProvider>
-                                    <RootScreen />
-                                </BaseProvider>
+                                <RootScreen />
                             </NotifyProvider>
                         </MessengerProvider>
                     </CalendarProvider>

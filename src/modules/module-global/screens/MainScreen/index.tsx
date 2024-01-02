@@ -14,6 +14,7 @@ import { Box } from '@mui/material';
 import StartLoading from '@module-base/components/StartLoading';
 import AppHeader from '@module-global/components/AppHeader';
 import AppSider from '@module-global/components/AppSider';
+import SiderProvider from '@module-global/components/SiderProvider';
 
 /** constants */
 import { SCREEN } from '@module-global/constants/screen';
@@ -34,7 +35,9 @@ function MainRoute() {
 
     return (
         <Box className={classes.mainBody} component="section">
-            <AppSider />
+            <SiderProvider>
+                <AppSider />
+            </SiderProvider>
             <Box className={classes.mainContent} component="main">
                 <React.Suspense fallback={null}>
                     <Routes>

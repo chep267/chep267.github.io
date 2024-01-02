@@ -5,21 +5,9 @@
  */
 
 /** types */
-import type { Dispatch, SetStateAction, PropsWithChildren, ReactNode } from 'react';
+import type { PropsWithChildren, ReactNode } from 'react';
 import type { MessageDescriptor } from '@formatjs/intl';
 import type { AlertColor } from '@mui/material/Alert';
-
-/** use base */
-export type BaseProviderProps = PropsWithChildren;
-
-export type TypeBaseContext = {
-    data: {
-        openSider: boolean;
-    };
-    method: {
-        setOpenSider: Dispatch<SetStateAction<boolean>>;
-    };
-};
 
 /** use countdown */
 export type TypeUseCountdown = {
