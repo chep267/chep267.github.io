@@ -10,9 +10,7 @@ import classnames from 'classnames';
 import { Paper } from '@mui/material';
 
 /** components */
-import ConversationHeader from '@module-messenger/components/ConversationHeader';
-import ConversationBody from '@module-messenger/components/ConversationBody';
-import ConversationFooter from '@module-messenger/components/ConversationFooter';
+import { ConversationHeader, ConversationBody, ConversationFooter } from '@module-messenger/components';
 
 /** styles */
 import useStyles from './styles';

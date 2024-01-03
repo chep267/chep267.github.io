@@ -15,11 +15,11 @@ import { accessTokenCookieKey, emailLocalKey } from '@module-base/constants';
 
 /** utils */
 import { Encrypt, localStorageBase } from '@module-base/utils';
-import { authMessage } from '@module-auth/utils/messages';
+import { authMessage } from '@module-auth/utils';
 
 /** hooks */
 import { useNotify } from '@module-base/hooks';
-import { useAuth } from '@module-auth/hooks/useAuth';
+import { useAuth } from '@module-auth/hooks';
 
 export function useSignIn() {
     const AUTH = useAuth();

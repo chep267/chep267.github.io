@@ -14,7 +14,7 @@ import { apiOnGetListThread } from '@module-messenger/apis';
 import { emptyArray, emptyObject } from '@module-base/constants';
 
 /** hooks */
-import { useAuth } from '@module-auth/hooks/useAuth';
+import { useAuth } from '@module-auth/hooks';
 
 /** types */
 import type { TypeItemIds, TypeItems } from '@module-base/models';

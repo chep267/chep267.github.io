@@ -11,10 +11,10 @@ import { useIntl } from 'react-intl';
 import { Stack, Typography, Button } from '@mui/material';
 
 /** utils */
-import { gameMessage } from '@module-game/utils/messages';
+import { gameMessage } from '@module-game/utils';
 
 /** hooks */
-import { usePokemon } from '@module-game/hooks/usePokemon';
+import { usePokemon } from '@module-game/hooks';
 
 /** styles */
 import useStyles from './styles';

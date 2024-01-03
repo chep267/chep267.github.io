@@ -7,15 +7,14 @@
 import { Stack } from '@mui/material';
 
 /** icons */
-import NotificationsIcon from '@mui/icons-material/Notifications';
-import MessageIcon from '@mui/icons-material/Message';
+import { Notifications as NotificationsIcon, Message as MessageIcon } from '@mui/icons-material';
 
 /** components */
 import ButtonSetting from './ButtonSetting';
 import ButtonDev from './ButtonDev';
 
 /** utils */
-import { useAuth } from '@module-auth/hooks/useAuth';
+import { useAuth } from '@module-auth/hooks';
 
 /** styles */
 import useStyles from './styles';

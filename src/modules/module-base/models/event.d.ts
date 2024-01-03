@@ -5,10 +5,10 @@
  */
 
 /** types */
-import type { ChangeEvent, MouseEvent, KeyboardEvent, ComponentType, ReactEventHandler } from 'react';
+import type { ChangeEvent, MouseEvent } from 'react';
 
-type InputChangeEvent = ChangeEvent<HTMLInputElement>;
+export type { KeyboardEvent, ComponentType, ReactEventHandler } from 'react';
 
-type ElementClickEvent<T> = MouseEvent<T>;
+export type InputChangeEvent = ChangeEvent<HTMLInputElement>;
 
-export type { InputChangeEvent, ElementClickEvent, KeyboardEvent, ComponentType, ReactEventHandler };
+export type ElementClickEvent<T> = MouseEvent<T>;

@@ -8,7 +8,7 @@
 import type { Dispatch, SetStateAction } from 'react';
 import type { Dayjs } from 'dayjs';
 
-type CalendarContextProps = {
+export type CalendarContextProps = {
     data: {
         display: 'sun' | 'mon' | 'sat';
         time: Dayjs;
@@ -23,6 +23,4 @@ type CalendarContextProps = {
     };
 };
 
-type CalendarTableDataType = Record<number, Dayjs>;
-
-export type { CalendarContextProps, CalendarTableDataType };
+export type CalendarTableDataType = Record<number, Dayjs>;

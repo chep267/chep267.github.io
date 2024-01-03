@@ -10,10 +10,10 @@ import { useMutation } from '@tanstack/react-query';
 import { apiRecover } from '@module-auth/apis';
 
 /** constants */
-import { AUTH_ERROR_CODES } from '@module-auth/constants/error';
+import { AUTH_ERROR_CODES } from '@module-auth/constants';
 
 /** utils */
-import { authMessage } from '@module-auth/utils/messages';
+import { authMessage } from '@module-auth/utils';
 
 /** hooks */
 import { useNotify } from '@module-base/hooks';

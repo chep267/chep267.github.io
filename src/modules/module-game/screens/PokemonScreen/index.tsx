@@ -13,10 +13,10 @@ import PokemonTimer from '@module-game/components/PokemonTimer';
 import PokemonBoardGame from '@module-game/components/PokemonBoardGame';
 import PokemonGameOver from '@module-game/components/PokemonGameOver';
 import PokemonGameVictory from '@module-game/components/PokemonGameVictory';
+import PokemonPoint from '@module-game/components/PokemonPoint';
 
 /** styles */
 import useStyles from './styles';
-import PokemonPoint from '@module-game/components/PokemonPoint';
 
 export default function PokemonScreen() {
     const classes = useStyles();

@@ -13,17 +13,17 @@ import { Stack, Tooltip } from '@mui/material';
 
 /** components */
 import OptionMessage from '@module-messenger/components/Message/OptionMessage';
+import StatusMessage from '@module-messenger/components/Message/StatusMessage';
 
 /** hooks */
-import { useAuth } from '@module-auth/hooks/useAuth';
-import { useLanguage } from '@module-language/hooks/useLanguage';
+import { useLanguage } from '@module-language/hooks';
+import { useAuth } from '@module-auth/hooks';
 
 /** styles */
 import useStyles from './styles';
 
 /** types */
 import type { TypeDocumentMessageData } from '@module-messenger/models';
-import StatusMessage from '@module-messenger/components/Message/StatusMessage';
 
 /** lazy components */
 const EmojiMessage = React.lazy(() => import('./EmojiMessage'));

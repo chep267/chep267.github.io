@@ -7,11 +7,11 @@
 import * as React from 'react';
 
 /** utils */
-import { GameLevel, genBoardGame, isItemInArray, hasPruneItem } from '@module-game/utils/helpers/Pokemon';
+import { GameLevel, genBoardGame, isItemInArray, hasPruneItem } from '@module-game/utils';
 
 /** hooks */
 import { useCountdown } from '@module-base/hooks';
-import { PokemonContext, PokemonStateDefault } from '@module-game/hooks/usePokemon';
+import { PokemonContext, PokemonStateDefault } from '@module-game/hooks';
 
 /** types */
 import type { PropsWithChildren } from 'react';

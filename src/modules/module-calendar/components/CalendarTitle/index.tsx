@@ -12,14 +12,14 @@ import { useIntl } from 'react-intl';
 import { Stack, Typography, IconButton } from '@mui/material';
 
 /** components */
-import CalendarInfoTitle from '@module-calendar/components/CalendarInfoTitle';
+import { CalendarInfoTitle } from '@module-calendar/components';
 
 /** utils */
-import { calendarMessage } from '@module-calendar/utils/messages';
+import { calendarMessage } from '@module-calendar/utils';
 
 /** hooks */
-import { useLanguage } from '@module-language/hooks/useLanguage';
-import { useCalendar } from '@module-calendar/hooks/useCalendar';
+import { useLanguage } from '@module-language/hooks';
+import { useCalendar } from '@module-calendar/hooks';
 
 /** styles */
 import useStyles from './styles';

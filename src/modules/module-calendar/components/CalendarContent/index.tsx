@@ -13,11 +13,10 @@ import CalendarLabel from './CalendarLabel';
 import CalendarItem from './CalendarItem';
 
 /** utils */
-import { genMatrixCalendarDayJS } from '@module-calendar/utils/helpers/genMatrixCalendar';
-import { reverseMatrix } from '@module-calendar/utils/helpers/reverseMatrix';
+import { genMatrixCalendarDayJS, reverseMatrix } from '@module-calendar/utils';
 
 /** hooks */
-import { useCalendar } from '@module-calendar/hooks/useCalendar';
+import { useCalendar } from '@module-calendar/hooks';
 
 /** styles */
 import useStyles from './styles';

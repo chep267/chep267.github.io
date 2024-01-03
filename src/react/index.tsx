@@ -13,9 +13,9 @@ import { queryClient, messages } from '@root/utils';
 import { NotifyProvider } from '@module-base/components';
 import { ThemeProvider } from '@module-theme/components';
 import { LanguageProvider } from '@module-language/components';
-import AuthProvider from '@module-auth/components/AuthProvider';
-import CalendarProvider from '@module-calendar/components/CalendarProvider';
-import MessengerProvider from '@module-messenger/components/MessengerProvider';
+import { AuthProvider } from '@module-auth/components';
+import { CalendarProvider } from '@module-calendar/components';
+import { MessengerProvider } from '@module-messenger/components';
 
 /** screens */
 import RootScreen from '@module-global/screens/MainScreen';

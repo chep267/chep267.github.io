@@ -19,15 +19,14 @@ import { PasswordField } from '@module-base/components';
 
 /** constants */
 import { emailLocalKey } from '@module-base/constants';
-import { AUTH_SCREEN } from '@module-auth/constants/screen';
+import { AUTH_SCREEN } from '@module-auth/constants';
 
 /** utils */
 import { Decrypt, localStorageBase } from '@module-base/utils';
-import { authMessage } from '@module-auth/utils/messages';
-import { authFormSchema } from '@module-auth/utils/helpers/authFormSchema';
+import { authMessage, authFormSchema } from '@module-auth/utils';
 
 /** hooks */
-import { useSignIn } from '@module-auth/hooks/useSignIn';
+import { useSignIn } from '@module-auth/hooks';
 
 /** styles */
 import useStyles from './styles';

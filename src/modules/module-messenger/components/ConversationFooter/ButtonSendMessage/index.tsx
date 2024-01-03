@@ -14,7 +14,7 @@ import { IconButton, Tooltip } from '@mui/material';
 import { Favorite as FavoriteIcon, Send as SendIcon } from '@mui/icons-material';
 
 /** utils */
-import { genMessage, messengerMessage } from '@module-messenger/utils/';
+import { genMessage, messengerMessage } from '@module-messenger/utils';
 
 /** hooks */
 import { useSendMessage, useMessenger } from '@module-messenger/hooks';

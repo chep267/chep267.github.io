@@ -18,14 +18,13 @@ import { LoadingButton } from '@mui/lab';
 import { PasswordField } from '@module-base/components';
 
 /** constants */
-import { AUTH_SCREEN } from '@module-auth/constants/screen';
+import { AUTH_SCREEN } from '@module-auth/constants';
 
 /** utils */
-import { authMessage } from '@module-auth/utils/messages';
-import { authFormSchema } from '@module-auth/utils/helpers/authFormSchema';
+import { authMessage, authFormSchema } from '@module-auth/utils';
 
 /** hooks */
-import { useRegister } from '@module-auth/hooks/useRegister';
+import { useRegister } from '@module-auth/hooks';
 
 /** styles */
 import useStyles from '@module-auth/components/SignInForm/styles';

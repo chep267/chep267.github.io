@@ -14,7 +14,7 @@ import { apiSignOut } from '@module-auth/apis';
 import { accessTokenCookieKey } from '@module-base/constants';
 
 /** hooks */
-import { useAuth } from '@module-auth/hooks/useAuth';
+import { useAuth } from '@module-auth/hooks';
 
 export function useSignOut() {
     const AUTH = useAuth();

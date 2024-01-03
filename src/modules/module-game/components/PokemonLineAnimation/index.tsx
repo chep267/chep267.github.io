@@ -11,7 +11,7 @@ import classnames from 'classnames';
 import { Stack } from '@mui/material';
 
 /** hooks */
-import { usePokemon } from '@module-game/hooks/usePokemon';
+import { usePokemon } from '@module-game/hooks';
 
 /** styles */
 import useStyles from './styles';

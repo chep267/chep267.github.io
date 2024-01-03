@@ -26,10 +26,10 @@ import AppItem from './AppItem';
 import { SCREEN } from '@module-global/constants';
 
 /** utils */
-import { feedMessage } from '@module-feed/utils/messages';
+import { feedMessage } from '@module-feed/utils';
 import { messengerMessage } from '@module-messenger/utils';
-import { calendarMessage } from '@module-calendar/utils/messages';
-import { gameMessage } from '@module-game/utils/messages';
+import { calendarMessage } from '@module-calendar/utils';
+import { gameMessage } from '@module-game/utils';
 
 /** styles */
 import useStyles from './styles';

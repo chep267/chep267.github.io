@@ -11,7 +11,7 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import { Stack } from '@mui/material';
 
 /** constants */
-import { AUTH_SCREEN } from '@module-auth/constants/screen';
+import { AUTH_SCREEN } from '@module-auth/constants';
 
 /** styles */
 import useStyles from './styles';

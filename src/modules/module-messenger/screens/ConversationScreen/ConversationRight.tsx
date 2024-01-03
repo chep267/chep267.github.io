@@ -10,7 +10,7 @@ import classnames from 'classnames';
 import { Paper } from '@mui/material';
 
 /** components */
-import ThreadInfo from '@module-messenger/components/ThreadInfo';
+import { ThreadInfo } from '@module-messenger/components';
 
 /** hooks */
 import { useMessenger } from '@module-messenger/hooks';

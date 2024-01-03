@@ -18,7 +18,7 @@ import { genMessage } from '@module-messenger/utils';
 
 /** hooks */
 import { useNotify } from '@module-base/hooks';
-import { useAuth } from '@module-auth/hooks/useAuth';
+import { useAuth } from '@module-auth/hooks';
 import { useCreateThread } from '@module-messenger/hooks';
 
 /** types */

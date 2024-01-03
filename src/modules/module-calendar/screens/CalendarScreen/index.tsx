@@ -8,8 +8,7 @@
 import { Stack, Paper } from '@mui/material';
 
 /** components */
-import CalendarTitle from '@module-calendar/components/CalendarTitle';
-import CalendarContent from '@module-calendar/components/CalendarContent';
+import { CalendarTitle, CalendarContent } from '@module-calendar/components';
 
 /** styles */
 import useStyles from './styles';

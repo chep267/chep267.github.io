@@ -7,7 +7,7 @@
 import { Tooltip, Button } from '@mui/material';
 
 /** utils */
-import { useNotify } from '@module-base/hooks/useNotify';
+import { useNotify } from '@module-base/hooks';
 
 /** styles */
 import useStyles from '../styles';

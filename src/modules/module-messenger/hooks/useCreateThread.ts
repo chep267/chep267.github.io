@@ -14,7 +14,7 @@ import { baseMessage, checkId } from '@module-base/utils';
 
 /** hooks */
 import { useNotify } from '@module-base/hooks';
-import { useAuth } from '@module-auth/hooks/useAuth';
+import { useAuth } from '@module-auth/hooks';
 
 /** types */
 import type { TypeDocumentThreadData } from '@module-messenger/models';

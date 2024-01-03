@@ -4,20 +4,24 @@
  *
  */
 
+import * as React from 'react';
 import classnames from 'classnames';
 
 /** lib components */
 import { Stack, Typography } from '@mui/material';
 
+/** components */
+import { SelectDate } from '@module-calendar/components';
+
 /** hooks */
-import { useCalendar } from '@module-calendar/hooks/useCalendar';
-import { useLanguage } from '@module-language/hooks/useLanguage';
+import { useLanguage } from '@module-language/hooks';
+import { useCalendar } from '@module-calendar/hooks';
 
 /** styles */
 import useStyles from './styles';
-import SelectDate from '@module-calendar/components/SelectDate';
-import * as React from 'react';
-import { Dayjs } from 'dayjs';
+
+/** types */
+import type { Dayjs } from 'dayjs';
 
 export default function CalendarInfoScreen() {
     const CALENDAR = useCalendar();

@@ -10,7 +10,7 @@ import * as React from 'react';
 import { checkId } from '@module-base/utils';
 
 /** hooks */
-import { AuthContext, defaultAuthState } from '@module-auth/hooks/useAuth';
+import { AuthContext, defaultAuthState } from '@module-auth/hooks';
 
 /** types */
 import { AuthContextProps, AuthProviderProps } from '@module-auth/models';

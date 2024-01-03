@@ -10,7 +10,7 @@ import * as React from 'react';
 import { emptyFunction } from '@module-base/constants';
 
 /** utils */
-import { GameLevel } from '@module-game/utils/helpers/Pokemon';
+import { GameLevel } from '@module-game/utils';
 
 /** types */
 import type { PokemonContextProps } from '@module-game/models';

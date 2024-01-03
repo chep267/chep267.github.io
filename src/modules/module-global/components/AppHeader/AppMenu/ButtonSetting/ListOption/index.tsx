@@ -25,14 +25,14 @@ import { NestedItem } from '@module-base/components';
 /** utils */
 import { themeMessage } from '@module-theme/utils';
 import { langMessage } from '@module-language/utils';
-import { calendarMessage } from '@module-calendar/utils/messages';
-import { authMessage } from '@module-auth/utils/messages';
+import { calendarMessage } from '@module-calendar/utils';
+import { authMessage } from '@module-auth/utils';
 
 /** hooks */
 import { useTheme } from '@module-theme/hooks';
 import { useLanguage } from '@module-language/hooks';
-import { useSignOut } from '@module-auth/hooks/useSignOut';
-import { useCalendar } from '@module-calendar/hooks/useCalendar';
+import { useSignOut } from '@module-auth/hooks';
+import { useCalendar } from '@module-calendar/hooks';
 
 /** styles */
 import useStyles from '@module-global/components/AppHeader/styles';

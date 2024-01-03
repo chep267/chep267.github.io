@@ -19,9 +19,9 @@ import type {
 } from 'react';
 import type { TextFieldProps } from '@mui/material/TextField';
 import type { ListProps } from '@mui/material/List';
-import type { ElementClickEvent } from '@module-base/models/event';
 import type { IconButtonProps, MenuProps, SelectProps, SxProps, TableRowProps, Theme, TooltipProps } from '@mui/material';
 import type { SnackbarProps } from '@mui/material/Snackbar';
+import type { ElementClickEvent } from '@module-base/models/event';
 
 /** ErrorBoundary */
 export type ErrorBoundaryProps = PropsWithChildren<{

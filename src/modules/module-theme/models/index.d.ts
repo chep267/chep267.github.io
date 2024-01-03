@@ -70,9 +70,9 @@ declare module '@mui/styles/defaultTheme' {
     interface DefaultTheme extends Theme {}
 }
 
-type ThemeModeType = PaletteMode;
+export type ThemeModeType = PaletteMode;
 
-type ThemeContextProps = {
+export type ThemeContextProps = {
     data: {
         mode: ThemeModeType;
     };
@@ -80,5 +80,3 @@ type ThemeContextProps = {
         setTheme: (value: ThemeModeType) => void;
     };
 };
-
-export type { ThemeModeType, ThemeContextProps };

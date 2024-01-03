@@ -16,7 +16,7 @@ import { Decrypt } from '@module-base/utils';
 import { messengerMessage } from '@module-messenger/utils';
 
 /** hooks */
-import { useAuth } from '@module-auth/hooks/useAuth';
+import { useAuth } from '@module-auth/hooks';
 
 /** styles */
 import useStyles from './styles';

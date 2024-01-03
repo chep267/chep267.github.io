@@ -8,7 +8,7 @@
 import type { TypeCallApiPayload, TypeItemIds, TypeItems } from '@module-base/models';
 import type { UserInfo } from '@module-user/models';
 
-interface UserApiProps {
+export interface UserApiProps {
     Create: {
         Payload: TypeCallApiPayload<{ user: UserInfo }>;
         Response?: void;
@@ -22,5 +22,3 @@ interface UserApiProps {
         Response?: { itemIds: TypeItemIds; items: TypeItems<UserInfo> };
     };
 }
-
-export type { UserApiProps };

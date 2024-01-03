@@ -13,7 +13,7 @@ import { Stack, Paper } from '@mui/material';
 import PokemonItem from './PokemonItem';
 
 /** hooks */
-import { usePokemon } from '@module-game/hooks/usePokemon';
+import { usePokemon } from '@module-game/hooks';
 
 /** styles */
 import useStyles from './styles';

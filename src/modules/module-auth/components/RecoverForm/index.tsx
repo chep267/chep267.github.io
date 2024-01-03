@@ -16,15 +16,14 @@ import { LoadingButton } from '@mui/lab';
 
 /** constants */
 import { emailLocalKey } from '@module-base/constants';
-import { AUTH_SCREEN } from '@module-auth/constants/screen';
+import { AUTH_SCREEN } from '@module-auth/constants';
 
 /** utils */
 import { Decrypt, localStorageBase } from '@module-base/utils';
-import { authMessage } from '@module-auth/utils/messages';
-import { authFormSchema } from '@module-auth/utils/helpers/authFormSchema';
+import { authMessage, authFormSchema } from '@module-auth/utils';
 
 /** hooks */
-import { useRecover } from '@module-auth/hooks/useRecover';
+import { useRecover } from '@module-auth/hooks';
 
 /** styles */
 import useStyles from '@module-auth/components/SignInForm/styles';

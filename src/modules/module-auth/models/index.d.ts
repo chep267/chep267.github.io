@@ -4,10 +4,7 @@
  *
  */
 
+/** types */
 export * from './apis';
 export * from './hook';
-
-export type FormAuthDataType = {
-    email: string;
-    password: string;
-};
+export * from './data';

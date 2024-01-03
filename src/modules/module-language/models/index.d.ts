@@ -10,11 +10,11 @@ import { localeObject } from '@module-language/constants';
 /** types */
 import type { PropsWithChildren } from 'react';
 
-type TypeLocale = keyof typeof localeObject;
+export type TypeLocale = keyof typeof localeObject;
 
-type TypeMessages = Readonly<{ [key in TypeLocale]: Record<string, string> }>;
+export type TypeMessages = Readonly<{ [key in TypeLocale]: Record<string, string> }>;
 
-type LanguageContextProps = {
+export type LanguageContextProps = {
     data: {
         locale: TypeLocale;
         messages: Record<string, string>;
@@ -24,8 +24,6 @@ type LanguageContextProps = {
     };
 };
 
-type LanguageProviderProps = PropsWithChildren<{
+export type LanguageProviderProps = PropsWithChildren<{
     messages: TypeMessages;
 }>;
-
-export type { TypeLocale, TypeMessages, LanguageContextProps, LanguageProviderProps };

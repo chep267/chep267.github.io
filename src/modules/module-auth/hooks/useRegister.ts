@@ -11,11 +11,11 @@ import { apiRegister } from '@module-auth/apis';
 
 /** constants */
 import { emailLocalKey } from '@module-base/constants';
-import { AUTH_ERROR_CODES } from '@module-auth/constants/error';
+import { AUTH_ERROR_CODES } from '@module-auth/constants';
 
 /** utils */
 import { Encrypt, localStorageBase } from '@module-base/utils';
-import { authMessage } from '@module-auth/utils/messages';
+import { authMessage } from '@module-auth/utils';
 
 /** hooks */
 import { useNotify } from '@module-base/hooks';

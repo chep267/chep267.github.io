@@ -10,7 +10,7 @@ import classnames from 'classnames';
 import { Typography, Stack } from '@mui/material';
 
 /** utils */
-import { Decrypt } from '@module-base/utils/security';
+import { Decrypt } from '@module-base/utils';
 
 /** styles */
 import useStyles from './styles';

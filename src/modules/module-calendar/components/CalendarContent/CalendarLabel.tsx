@@ -10,7 +10,7 @@ import dayjs from 'dayjs';
 import { Typography } from '@mui/material';
 
 /** hooks */
-import { useLanguage } from '@module-language/hooks/useLanguage';
+import { useLanguage } from '@module-language/hooks';
 
 /** types */
 type CalendarLabelType = {

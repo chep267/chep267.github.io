@@ -13,11 +13,10 @@ import { apiRestart } from '@module-auth/apis';
 
 /** constants */
 import { accessTokenCookieKey } from '@module-base/constants';
-import { ACCOUNT_STATE } from '@module-auth/constants/accountState';
-import { AUTH_SCREEN } from '@module-auth/constants/screen';
+import { ACCOUNT_STATE, AUTH_SCREEN } from '@module-auth/constants';
 
 /** hooks */
-import { useAuth } from '@module-auth/hooks/useAuth';
+import { useAuth } from '@module-auth/hooks';
 
 /** types */
 import type { PropsWithChildren } from 'react';
