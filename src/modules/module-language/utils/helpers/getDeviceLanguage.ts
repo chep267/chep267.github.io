@@ -5,7 +5,7 @@
  */
 
 /** constants */
-import { localeObject } from '@module-language/constants/localeObject';
+import { localeObject } from '@module-language/constants';
 
 /** types */
 import type { TypeLocale } from '@module-language/models';

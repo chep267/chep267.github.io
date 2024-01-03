@@ -11,7 +11,7 @@ import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { apiOnGetListThread } from '@module-messenger/apis';
 
 /** constants */
-import { emptyArray, emptyObject } from '@module-base/constants/defaultValue';
+import { emptyArray, emptyObject } from '@module-base/constants';
 
 /** hooks */
 import { useAuth } from '@module-auth/hooks/useAuth';

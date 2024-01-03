@@ -5,13 +5,13 @@
  */
 
 /** utils */
-import { checkId } from '@module-base/utils/helpers/checkId';
+import { checkId } from '@module-base/utils';
 
 /** hooks */
 import { useListUser } from '@module-user/hooks/useListUser';
 
 /** types */
-import type { UserInfo } from '@firebase/auth';
+import type { UserInfo } from 'firebase/auth';
 
 type UseUserProps = {
     uid?: UserInfo['uid'];

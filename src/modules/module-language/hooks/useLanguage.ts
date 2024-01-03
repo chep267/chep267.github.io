@@ -7,8 +7,8 @@
 import * as React from 'react';
 
 /** constants */
-import { emptyObject, emptyFunction } from '@module-base/constants/defaultValue';
-import { localeObject } from '@module-language/constants/localeObject';
+import { emptyObject, emptyFunction } from '@module-base/constants';
+import { localeObject } from '@module-language/constants';
 
 /** types */
 import type { LanguageContextProps } from '@module-language/models';

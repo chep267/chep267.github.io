@@ -14,12 +14,11 @@ import { MESSENGER_CHAT_BOT_AI_ID } from '@module-messenger/constants/ref';
 import { MessageGPT } from '@module-messenger/constants/chatGPT';
 
 /** utils */
-import { baseMessage } from '@module-base/utils/messages';
-import { checkId } from '@module-base/utils/helpers/checkId';
+import { baseMessage, checkId } from '@module-base/utils';
 import { genMessage } from '@module-messenger/utils/helpers/genMessage';
 
 /** hooks */
-import { useNotify } from '@module-base/hooks/useNotify';
+import { useNotify } from '@module-base/hooks';
 import { useAuth } from '@module-auth/hooks/useAuth';
 import { useCreateThread } from '@module-messenger/hooks/useCreateThread';
 

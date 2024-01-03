@@ -7,9 +7,9 @@
 import * as React from 'react';
 
 /** types */
-import { TypeUseCountdown } from '@module-base/models';
+import { UseCountdownProps } from '@module-base/models';
 
-export const useCountdown = (props: TypeUseCountdown) => {
+export const useCountdown = (props: UseCountdownProps) => {
     const { numberCountdown = 10, timer = 1000, callback, isContinue } = props;
 
     const countdownRef = React.useRef<NodeJS.Timeout>();

@@ -4,8 +4,8 @@
  *
  */
 
-type StorageName = 'localStorage' | 'sessionStorage';
-type StoreValueType = string | null;
+/** types */
+import type { StorageName, StoreValueType } from '@module-base/models';
 
 class StorageBase {
     constructor(storageName: StorageName) {
@@ -62,7 +62,5 @@ class StorageBase {
     };
 }
 
-const localStorageBase = new StorageBase('localStorage');
-const sessionStorageBase = new StorageBase('sessionStorage');
-
-export { localStorageBase, sessionStorageBase };
+export const localStorageBase = new StorageBase('localStorage');
+export const sessionStorageBase = new StorageBase('sessionStorage');

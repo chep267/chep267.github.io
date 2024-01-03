@@ -7,8 +7,8 @@
 import * as React from 'react';
 
 /** constants */
-import { emptyFunction } from '@module-base/constants/defaultValue';
-import { themeObject } from '@module-theme/constants/themeObject';
+import { emptyFunction } from '@module-base/constants';
+import { themeObject } from '@module-theme/constants';
 
 /** types */
 import type { ThemeContextProps } from '@module-theme/models';

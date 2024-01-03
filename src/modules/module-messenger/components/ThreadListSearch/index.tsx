@@ -32,7 +32,7 @@ import { useUiThreadSearch } from '@module-messenger/hooks/useUiThreadSearch';
 import useStyles from '@module-messenger/components/ThreadList/styles';
 
 /** type */
-import type { UserInfo } from '@firebase/auth';
+import type { UserInfo } from 'firebase/auth';
 
 const ThreadListSearch = React.memo(() => {
     const navigate = useNavigate();

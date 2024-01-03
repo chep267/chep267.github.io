@@ -7,7 +7,7 @@
 import * as yup from 'yup';
 
 /** constants */
-import { REGEX_PASSWORD } from '@module-base/constants/regex';
+import { REGEX_PASSWORD } from '@module-base/constants';
 
 /** utils */
 import { authMessage } from '@module-auth/utils/messages';

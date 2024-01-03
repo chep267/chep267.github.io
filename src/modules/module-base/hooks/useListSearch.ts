@@ -7,24 +7,9 @@
 import * as React from 'react';
 
 /** types */
-import type { KeyboardEvent } from 'react';
+import type { UseListSearchProps, KeyboardEvent } from '@module-base/models';
 
-type UseListSearchState = {
-    disableEventKey: boolean; // có tắt phím mũi tên không, mặc định là không
-    total: number; // số phần tử
-    indexSelect: number; // vị trí đang select, mặc định là chưa chọn
-    indexHover: number; // ví trí đang hover, mặc định là chưa chọn
-    idSelect: string; // id đang select, mặc định là chưa chọn
-};
-
-type UseListSearchProps = {
-    onSelect(payload: Pick<UseListSearchState, 'idSelect' | 'indexSelect'>): void;
-    onKeyPress(event: KeyboardEvent): void;
-    init(payload: UseListSearchState): void;
-    onRefresh(): void;
-};
-
-const defaultState: UseListSearchState = {
+const defaultState: UseListSearchProps = {
     disableEventKey: false, // có tắt phím mũi tên không, mặc định là không
     total: 0, // số phần tử
     indexSelect: 0, // vị trí đang select, mặc định là chưa chọn
@@ -32,13 +17,13 @@ const defaultState: UseListSearchState = {
     idSelect: '', // id đang select, mặc định là chưa chọn
 };
 
-export default function useListSearch(props: Partial<UseListSearchState> = defaultState): UseListSearchProps {
-    const [state, setState] = React.useState<UseListSearchState>({
+export const useListSearch = (props: Partial<UseListSearchProps> = defaultState) => {
+    const [state, setState] = React.useState<UseListSearchProps>({
         ...defaultState,
         ...props,
     });
 
-    const onSelect = React.useCallback<UseListSearchProps['onSelect']>(({ indexSelect = 0, idSelect = '' }) => {
+    const onSelect = React.useCallback(({ indexSelect = 0, idSelect = '' }) => {
         setState((prev) => ({
             ...prev,
             indexSelect,
@@ -47,7 +32,7 @@ export default function useListSearch(props: Partial<UseListSearchState> = defau
         }));
     }, []);
 
-    const onKeyPress = React.useCallback<UseListSearchProps['onKeyPress']>((event) => {
+    const onKeyPress = React.useCallback((event: KeyboardEvent) => {
         if (event.key === 'Enter' || event.key === 'ArrowDown' || event.key === 'ArrowUp') {
             event.preventDefault();
             event.stopPropagation();
@@ -86,7 +71,7 @@ export default function useListSearch(props: Partial<UseListSearchState> = defau
         });
     }, []);
 
-    const onRefresh = React.useCallback<UseListSearchProps['onRefresh']>(() => {
+    const onRefresh = React.useCallback(() => {
         setState((prev) => ({
             indexHover: 0,
             indexSelect: 0,
@@ -96,7 +81,7 @@ export default function useListSearch(props: Partial<UseListSearchState> = defau
         }));
     }, []);
 
-    const init = React.useCallback<UseListSearchProps['init']>((data = defaultState) => {
+    const init = React.useCallback((data = defaultState) => {
         setState((prev) => ({
             ...prev,
             ...data,
@@ -110,4 +95,4 @@ export default function useListSearch(props: Partial<UseListSearchState> = defau
         init,
         onRefresh,
     };
-}
+};

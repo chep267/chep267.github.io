@@ -16,10 +16,10 @@ import { AUTH_ERROR_CODES } from '@module-auth/constants/error';
 import { authMessage } from '@module-auth/utils/messages';
 
 /** hooks */
-import { useNotify } from '@module-base/hooks/useNotify';
+import { useNotify } from '@module-base/hooks';
 
 /** types */
-import type { FirebaseError } from '@firebase/app';
+import type { FirebaseError } from 'firebase/app';
 
 export function useRecover() {
     const NOTIFY = useNotify();

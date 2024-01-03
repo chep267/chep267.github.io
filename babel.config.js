@@ -23,7 +23,7 @@ export default {
                     'react-intl',
                     'react-router',
                     'react-router-dom',
-                    '@firebase/database',
+                    'firebase/database',
                 ],
             },
         ],

@@ -7,7 +7,7 @@
 import * as React from 'react';
 
 /** constants */
-import { emptyObject, emptyFunction } from '@module-base/constants/defaultValue';
+import { emptyObject, emptyFunction } from '@module-base/constants';
 
 /** types */
 import type { MessengerContextProps } from '@module-messenger/models';

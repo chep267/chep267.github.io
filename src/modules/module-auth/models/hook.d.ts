@@ -6,7 +6,7 @@
 
 /** types */
 import type { PropsWithChildren } from 'react';
-import type { User } from '@firebase/auth';
+import type { User } from 'firebase/auth';
 
 export type AuthContextProps = {
     data: {

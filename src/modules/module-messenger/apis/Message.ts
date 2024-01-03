@@ -4,16 +4,15 @@
  *
  */
 
-import { collection, doc, onSnapshot, query, setDoc } from '@firebase/firestore';
-import { getDownloadURL, ref, uploadBytes } from '@firebase/storage';
+import { collection, doc, onSnapshot, query, setDoc } from 'firebase/firestore';
+import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
 
 /** constants */
-import { TIMING_API_PENDING } from '@module-base/constants/defaultValue';
+import { TIMING_API_PENDING } from '@module-base/constants';
 import { MESSENGER_DB_MESSAGE_REF, MESSENGER_DB_ROOT_REF, MESSENGER_DB_THREADS_REF } from '@module-messenger/constants/ref';
 
 /** utils */
-import { firestore, storage } from '@module-base/utils/firebase';
-import { debounce } from '@module-base/utils/helpers/debounce';
+import { firestore, storage, debounce } from '@module-base/utils';
 
 /** types */
 import type { MessengerApiProps, TypeDocumentMessageData } from '@module-messenger/models';

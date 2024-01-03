@@ -9,7 +9,7 @@ import { useQueryClient } from '@tanstack/react-query';
 /** types */
 import type { FetchQueryOptions } from '@tanstack/react-query';
 
-const usePrefetchQuery = (options: FetchQueryOptions) => {
+export const usePrefetchQuery = (options: FetchQueryOptions) => {
     const queryClient = useQueryClient();
 
     // This happens in render, but is safe to do because ensureQueryData
@@ -18,5 +18,3 @@ const usePrefetchQuery = (options: FetchQueryOptions) => {
     // is not observable, which is safe.
     queryClient.ensureQueryData(options).then();
 };
-
-export { usePrefetchQuery };

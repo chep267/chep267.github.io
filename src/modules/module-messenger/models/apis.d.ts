@@ -5,7 +5,7 @@
  */
 
 /** types */
-import type { Unsubscribe } from '@firebase/firestore';
+import type { Unsubscribe } from 'firebase/firestore';
 import type { TypeCallApiPayload, TypeItemIds, TypeItems } from '@module-base/models';
 
 type TypeDocumentThreadData = {

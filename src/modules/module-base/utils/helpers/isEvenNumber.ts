@@ -6,6 +6,6 @@
 
 export const isEvenNumber = (num = 0) => !!(num & 1);
 
-export function digitalRoot(n = 0) {
+export const digitalRoot = (n = 0) => {
     return n === 0 ? 0 : 1 + ((n - 1) % 9);
-}
+};

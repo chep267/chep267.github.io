@@ -4,10 +4,10 @@
  *
  */
 
-import { initializeApp } from '@firebase/app';
-import { getFirestore } from '@firebase/firestore';
+import { initializeApp } from 'firebase/app';
+import { getFirestore } from 'firebase/firestore';
 import { getStorage } from 'firebase/storage';
-import { getAuth } from '@firebase/auth';
+import { getAuth } from 'firebase/auth';
 
 const firebaseConfig = Object.freeze({
     apiKey: 'AIzaSyBYZKhAWUgxDLqNZFMONEBCc05-7YQVt6Q',

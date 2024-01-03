@@ -4,7 +4,7 @@
  *
  */
 
-function createMessageIntl<
+export function createMessageIntl<
     TMessage extends Readonly<Record<string, string>>,
     TReturn extends {
         [TKey in keyof TMessage]: { id: TKey; defaultMessage: TMessage[TKey] };
@@ -20,5 +20,3 @@ function createMessageIntl<
     }
     return Object.freeze(result);
 }
-
-export { createMessageIntl };

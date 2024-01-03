@@ -5,13 +5,13 @@
  */
 
 /** constants */
-import { localeObject } from '@module-language/constants/localeObject';
+import { localeObject } from '@module-language/constants';
 
 /** utils */
-import { VI as VI_BASE, EN as EN_BASE } from '@module-base/utils/messages';
+import { VI as VI_BASE, EN as EN_BASE } from '@module-base/utils';
 import { VI as VI_AUTH, EN as EN_AUTH } from '@module-auth/utils/messages';
-import { VI as VI_LANG, EN as EN_LANG } from '@module-language/utils/messages';
-import { VI as VI_THEME, EN as EN_THEME } from '@module-theme/utils/messages';
+import { VI as VI_LANG, EN as EN_LANG } from '@module-language/utils';
+import { VI as VI_THEME, EN as EN_THEME } from '@module-theme/utils';
 import { VI as VI_FEED, EN as EN_FEED } from '@module-feed/utils/messages';
 import { VI as VI_MESS, EN as EN_MESS } from '@module-messenger/utils/messages';
 import { VI as VI_CALENDAR, EN as EN_CALENDAR } from '@module-calendar/utils/messages';

@@ -6,6 +6,6 @@
 
 /** types */
 import type { TypographyProps } from '@mui/material';
-import type { UserInfo } from '@firebase/auth';
+import type { UserInfo } from 'firebase/auth';
 
 export type UserNameProps = TypographyProps & { uid?: UserInfo['uid']; name?: UserInfo['displayName'] };

@@ -7,3 +7,7 @@
 export type TypeItemIds = string[];
 
 export type TypeItems<T> = Record<string, T>;
+
+export type StorageName = 'localStorage' | 'sessionStorage';
+
+export type StoreValueType = string | null;

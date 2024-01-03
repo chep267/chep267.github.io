@@ -34,7 +34,7 @@ export default ({ mode }) => {
         plugins: [
             react({
                 babel: {
-                    configFile: true, // Use babel.config.js files
+                    configFile: false, // Use babel.config.js files
                 },
             }),
             basicSsl(),

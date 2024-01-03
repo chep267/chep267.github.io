@@ -5,7 +5,7 @@
  */
 
 /** types */
-import type { UserInfo } from '@firebase/auth';
+import type { UserInfo } from 'firebase/auth';
 import type { TypeCallApiPayload, TypeItemIds, TypeItems } from '@module-base/models';
 
 interface UserApiProps {

@@ -5,7 +5,7 @@
  */
 
 /** types */
-import type { User, UserCredential, Unsubscribe } from '@firebase/auth';
+import type { User, UserCredential, Unsubscribe } from 'firebase/auth';
 import type { TypeCallApiPayload } from '@module-base/models';
 
 interface AuthApiProps {

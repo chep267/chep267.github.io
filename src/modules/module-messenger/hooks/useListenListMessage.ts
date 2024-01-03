@@ -11,13 +11,13 @@ import { useQuery } from '@tanstack/react-query';
 import { apiOnGetListMessage } from '@module-messenger/apis/Message';
 
 /** constants */
-import { emptyArray, emptyFunction, emptyObject } from '@module-base/constants/defaultValue';
+import { emptyArray, emptyFunction, emptyObject } from '@module-base/constants';
 
 /** hooks */
 import { useAuth } from '@module-auth/hooks/useAuth';
 
 /** types */
-import type { Unsubscribe } from '@firebase/firestore';
+import type { Unsubscribe } from 'firebase/firestore';
 import type { TypeItemIds, TypeItems } from '@module-base/models';
 import type { TypeDocumentMessageData } from '@module-messenger/models';
 

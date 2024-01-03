@@ -5,7 +5,7 @@
  */
 
 /** utils */
-import { Encrypt } from '@module-base/utils/security';
+import { Encrypt } from '@module-base/utils';
 
 /** types */
 import type { TypeDocumentMessageData } from '@module-messenger/models';

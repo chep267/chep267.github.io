@@ -8,30 +8,28 @@ import axios from 'axios';
 import Cookies from 'js-cookie';
 
 /** constants */
-import { accessTokenCookieKey } from '@module-base/constants/localStoreKey';
+import { accessTokenCookieKey } from '@module-base/constants';
 import { API_HOST } from '@root/constants';
 
 /** types */
-import type { AxiosError, AxiosResponse, AxiosRequestConfig, CreateAxiosDefaults } from 'axios';
+import type { AxiosError, AxiosResponse, AxiosRequestConfig, CreateAxiosDefaults } from '@module-base/models';
 
+/** for default api */
 const axiosDefaultConfig: CreateAxiosDefaults = {
     baseURL: API_HOST,
     headers: { 'Content-Type': 'application/json' },
     timeout: 600,
 };
+const axiosClient = axios.create(axiosDefaultConfig);
 
+/** for file api */
 const axiosDefaultFormDataConfig = {
     baseURL: API_HOST,
     headers: { 'Content-Type': 'multipart/form-data' },
 };
-
-/** for default api */
-const axiosClient = axios.create(axiosDefaultConfig);
-
-/** for file api */
 const axiosClientCDN = axios.create(axiosDefaultFormDataConfig);
 
-// Add a request interceptor
+/** Add a request interceptor */
 axiosClient.interceptors.request.use(
     (config) => {
         const token = Cookies.get(accessTokenCookieKey);
@@ -45,7 +43,7 @@ axiosClient.interceptors.request.use(
     (error) => Promise.reject(error)
 );
 
-// Add a response interceptor
+/** Add a response interceptor */
 axiosClient.interceptors.response.use(
     (response: AxiosResponse) => {
         return {
@@ -61,9 +59,7 @@ axiosClient.interceptors.response.use(
     }
 );
 
-const callApi = async <R>(options: AxiosRequestConfig, isCDN?: boolean) => {
+export const callApi = async <R>(options: AxiosRequestConfig, isCDN?: boolean) => {
     const client = isCDN ? axiosClientCDN : axiosClient;
     return client<any, R>(options);
 };
-
-export { callApi, axiosDefaultConfig, axiosDefaultFormDataConfig };

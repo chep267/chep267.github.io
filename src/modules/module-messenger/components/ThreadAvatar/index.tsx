@@ -15,7 +15,7 @@ import { checkId } from '@module-base/utils/helpers/checkId';
 
 /** types */
 import type { AvatarProps } from '@mui/material';
-import type { UserInfo } from '@firebase/auth';
+import type { UserInfo } from 'firebase/auth';
 
 type ThreadAvatarProps = AvatarProps & { tid?: UserInfo['uid'] };
 

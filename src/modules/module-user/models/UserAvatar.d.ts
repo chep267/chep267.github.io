@@ -6,6 +6,6 @@
 
 /** types */
 import type { AvatarProps } from '@mui/material';
-import type { UserInfo } from '@firebase/auth';
+import type { UserInfo } from 'firebase/auth';
 
 export type UserAvatarProps = AvatarProps & { uid?: UserInfo['uid'] };

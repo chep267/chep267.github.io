@@ -4,14 +4,13 @@
  *
  */
 
-import { collection, doc, onSnapshot, query, setDoc, deleteDoc, getDoc } from '@firebase/firestore';
+import { collection, doc, onSnapshot, query, setDoc, deleteDoc, getDoc } from 'firebase/firestore';
 
 /** apis */
 import { apiCreateMessage } from '@module-messenger/apis/Message';
 
 /** constants */
-import { ROOT_REF } from '@module-base/constants/ref';
-import { TIMING_API_PENDING } from '@module-base/constants/defaultValue';
+import { ROOT_REF, TIMING_API_PENDING } from '@module-base/constants';
 import {
     MESSENGER_CHAT_BOT_AI_ID,
     MESSENGER_DB_ROOT_REF,
@@ -22,9 +21,7 @@ import {
 import { MessageGPT, MID_GPT_START } from '@module-messenger/constants/chatGPT';
 
 /** utils */
-import { firestore } from '@module-base/utils/firebase';
-import { debounce } from '@module-base/utils/helpers/debounce';
-import { checkId } from '@module-base/utils/helpers/checkId';
+import { firestore, debounce, checkId } from '@module-base/utils';
 import { genMessage } from '@module-messenger/utils/helpers/genMessage';
 
 /** types */

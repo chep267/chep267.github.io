@@ -18,7 +18,7 @@ import { checkId } from '@module-base/utils/helpers/checkId';
 
 /** types */
 import type { TypographyProps } from '@mui/material';
-import type { UserInfo } from '@firebase/auth';
+import type { UserInfo } from 'firebase/auth';
 
 type ThreadNameProps = TypographyProps & { tid?: UserInfo['uid']; name?: UserInfo['displayName'] };
 

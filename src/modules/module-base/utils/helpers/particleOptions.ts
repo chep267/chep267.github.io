@@ -6,7 +6,7 @@
 
 /** types */
 import type { Theme } from '@mui/material';
-import type { ISourceOptions } from 'tsparticles-engine';
+import type { ISourceOptions } from '@tsparticles/engine';
 
 export const getOption = (theme: Theme): ISourceOptions => ({
     fullScreen: {
@@ -69,7 +69,7 @@ export const getOption = (theme: Theme): ISourceOptions => ({
                     smooth: 10,
                 },
             },
-            resize: false,
+            // resize: false,
         },
         modes: {
             attract: {
@@ -248,34 +248,18 @@ export const getOption = (theme: Theme): ISourceOptions => ({
     particles: {
         bounce: {
             horizontal: {
-                random: {
-                    enable: false,
-                    minimumValue: 12,
-                },
                 value: 1,
             },
             vertical: {
-                random: {
-                    enable: false,
-                    minimumValue: 0.1,
-                },
                 value: 1,
             },
         },
         collisions: {
             bounce: {
                 horizontal: {
-                    random: {
-                        enable: false,
-                        minimumValue: 0.1,
-                    },
                     value: 1,
                 },
                 vertical: {
-                    random: {
-                        enable: false,
-                        minimumValue: 0.1,
-                    },
                     value: 1,
                 },
             },
@@ -353,16 +337,6 @@ export const getOption = (theme: Theme): ISourceOptions => ({
                 enable: false,
                 maxSpeed: 50,
             },
-            noise: {
-                delay: {
-                    random: {
-                        enable: false,
-                        minimumValue: 0,
-                    },
-                    value: 0,
-                },
-                enable: false,
-            },
             outModes: {
                 default: 'out',
             },
@@ -373,9 +347,6 @@ export const getOption = (theme: Theme): ISourceOptions => ({
             trail: {
                 enable: false,
                 length: 10,
-                fillColor: {
-                    value: '#000000',
-                },
             },
             vibrate: false,
             warp: false,
@@ -383,21 +354,13 @@ export const getOption = (theme: Theme): ISourceOptions => ({
         number: {
             density: {
                 enable: true,
-                area: 800,
-                factor: 1000,
             },
-            limit: 0,
             value: 100,
         },
         opacity: {
-            random: {
-                enable: true,
-                minimumValue: 0.3,
-            },
             value: 0.8,
             animation: {
                 enable: true,
-                minimumValue: 0.3,
                 speed: 0.5,
                 sync: false,
             },
@@ -430,15 +393,10 @@ export const getOption = (theme: Theme): ISourceOptions => ({
             type: 'circle',
         },
         size: {
-            random: {
-                enable: true,
-                minimumValue: 1,
-            },
             value: 3,
             animation: {
                 destroy: 'none',
                 enable: true,
-                minimumValue: 1,
                 speed: 3,
                 startValue: 'max',
                 sync: false,

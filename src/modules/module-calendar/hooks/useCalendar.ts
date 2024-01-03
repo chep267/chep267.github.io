@@ -8,7 +8,7 @@ import * as React from 'react';
 import dayjs from 'dayjs';
 
 /** constants */
-import { emptyFunction } from '@module-base/constants/defaultValue';
+import { emptyFunction } from '@module-base/constants';
 
 /** types */
 import type { CalendarContextProps } from '@module-calendar/models';

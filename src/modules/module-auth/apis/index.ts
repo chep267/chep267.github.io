@@ -10,18 +10,16 @@ import {
     signOut,
     onAuthStateChanged,
     sendPasswordResetEmail,
-} from '@firebase/auth';
+} from 'firebase/auth';
 
 /** apis */
 import { apiCreateUser, apiGetUser } from '@module-user/apis';
 
 /** constants */
-import { TIMING_API_PENDING } from '@module-base/constants/defaultValue';
+import { TIMING_API_PENDING } from '@module-base/constants';
 
 /** utils */
-import { authentication } from '@module-base/utils/firebase';
-import { debounce } from '@module-base/utils/helpers/debounce';
-import { checkId } from '@module-base/utils/helpers/checkId';
+import { authentication, debounce, checkId } from '@module-base/utils';
 
 /** types */
 import type { AuthApiProps } from '@module-auth/models';

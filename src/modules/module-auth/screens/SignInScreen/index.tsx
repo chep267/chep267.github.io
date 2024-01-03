@@ -22,7 +22,7 @@ const SignInForm = React.lazy(() => import('@module-auth/components/SignInForm')
 const RegisterForm = React.lazy(() => import('@module-auth/components/RegisterForm'));
 const RecoverForm = React.lazy(() => import('@module-auth/components/RecoverForm'));
 
-function SignInScreen() {
+export default function SignInScreen() {
     const classes = useStyles();
 
     return (
@@ -43,5 +43,3 @@ function SignInScreen() {
         </Stack>
     );
 }
-
-export default SignInScreen;

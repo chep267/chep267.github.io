@@ -4,18 +4,17 @@
  *
  */
 
-import { collection, doc, getDoc, getDocs, limit, query, setDoc } from '@firebase/firestore';
+import { collection, doc, getDoc, getDocs, limit, query, setDoc } from 'firebase/firestore';
 
 /** constants */
-import { TIMING_API_PENDING } from '@module-base/constants/defaultValue';
+import { TIMING_API_PENDING } from '@module-base/constants';
 import { USER_DB_ROOT_REF } from '@module-user/constants/ref';
 
 /** utils */
-import { firestore } from '@module-base/utils/firebase';
-import { debounce } from '@module-base/utils/helpers/debounce';
+import { firestore, debounce } from '@module-base/utils';
 
 /** types */
-import type { UserInfo } from '@firebase/auth';
+import type { UserInfo } from 'firebase/auth';
 import type { TypeItemIds, TypeItems } from '@module-base/models';
 import type { UserApiProps } from '@module-user/models';
 

@@ -8,9 +8,7 @@ import * as React from 'react';
 import { useIntl } from 'react-intl';
 
 /** lib components */
-import Stack from '@mui/material/Stack';
-import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
+import { Stack, Typography, Button } from '@mui/material';
 
 /** components */
 import IconBase from '@module-base/components/IconBase';

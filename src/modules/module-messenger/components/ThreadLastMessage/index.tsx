@@ -23,7 +23,7 @@ import useStyles from './styles';
 
 /** types */
 import type { ReactNode } from 'react';
-import type { UserInfo } from '@firebase/auth';
+import type { UserInfo } from 'firebase/auth';
 import type { TypeDocumentThreadData } from '@module-messenger/models';
 
 type ThreadLastMessageProps = { tid?: UserInfo['uid']; message: TypeDocumentThreadData['lastMessage'] };
