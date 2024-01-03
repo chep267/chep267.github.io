@@ -11,10 +11,10 @@ import { Stack, IconButton } from '@mui/material';
 import { West as WestIcon } from '@mui/icons-material';
 
 /** components */
-import InputSearch from '@module-base/components/InputSearch';
+import { InputSearch } from '@module-base/components';
 
 /** hooks */
-import { useUiThreadSearch } from '@module-messenger/hooks/useUiThreadSearch';
+import { useUiThreadSearch } from '@module-messenger/hooks';
 
 /** styles */
 import useStyles from './styles';

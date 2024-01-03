@@ -8,7 +8,7 @@
 import { ImageList, ImageListItem } from '@mui/material';
 
 /** components */
-import ImageBase from '@module-base/components/ImageBase';
+import { ImageBase } from '@module-base/components';
 
 /** styles */
 import useStyles from './styles';

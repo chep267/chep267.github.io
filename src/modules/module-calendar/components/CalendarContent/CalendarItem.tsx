@@ -11,7 +11,7 @@ import { Link } from 'react-router-dom';
 import { Stack, Typography } from '@mui/material';
 
 /** constants */
-import { SCREEN } from '@module-global/constants/screen';
+import { SCREEN } from '@module-global/constants';
 
 /** styles */
 import useStyles from './styles';

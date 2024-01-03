@@ -16,10 +16,10 @@ import { EmojiEmotions as EmojiEmotionsIcon } from '@mui/icons-material';
 import EmojiPicker from '@module-messenger/components/EmojiPicker';
 
 /** utils */
-import { messengerMessage } from '@module-messenger/utils/messages';
+import { messengerMessage } from '@module-messenger/utils';
 
 /** hooks */
-import { useMessenger } from '@module-messenger/hooks/useMessenger';
+import { useMessenger } from '@module-messenger/hooks';
 
 /** styles */
 import useStyles from './styles';

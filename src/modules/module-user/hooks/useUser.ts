@@ -11,7 +11,7 @@ import { checkId } from '@module-base/utils';
 import { useListUser } from '@module-user/hooks/useListUser';
 
 /** types */
-import type { UserInfo } from 'firebase/auth';
+import type { UserInfo } from '@module-user/models';
 
 type UseUserProps = {
     uid?: UserInfo['uid'];

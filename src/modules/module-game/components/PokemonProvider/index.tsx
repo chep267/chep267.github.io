@@ -10,7 +10,7 @@ import * as React from 'react';
 import { GameLevel, genBoardGame, isItemInArray, hasPruneItem } from '@module-game/utils/helpers/Pokemon';
 
 /** hooks */
-import { useCountdown } from '@module-base/hooks/useCountdown';
+import { useCountdown } from '@module-base/hooks';
 import { PokemonContext, PokemonStateDefault } from '@module-game/hooks/usePokemon';
 
 /** types */

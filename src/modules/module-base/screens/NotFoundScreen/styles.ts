@@ -7,7 +7,7 @@
 import makeStyles from '@mui/styles/makeStyles';
 
 /** constants */
-import { SCREEN_SIZE } from '@module-global/constants/screen';
+import { SCREEN_SIZE } from '@module-global/constants';
 
 const useStyles = makeStyles(({ palette, zIndex }) => ({
     layout: {

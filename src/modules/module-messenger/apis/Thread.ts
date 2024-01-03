@@ -17,12 +17,13 @@ import {
     MESSENGER_DB_THREAD_INFO_REF,
     MESSENGER_DB_THREADS_REF,
     MESSENGER_DB_USERS_REF,
-} from '@module-messenger/constants/ref';
-import { MessageGPT, MID_GPT_START } from '@module-messenger/constants/chatGPT';
+    MessageGPT,
+    MID_GPT_START,
+} from '@module-messenger/constants';
 
 /** utils */
 import { firestore, debounce, checkId } from '@module-base/utils';
-import { genMessage } from '@module-messenger/utils/helpers/genMessage';
+import { genMessage } from '@module-messenger/utils';
 
 /** types */
 import type { TypeItemIds, TypeItems } from '@module-base/models';

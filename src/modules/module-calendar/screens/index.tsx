@@ -7,7 +7,7 @@ import * as React from 'react';
 import { Route, Routes } from 'react-router-dom';
 
 /** constants */
-import { SCREEN } from '@module-global/constants/screen';
+import { SCREEN } from '@module-global/constants';
 
 /** screens */
 const NotFoundScreen = React.lazy(() => import('@module-base/screens/NotFoundScreen'));

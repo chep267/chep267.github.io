@@ -19,15 +19,15 @@ import {
 } from '@mui/icons-material';
 
 /** components */
-import ListBase from '@module-base/components/ListBase';
+import { ListBase } from '@module-base/components';
 import AppItem from './AppItem';
 
 /** constants */
-import { SCREEN } from '@module-global/constants/screen';
+import { SCREEN } from '@module-global/constants';
 
 /** utils */
 import { feedMessage } from '@module-feed/utils/messages';
-import { messengerMessage } from '@module-messenger/utils/messages';
+import { messengerMessage } from '@module-messenger/utils';
 import { calendarMessage } from '@module-calendar/utils/messages';
 import { gameMessage } from '@module-game/utils/messages';
 

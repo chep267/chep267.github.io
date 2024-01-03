@@ -12,12 +12,10 @@ import { Box } from '@mui/material';
 
 /** components */
 import { StartLoading } from '@module-base/components';
-import AppHeader from '@module-global/components/AppHeader';
-import AppSider from '@module-global/components/AppSider';
-import SiderProvider from '@module-global/components/SiderProvider';
+import { SiderProvider, AppHeader, AppSider } from '@module-global/components';
 
 /** constants */
-import { SCREEN } from '@module-global/constants/screen';
+import { SCREEN } from '@module-global/constants';
 
 /** styles */
 import useStyles from './styles';

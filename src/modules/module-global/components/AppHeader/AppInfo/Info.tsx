@@ -11,11 +11,11 @@ import { useNavigate } from 'react-router-dom';
 import { Stack, Typography } from '@mui/material';
 
 /** components */
-import IconBase from '@module-base/components/IconBase';
+import { IconBase } from '@module-base/components';
 
 /** constants */
 import { APP_NAME } from '@root/constants';
-import { SCREEN } from '@module-global/constants/screen';
+import { SCREEN } from '@module-global/constants';
 
 /** styles */
 import useStyles from './styles';

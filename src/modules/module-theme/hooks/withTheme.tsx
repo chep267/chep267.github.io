@@ -8,13 +8,11 @@
 import { useTheme } from '@module-theme/hooks/useTheme';
 
 /** types */
-import type { ComponentType } from 'react';
+import type { ComponentType } from '@module-base/models';
 
-function withTheme<Props>(WrappedComponent: ComponentType<Props>) {
+export function withTheme<Props>(WrappedComponent: ComponentType<Props>) {
     return function EnhancedComponent(props: Props) {
         const theme = useTheme();
         return <WrappedComponent {...props} theme={theme} />;
     };
 }
-
-export { withTheme };

@@ -17,7 +17,7 @@ import ThreadName from '@module-messenger/components/ThreadName';
 import ThreadLastMessage from '@module-messenger/components/ThreadLastMessage';
 
 /** constants */
-import { emptyObject } from '@module-base/constants/defaultValue';
+import { emptyObject } from '@module-base/constants';
 
 /** styles */
 import useStyles from './styles';

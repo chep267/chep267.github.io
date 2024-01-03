@@ -14,7 +14,7 @@ import ThreadList from '@module-messenger/components/ThreadList';
 import ThreadListSearch from '@module-messenger/components/ThreadListSearch';
 
 /** hooks */
-import { useUiThreadSearch } from '@module-messenger/hooks/useUiThreadSearch';
+import { useUiThreadSearch } from '@module-messenger/hooks';
 
 /** styles */
 import useStyles from './styles';

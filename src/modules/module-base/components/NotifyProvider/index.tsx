@@ -7,7 +7,7 @@
 import * as React from 'react';
 
 /** components */
-import ErrorBoundary from '@module-base/components/ErrorBoundary';
+import { ErrorBoundary } from '@module-base/components';
 
 /** utils */
 import { NotifyContext, defaultNotify } from '@module-base/hooks';

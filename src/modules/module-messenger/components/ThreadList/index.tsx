@@ -14,19 +14,19 @@ import { ListBase } from '@module-base/components';
 import ThreadItem from '@module-messenger/components/ThreadList/ThreadItem';
 
 /** constants */
-import { SCREEN } from '@module-global/constants/screen';
+import { SCREEN } from '@module-global/constants';
 
 /** utils */
 import { genPath } from '@module-base/utils';
 
 /** hooks */
-import { useListenListThread } from '@module-messenger/hooks/useListenListThread';
+import { useListenListThread } from '@module-messenger/hooks';
 
 /** styles */
 import useStyles from './styles';
 
 /** types */
-import { type Theme } from '@mui/material';
+import type { Theme } from '@mui/material';
 
 const ThreadList = React.memo(() => {
     const navigate = useNavigate();

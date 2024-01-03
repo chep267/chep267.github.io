@@ -13,7 +13,7 @@ import EmojiMessage from '@module-messenger/components/Message/EmojiMessage';
 
 /** utils */
 import { Decrypt } from '@module-base/utils';
-import { messengerMessage } from '@module-messenger/utils/messages';
+import { messengerMessage } from '@module-messenger/utils';
 
 /** hooks */
 import { useAuth } from '@module-auth/hooks/useAuth';
@@ -23,7 +23,7 @@ import useStyles from './styles';
 
 /** types */
 import type { ReactNode } from 'react';
-import type { UserInfo } from 'firebase/auth';
+import type { UserInfo } from '@module-user/models';
 import type { TypeDocumentThreadData } from '@module-messenger/models';
 
 type ThreadLastMessageProps = { tid?: UserInfo['uid']; message: TypeDocumentThreadData['lastMessage'] };

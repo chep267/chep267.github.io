@@ -8,7 +8,7 @@
 import { useSider } from '@module-global/hooks/useSider';
 
 /** types */
-import type { ComponentType } from 'react';
+import type { ComponentType } from '@module-base/models';
 
 export function withSider<Props>(WrappedComponent: ComponentType<Props>) {
     return function EnhancedComponent(props: Props) {

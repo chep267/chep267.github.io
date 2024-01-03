@@ -8,15 +8,14 @@ import { collection, doc, getDoc, getDocs, limit, query, setDoc } from 'firebase
 
 /** constants */
 import { TIMING_API_PENDING } from '@module-base/constants';
-import { USER_DB_ROOT_REF } from '@module-user/constants/ref';
+import { USER_DB_ROOT_REF } from '@module-user/constants';
 
 /** utils */
 import { firestore, debounce } from '@module-base/utils';
 
 /** types */
-import type { UserInfo } from 'firebase/auth';
 import type { TypeItemIds, TypeItems } from '@module-base/models';
-import type { UserApiProps } from '@module-user/models';
+import type { UserApiProps, UserInfo } from '@module-user/models';
 
 const apiCreateUser = async (payload: UserApiProps['Create']['Payload']): Promise<UserApiProps['Create']['Response']> => {
     const { timer = TIMING_API_PENDING, user } = payload;

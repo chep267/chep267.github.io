@@ -8,7 +8,7 @@ import * as React from 'react';
 import { useQuery } from '@tanstack/react-query';
 
 /** apis */
-import { apiOnGetListMessage } from '@module-messenger/apis/Message';
+import { apiOnGetListMessage } from '@module-messenger/apis';
 
 /** constants */
 import { emptyArray, emptyFunction, emptyObject } from '@module-base/constants';

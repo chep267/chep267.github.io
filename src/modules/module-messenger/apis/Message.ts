@@ -9,7 +9,7 @@ import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
 
 /** constants */
 import { TIMING_API_PENDING } from '@module-base/constants';
-import { MESSENGER_DB_MESSAGE_REF, MESSENGER_DB_ROOT_REF, MESSENGER_DB_THREADS_REF } from '@module-messenger/constants/ref';
+import { MESSENGER_DB_MESSAGE_REF, MESSENGER_DB_ROOT_REF, MESSENGER_DB_THREADS_REF } from '@module-messenger/constants';
 
 /** utils */
 import { firestore, storage, debounce } from '@module-base/utils';

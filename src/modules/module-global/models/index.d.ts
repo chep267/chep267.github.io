@@ -4,5 +4,6 @@
  *
  */
 
+/** types */
 export * from './hook';
-export * from './ListApp';
+export * from './component';

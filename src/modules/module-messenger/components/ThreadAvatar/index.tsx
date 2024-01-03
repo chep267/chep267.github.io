@@ -8,14 +8,14 @@
 import { Avatar, Skeleton } from '@mui/material';
 
 /** components */
-import UserAvatar from '@module-user/components/UserAvatar';
+import { UserAvatar } from '@module-user/components';
 
 /** utils */
-import { checkId } from '@module-base/utils/helpers/checkId';
+import { checkId } from '@module-base/utils';
 
 /** types */
 import type { AvatarProps } from '@mui/material';
-import type { UserInfo } from 'firebase/auth';
+import type { UserInfo } from '@module-user/models';
 
 type ThreadAvatarProps = AvatarProps & { tid?: UserInfo['uid'] };
 

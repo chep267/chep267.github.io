@@ -11,7 +11,7 @@ import { FormattedMessage } from 'react-intl';
 import { MenuItem } from '@mui/material';
 
 /** utils */
-import { messengerMessage } from '@module-messenger/utils/messages';
+import { messengerMessage } from '@module-messenger/utils';
 
 /** styles */
 import type { ElementClickEvent } from '@module-base/models';

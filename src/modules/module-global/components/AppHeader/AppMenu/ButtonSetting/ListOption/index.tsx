@@ -20,7 +20,7 @@ import {
 } from '@mui/icons-material';
 
 /** components */
-import NestedItem from '@module-base/components/ListBase/NestedItem';
+import { NestedItem } from '@module-base/components';
 
 /** utils */
 import { themeMessage } from '@module-theme/utils';

@@ -7,34 +7,9 @@
 /** types */
 import type { Unsubscribe } from 'firebase/firestore';
 import type { TypeCallApiPayload, TypeItemIds, TypeItems } from '@module-base/models';
+import type { TypeDocumentThreadData, TypeDocumentMessageData } from '@module-messenger/models';
 
-type TypeDocumentThreadData = {
-    tid: string;
-    name?: string;
-    type?: 'thread' | 'group';
-    members?: TypeItemIds;
-    lastMessage?: TypeDocumentMessageData;
-};
-
-type TypeDocumentMessageData = {
-    uid: string;
-    tid: string;
-    mid: string;
-    text: string;
-    fileIds: TypeItemIds;
-    files: TypeItems<{
-        fileData?: File | null;
-        url: string;
-        name: File['name'];
-        size: File['size'];
-        type: File['type'];
-    }>;
-    createdTime: number;
-    updatedTime: number;
-    type: 'text' | 'emoji';
-};
-
-interface MessengerApiProps {
+export interface MessengerApiProps {
     /** thread */
     GetListThread: {
         Payload: TypeCallApiPayload<{
@@ -87,5 +62,3 @@ interface MessengerApiProps {
         Response?: { fid: string; url: string };
     };
 }
-
-export type { MessengerApiProps, TypeDocumentThreadData, TypeDocumentMessageData };

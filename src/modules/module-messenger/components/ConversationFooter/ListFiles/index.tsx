@@ -14,7 +14,7 @@ import { Stack } from '@mui/material';
 import ImagePreview from '@module-messenger/components/ConversationFooter/ListFiles/ImagePreview';
 
 /** hooks */
-import { useMessenger } from '@module-messenger/hooks/useMessenger';
+import { useMessenger } from '@module-messenger/hooks';
 
 /** styles */
 import useStyles from './styles';

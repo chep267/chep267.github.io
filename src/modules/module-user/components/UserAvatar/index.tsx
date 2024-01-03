@@ -8,7 +8,7 @@
 import { Avatar, Skeleton } from '@mui/material';
 
 /** hooks */
-import { useUser } from '@module-user/hooks/useUser';
+import { useUser } from '@module-user/hooks';
 
 /** types */
 import type { UserAvatarProps } from '@module-user/models';

@@ -8,13 +8,11 @@
 import { useLanguage } from '@module-language/hooks/useLanguage';
 
 /** types */
-import type { ComponentType } from 'react';
+import type { ComponentType } from '@module-base/models';
 
-function withLanguage<Props>(WrappedComponent: ComponentType<Props>) {
+export function withLanguage<Props>(WrappedComponent: ComponentType<Props>) {
     return function EnhancedComponent(props: Props) {
         const language = useLanguage();
         return <WrappedComponent {...props} language={language} />;
     };
 }
-
-export { withLanguage };

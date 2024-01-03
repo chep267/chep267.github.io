@@ -8,13 +8,11 @@
 import { useAuth } from '@module-auth/hooks/useAuth';
 
 /** types */
-import type { ComponentType } from 'react';
+import type { ComponentType } from '@module-base/models';
 
-function withAuth<Props>(WrappedComponent: ComponentType<Props>) {
+export function withAuth<Props>(WrappedComponent: ComponentType<Props>) {
     return function EnhancedComponent(props: Props) {
         const auth = useAuth();
         return <WrappedComponent {...props} auth={auth} />;
     };
 }
-
-export { withAuth };

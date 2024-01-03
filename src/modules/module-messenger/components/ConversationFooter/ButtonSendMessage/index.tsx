@@ -14,12 +14,10 @@ import { IconButton, Tooltip } from '@mui/material';
 import { Favorite as FavoriteIcon, Send as SendIcon } from '@mui/icons-material';
 
 /** utils */
-import { genMessage } from '@module-messenger/utils/helpers/genMessage';
-import { messengerMessage } from '@module-messenger/utils/messages';
+import { genMessage, messengerMessage } from '@module-messenger/utils/';
 
 /** hooks */
-import { useSendMessage } from '@module-messenger/hooks/useSendMessage';
-import { useMessenger } from '@module-messenger/hooks/useMessenger';
+import { useSendMessage, useMessenger } from '@module-messenger/hooks';
 
 /** styles */
 import useStyles from './styles';

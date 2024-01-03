@@ -8,7 +8,7 @@
 import { Skeleton, Typography } from '@mui/material';
 
 /** hooks */
-import { useUser } from '@module-user/hooks/useUser';
+import { useUser } from '@module-user/hooks';
 
 /** types */
 import type { UserNameProps } from '@module-user/models';

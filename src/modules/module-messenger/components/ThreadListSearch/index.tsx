@@ -12,29 +12,27 @@ import { useNavigate } from 'react-router-dom';
 import { ListItem, ListItemText, ListItemAvatar } from '@mui/material';
 
 /** components */
-import ListBase from '@module-base/components/ListBase';
+import { ListBase } from '@module-base/components';
 import ThreadAvatar from '@module-messenger/components/ThreadAvatar';
 import ThreadName from '@module-messenger/components/ThreadName';
 
 /** constants */
-import { SCREEN } from '@module-global/constants/screen';
+import { SCREEN } from '@module-global/constants';
 
 /** utils */
-import { checkString } from '@module-base/utils/helpers/checkString';
-import { genPath } from '@module-base/utils/helpers/genPath';
-import { checkId } from '@module-base/utils/helpers/checkId';
+import { checkString, genPath, checkId } from '@module-base/utils';
 
 /** hooks */
-import { useListUser } from '@module-user/hooks/useListUser';
-import { useUiThreadSearch } from '@module-messenger/hooks/useUiThreadSearch';
+import { useListUser } from '@module-user/hooks';
+import { useUiThreadSearch } from '@module-messenger/hooks';
 
 /** styles */
 import useStyles from '@module-messenger/components/ThreadList/styles';
 
 /** type */
-import type { UserInfo } from 'firebase/auth';
+import type { UserInfo } from '@module-user/models';
 
-const ThreadListSearch = React.memo(() => {
+const ThreadListSearch = React.memo(function ThreadListSearch() {
     const navigate = useNavigate();
     const classes = useStyles();
     const LIST_USER = useListUser();
@@ -76,5 +74,4 @@ const ThreadListSearch = React.memo(() => {
     );
 });
 
-ThreadListSearch.displayName = 'ThreadListSearch';
 export default ThreadListSearch;

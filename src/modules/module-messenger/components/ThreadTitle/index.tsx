@@ -4,16 +4,17 @@
  *
  */
 
+import classnames from 'classnames';
+
 /** lib components */
 import { Typography, Stack } from '@mui/material';
 import { FormattedMessage } from 'react-intl';
 
 /** utils */
-import { messengerMessage } from '@module-messenger/utils/messages';
+import { messengerMessage } from '@module-messenger/utils';
 
 /** styles */
 import useStyles from './styles';
-import classnames from 'classnames';
 
 export default function ThreadTitle() {
     const classes = useStyles();

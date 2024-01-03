@@ -13,11 +13,11 @@ import { FormattedMessage } from 'react-intl';
 import { Menu as MenuIcon } from '@mui/icons-material';
 
 /** components */
-import MenuBase from '@module-base/components/MenuBase';
+import { MenuBase } from '@module-base/components';
 import ListOption from './ListOption';
 
 /** utils */
-import { messengerMessage } from '@module-messenger/utils/messages';
+import { messengerMessage } from '@module-messenger/utils';
 
 /** styles */
 import useStyles from './styles';

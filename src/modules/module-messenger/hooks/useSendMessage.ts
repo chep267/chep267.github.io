@@ -7,20 +7,19 @@
 import { useMutation } from '@tanstack/react-query';
 
 /** apis */
-import { apiCreateMessage, apiSendFile } from '@module-messenger/apis/Message';
+import { apiCreateMessage, apiSendFile } from '@module-messenger/apis';
 
 /** constants */
-import { MESSENGER_CHAT_BOT_AI_ID } from '@module-messenger/constants/ref';
-import { MessageGPT } from '@module-messenger/constants/chatGPT';
+import { MESSENGER_CHAT_BOT_AI_ID, MessageGPT } from '@module-messenger/constants';
 
 /** utils */
 import { baseMessage, checkId } from '@module-base/utils';
-import { genMessage } from '@module-messenger/utils/helpers/genMessage';
+import { genMessage } from '@module-messenger/utils';
 
 /** hooks */
 import { useNotify } from '@module-base/hooks';
 import { useAuth } from '@module-auth/hooks/useAuth';
-import { useCreateThread } from '@module-messenger/hooks/useCreateThread';
+import { useCreateThread } from '@module-messenger/hooks';
 
 /** types */
 import type { TypeDocumentMessageData } from '@module-messenger/models';

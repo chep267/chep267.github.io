@@ -7,13 +7,13 @@
 import * as React from 'react';
 
 /** components */
-import ErrorBoundary from '@module-base/components/ErrorBoundary';
+import { ErrorBoundary } from '@module-base/components';
 
 /** utils */
-import { ThreadSearchContext } from '@module-messenger/hooks/useUiThreadSearch';
+import { ThreadSearchContext } from '@module-messenger/hooks';
 
 /** types */
-import { ThreadSearchProviderProps, ThreadSearchContextProps } from '@module-messenger/models';
+import type { ThreadSearchProviderProps, ThreadSearchContextProps } from '@module-messenger/models';
 
 export default function ThreadSearchProvider(props: ThreadSearchProviderProps) {
     const { children } = props;

@@ -5,7 +5,7 @@
  */
 
 /** utils */
-import { createMessageIntl } from '@module-base/utils/helpers/createIntl';
+import { createMessageIntl } from '@module-base/utils/helpers';
 import { VI } from './vi';
 import { EN } from './en';
 

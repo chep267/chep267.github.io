@@ -11,13 +11,13 @@ import { useParams } from 'react-router-dom';
 import { InputAdornment, TextField } from '@mui/material';
 
 /** components */
-import ButtonChooseEmoji from '../ButtonChooseEmoji';
+import ButtonChooseEmoji from '@module-messenger/components/ConversationFooter/ButtonChooseEmoji';
 
 /** utils */
-import { focusInput } from '@module-base/utils/helpers/focusInput';
+import { focusInput } from '@module-base/utils';
 
 /** hooks */
-import { useMessenger } from '@module-messenger/hooks/useMessenger';
+import { useMessenger } from '@module-messenger/hooks';
 
 /** styles */
 import useStyles from './styles';

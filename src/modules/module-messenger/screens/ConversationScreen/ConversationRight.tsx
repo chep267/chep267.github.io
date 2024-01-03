@@ -13,7 +13,7 @@ import { Paper } from '@mui/material';
 import ThreadInfo from '@module-messenger/components/ThreadInfo';
 
 /** hooks */
-import { useMessenger } from '@module-messenger/hooks/useMessenger';
+import { useMessenger } from '@module-messenger/hooks';
 
 /** styles */
 import useStyles from './styles';

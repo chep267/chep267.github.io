@@ -24,7 +24,7 @@ import ListApp from './ListApp';
 import { baseMessage } from '@module-base/utils';
 
 /** hooks */
-import { useSider } from '@module-global/hooks/useSider';
+import { useSider } from '@module-global/hooks';
 
 /** styles */
 import useStyles from './styles';

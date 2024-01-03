@@ -8,17 +8,17 @@
 import { Skeleton, Typography } from '@mui/material';
 
 /** components */
-import UserName from '@module-user/components/UserName';
+import { UserName } from '@module-user/components';
 
 /** constants */
-import { MESSENGER_CHAT_BOT_AI_ID, MESSENGER_CHAT_BOT_AI_NAME } from '@module-messenger/constants/ref';
+import { MESSENGER_CHAT_BOT_AI_ID, MESSENGER_CHAT_BOT_AI_NAME } from '@module-messenger/constants';
 
 /** utils */
 import { checkId } from '@module-base/utils';
 
 /** types */
 import type { TypographyProps } from '@mui/material';
-import type { UserInfo } from 'firebase/auth';
+import type { UserInfo } from '@module-user/models';
 
 type ThreadNameProps = TypographyProps & { tid?: UserInfo['uid']; name?: UserInfo['displayName'] };
 

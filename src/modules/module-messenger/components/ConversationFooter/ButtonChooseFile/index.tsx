@@ -13,10 +13,10 @@ import { IconButton, Tooltip } from '@mui/material';
 import { Photo as PhotoIcon } from '@mui/icons-material';
 
 /** utils */
-import { messengerMessage } from '@module-messenger/utils/messages';
+import { messengerMessage } from '@module-messenger/utils';
 
 /** hooks */
-import { useMessenger } from '@module-messenger/hooks/useMessenger';
+import { useMessenger } from '@module-messenger/hooks';
 
 /** styles */
 import useStyles from './styles';

@@ -8,13 +8,11 @@
 import { useCalendar } from '@module-calendar/hooks/useCalendar';
 
 /** types */
-import type { ComponentType } from 'react';
+import type { ComponentType } from '@module-base/models';
 
-function withCalendar<Props>(WrappedComponent: ComponentType<Props>) {
+export function withCalendar<Props>(WrappedComponent: ComponentType<Props>) {
     return function EnhancedComponent(props: Props) {
         const calendar = useCalendar();
         return <WrappedComponent {...props} calendar={calendar} />;
     };
 }
-
-export { withCalendar };

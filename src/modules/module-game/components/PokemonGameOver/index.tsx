@@ -12,7 +12,7 @@ import { Link } from 'react-router-dom';
 import { Stack, Typography, Button } from '@mui/material';
 
 /** constants */
-import { SCREEN } from '@module-global/constants/screen';
+import { SCREEN } from '@module-global/constants';
 
 /** utils */
 import { gameMessage } from '@module-game/utils/messages';

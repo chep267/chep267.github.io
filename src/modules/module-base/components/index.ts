@@ -10,6 +10,7 @@ export { default as IconBase } from './IconBase';
 export { default as ImageBase } from './ImageBase';
 export { default as InputSearch } from './InputSearch';
 export { default as ListBase } from './ListBase';
+export { default as NestedItem } from './ListBase/NestedItem';
 export { default as ListImageScreen } from './ListImageScreen';
 export { default as MenuBase } from './MenuBase';
 export { default as NotifyProvider } from './NotifyProvider';

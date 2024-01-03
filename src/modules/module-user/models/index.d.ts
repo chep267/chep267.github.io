@@ -4,6 +4,7 @@
  *
  */
 
+/** types */
 export * from './apis';
-export * from './UserAvatar';
-export * from './UserName';
+export * from './data';
+export * from './component';

@@ -4,4 +4,6 @@
  *
  */
 
+/** apis */
 export * from './Thread';
+export * from './Message';

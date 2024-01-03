@@ -5,7 +5,7 @@
  */
 
 /** constants */
-import { SCREEN } from '@module-global/constants/screen';
+import { SCREEN } from '@module-global/constants';
 
 import pokemon_logo from '@module-game/assets/images/pokemon_logo.png';
 
