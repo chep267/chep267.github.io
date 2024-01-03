@@ -1,0 +1,2 @@
+import{m as r,j as a,S as d,c as o,T as c,D as i}from"./index-jp_zSDZP.js";const n=r(({spacing:s,palette:e})=>({textMessage:{width:"auto",padding:`5px ${s(2)}`,border:`1px solid ${e.divider}`,borderRadius:20,wordBreak:"break-word",whiteSpace:"pre-wrap"}}));var p=n;function x(s){const{text:e}=s,t=p();return a.jsx(d,{className:o(t.textMessage),children:a.jsx(c,{variant:"body1",children:i(e)})})}export{x as default};
+//# sourceMappingURL=index-WJ_cRlsG.js.map
