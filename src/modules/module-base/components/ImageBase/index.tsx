@@ -14,8 +14,7 @@ import { Skeleton } from '@mui/material';
 import useStyles from './styles';
 
 /** types */
-import type { ReactEventHandler } from 'react';
-import type { ImageBaseProps } from '@module-base/models';
+import type { ImageBaseProps, ReactEventHandler } from '@module-base/models';
 
 export default function ImageBase(props: ImageBaseProps) {
     const { alt = '', loading = 'lazy', onLoad, ...other } = props;

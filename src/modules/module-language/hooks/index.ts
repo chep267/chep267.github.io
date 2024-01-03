@@ -5,5 +5,5 @@
  */
 
 /** hooks */
-export * from './useLanguage.ts';
-export * from './withLanguage.tsx';
+export * from './useLanguage';
+export * from './withLanguage';

@@ -7,7 +7,7 @@
 import * as React from 'react';
 
 /** lib components */
-import Skeleton from '@mui/material/Skeleton';
+import { Skeleton } from '@mui/material';
 
 /** types */
 import type { IconBaseProps, TypeIcons } from '@module-base/models';
@@ -20,7 +20,7 @@ const Icons: TypeIcons = Object.freeze({
     notFound: React.lazy(() => import('./svg/NotFound')),
 });
 
-const IconBase = React.memo((props: IconBaseProps) => {
+const IconBase = React.memo(function IconBase(props: IconBaseProps) {
     const { name, size = 24, viewBox = '0 0 24 24', ...iconProps } = props;
     const Icon = Icons[name];
 
@@ -31,5 +31,4 @@ const IconBase = React.memo((props: IconBaseProps) => {
     );
 });
 
-IconBase.displayName = 'IconBase';
 export default IconBase;

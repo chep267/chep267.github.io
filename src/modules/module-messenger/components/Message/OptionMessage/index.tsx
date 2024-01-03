@@ -13,7 +13,7 @@ import { FormattedMessage } from 'react-intl';
 import { MoreHoriz as MoreHorizIcon } from '@mui/icons-material';
 
 /** components */
-import MenuBase from '@module-base/components/MenuBase';
+import { MenuBase } from '@module-base/components';
 import ListOption from './ListOption';
 
 /** utils */

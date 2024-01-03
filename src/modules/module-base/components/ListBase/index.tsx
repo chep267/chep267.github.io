@@ -8,8 +8,7 @@ import * as React from 'react';
 import classnames from 'classnames';
 
 /** lib components */
-import Stack from '@mui/material/Stack';
-import List from '@mui/material/List';
+import { Stack, List } from '@mui/material';
 
 /** components */
 import ListLoading from './ListLoading';

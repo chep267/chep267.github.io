@@ -11,7 +11,7 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { Box } from '@mui/material';
 
 /** components */
-import StartLoading from '@module-base/components/StartLoading';
+import { StartLoading } from '@module-base/components';
 import AppHeader from '@module-global/components/AppHeader';
 import AppSider from '@module-global/components/AppSider';
 import SiderProvider from '@module-global/components/SiderProvider';

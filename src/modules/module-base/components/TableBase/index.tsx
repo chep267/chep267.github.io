@@ -8,9 +8,7 @@ import * as React from 'react';
 import classnames from 'classnames';
 
 /** lib components */
-import Box from '@mui/material/Box';
-import Table from '@mui/material/Table';
-import TableContainer from '@mui/material/TableContainer';
+import { Box, Table, TableContainer } from '@mui/material';
 
 /** components */
 import TableLoading from './TableLoading';
@@ -23,7 +21,7 @@ import useStyles from './styles';
 /** types */
 import type { TableBaseProps } from '@module-base/models';
 
-const TableBase = React.memo((props: TableBaseProps) => {
+const TableBase = React.memo(function TableBase(props: TableBaseProps) {
     const {
         className,
         loading,
@@ -56,5 +54,4 @@ const TableBase = React.memo((props: TableBaseProps) => {
     );
 });
 
-TableBase.displayName = 'TableBase';
 export default TableBase;

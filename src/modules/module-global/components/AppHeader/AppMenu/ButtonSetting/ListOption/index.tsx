@@ -23,14 +23,14 @@ import {
 import NestedItem from '@module-base/components/ListBase/NestedItem';
 
 /** utils */
-import { themeMessage } from '@module-theme/utils/messages';
-import { langMessage } from '@module-language/utils/messages';
+import { themeMessage } from '@module-theme/utils';
+import { langMessage } from '@module-language/utils';
 import { calendarMessage } from '@module-calendar/utils/messages';
 import { authMessage } from '@module-auth/utils/messages';
 
 /** hooks */
-import { useTheme } from '@module-theme/hooks/useTheme';
-import { useLanguage } from '@module-language/hooks/useLanguage';
+import { useTheme } from '@module-theme/hooks';
+import { useLanguage } from '@module-language/hooks';
 import { useSignOut } from '@module-auth/hooks/useSignOut';
 import { useCalendar } from '@module-calendar/hooks/useCalendar';
 

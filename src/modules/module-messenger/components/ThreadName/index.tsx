@@ -14,7 +14,7 @@ import UserName from '@module-user/components/UserName';
 import { MESSENGER_CHAT_BOT_AI_ID, MESSENGER_CHAT_BOT_AI_NAME } from '@module-messenger/constants/ref';
 
 /** utils */
-import { checkId } from '@module-base/utils/helpers/checkId';
+import { checkId } from '@module-base/utils';
 
 /** types */
 import type { TypographyProps } from '@mui/material';

@@ -15,7 +15,7 @@ import { Paper, Stack, Typography, TextField } from '@mui/material';
 import { LoadingButton } from '@mui/lab';
 
 /** components */
-import PasswordField from '@module-base/components/PasswordField';
+import { PasswordField } from '@module-base/components';
 
 /** constants */
 import { AUTH_SCREEN } from '@module-auth/constants/screen';

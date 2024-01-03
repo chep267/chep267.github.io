@@ -8,18 +8,18 @@ import * as React from 'react';
 import classnames from 'classnames';
 
 /** lib components */
-import Tooltip from '@mui/material/Tooltip';
-import Menu from '@mui/material/Menu';
-import IconButton from '@mui/material/IconButton';
+import { Tooltip, Menu, IconButton } from '@mui/material';
+
+/** constants */
+import { emptyObject } from '@module-base/constants';
 
 /** styles */
 import useStyles from './styles';
 
 /** types */
 import type { ElementClickEvent, MenuBaseProps } from '@module-base/models';
-import { emptyObject } from '@module-base/constants/defaultValue';
 
-const MenuBase = React.memo(function (props: MenuBaseProps) {
+const MenuBase = React.memo(function MenuBase(props: MenuBaseProps) {
     const { iconButtonProps, tooltipProps, menuProps } = props;
     const classes = useStyles();
 
@@ -63,5 +63,4 @@ const MenuBase = React.memo(function (props: MenuBaseProps) {
     );
 });
 
-MenuBase.displayName = 'MenuBase';
 export default MenuBase;

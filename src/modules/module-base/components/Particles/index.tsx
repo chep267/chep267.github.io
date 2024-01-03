@@ -7,16 +7,16 @@
 import * as React from 'react';
 import Particles, { initParticlesEngine } from '@tsparticles/react';
 import { loadSlim } from '@tsparticles/slim';
-import { useTheme } from '@mui/material/styles';
+import { useTheme } from '@mui/material';
 
 /** constants */
-import { getOption } from '@module-base/utils/helpers/particleOptions';
+import { getOption } from '@module-base/utils';
 
 /** types */
-import type { Container } from '@tsparticles/engine';
+// import type { Container } from '@tsparticles/engine';
 import type { IParticlesProps } from '@tsparticles/react';
 
-const Particle = React.memo((props: IParticlesProps) => {
+const Particle = React.memo(function Particle(props: IParticlesProps) {
     const { options: Options } = props;
     const theme = useTheme();
     const id = React.useId();
@@ -37,14 +37,19 @@ const Particle = React.memo((props: IParticlesProps) => {
         });
     }, []);
 
-    const particlesLoaded = async (container?: Container) => {
-        console.log(container);
-    };
+    // const particlesLoaded = async (container?: Container) => {
+    //     console.log(container);
+    // };
 
     const options = Options || getOption(theme);
 
-    return init && <Particles id={`Particles-${id}`} particlesLoaded={particlesLoaded} options={options} />;
+    return init ? (
+        <Particles
+            id={`Particles-${id}`}
+            // particlesLoaded={particlesLoaded}
+            options={options}
+        />
+    ) : null;
 });
 
-Particle.displayName = 'Particle';
 export default Particle;

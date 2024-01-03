@@ -8,20 +8,18 @@ import * as React from 'react';
 import classnames from 'classnames';
 
 /** lib components */
-import TableBodyElem from '@mui/material/TableBody';
-import TableRow from '@mui/material/TableRow';
-import TableCell from '@mui/material/TableCell';
+import { TableBody as TableBodyElem, TableRow, TableCell } from '@mui/material';
 
 /** constants */
-import { emptyObject } from '@module-base/constants/defaultValue';
+import { emptyObject } from '@module-base/constants';
 
 /** styles */
 import useStyles from './styles';
 
 /** types */
-import type { TableBaseProps } from '@module-base/models';
+import type { TableBodyProps } from '@module-base/models';
 
-const TableBody = React.memo((props: Pick<TableBaseProps, 'data' | 'onClickItem' | 'rows' | 'tableRowProps'>) => {
+const TableBody = React.memo(function TableBody(props: TableBodyProps) {
     const { onClickItem, data, rows, tableRowProps } = props;
     const { hover, className, onClick, ...other } = tableRowProps ?? emptyObject;
     const classes = useStyles();
@@ -54,5 +52,4 @@ const TableBody = React.memo((props: Pick<TableBaseProps, 'data' | 'onClickItem'
     );
 });
 
-TableBody.displayName = 'TableBody';
 export default TableBody;

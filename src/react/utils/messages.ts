@@ -21,7 +21,7 @@ import { VI as VI_GLOBAL, EN as EN_GLOBAL } from '@module-global/utils/messages'
 /** types */
 import type { TypeMessages } from '@module-language/models';
 
-const messages: TypeMessages = Object.freeze({
+export const messages: TypeMessages = Object.freeze({
     [localeObject.vi]: Object.assign(
         {},
         VI_BASE,
@@ -47,5 +47,3 @@ const messages: TypeMessages = Object.freeze({
         EN_GLOBAL
     ),
 });
-
-export { messages };

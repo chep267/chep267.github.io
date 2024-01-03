@@ -9,7 +9,7 @@ import makeStyles from '@mui/styles/makeStyles';
 /** constants */
 import { alpha } from '@mui/material/styles';
 
-const useStyles = makeStyles(({ palette }) => ({
+const useStyles = makeStyles(({ palette, spacing }) => ({
     list_wrap: {
         position: 'relative',
         width: '100%',
@@ -56,6 +56,12 @@ const useStyles = makeStyles(({ palette }) => ({
         width: '100%',
         height: '100%',
         backgroundColor: alpha(palette.divider, 0.05),
+    },
+    menuIcon: {
+        marginLeft: spacing(3),
+    },
+    loadingIcon: {
+        margin: '3px 0',
     },
 }));
 

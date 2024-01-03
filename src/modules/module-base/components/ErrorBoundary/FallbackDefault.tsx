@@ -11,16 +11,16 @@ import { useIntl } from 'react-intl';
 import { Stack, Typography, Button } from '@mui/material';
 
 /** components */
-import IconBase from '@module-base/components/IconBase';
+import { IconBase } from '@module-base/components';
 
 /** constants */
-import { SECOND_COUNT_DOWN_ERROR } from '@module-base/constants/defaultValue';
+import { SECOND_COUNT_DOWN_ERROR } from '@module-base/constants';
 
 /** utils */
-import { baseMessage } from '@module-base/utils/messages';
+import { baseMessage } from '@module-base/utils';
 
 /** hooks */
-import { useCountdown } from '@module-base/hooks/useCountdown';
+import { useCountdown } from '@module-base/hooks';
 
 /** styles */
 import useStyles from './styles';

@@ -12,7 +12,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { apiRestart } from '@module-auth/apis';
 
 /** constants */
-import { accessTokenCookieKey } from '@module-base/constants/localStoreKey';
+import { accessTokenCookieKey } from '@module-base/constants';
 import { ACCOUNT_STATE } from '@module-auth/constants/accountState';
 import { AUTH_SCREEN } from '@module-auth/constants/screen';
 

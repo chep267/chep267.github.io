@@ -8,20 +8,16 @@ import * as React from 'react';
 import { visuallyHidden } from '@mui/utils';
 
 /** lib components */
-import Box from '@mui/material/Box';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import TableCell from '@mui/material/TableCell';
-import TableSortLabel from '@mui/material/TableSortLabel';
-import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import { Box, TableHead, TableRow, TableCell, TableSortLabel } from '@mui/material';
+import { ArrowDropDown as ArrowDropDownIcon } from '@mui/icons-material';
 
 /** styles */
 import useStyles from './styles';
 
 /** types */
-import type { TableBaseProps } from '@module-base/models';
+import type { TableHeaderProps } from '@module-base/models';
 
-const TableHeader = React.memo((props: Pick<TableBaseProps, 'rows' | 'orderBy' | 'orderType' | 'onRequestSort'>) => {
+const TableHeader = React.memo(function TableHeader(props: TableHeaderProps) {
     const { rows, orderType, orderBy, onRequestSort } = props;
     const classes = useStyles();
 
@@ -57,5 +53,4 @@ const TableHeader = React.memo((props: Pick<TableBaseProps, 'rows' | 'orderBy' |
     );
 });
 
-TableHeader.displayName = 'TableHeader';
 export default TableHeader;

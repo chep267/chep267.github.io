@@ -12,7 +12,7 @@ import { useParams } from 'react-router-dom';
 import { ListItem } from '@mui/material';
 
 /** components */
-import ListBase from '@module-base/components/ListBase';
+import { ListBase } from '@module-base/components';
 import Message from '@module-messenger/components/Message';
 
 /** hooks */

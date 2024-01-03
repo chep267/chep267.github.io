@@ -15,6 +15,7 @@ import type {
     ReactNode,
     UIEvent,
     ElementType,
+    ErrorInfo,
 } from 'react';
 import type { TextFieldProps } from '@mui/material/TextField';
 import type { ListProps } from '@mui/material/List';
@@ -33,6 +34,7 @@ export type ErrorBoundaryStates = {
 export type FallbackDefaultProps = {
     isAutoReload?: boolean;
 };
+export type { ErrorInfo };
 
 /** IconBase */
 export type IconSVGProps = SVGProps<SVGSVGElement>;
@@ -116,6 +118,8 @@ export interface TableBaseProps<T = unknown> {
     tableRowProps?: TableRowProps;
 }
 export type TableLoadingProps = Pick<TableBaseProps, 'loading' | 'emptyText'> & { empty?: boolean };
+export type TableHeaderProps = Pick<TableBaseProps, 'rows' | 'orderBy' | 'orderType' | 'onRequestSort'>;
+export type TableBodyProps = Pick<TableBaseProps, 'data' | 'onClickItem' | 'rows' | 'tableRowProps'>;
 
 /** SelectBase */
 export interface SelectBaseProps extends SelectProps {

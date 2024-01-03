@@ -7,20 +7,18 @@
 import * as React from 'react';
 
 /** lib components */
-import TextField from '@mui/material/TextField';
-import InputAdornment from '@mui/material/InputAdornment';
+import { TextField, InputAdornment } from '@mui/material';
 
 /** icons */
-import ClearIcon from '@mui/icons-material/Clear';
-import SearchIcon from '@mui/icons-material/Search';
+import { Clear as ClearIcon, Search as SearchIcon } from '@mui/icons-material';
 
 /** constants */
-import { TIMING_SEARCHING } from '@module-base/constants/defaultValue';
+import { TIMING_SEARCHING } from '@module-base/constants';
 
 /** types */
 import type { InputSearchProps, InputChangeEvent } from '@module-base/models';
 
-const InputSearch = React.memo((props: InputSearchProps) => {
+const InputSearch = React.memo(function InputSearch(props: InputSearchProps) {
     const {
         timer = TIMING_SEARCHING,
         onChangeValue,
@@ -106,5 +104,4 @@ const InputSearch = React.memo((props: InputSearchProps) => {
     );
 });
 
-InputSearch.displayName = 'InputSearch';
 export default InputSearch;

@@ -5,4 +5,4 @@
  */
 
 /** utils */
-export * from './getDeviceLanguage.ts';
+export * from './getDeviceLanguage';

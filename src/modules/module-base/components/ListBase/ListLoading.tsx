@@ -5,12 +5,10 @@
  */
 
 import * as React from 'react';
-import { FormattedMessage } from 'react-intl';
 
 /** lib components */
-import Stack from '@mui/material/Stack';
-import Typography from '@mui/material/Typography';
-import CircularProgress from '@mui/material/CircularProgress';
+import { FormattedMessage } from 'react-intl';
+import { Stack, Typography, CircularProgress } from '@mui/material';
 
 /** utils */
 import { baseMessage } from '@module-base/utils/messages';
@@ -21,7 +19,7 @@ import useStyles from './styles';
 /** types */
 import type { ListLoadingProps } from '@module-base/models';
 
-const ListLoading = React.memo((props: ListLoadingProps) => {
+const ListLoading = React.memo(function ListLoading(props: ListLoadingProps) {
     const { loading, empty, emptyText } = props;
     const classes = useStyles();
 
@@ -38,5 +36,4 @@ const ListLoading = React.memo((props: ListLoadingProps) => {
     );
 });
 
-ListLoading.displayName = 'TableLoading';
 export default ListLoading;

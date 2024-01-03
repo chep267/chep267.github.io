@@ -5,7 +5,7 @@
  */
 
 /** constants */
-export * from './breakpoints.ts';
-export * from './palette.ts';
-export * from './themeObject.ts';
-export * from './typography.ts';
+export * from './breakpoints';
+export * from './palette';
+export * from './themeObject';
+export * from './typography';

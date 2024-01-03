@@ -7,8 +7,7 @@
 import * as React from 'react';
 
 /** types */
-import type { ErrorInfo } from 'react';
-import type { ErrorBoundaryProps, ErrorBoundaryStates } from '@module-base/models';
+import type { ErrorBoundaryProps, ErrorBoundaryStates, ErrorInfo } from '@module-base/models';
 
 /** lazy components */
 const FallbackDefault = React.lazy(() => import('./FallbackDefault'));

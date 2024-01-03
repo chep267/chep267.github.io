@@ -11,7 +11,7 @@ import { CircularProgress, Collapse, Divider, List, ListItemButton, ListItemIcon
 import { ExpandLess as ExpandLessIcon, ExpandMore as ExpandMoreIcon } from '@mui/icons-material';
 
 /** styles */
-import useStyles from '@module-global/components/AppHeader/styles';
+import useStyles from './styles';
 
 /** types */
 import type { ElementClickEvent, NestedItemProps } from '@module-base/models';

@@ -16,17 +16,14 @@ import {
 } from '@mui/material';
 
 /** constants */
-import { themeLocalKey } from '@module-base/constants/localStoreKey';
-import { themeObject } from '@module-theme/constants/themeObject';
-import { breakpoints } from '@module-theme/constants/breakpoints';
-import { paletteLight, paletteDark } from '@module-theme/constants/palette';
+import { themeLocalKey } from '@module-base/constants';
+import { themeObject, breakpoints, paletteLight, paletteDark } from '@module-theme/constants';
 
 /** utils */
-import { Decrypt, Encrypt } from '@module-base/utils/security';
-import { localStorageBase } from '@module-base/utils/storages';
+import { Decrypt, Encrypt, localStorageBase } from '@module-base/utils';
 
 /** hooks */
-import { ThemeContext } from '@module-theme/hooks/useTheme';
+import { ThemeContext } from '@module-theme/hooks';
 
 /** types */
 import type { PropsWithChildren } from 'react';

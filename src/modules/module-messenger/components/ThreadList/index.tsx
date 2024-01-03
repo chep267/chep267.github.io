@@ -10,14 +10,14 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useMediaQuery } from '@mui/material';
 
 /** components */
-import ListBase from '@module-base/components/ListBase';
+import { ListBase } from '@module-base/components';
 import ThreadItem from '@module-messenger/components/ThreadList/ThreadItem';
 
 /** constants */
 import { SCREEN } from '@module-global/constants/screen';
 
 /** utils */
-import { genPath } from '@module-base/utils/helpers/genPath';
+import { genPath } from '@module-base/utils';
 
 /** hooks */
 import { useListenListThread } from '@module-messenger/hooks/useListenListThread';

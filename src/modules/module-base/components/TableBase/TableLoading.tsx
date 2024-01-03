@@ -8,12 +8,10 @@ import * as React from 'react';
 import { FormattedMessage } from 'react-intl';
 
 /** lib components */
-import Stack from '@mui/material/Stack';
-import Typography from '@mui/material/Typography';
-import CircularProgress from '@mui/material/CircularProgress';
+import { Stack, Typography, CircularProgress } from '@mui/material';
 
 /** utils */
-import { baseMessage } from '@module-base/utils/messages';
+import { baseMessage } from '@module-base/utils';
 
 /** styles */
 import useStyles from './styles';
@@ -21,7 +19,7 @@ import useStyles from './styles';
 /** types */
 import type { TableLoadingProps } from '@module-base/models';
 
-const TableLoading = React.memo((props: TableLoadingProps) => {
+const TableLoading = React.memo(function TableLoading(props: TableLoadingProps) {
     const { loading, empty, emptyText } = props;
     const classes = useStyles();
 
@@ -38,5 +36,4 @@ const TableLoading = React.memo((props: TableLoadingProps) => {
     );
 });
 
-TableLoading.displayName = 'TableLoading';
 export default TableLoading;

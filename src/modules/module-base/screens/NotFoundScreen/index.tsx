@@ -10,7 +10,7 @@ import * as React from 'react';
 import { Stack } from '@mui/material';
 
 /** components */
-import IconBase from '@module-base/components/IconBase';
+import { IconBase } from '@module-base/components';
 
 /** styles */
 import useStyles from './styles';

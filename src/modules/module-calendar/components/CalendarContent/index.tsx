@@ -8,7 +8,7 @@ import * as React from 'react';
 import dayjs from 'dayjs';
 
 /** components */
-import TableBase from '@module-base/components/TableBase';
+import { TableBase } from '@module-base/components';
 import CalendarLabel from './CalendarLabel';
 import CalendarItem from './CalendarItem';
 

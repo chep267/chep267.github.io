@@ -9,15 +9,13 @@ import classnames from 'classnames';
 
 /** lib components */
 import { FormattedMessage } from 'react-intl';
-import Snackbar from '@mui/material/Snackbar';
-import Alert from '@mui/material/Alert';
-import AlertTitle from '@mui/material/AlertTitle';
+import { Snackbar, Alert, AlertTitle } from '@mui/material';
 
 /** constants */
-import { TIMING_NOTIFY_DURATION } from '@module-base/constants/defaultValue';
+import { TIMING_NOTIFY_DURATION } from '@module-base/constants';
 
 /** utils */
-import { useNotify } from '@module-base/hooks/useNotify';
+import { useNotify } from '@module-base/hooks';
 
 /** styles */
 import useStyles from './styles';
@@ -25,7 +23,7 @@ import useStyles from './styles';
 /** types */
 import type { NotifyBoundaryProps } from '@module-base/models';
 
-const NotifyBoundary = React.memo((props: NotifyBoundaryProps) => {
+const NotifyBoundary = React.memo(function NotifyBoundary(props: NotifyBoundaryProps) {
     const NOTIFY = useNotify();
     const { open, message, intlMessage, mode, close, duration = TIMING_NOTIFY_DURATION } = NOTIFY.data;
     const classes = useStyles();
@@ -55,5 +53,4 @@ const NotifyBoundary = React.memo((props: NotifyBoundaryProps) => {
     );
 });
 
-NotifyBoundary.displayName = 'NotifyBoundary';
 export default NotifyBoundary;

@@ -10,7 +10,7 @@ import * as React from 'react';
 import ErrorBoundary from '@module-base/components/ErrorBoundary';
 
 /** utils */
-import { NotifyContext, defaultNotify } from '@module-base/hooks/useNotify';
+import { NotifyContext, defaultNotify } from '@module-base/hooks';
 
 /** types */
 import type { TypeNotifyContext, TypeNotify, NotifyProviderProps } from '@module-base/models';
