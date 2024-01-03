@@ -1,2 +1,0 @@
-import{m as r,j as a,h as o,n as d,l as i}from"./vendor-NFT-wIW4.js";import{D as p}from"./index-sNUf3CTI.js";import"./commonjsHelpers-5-cIlDoe.js";const n=r(({spacing:s,palette:e})=>({textMessage:{width:"auto",padding:`5px ${s(2)}`,border:`1px solid ${e.divider}`,borderRadius:20,wordBreak:"break-word",whiteSpace:"pre-wrap"}}));var c=n;function u(s){const{text:e}=s,t=c();return a.jsx(o,{className:d(t.textMessage),children:a.jsx(i,{variant:"body1",children:p(e)})})}export{u as default};
-//# sourceMappingURL=index-no0sudq1.js.map
