@@ -1,0 +1,8 @@
+import{_ as c,u as E,a as u,c as S}from"./index-sNUf3CTI.js";import{r as s,aM as T,ax as A,ag as f,j as r}from"./vendor-NFT-wIW4.js";const e=Object.freeze({SIGNED_IN:"ACCOUNT_STATE_SIGNED_IN",RE_SIGN_IN:"ACCOUNT_STATE_RE_SIGN_IN",SIGN_IN:"ACCOUNT_STATE_SIGN_IN"}),o=Object.freeze({HOME:"",SIGN_IN:"/signin",VERIFY_OTP:"/verify-code",REGISTER:"/register",RECOVER:"/recover",RESET_PASS:"password/reset-verification"}),R=s.lazy(()=>c(()=>import("./index-sNUf3CTI.js").then(a=>a.af),__vite__mapDeps([0,1,2,3]))),l=s.lazy(()=>c(()=>import("./index-myDs_eAZ.js"),__vite__mapDeps([4,0,1,2,3])));function d(a){const{pathname:n}=T(),i=A(),_=E(),N=f.get(u),t=_.data.isAuth?e.SIGNED_IN:N?e.RE_SIGN_IN:e.SIGN_IN;switch(s.useEffect(()=>{t===e.RE_SIGN_IN&&S({fnCallback:I=>_.method.setAuth({isAuth:!0,me:I})}).then(),t===e.SIGNED_IN&&Object.values(o).includes(n)&&i(o.HOME,{replace:!0})},[t]),t){case e.SIGNED_IN:return a?.children;case e.RE_SIGN_IN:return r.jsx(R,{});default:return r.jsx(l,{})}}var G=d;const h=Object.freeze(Object.defineProperty({__proto__:null,default:G},Symbol.toStringTag,{value:"Module"}));export{o as A,h as i};
+//# sourceMappingURL=index-f7mdcx6a.js.map
+function __vite__mapDeps(indexes) {
+  if (!__vite__mapDeps.viteFileDeps) {
+    __vite__mapDeps.viteFileDeps = ["assets/index-sNUf3CTI.js","assets/vendor-NFT-wIW4.js","assets/commonjsHelpers-5-cIlDoe.js","assets/index-eGg70zu3.css","assets/index-myDs_eAZ.js"]
+  }
+  return indexes.map((i) => __vite__mapDeps.viteFileDeps[i])
+}

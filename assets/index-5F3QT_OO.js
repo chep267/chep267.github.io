@@ -1,0 +1,2 @@
+import{r as o,j as t,I as u,v as l,bl as x,bm as m,T as w}from"./vendor-NFT-wIW4.js";function f(e){const{InputProps:n,setFocus:r,...i}=e,[s,a]=o.useState(-1);o.useEffect(()=>{s>-1&&r?.()},[s]);const d=o.useCallback(()=>{a(p=>p===1?0:1)},[]),c=o.useMemo(()=>n?.endAdornment||t.jsx(u,{position:"end",children:t.jsx(l,{onClick:d,children:s===1?t.jsx(x,{}):t.jsx(m,{})})}),[n?.endAdornment,s]);return t.jsx(w,{...i,InputProps:{...n,endAdornment:c},type:s===1?"text":"password"})}export{f as P};
+//# sourceMappingURL=index-5F3QT_OO.js.map
