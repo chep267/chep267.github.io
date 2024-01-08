@@ -21,7 +21,7 @@ import {
 import ListApp from './ListApp';
 
 /** utils */
-import { baseMessage } from '@module-base/utils';
+import { baseMessage } from '@module-base/utils/messages';
 
 /** hooks */
 import { useSider } from '@module-global/hooks';

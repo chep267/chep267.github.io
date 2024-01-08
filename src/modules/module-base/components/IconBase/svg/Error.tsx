@@ -7,7 +7,7 @@
 /** types */
 import type { IconSVGProps } from '@module-base/models';
 
-export default function AppLogo(props: IconSVGProps) {
+export default function Error(props: IconSVGProps) {
     return (
         <svg xmlns="http://www.w3.org/2000/svg" {...props} viewBox="0 0 237 213">
             <g fill="#c62828">

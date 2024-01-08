@@ -4,7 +4,7 @@
  *
  */
 
-export const VI = Object.freeze({
+export const vi = Object.freeze({
     'module.base.error.server.busy': 'Máy chủ không phản hồi!',
     'module.base.error.fallback.title': 'Đã xảy ra lỗi',
     'module.base.error.fallback.content': 'Bạn hãy thử chạy lại ứng dụng',

@@ -6,26 +6,7 @@
 
 import * as React from 'react';
 
-/** constants */
-import { emptyFunction } from '@module-base/constants';
-
-/** types */
-import type { TypeNotifyContext, TypeNotify } from '@module-base/models';
-
-export const defaultNotify = Object.freeze<TypeNotify>({
-    open: false,
-    message: '',
-    mode: undefined,
-    close: false,
-    duration: undefined,
-});
-
-export const NotifyContext = React.createContext<TypeNotifyContext>({
-    data: defaultNotify,
-    method: {
-        toggleNotify: emptyFunction,
-    },
-});
-NotifyContext.displayName = 'NotifyContext';
+/** hooks */
+import { NotifyContext } from '@module-base/constants/contexts';
 
 export const useNotify = () => React.useContext(NotifyContext);

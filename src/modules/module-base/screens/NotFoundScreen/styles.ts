@@ -9,7 +9,7 @@ import makeStyles from '@mui/styles/makeStyles';
 /** constants */
 import { SCREEN_SIZE } from '@module-global/constants';
 
-const useStyles = makeStyles(({ palette, zIndex }) => ({
+export const useStyles = makeStyles(({ palette, zIndex }) => ({
     layout: {
         justifyContent: 'center',
         alignItems: 'flex-start',
@@ -32,5 +32,3 @@ const useStyles = makeStyles(({ palette, zIndex }) => ({
         },
     },
 }));
-
-export default useStyles;

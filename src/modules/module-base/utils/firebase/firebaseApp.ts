@@ -5,9 +5,6 @@
  */
 
 import { initializeApp } from 'firebase/app';
-import { getFirestore } from 'firebase/firestore';
-import { getStorage } from 'firebase/storage';
-import { getAuth } from 'firebase/auth';
 
 const firebaseConfig = Object.freeze({
     apiKey: 'AIzaSyBYZKhAWUgxDLqNZFMONEBCc05-7YQVt6Q',
@@ -20,9 +17,4 @@ const firebaseConfig = Object.freeze({
     measurementId: 'G-YTD0GEHL7R',
 });
 
-const firebaseApp = initializeApp(firebaseConfig);
-const firestore = getFirestore(firebaseApp);
-const storage = getStorage(firebaseApp);
-const authentication = getAuth(firebaseApp);
-
-export { firebaseApp, firestore, storage, authentication };
+export const firebaseApp = initializeApp(firebaseConfig);

@@ -10,8 +10,7 @@ import { useIntl } from 'react-intl';
 import { Stack, Typography } from '@mui/material';
 
 /** utils */
-import { calendarMessage } from '@module-calendar/utils';
-import { VietnameseDate } from '@module-calendar/utils';
+import { calendarMessage, VietnameseDate } from '@module-calendar/utils';
 
 /** hooks */
 import { useCalendar } from '@module-calendar/hooks';

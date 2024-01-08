@@ -10,11 +10,12 @@ import { useMutation } from '@tanstack/react-query';
 import { apiRegister } from '@module-auth/apis';
 
 /** constants */
-import { emailLocalKey } from '@module-base/constants';
+import { emailLocalKey } from '@module-base/constants/storeKey';
 import { AUTH_ERROR_CODES } from '@module-auth/constants';
 
 /** utils */
-import { Encrypt, localStorageBase } from '@module-base/utils';
+import { Crypto } from '@module-base/utils/security';
+import { localStorageBase } from '@module-base/utils';
 import { authMessage } from '@module-auth/utils';
 
 /** hooks */
@@ -29,7 +30,7 @@ export function useRegister() {
     return useMutation({
         mutationFn: apiRegister,
         onSuccess: (_response, { email }) => {
-            localStorageBase.set(emailLocalKey, Encrypt(email));
+            localStorageBase.set(emailLocalKey, Crypto.encrypt(email));
             NOTIFY.method.toggleNotify({
                 open: true,
                 mode: 'success',

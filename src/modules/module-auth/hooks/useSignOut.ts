@@ -11,7 +11,7 @@ import { useMutation } from '@tanstack/react-query';
 import { apiSignOut } from '@module-auth/apis';
 
 /** constants */
-import { accessTokenCookieKey } from '@module-base/constants';
+import { accessTokenKey } from '@module-base/constants/storeKey';
 
 /** hooks */
 import { useAuth } from '@module-auth/hooks';
@@ -23,7 +23,7 @@ export function useSignOut() {
         mutationFn: apiSignOut,
         retry: 3,
         onSuccess: () => {
-            Cookies.remove(accessTokenCookieKey);
+            Cookies.remove(accessTokenKey);
             AUTH.method.setAuth();
         },
     });

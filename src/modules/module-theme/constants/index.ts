@@ -5,7 +5,5 @@
  */
 
 /** constants */
-export * from './breakpoints';
-export * from './palette';
-export * from './themeObject';
-export * from './typography';
+export * from './data';
+export * from './contexts';

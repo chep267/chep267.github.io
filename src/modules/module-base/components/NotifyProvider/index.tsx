@@ -9,8 +9,9 @@ import * as React from 'react';
 /** components */
 import { ErrorBoundary } from '@module-base/components';
 
-/** utils */
-import { NotifyContext, defaultNotify } from '@module-base/hooks';
+/** constants */
+import { dataNotifyContextDefault } from '@module-base/constants/defaulValue';
+import { NotifyContext } from '@module-base/constants/contexts';
 
 /** types */
 import type { TypeNotifyContext, TypeNotify, NotifyProviderProps } from '@module-base/models';
@@ -18,9 +19,9 @@ import type { TypeNotifyContext, TypeNotify, NotifyProviderProps } from '@module
 export default function NotifyProvider(props: NotifyProviderProps) {
     const { children } = props;
 
-    const [notify, setNotify] = React.useState<TypeNotify>(defaultNotify);
+    const [notify, setNotify] = React.useState<TypeNotify>(dataNotifyContextDefault);
 
-    const toggleNotify = React.useCallback((options: TypeNotify = defaultNotify) => setNotify(options), []);
+    const toggleNotify = React.useCallback((options: TypeNotify = dataNotifyContextDefault) => setNotify(options), []);
 
     const store = React.useMemo<TypeNotifyContext>(
         () => ({

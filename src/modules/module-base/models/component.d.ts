@@ -17,11 +17,19 @@ import type {
     ElementType,
     ErrorInfo,
 } from 'react';
-import type { TextFieldProps } from '@mui/material/TextField';
-import type { ListProps } from '@mui/material/List';
-import type { IconButtonProps, MenuProps, SelectProps, SxProps, TableRowProps, Theme, TooltipProps } from '@mui/material';
-import type { SnackbarProps } from '@mui/material/Snackbar';
-import type { ElementClickEvent } from '@module-base/models/event';
+import type {
+    TextFieldProps,
+    ListProps,
+    IconButtonProps,
+    MenuProps,
+    SelectProps,
+    SxProps,
+    TableRowProps,
+    Theme,
+    TooltipProps,
+    SnackbarProps,
+} from '@mui/material';
+import type { ElementClickEvent } from './event';
 
 /** ErrorBoundary */
 export type ErrorBoundaryProps = PropsWithChildren<{

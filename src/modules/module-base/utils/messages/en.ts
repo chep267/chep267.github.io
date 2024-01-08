@@ -4,7 +4,7 @@
  *
  */
 
-export const EN = Object.freeze({
+export const en = Object.freeze({
     'module.base.error.server.busy': 'Server busy!',
     'module.base.error.fallback.title': 'An error occurred',
     'module.base.error.fallback.content': 'Please try to run the application again',

@@ -10,14 +10,15 @@ import 'dayjs/locale/vi';
 
 /** constants */
 import { localeObject } from '@module-language/constants';
-import { localeLocalKey } from '@module-base/constants';
+import { localeLocalKey } from '@module-base/constants/storeKey';
+
+/** contexts */
+import { LanguageContext } from '@module-language/contexts';
 
 /** utils */
-import { Decrypt, Encrypt, localStorageBase } from '@module-base/utils';
+import { localStorageBase } from '@module-base/utils';
+import { Crypto } from '@module-base/utils/security';
 import { getDeviceLanguage } from '@module-language/utils';
-
-/** hooks */
-import { LanguageContext } from '@module-language/hooks';
 
 /** types */
 import type { TypeLocale, LanguageProviderProps, LanguageContextProps } from '@module-language/models';
@@ -26,7 +27,7 @@ function LanguageProvider(props: LanguageProviderProps) {
     const { children, messages } = props;
 
     const [locale, setLocale] = React.useState<TypeLocale>(() => {
-        const localeCookie = Decrypt(localStorageBase.get(localeLocalKey)) as TypeLocale;
+        const localeCookie = Crypto.decrypt(localStorageBase.get(localeLocalKey)) as TypeLocale;
         if (localeCookie && localeCookie in localeObject) {
             return localeCookie;
         }
@@ -34,7 +35,7 @@ function LanguageProvider(props: LanguageProviderProps) {
     });
 
     const setLanguage = React.useCallback<LanguageContextProps['method']['setLanguage']>((value) => {
-        localStorageBase.set(localeLocalKey, Encrypt(value));
+        localStorageBase.set(localeLocalKey, Crypto.encrypt(value));
         setLocale(value);
     }, []);
 

@@ -11,10 +11,11 @@ import { useMutation } from '@tanstack/react-query';
 import { apiSignIn } from '@module-auth/apis';
 
 /** constants */
-import { accessTokenCookieKey, emailLocalKey } from '@module-base/constants';
+import { accessTokenKey, emailLocalKey } from '@module-base/constants/storeKey';
 
 /** utils */
-import { Encrypt, localStorageBase } from '@module-base/utils';
+import { Crypto } from '@module-base/utils/security';
+import { localStorageBase } from '@module-base/utils';
 import { authMessage } from '@module-auth/utils';
 
 /** hooks */
@@ -30,8 +31,8 @@ export function useSignIn() {
         onSuccess: async (response, { email }) => {
             const me = response.user;
             const accessToken = (await me.getIdToken()) || '';
-            localStorageBase.set(emailLocalKey, Encrypt(email));
-            Cookies.set(accessTokenCookieKey, accessToken, { expires: 1 });
+            localStorageBase.set(emailLocalKey, Crypto.encrypt(email));
+            Cookies.set(accessTokenKey, accessToken, { expires: 1 });
             AUTH.method.setAuth({ isAuth: true, me });
         },
         onError: () => {

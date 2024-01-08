@@ -13,14 +13,14 @@ import { TextField, InputAdornment } from '@mui/material';
 import { Clear as ClearIcon, Search as SearchIcon } from '@mui/icons-material';
 
 /** constants */
-import { TIMING_SEARCHING } from '@module-base/constants';
+import { timeSearching } from '@module-base/constants/timer';
 
 /** types */
 import type { InputSearchProps, InputChangeEvent } from '@module-base/models';
 
 const InputSearch = React.memo(function InputSearch(props: InputSearchProps) {
     const {
-        timer = TIMING_SEARCHING,
+        timer = timeSearching,
         onChangeValue,
         onLoading,
         type = 'text',

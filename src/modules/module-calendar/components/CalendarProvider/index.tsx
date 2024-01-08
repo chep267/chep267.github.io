@@ -18,7 +18,7 @@ import { CalendarContext, today } from '@module-calendar/hooks';
 import type { PropsWithChildren } from 'react';
 import type { CalendarContextProps } from '@module-calendar/models';
 
-function CalendarProvider(props: PropsWithChildren) {
+export default function CalendarProvider(props: PropsWithChildren) {
     const { children } = props;
     const {
         data: { locale },
@@ -63,5 +63,3 @@ function CalendarProvider(props: PropsWithChildren) {
         </CalendarContext.Provider>
     );
 }
-
-export default CalendarProvider;

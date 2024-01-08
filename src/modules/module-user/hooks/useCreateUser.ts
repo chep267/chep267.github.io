@@ -10,7 +10,7 @@ import { useMutation } from '@tanstack/react-query';
 import { apiCreateUser } from '@module-user/apis';
 
 /** utils */
-import { baseMessage } from '@module-base/utils';
+import { baseMessage } from '@module-base/utils/messages';
 
 /** hooks */
 import { useNotify } from '@module-base/hooks';

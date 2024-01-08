@@ -6,7 +6,7 @@
 
 /** hooks */
 export * from './useCountdown';
-export * from './useNotify';
 export * from './useListSearch';
 export * from './usePrefetchQuerry';
+export * from './useNotify';
 export * from './withNotify';

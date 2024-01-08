@@ -4,4 +4,4 @@
  *
  */
 
-export const CIPHER_KEY = 'to-la-chep';
+export const timePendingApi = 600;

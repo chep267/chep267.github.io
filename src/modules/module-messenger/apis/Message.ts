@@ -8,7 +8,7 @@ import { collection, doc, onSnapshot, query, setDoc } from 'firebase/firestore';
 import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
 
 /** constants */
-import { TIMING_API_PENDING } from '@module-base/constants';
+import { timePendingApi } from '@module-base/constants/timer';
 import { MESSENGER_DB_MESSAGE_REF, MESSENGER_DB_ROOT_REF, MESSENGER_DB_THREADS_REF } from '@module-messenger/constants';
 
 /** utils */
@@ -21,7 +21,7 @@ import type { TypeItemIds, TypeItems } from '@module-base/models';
 const apiOnGetListMessage = async (
     payload: MessengerApiProps['GetListMessage']['Payload']
 ): Promise<MessengerApiProps['GetListMessage']['Response']> => {
-    const { timer = TIMING_API_PENDING, uid, tid, fnCallback } = payload;
+    const { timer = timePendingApi, uid, tid, fnCallback } = payload;
     const docRef = collection(
         firestore,
         MESSENGER_DB_ROOT_REF,

@@ -10,7 +10,8 @@ import { collection, doc, onSnapshot, query, setDoc, deleteDoc, getDoc } from 'f
 import { apiCreateMessage } from '@module-messenger/apis/Message';
 
 /** constants */
-import { ROOT_REF, TIMING_API_PENDING } from '@module-base/constants';
+import { firebaseRef } from '@module-base/constants/path';
+import { timePendingApi } from '@module-base/constants/timer';
 import {
     MESSENGER_CHAT_BOT_AI_ID,
     MESSENGER_DB_ROOT_REF,
@@ -32,7 +33,7 @@ import type { MessengerApiProps, TypeDocumentThreadData } from '@module-messenge
 const apiOnGetListThread = async (
     payload: MessengerApiProps['GetListThread']['Payload']
 ): Promise<MessengerApiProps['GetListThread']['Response']> => {
-    const { timer = TIMING_API_PENDING, uid, fnCallback } = payload;
+    const { timer = timePendingApi, uid, fnCallback } = payload;
     const docRef = collection(
         firestore,
         MESSENGER_DB_ROOT_REF,
@@ -103,7 +104,7 @@ const apiMoveThread = async (
     const { uid, tid } = payload;
     const docRef = doc(
         firestore,
-        ROOT_REF,
+        firebaseRef.root,
         MESSENGER_DB_ROOT_REF,
         MESSENGER_DB_USERS_REF,
         uid,

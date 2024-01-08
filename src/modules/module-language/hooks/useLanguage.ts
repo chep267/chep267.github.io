@@ -6,24 +6,7 @@
 
 import * as React from 'react';
 
-/** constants */
-import { emptyObject, emptyFunction } from '@module-base/constants';
-import { localeObject } from '@module-language/constants';
+/** contexts */
+import { LanguageContext } from '@module-language/contexts';
 
-/** types */
-import type { LanguageContextProps } from '@module-language/models';
-
-const LanguageContext = React.createContext<LanguageContextProps>({
-    data: {
-        locale: localeObject.vi,
-        messages: emptyObject,
-    },
-    method: {
-        setLanguage: emptyFunction,
-    },
-});
-LanguageContext.displayName = 'LanguageContext';
-
-const useLanguage = () => React.useContext(LanguageContext);
-
-export { LanguageContext, useLanguage };
+export const useLanguage = () => React.useContext(LanguageContext);

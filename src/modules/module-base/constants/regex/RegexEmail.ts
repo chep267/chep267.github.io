@@ -4,4 +4,4 @@
  *
  */
 
-export const ROOT_REF = 'tola_chep';
+export const RegexEmail = /^\S+@\S+\.\S+$/;

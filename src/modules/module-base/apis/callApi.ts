@@ -8,7 +8,7 @@ import axios from 'axios';
 import Cookies from 'js-cookie';
 
 /** constants */
-import { accessTokenCookieKey } from '@module-base/constants';
+import { accessTokenKey } from '@module-base/constants/storeKey';
 import { API_HOST } from '@root/constants';
 
 /** types */
@@ -32,7 +32,7 @@ const axiosClientCDN = axios.create(axiosDefaultFormDataConfig);
 /** Add a request interceptor */
 axiosClient.interceptors.request.use(
     (config) => {
-        const token = Cookies.get(accessTokenCookieKey);
+        const token = Cookies.get(accessTokenKey);
         if (config.headers) {
             config.headers.Authorization = token ? `Bearer ${token}` : '';
             config.headers.lang = 'en';
@@ -53,7 +53,7 @@ axiosClient.interceptors.response.use(
     },
     (error: AxiosError) => {
         if (error.response?.status === 401) {
-            Cookies.remove(accessTokenCookieKey);
+            Cookies.remove(accessTokenKey);
         }
         return Promise.reject(error);
     }

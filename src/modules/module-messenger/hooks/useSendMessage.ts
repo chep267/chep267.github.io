@@ -13,7 +13,8 @@ import { apiCreateMessage, apiSendFile } from '@module-messenger/apis';
 import { MESSENGER_CHAT_BOT_AI_ID, MessageGPT } from '@module-messenger/constants';
 
 /** utils */
-import { baseMessage, checkId } from '@module-base/utils';
+import { checkId } from '@module-base/utils/helpers';
+import { baseMessage } from '@module-base/utils/messages';
 import { genMessage } from '@module-messenger/utils';
 
 /** hooks */

@@ -6,7 +6,7 @@
 
 import makeStyles from '@mui/styles/makeStyles';
 
-const useStyles = makeStyles(({ zIndex }) => ({
+export const useStyles = makeStyles(({ zIndex }) => ({
     fallback: {
         justifyContent: 'center',
         alignItems: 'center',
@@ -25,5 +25,3 @@ const useStyles = makeStyles(({ zIndex }) => ({
         },
     },
 }));
-
-export default useStyles;

@@ -6,7 +6,7 @@
 
 import makeStyles from '@mui/styles/makeStyles';
 
-const useStyles = makeStyles({
+export const useStyles = makeStyles({
     loading: {
         position: 'absolute',
         zIndex: 1,
@@ -18,5 +18,3 @@ const useStyles = makeStyles({
         height: '100%',
     },
 });
-
-export default useStyles;

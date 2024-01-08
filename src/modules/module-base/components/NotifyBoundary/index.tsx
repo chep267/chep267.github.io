@@ -12,7 +12,7 @@ import { FormattedMessage } from 'react-intl';
 import { Snackbar, Alert, AlertTitle } from '@mui/material';
 
 /** constants */
-import { TIMING_NOTIFY_DURATION } from '@module-base/constants';
+import { timeNotifyDuration } from '@module-base/constants/timer';
 
 /** utils */
 import { useNotify } from '@module-base/hooks';
@@ -25,7 +25,7 @@ import type { NotifyBoundaryProps } from '@module-base/models';
 
 const NotifyBoundary = React.memo(function NotifyBoundary(props: NotifyBoundaryProps) {
     const NOTIFY = useNotify();
-    const { open, message, intlMessage, mode, close, duration = TIMING_NOTIFY_DURATION } = NOTIFY.data;
+    const { open, message, intlMessage, mode, close, duration = timeNotifyDuration } = NOTIFY.data;
     const classes = useStyles();
 
     const closeSnackbar = React.useCallback(() => NOTIFY.method.toggleNotify(), []);

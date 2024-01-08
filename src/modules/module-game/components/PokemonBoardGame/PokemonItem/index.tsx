@@ -11,7 +11,7 @@ import classnames from 'classnames';
 import { Button } from '@mui/material';
 
 /** constants */
-import { emptyObject } from '@module-base/constants';
+import { emptyObject } from '@module-base/constants/defaulValue';
 import { POKEMON_LOGO } from '@module-game/constants';
 
 /** styles */

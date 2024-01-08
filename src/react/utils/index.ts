@@ -4,6 +4,5 @@
  *
  */
 
-export * from './notUse';
 export * from './queryClient';
 export * from './messages';

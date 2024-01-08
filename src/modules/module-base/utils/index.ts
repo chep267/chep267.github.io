@@ -6,7 +6,7 @@
 
 /** utils */
 export * from './helpers';
+export * from './storage';
 export * from './firebase';
-export * from './messages';
 export * from './security';
-export * from './storages';
+export * from './messages';

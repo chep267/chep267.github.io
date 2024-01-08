@@ -7,10 +7,10 @@
 import * as yup from 'yup';
 
 /** constants */
-import { REGEX_PASSWORD } from '@module-base/constants';
+import { RegexPassword } from '@module-base/constants/regex';
 
 /** utils */
-import { authMessage } from '@module-auth/utils/messages';
+import { authMessage } from '@module-auth/utils';
 
 export const authFormSchema = yup
     .object({
@@ -21,6 +21,6 @@ export const authFormSchema = yup
         password: yup
             .string()
             .required(authMessage['module.auth.form.status.password.empty'].id)
-            .matches(REGEX_PASSWORD, authMessage['module.auth.form.status.password.invalid'].id),
+            .matches(RegexPassword, authMessage['module.auth.form.status.password.invalid'].id),
     })
     .required();

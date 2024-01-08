@@ -7,7 +7,7 @@
 import * as React from 'react';
 
 /** constants */
-import { emptyFunction } from '@module-base/constants';
+import { emptyFunction } from '@module-base/constants/defaulValue';
 
 /** utils */
 import { GameLevel } from '@module-game/utils';

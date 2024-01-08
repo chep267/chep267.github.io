@@ -18,7 +18,7 @@ import { LoadingButton } from '@mui/lab';
 import { PasswordField } from '@module-base/components';
 
 /** constants */
-import { emailLocalKey } from '@module-base/constants';
+import { emailLocalKey } from '@module-base/constants/storeKey';
 import { AUTH_SCREEN } from '@module-auth/constants';
 
 /** utils */

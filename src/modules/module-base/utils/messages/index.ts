@@ -4,11 +4,7 @@
  *
  */
 
-/** utils */
-import { createMessageIntl } from '@module-base/utils/helpers';
-import { VI } from './vi';
-import { EN } from './en';
-
-const baseMessage = createMessageIntl(VI);
-
-export { VI, EN, baseMessage };
+/** messages */
+export * from './vi';
+export * from './en';
+export * from './baseMessage';

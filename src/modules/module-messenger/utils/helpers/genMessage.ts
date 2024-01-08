@@ -5,7 +5,7 @@
  */
 
 /** utils */
-import { Encrypt } from '@module-base/utils';
+import { Crypto } from '@module-base/utils/security';
 
 /** types */
 import type { TypeDocumentMessageData } from '@module-messenger/models';
@@ -34,7 +34,7 @@ export const genMessage = (payload: TypeGenMessage): TypeDocumentMessageData => 
         tid,
         uid,
         mid: !isEmpty ? mid || `mid.${time}` : '',
-        text: !isEncrypt ? text : text ? Encrypt(text) : '',
+        text: !isEncrypt ? text : text ? Crypto.encrypt(text) : '',
         fileIds,
         files,
         createdTime: !isEmpty ? createdTime || time : 0,

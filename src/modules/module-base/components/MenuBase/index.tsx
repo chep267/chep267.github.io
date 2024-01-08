@@ -11,7 +11,7 @@ import classnames from 'classnames';
 import { Tooltip, Menu, IconButton } from '@mui/material';
 
 /** constants */
-import { emptyObject } from '@module-base/constants';
+import { emptyObject } from '@module-base/constants/defaulValue';
 
 /** styles */
 import useStyles from './styles';

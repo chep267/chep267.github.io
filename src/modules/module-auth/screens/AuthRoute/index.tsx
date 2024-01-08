@@ -12,7 +12,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { apiRestart } from '@module-auth/apis';
 
 /** constants */
-import { accessTokenCookieKey } from '@module-base/constants';
+import { accessTokenKey } from '@module-base/constants/storeKey';
 import { ACCOUNT_STATE, AUTH_SCREEN } from '@module-auth/constants';
 
 /** hooks */
@@ -29,7 +29,7 @@ function AuthRoute(props: PropsWithChildren) {
     const { pathname } = useLocation();
     const navigate = useNavigate();
     const AUTH = useAuth();
-    const accessToken = Cookies.get(accessTokenCookieKey);
+    const accessToken = Cookies.get(accessTokenKey);
 
     const accountState = AUTH.data.isAuth
         ? ACCOUNT_STATE.SIGNED_IN

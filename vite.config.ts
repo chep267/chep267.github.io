@@ -34,7 +34,7 @@ export default ({ mode }) => {
         plugins: [
             react({
                 babel: {
-                    configFile: false, // Use babel.config.js files
+                    configFile: true, // Use babel.config.js files
                 },
             }),
             basicSsl(),
@@ -44,8 +44,12 @@ export default ({ mode }) => {
             extensions: ['.tsx', '.ts', '.js', '.jsx'],
         },
         build: {
+            minify: 'esbuild',
             target: 'esnext',
             sourcemap: isDevMode,
+            rollupOptions: {
+                treeshake: true,
+            },
         },
         server: {
             host: process.env.VITE_APP_HOST,
@@ -53,9 +57,9 @@ export default ({ mode }) => {
             open: true,
         },
         esbuild: {
-            target: 'esnext',
-            legalComments: 'external',
             treeShaking: true,
+            target: 'esnext',
+            legalComments: 'none',
             format: 'esm',
         },
     });

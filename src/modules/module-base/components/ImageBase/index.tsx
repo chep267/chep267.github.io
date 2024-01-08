@@ -11,7 +11,7 @@ import classnames from 'classnames';
 import { Skeleton } from '@mui/material';
 
 /** styles */
-import useStyles from './styles';
+import { useStyles } from './styles';
 
 /** types */
 import type { ImageBaseProps, ReactEventHandler } from '@module-base/models';

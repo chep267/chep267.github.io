@@ -7,7 +7,7 @@
 /** types */
 import type { StorageName, StoreValueType } from '@module-base/models';
 
-class StorageBase {
+export class StorageBase {
     constructor(storageName: StorageName) {
         this.storageName = storageName;
     }
@@ -61,6 +61,3 @@ class StorageBase {
         this.setList(keys, Object.values(ignoreData));
     };
 }
-
-export const localStorageBase = new StorageBase('localStorage');
-export const sessionStorageBase = new StorageBase('sessionStorage');

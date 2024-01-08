@@ -11,7 +11,7 @@ import { FormattedMessage } from 'react-intl';
 import { Stack, Typography, CircularProgress } from '@mui/material';
 
 /** utils */
-import { baseMessage } from '@module-base/utils';
+import { baseMessage } from '@module-base/utils/messages';
 
 /** styles */
 import useStyles from './styles';

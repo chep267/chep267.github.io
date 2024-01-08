@@ -11,7 +11,7 @@ import classnames from 'classnames';
 import { TableBody as TableBodyElem, TableRow, TableCell } from '@mui/material';
 
 /** constants */
-import { emptyObject } from '@module-base/constants';
+import { emptyObject } from '@module-base/constants/defaulValue';
 
 /** styles */
 import useStyles from './styles';

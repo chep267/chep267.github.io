@@ -7,14 +7,13 @@
 import { AES } from 'crypto-es/lib/aes';
 import { Utf8 } from 'crypto-es/lib/core';
 
-/** constants */
-import { CIPHER_KEY } from '@module-base/constants';
+const CIPHER_KEY = 'to-la-chep';
 
 /**
  * func Encrypt
  * return: chuỗi mã hóa
  */
-export function Encrypt(message = '', key = CIPHER_KEY) {
+function Encrypt(message = '', key = CIPHER_KEY) {
     try {
         return AES.encrypt(message, key).toString();
     } catch {
@@ -26,10 +25,15 @@ export function Encrypt(message = '', key = CIPHER_KEY) {
  * func Decrypt
  * return: chuỗi giải mã hóa
  */
-export function Decrypt(message = '', key = CIPHER_KEY) {
+function Decrypt(message = '', key = CIPHER_KEY) {
     try {
         return AES.decrypt(message, key).toString(Utf8);
     } catch {
         return message;
     }
 }
+
+export const Crypto = {
+    encrypt: Encrypt,
+    decrypt: Decrypt,
+};
