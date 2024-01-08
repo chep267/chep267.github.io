@@ -16,7 +16,7 @@ import { localeLocalKey } from '@module-base/constants/storeKey';
 import { LanguageContext } from '@module-language/contexts';
 
 /** utils */
-import { localStorageBase } from '@module-base/utils';
+import { localStorageBase } from '@module-base/utils/storage';
 import { Crypto } from '@module-base/utils/security';
 import { getDeviceLanguage } from '@module-language/utils';
 

@@ -4,4 +4,4 @@
  *
  */
 
-export * from './Cryptor';
+export * from './Crypto';

@@ -12,7 +12,8 @@ import { timePendingApi } from '@module-base/constants/timer';
 import { MESSENGER_DB_MESSAGE_REF, MESSENGER_DB_ROOT_REF, MESSENGER_DB_THREADS_REF } from '@module-messenger/constants';
 
 /** utils */
-import { firestore, storage, debounce } from '@module-base/utils';
+import { firestore, storage } from '@module-base/utils/firebase';
+import { debounce } from '@module-base/utils/helpers';
 
 /** types */
 import type { MessengerApiProps, TypeDocumentMessageData } from '@module-messenger/models';

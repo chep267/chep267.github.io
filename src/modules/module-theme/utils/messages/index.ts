@@ -4,11 +4,6 @@
  *
  */
 
-/** utils */
-import { createMessageIntl } from '@module-base/utils';
-import { VI } from './vi';
-import { EN } from './en';
-
-const themeMessage = createMessageIntl(VI);
-
-export { VI, EN, themeMessage };
+export * from './vi';
+export * from './en';
+export * from './themeMessage';

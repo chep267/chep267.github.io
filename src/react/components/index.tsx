@@ -18,7 +18,7 @@ import { CalendarProvider } from '@module-calendar/components';
 import { MessengerProvider } from '@module-messenger/components';
 
 /** screens */
-import RootScreen from '@module-global/screens/MainScreen';
+import MainScreen from '@module-global/screens/MainScreen';
 
 /** global styles */
 import './global.css';
@@ -32,7 +32,7 @@ export default function App() {
                         <CalendarProvider>
                             <MessengerProvider>
                                 <NotifyProvider>
-                                    <RootScreen />
+                                    <MainScreen />
                                 </NotifyProvider>
                             </MessengerProvider>
                         </CalendarProvider>

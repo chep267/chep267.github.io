@@ -15,7 +15,7 @@ import { AUTH_ERROR_CODES } from '@module-auth/constants';
 
 /** utils */
 import { Crypto } from '@module-base/utils/security';
-import { localStorageBase } from '@module-base/utils';
+import { localStorageBase } from '@module-base/utils/storage';
 import { authMessage } from '@module-auth/utils';
 
 /** hooks */

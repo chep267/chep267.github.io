@@ -9,7 +9,7 @@ import makeStyles from '@mui/styles/makeStyles';
 /** constants */
 import { SCREEN_SIZE } from '@module-global/constants';
 
-const useStyles = makeStyles({
+export const useStyles = makeStyles({
     main: {
         position: 'relative',
         width: '100vw',
@@ -34,5 +34,3 @@ const useStyles = makeStyles({
         maxWidth: `calc(100% - ${SCREEN_SIZE.APP_BAR_MIN_WIDTH}px)`,
     },
 });
-
-export default useStyles;

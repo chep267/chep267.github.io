@@ -7,7 +7,7 @@
 import * as React from 'react';
 
 /** utils */
-import { checkId } from '@module-base/utils';
+import { checkId } from '@module-base/utils/helpers';
 
 /** hooks */
 import { AuthContext, defaultAuthState } from '@module-auth/hooks';

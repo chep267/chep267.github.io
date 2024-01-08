@@ -4,7 +4,7 @@
  *
  */
 
-export const VI = Object.freeze({
+export const vi = Object.freeze({
     'module.language.lang': 'Ngôn ngữ',
     'module.language.lang.vi': 'Tiếng Việt',
     'module.language.lang.en': 'Tiếng Anh',

@@ -20,7 +20,7 @@ import ThreadName from '@module-messenger/components/ThreadName';
 import { SCREEN } from '@module-global/constants';
 
 /** utils */
-import { checkString, genPath, checkId } from '@module-base/utils';
+import { checkString, genPath, checkId } from '@module-base/utils/helpers';
 
 /** hooks */
 import { useListUser } from '@module-user/hooks';

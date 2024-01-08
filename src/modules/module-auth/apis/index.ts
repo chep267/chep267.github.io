@@ -19,7 +19,8 @@ import { apiCreateUser, apiGetUser } from '@module-user/apis';
 import { timePendingApi } from '@module-base/constants/timer';
 
 /** utils */
-import { authentication, debounce, checkId } from '@module-base/utils';
+import { authentication } from '@module-base/utils/firebase';
+import { debounce, checkId } from '@module-base/utils/helpers';
 
 /** types */
 import type { AuthApiProps } from '@module-auth/models';

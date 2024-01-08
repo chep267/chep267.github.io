@@ -8,7 +8,7 @@
 import type { Theme } from '@mui/material';
 import type { ISourceOptions } from '@tsparticles/engine';
 
-export const getOption = (theme: Theme): ISourceOptions => ({
+export const particleOptions = (theme: Theme): ISourceOptions => ({
     fullScreen: {
         enable: true,
         zIndex: 1,

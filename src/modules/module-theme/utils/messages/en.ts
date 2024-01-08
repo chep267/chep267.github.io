@@ -4,7 +4,7 @@
  *
  */
 
-export const EN = Object.freeze({
+export const en = Object.freeze({
     'module.theme.theme': 'Theme',
     'module.theme.theme.light': 'Light',
     'module.theme.theme.purple': 'Purple',

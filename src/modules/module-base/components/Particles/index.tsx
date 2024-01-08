@@ -10,7 +10,7 @@ import { loadSlim } from '@tsparticles/slim';
 import { useTheme } from '@mui/material';
 
 /** constants */
-import { getOption } from '@module-base/utils';
+import { particleOptions } from '@module-base/utils/helpers';
 
 /** types */
 // import type { Container } from '@tsparticles/engine';
@@ -41,7 +41,7 @@ const Particle = React.memo(function Particle(props: IParticlesProps) {
     //     console.log(container);
     // };
 
-    const options = Options || getOption(theme);
+    const options = Options || particleOptions(theme);
 
     return init ? (
         <Particles

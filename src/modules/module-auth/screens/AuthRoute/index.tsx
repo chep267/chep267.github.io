@@ -25,7 +25,8 @@ import type { PropsWithChildren } from 'react';
 const StartScreen = React.lazy(() => import('@module-base/components/StartLoading'));
 const SignInScreen = React.lazy(() => import('@module-auth/screens/SignInScreen'));
 
-function AuthRoute(props: PropsWithChildren) {
+export default function AuthRoute(props: PropsWithChildren) {
+    const { children } = props;
     const { pathname } = useLocation();
     const navigate = useNavigate();
     const AUTH = useAuth();
@@ -49,14 +50,15 @@ function AuthRoute(props: PropsWithChildren) {
         }
     }, [accountState]);
 
-    switch (accountState) {
-        case ACCOUNT_STATE.SIGNED_IN:
-            return props?.children;
-        case ACCOUNT_STATE.RE_SIGN_IN:
-            return <StartScreen />;
-        default:
-            return <SignInScreen />;
-    }
+    return (
+        <React.Suspense>
+            {accountState === ACCOUNT_STATE.SIGNED_IN ? (
+                children
+            ) : accountState === ACCOUNT_STATE.RE_SIGN_IN ? (
+                <StartScreen />
+            ) : (
+                <SignInScreen />
+            )}
+        </React.Suspense>
+    );
 }
-
-export default AuthRoute;

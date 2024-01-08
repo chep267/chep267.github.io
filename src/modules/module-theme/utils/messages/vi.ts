@@ -4,7 +4,7 @@
  *
  */
 
-export const VI = Object.freeze({
+export const vi = Object.freeze({
     'module.theme.theme': 'Giao diện',
     'module.theme.theme.light': 'Sáng',
     'module.theme.theme.purple': 'Cá tính',

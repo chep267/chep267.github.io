@@ -10,7 +10,7 @@ import classnames from 'classnames';
 import { Typography, Stack } from '@mui/material';
 
 /** utils */
-import { Decrypt } from '@module-base/utils';
+import { Crypto } from '@module-base/utils/security';
 
 /** styles */
 import useStyles from './styles';
@@ -26,7 +26,7 @@ export default function TextMessage(props: TextMessageProps) {
 
     return (
         <Stack className={classnames(classes.textMessage)}>
-            <Typography variant="body1">{Decrypt(text)}</Typography>
+            <Typography variant="body1">{Crypto.decrypt(text)}</Typography>
         </Stack>
     );
 }

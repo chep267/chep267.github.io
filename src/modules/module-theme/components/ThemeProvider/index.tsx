@@ -16,7 +16,7 @@ import { themeObject, breakpoints, palette } from '@module-theme/constants/data'
 import { ThemeContext } from '@module-theme/constants/contexts';
 
 /** utils */
-import { localStorageBase } from '@module-base/utils';
+import { localStorageBase } from '@module-base/utils/storage';
 import { Crypto } from '@module-base/utils/security';
 
 /** types */

@@ -6,9 +6,6 @@
 
 /** utils */
 import { createMessageIntl } from '@module-base/utils/helpers';
-import { VI } from './vi';
-import { EN } from './en';
+import { vi } from './vi';
 
-const feedMessage = createMessageIntl(VI);
-
-export { VI, EN, feedMessage };
+export const themeMessage = createMessageIntl(vi);

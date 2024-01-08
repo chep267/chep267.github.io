@@ -23,7 +23,8 @@ import {
 } from '@module-messenger/constants';
 
 /** utils */
-import { firestore, debounce, checkId } from '@module-base/utils';
+import { firestore } from '@module-base/utils/firebase';
+import { debounce, checkId } from '@module-base/utils/helpers';
 import { genMessage } from '@module-messenger/utils';
 
 /** types */

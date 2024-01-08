@@ -18,7 +18,7 @@ const ModuleArray = [
     '@module-game',
 ];
 
-const treeShakingModule = (lib = 'lib') => {
+const treeShakingComponent = (lib = 'lib') => {
     const output = {};
     ModuleArray.forEach((module) => {
         output[`${module}/${lib}`] = {
@@ -29,9 +29,9 @@ const treeShakingModule = (lib = 'lib') => {
     return output;
 };
 
-const treeShakingModule2 = (lib = 'lib') => {
+const treeShakingLib = (lib = 'lib') => {
     const output = {};
-    ['@module-base'].forEach((module) => {
+    ['@module-base', '@module-theme', '@module-language'].forEach((module) => {
         output[`${module}/${lib}`] = {
             transform: (path) => `${module}/${lib}/${path}`,
             preventFullImport: false,
@@ -65,11 +65,15 @@ export default {
             // 'babel-plugin-transform-imports',
             'transform-imports',
             {
-                ...treeShakingModule('components'),
-                ...treeShakingModule2('apis'),
-                ...treeShakingModule2('constants'),
-                ...treeShakingModule2('hooks'),
-                ...treeShakingModule2('utils'),
+                ...treeShakingComponent('components'),
+                ...treeShakingLib('apis'),
+                ...treeShakingLib('constants'),
+                ...treeShakingLib('hooks'),
+                ...treeShakingLib('utils/firebase'),
+                ...treeShakingLib('utils/helpers'),
+                ...treeShakingLib('utils/messages'),
+                ...treeShakingLib('utils/security'),
+                ...treeShakingLib('utils/storage'),
             },
         ],
     ],

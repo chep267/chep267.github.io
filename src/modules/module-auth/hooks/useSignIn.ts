@@ -15,7 +15,7 @@ import { accessTokenKey, emailLocalKey } from '@module-base/constants/storeKey';
 
 /** utils */
 import { Crypto } from '@module-base/utils/security';
-import { localStorageBase } from '@module-base/utils';
+import { localStorageBase } from '@module-base/utils/storage';
 import { authMessage } from '@module-auth/utils';
 
 /** hooks */

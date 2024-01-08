@@ -22,7 +22,8 @@ import { emailLocalKey } from '@module-base/constants/storeKey';
 import { AUTH_SCREEN } from '@module-auth/constants';
 
 /** utils */
-import { Decrypt, localStorageBase } from '@module-base/utils';
+import { localStorageBase } from '@module-base/utils/storage';
+import { Crypto } from '@module-base/utils/security';
 import { authMessage, authFormSchema } from '@module-auth/utils';
 
 /** hooks */
@@ -46,7 +47,7 @@ export default function SignInForm() {
         setFocus,
     } = useForm<FormAuthDataType>({
         defaultValues: {
-            email: Decrypt(localStorageBase.get(emailLocalKey)),
+            email: Crypto.decrypt(localStorageBase.get(emailLocalKey)),
             password: '',
         },
         mode: 'onSubmit',

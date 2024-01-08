@@ -11,7 +11,8 @@ import { timePendingApi } from '@module-base/constants/timer';
 import { USER_DB_ROOT_REF } from '@module-user/constants';
 
 /** utils */
-import { firestore, debounce } from '@module-base/utils';
+import { debounce } from '@module-base/utils/helpers';
+import { firestore } from '@module-base/utils/firebase';
 
 /** types */
 import type { TypeItemIds, TypeItems } from '@module-base/models';

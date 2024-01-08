@@ -12,7 +12,7 @@ import { Skeleton, Stack, Typography } from '@mui/material';
 import EmojiMessage from '@module-messenger/components/Message/EmojiMessage';
 
 /** utils */
-import { Decrypt } from '@module-base/utils';
+import { Crypto } from '@module-base/utils';
 import { messengerMessage } from '@module-messenger/utils';
 
 /** hooks */
@@ -66,7 +66,7 @@ export default function ThreadLastMessage(props: ThreadLastMessageProps) {
             );
             break;
         default:
-            text = <Typography variant="body1">{Decrypt(message.text)}</Typography>;
+            text = <Typography variant="body1">{Crypto.decrypt(message.text)}</Typography>;
             break;
     }
 
