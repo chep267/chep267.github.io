@@ -29,7 +29,7 @@ import type {
     TooltipProps,
     SnackbarProps,
 } from '@mui/material';
-import type { ElementClickEvent } from './event';
+import type { ElementClickEvent } from './event.d.ts';
 
 /** ErrorBoundary */
 export type ErrorBoundaryProps = PropsWithChildren<{

@@ -8,7 +8,7 @@ import axios from 'axios';
 import Cookies from 'js-cookie';
 
 /** constants */
-import { accessTokenKey } from '@module-base/constants/storeKey';
+import { accessTokenKey } from '@module-base/constants';
 import { API_HOST } from '@root/constants';
 
 /** types */

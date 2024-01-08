@@ -4,5 +4,4 @@
  *
  */
 
-/** contexts */
-export * from './NotifyContext';
+export * from './callApi.ts';

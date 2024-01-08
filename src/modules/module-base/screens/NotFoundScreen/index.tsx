@@ -13,7 +13,7 @@ import { Stack } from '@mui/material';
 import { IconBase } from '@module-base/components';
 
 /** styles */
-import { useStyles } from './styles';
+import { useStyles } from './styles.ts';
 
 /** lazy components */
 const Particle = React.lazy(() => import('@module-base/components/Particles'));

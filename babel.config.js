@@ -41,6 +41,20 @@ const treeShakingLib = (lib = 'lib') => {
     return output;
 };
 
+const treeShakingModule = () => {
+    const output = {};
+    ['@module-base', '@module-theme', '@module-language'].forEach((module) => {
+        ['apis', 'constants', 'hooks', 'utils'].forEach((lib) => {
+            output[`${module}/${lib}`] = {
+                transform: (path) => `${module}/${lib}/${path}`,
+                preventFullImport: false,
+                skipDefaultConversion: true,
+            };
+        });
+    });
+    return output;
+};
+
 export default {
     plugins: [
         [
@@ -54,6 +68,7 @@ export default {
                     '@mui/lab',
                     '@mui/styles',
                     '@mui/utils',
+                    '@mui/base',
                     '@mui/styled-engine',
                     'lodash',
                     'react-dom/client',
@@ -66,14 +81,7 @@ export default {
             'transform-imports',
             {
                 ...treeShakingComponent('components'),
-                ...treeShakingLib('apis'),
-                ...treeShakingLib('constants'),
-                ...treeShakingLib('hooks'),
-                ...treeShakingLib('utils/firebase'),
-                ...treeShakingLib('utils/helpers'),
-                ...treeShakingLib('utils/messages'),
-                ...treeShakingLib('utils/security'),
-                ...treeShakingLib('utils/storage'),
+                ...treeShakingModule(),
             },
         ],
     ],

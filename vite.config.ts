@@ -55,6 +55,14 @@ export default ({ mode }) => {
             host: process.env.VITE_APP_HOST,
             port,
             open: true,
+            warmup: {
+                clientFiles: [
+                    // './src/modules/module-theme/components/ThemeProvider/index.tsx',
+                    // './src/modules/module-language/components/LanguageProvider/index.tsx',
+                    // './src/modules/module-auth/components/AuthProvider/index.tsx',
+                    // './src/modules/module-base/components/NotifyProvider/index.tsx',
+                ],
+            },
         },
         esbuild: {
             treeShaking: true,

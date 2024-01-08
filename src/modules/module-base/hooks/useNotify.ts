@@ -7,6 +7,6 @@
 import * as React from 'react';
 
 /** hooks */
-import { NotifyContext } from '@module-base/constants/contexts';
+import { NotifyContext } from '@module-base/constants';
 
 export const useNotify = () => React.useContext(NotifyContext);

@@ -4,6 +4,6 @@
  *
  */
 
-import { StorageBase } from './webStorages';
+import { StorageBase } from './webStorages.ts';
 
 export const localStorageBase = new StorageBase('localStorage');

@@ -5,6 +5,6 @@
  */
 
 import { getAuth } from 'firebase/auth';
-import { firebaseApp } from './firebaseApp';
+import { firebaseApp } from './firebaseApp.ts';
 
 export const authentication = getAuth(firebaseApp);

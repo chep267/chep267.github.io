@@ -8,10 +8,8 @@ import * as React from 'react';
 import ReactDOM from 'react-dom/client';
 
 /** App */
-import App from '@root/components';
+// import App from '@root/components';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-    <React.StrictMode>
-        <App />
-    </React.StrictMode>
+    <React.StrictMode>{/*<App />*/}</React.StrictMode>
 );

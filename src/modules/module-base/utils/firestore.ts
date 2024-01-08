@@ -5,6 +5,6 @@
  */
 
 import { getFirestore } from 'firebase/firestore';
-import { firebaseApp } from './firebaseApp';
+import { firebaseApp } from './firebaseApp.ts';
 
 export const firestore = getFirestore(firebaseApp);

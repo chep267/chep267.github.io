@@ -5,6 +5,6 @@
  */
 
 import { getStorage } from 'firebase/storage';
-import { firebaseApp } from './firebaseApp';
+import { firebaseApp } from './firebaseApp.ts';
 
 export const storage = getStorage(firebaseApp);
