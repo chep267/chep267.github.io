@@ -7,6 +7,6 @@
 import * as React from 'react';
 
 /** constants */
-import { ThemeContext } from '@module-theme/constants/contexts';
+import { ThemeContext } from '@module-theme/constants';
 
 export const useTheme = () => React.useContext(ThemeContext);

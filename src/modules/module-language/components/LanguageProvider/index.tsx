@@ -9,15 +9,11 @@ import { IntlProvider } from 'react-intl';
 import 'dayjs/locale/vi';
 
 /** constants */
-import { localeObject } from '@module-language/constants';
-import { localeLocalKey } from '@module-base/constants/storeKey';
-
-/** contexts */
-import { LanguageContext } from '@module-language/contexts';
+import { localeObject, LanguageContext } from '@module-language/constants';
+import { localeLocalKey } from '@module-base/constants';
 
 /** utils */
-import { localStorageBase } from '@module-base/utils/storage';
-import { Crypto } from '@module-base/utils/security';
+import { localStorageBase, Crypto } from '@module-base/utils';
 import { getDeviceLanguage } from '@module-language/utils';
 
 /** types */

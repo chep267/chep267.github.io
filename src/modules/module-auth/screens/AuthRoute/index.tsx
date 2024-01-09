@@ -12,8 +12,8 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { apiRestart } from '@module-auth/apis';
 
 /** constants */
-import { accessTokenKey } from '@module-base/constants/storeKey';
-import { ACCOUNT_STATE, AUTH_SCREEN } from '@module-auth/constants';
+import { accessTokenKey } from '@module-base/constants';
+import { AccountState, AuthScreenPath } from '@module-auth/constants';
 
 /** hooks */
 import { useAuth } from '@module-auth/hooks';
@@ -32,29 +32,25 @@ export default function AuthRoute(props: PropsWithChildren) {
     const AUTH = useAuth();
     const accessToken = Cookies.get(accessTokenKey);
 
-    const accountState = AUTH.data.isAuth
-        ? ACCOUNT_STATE.SIGNED_IN
-        : accessToken
-          ? ACCOUNT_STATE.RE_SIGN_IN
-          : ACCOUNT_STATE.SIGN_IN;
+    const accountState = AUTH.data.isAuth ? AccountState.signedIn : accessToken ? AccountState.reSignin : AccountState.signin;
 
     React.useEffect(() => {
-        if (accountState === ACCOUNT_STATE.RE_SIGN_IN) {
+        if (accountState === AccountState.reSignin) {
             /** đã đăng nhập từ trước, lấy phiên đăng nhập */
             apiRestart({
                 fnCallback: (me) => AUTH.method.setAuth({ isAuth: true, me }),
             }).then();
         }
-        if (accountState === ACCOUNT_STATE.SIGNED_IN && Object.values(AUTH_SCREEN).includes(pathname as any)) {
-            navigate(AUTH_SCREEN.HOME, { replace: true });
+        if (accountState === AccountState.signedIn && Object.values(AuthScreenPath).includes(pathname as any)) {
+            navigate(AuthScreenPath.home, { replace: true });
         }
     }, [accountState]);
 
     return (
         <React.Suspense>
-            {accountState === ACCOUNT_STATE.SIGNED_IN ? (
+            {accountState === AccountState.signedIn ? (
                 children
-            ) : accountState === ACCOUNT_STATE.RE_SIGN_IN ? (
+            ) : accountState === AccountState.reSignin ? (
                 <StartScreen />
             ) : (
                 <SignInScreen />

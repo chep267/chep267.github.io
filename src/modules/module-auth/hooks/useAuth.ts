@@ -7,22 +7,6 @@
 import * as React from 'react';
 
 /** constants */
-import { emptyFunction } from '@module-base/constants/defaulValue';
+import { AuthContext } from '@module-auth/constants';
 
-/** types */
-import type { User } from 'firebase/auth';
-import type { AuthContextProps } from '@module-auth/models';
-
-const defaultAuthState = Object.freeze({ isAuth: false, me: {} as User });
-
-const AuthContext = React.createContext<AuthContextProps>({
-    data: defaultAuthState,
-    method: {
-        setAuth: emptyFunction,
-    },
-});
-AuthContext.displayName = 'AuthContext';
-
-const useAuth = () => React.useContext(AuthContext);
-
-export { AuthContext, useAuth, defaultAuthState };
+export const useAuth = () => React.useContext(AuthContext);

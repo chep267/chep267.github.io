@@ -12,13 +12,13 @@ import { Stack, Typography } from '@mui/material';
 
 /** components */
 import { IconBase } from '@module-base/components';
-import ButtonRetry from './ButtonRetry';
+import ButtonRetry from './ButtonRetry.tsx';
 
 /** utils */
-import { baseMessage } from '@module-base/utils/messages';
+import { baseMessage } from '@module-base/utils';
 
 /** styles */
-import { useStyles } from './styles';
+import { useStyles } from './styles.ts';
 
 /** types */
 import type { FallbackDefaultProps } from '@module-base/models';

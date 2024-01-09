@@ -7,7 +7,7 @@
 import * as React from 'react';
 
 /** constants */
-import { dataNotifyContextDefault, emptyFunction } from '@module-base/constants/defaulValue';
+import { dataNotifyContextDefault, emptyFunction } from '@module-base/constants';
 
 /** types */
 import type { TypeNotifyContext } from '@module-base/models';

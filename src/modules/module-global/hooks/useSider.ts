@@ -7,19 +7,6 @@
 import * as React from 'react';
 
 /** constants */
-import { emptyFunction } from '@module-base/constants/defaulValue';
-
-/** types */
-import type { TypeSiderContext } from '@module-global/models';
-
-export const SiderContext = React.createContext<TypeSiderContext>({
-    data: {
-        openSider: true,
-    },
-    method: {
-        setOpenSider: emptyFunction,
-    },
-});
-SiderContext.displayName = 'SiderContext';
+import { SiderContext } from '@module-global/constants';
 
 export const useSider = () => React.useContext(SiderContext);

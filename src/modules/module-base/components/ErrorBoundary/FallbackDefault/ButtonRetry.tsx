@@ -11,10 +11,10 @@ import { useIntl } from 'react-intl';
 import { Stack, Typography, Button } from '@mui/material';
 
 /** constants */
-import { timeCountdownError } from '@module-base/constants/timer';
+import { timeCountdownError } from '@module-base/constants';
 
 /** utils */
-import { baseMessage } from '@module-base/utils/messages';
+import { baseMessage } from '@module-base/utils';
 
 /** hooks */
 import { useCountdown } from '@module-base/hooks';

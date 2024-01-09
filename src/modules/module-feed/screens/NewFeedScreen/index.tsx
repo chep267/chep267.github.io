@@ -7,7 +7,7 @@
 import { Stack, Paper } from '@mui/material';
 
 /** styles */
-import useStyles from './styles';
+import { useStyles } from './styles';
 
 export default function NewFeedScreen() {
     const classes = useStyles();

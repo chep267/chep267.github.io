@@ -11,10 +11,10 @@ import { Link } from 'react-router-dom';
 import { Stack, Typography } from '@mui/material';
 
 /** constants */
-import { SCREEN } from '@module-global/constants';
+import { ScreenPath } from '@module-global/constants';
 
 /** styles */
-import useStyles from './styles';
+import { useStyles } from './styles';
 
 /** types */
 import type { Dayjs } from 'dayjs';
@@ -35,7 +35,7 @@ export default function CalendarItem(props: CalendarItemType) {
     const isWeekend = data.day() === 0 || data.day() === 6;
 
     return isHide ? null : (
-        <Link to={`${SCREEN.CALENDAR}${SCREEN.CALENDAR_INFO}`} onClick={onSelect}>
+        <Link to={`${ScreenPath.CALENDAR}${ScreenPath.CALENDAR_INFO}`} onClick={onSelect}>
             <Stack
                 className={classnames(
                     classes.item,

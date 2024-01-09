@@ -19,7 +19,7 @@ import { genMatrixCalendarDayJS, reverseMatrix } from '@module-calendar/utils';
 import { useCalendar } from '@module-calendar/hooks';
 
 /** styles */
-import useStyles from './styles';
+import { useStyles } from './styles';
 
 /** types */
 import type { TableBaseProps } from '@module-base/models';

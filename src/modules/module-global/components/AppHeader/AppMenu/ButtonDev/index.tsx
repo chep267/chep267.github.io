@@ -10,7 +10,7 @@ import { Tooltip, Button } from '@mui/material';
 import { useNotify } from '@module-base/hooks';
 
 /** styles */
-import useStyles from '../styles';
+import { useStyles } from '../styles';
 
 export default function ButtonDev(props: any) {
     const { tooltip, icon } = props;

@@ -17,10 +17,10 @@ import ThreadAvatar from '@module-messenger/components/ThreadAvatar';
 import ThreadName from '@module-messenger/components/ThreadName';
 
 /** constants */
-import { SCREEN } from '@module-global/constants';
+import { ScreenPath } from '@module-global/constants';
 
 /** utils */
-import { checkString, genPath, checkId } from '@module-base/utils/helpers';
+import { checkString, genPath, checkId } from '@module-base/utils';
 
 /** hooks */
 import { useListUser } from '@module-user/hooks';
@@ -44,7 +44,7 @@ const ThreadListSearch = React.memo(function ThreadListSearch() {
 
     const onClickItem = React.useCallback((uid: UserInfo['uid']) => {
         const tid = checkId(uid, 'tid');
-        navigate(genPath(SCREEN.MESSENGER, SCREEN.MESSENGER_CONVERSATION.replace(':tid', tid)));
+        navigate(genPath(ScreenPath.MESSENGER, ScreenPath.MESSENGER_CONVERSATION.replace(':tid', tid)));
     }, []);
 
     const renderItem = React.useCallback(

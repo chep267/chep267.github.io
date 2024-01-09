@@ -4,5 +4,7 @@
  *
  */
 
-/** utils */
-export * from './messages';
+/** messages */
+export * from './vi.ts';
+export * from './en.ts';
+export * from './themeMessage.ts';

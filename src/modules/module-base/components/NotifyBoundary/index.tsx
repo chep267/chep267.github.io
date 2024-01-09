@@ -12,7 +12,7 @@ import { FormattedMessage } from 'react-intl';
 import { Snackbar, Alert, AlertTitle } from '@mui/material';
 
 /** constants */
-import { timeNotifyDuration } from '@module-base/constants/timer';
+import { timeNotifyDuration } from '@module-base/constants';
 
 /** utils */
 import { useNotify } from '@module-base/hooks';

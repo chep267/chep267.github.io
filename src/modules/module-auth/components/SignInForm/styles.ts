@@ -7,7 +7,7 @@
 import makeStyles from '@mui/styles/makeStyles';
 
 /** constants */
-import { SCREEN_SIZE } from '@module-global/constants';
+import { ScreenSize } from '@module-global/constants';
 
 const useStyles = makeStyles(({ palette, spacing, typography, breakpoints }) => ({
     title: {
@@ -22,11 +22,11 @@ const useStyles = makeStyles(({ palette, spacing, typography, breakpoints }) => 
         padding: spacing(5),
         borderRadius: spacing(1),
         width: '100%',
-        minWidth: SCREEN_SIZE.AUTH_FORM_MIN_WIDTH,
-        maxWidth: SCREEN_SIZE.AUTH_FORM_MIN_WIDTH,
+        minWidth: ScreenSize.AUTH_FORM_MIN_WIDTH,
+        maxWidth: ScreenSize.AUTH_FORM_MIN_WIDTH,
         [breakpoints.up('md')]: {
-            minWidth: SCREEN_SIZE.AUTH_FORM_MAX_WIDTH,
-            maxWidth: SCREEN_SIZE.AUTH_FORM_MAX_WIDTH,
+            minWidth: ScreenSize.AUTH_FORM_MAX_WIDTH,
+            maxWidth: ScreenSize.AUTH_FORM_MAX_WIDTH,
         },
         transition: 'width 0.6s ease, min-width 0.6s ease, max-width 0.6s ease',
     },

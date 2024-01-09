@@ -29,21 +29,19 @@ const treeShakingComponent = (lib = 'lib') => {
     return output;
 };
 
-const treeShakingLib = (lib = 'lib') => {
-    const output = {};
-    ['@module-base', '@module-theme', '@module-language'].forEach((module) => {
-        output[`${module}/${lib}`] = {
-            transform: (path) => `${module}/${lib}/${path}`,
-            preventFullImport: false,
-            skipDefaultConversion: true,
-        };
-    });
-    return output;
-};
-
 const treeShakingModule = () => {
     const output = {};
-    ['@module-base', '@module-theme', '@module-language'].forEach((module) => {
+    [
+        '@module-base',
+        '@module-theme',
+        '@module-language',
+        '@module-global',
+        '@module-user',
+        '@module-auth',
+        '@module-feed',
+        '@module-game',
+        '@module-calendar',
+    ].forEach((module) => {
         ['apis', 'constants', 'hooks', 'utils'].forEach((lib) => {
             output[`${module}/${lib}`] = {
                 transform: (path) => `${module}/${lib}/${path}`,

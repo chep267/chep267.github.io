@@ -5,6 +5,5 @@
  */
 
 /** hooks */
-export * from './CalendarContext';
 export * from './useCalendar';
 export * from './withCalendar';

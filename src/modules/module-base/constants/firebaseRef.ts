@@ -6,4 +6,5 @@
 
 export const firebaseRef = {
     root: 'tola_chep',
+    user: 'users',
 };

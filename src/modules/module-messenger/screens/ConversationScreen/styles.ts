@@ -7,7 +7,7 @@
 import makeStyles from '@mui/styles/makeStyles';
 
 /** constants */
-import { SCREEN_SIZE } from '@module-global/constants';
+import { ScreenSize } from '@module-global/constants';
 
 const useStyles = makeStyles(({ palette, breakpoints, zIndex }) => ({
     screen: {
@@ -28,15 +28,15 @@ const useStyles = makeStyles(({ palette, breakpoints, zIndex }) => ({
         overflow: 'hidden',
     },
     left: {
-        maxWidth: SCREEN_SIZE.MESSENGER_LEFT_RIGHT_MAX_WIDTH,
+        maxWidth: ScreenSize.MESSENGER_LEFT_RIGHT_MAX_WIDTH,
         transition: 'all 0.3s ease-in-out, background-color 0s',
         [breakpoints.down('xl')]: {
-            minWidth: SCREEN_SIZE.MESSENGER_LEFT_MEDIUM_WIDTH,
-            maxWidth: SCREEN_SIZE.MESSENGER_LEFT_MEDIUM_WIDTH,
+            minWidth: ScreenSize.MESSENGER_LEFT_MEDIUM_WIDTH,
+            maxWidth: ScreenSize.MESSENGER_LEFT_MEDIUM_WIDTH,
         },
         [breakpoints.down('md')]: {
-            minWidth: SCREEN_SIZE.MESSENGER_LEFT_MIN_WIDTH,
-            maxWidth: SCREEN_SIZE.MESSENGER_LEFT_MIN_WIDTH,
+            minWidth: ScreenSize.MESSENGER_LEFT_MIN_WIDTH,
+            maxWidth: ScreenSize.MESSENGER_LEFT_MIN_WIDTH,
             '& div[class*=".ThreadTitle"], div[class*=".ThreadSearch"]': {
                 position: 'absolute',
                 zIndex: -1,
@@ -56,20 +56,20 @@ const useStyles = makeStyles(({ palette, breakpoints, zIndex }) => ({
     },
     right: {
         borderLeft: `1px solid ${palette.divider}`,
-        maxWidth: SCREEN_SIZE.MESSENGER_LEFT_RIGHT_MAX_WIDTH,
+        maxWidth: ScreenSize.MESSENGER_LEFT_RIGHT_MAX_WIDTH,
         transition: 'all 0.3s ease-in-out, height 0s, background-color 0s',
         [breakpoints.down('xl')]: {
-            minWidth: SCREEN_SIZE.MESSENGER_LEFT_MEDIUM_WIDTH,
-            maxWidth: SCREEN_SIZE.MESSENGER_LEFT_MEDIUM_WIDTH,
+            minWidth: ScreenSize.MESSENGER_LEFT_MEDIUM_WIDTH,
+            maxWidth: ScreenSize.MESSENGER_LEFT_MEDIUM_WIDTH,
         },
         [breakpoints.down('lg')]: {
             position: 'fixed',
-            top: SCREEN_SIZE.HEADER_HEIGHT + SCREEN_SIZE.MESSENGER_CENTER_HEADER_HEIGHT,
+            top: ScreenSize.HEADER_HEIGHT + ScreenSize.MESSENGER_CENTER_HEADER_HEIGHT,
             right: 0,
             zIndex: zIndex.drawer,
-            minWidth: SCREEN_SIZE.MESSENGER_LEFT_MEDIUM_WIDTH,
-            maxWidth: SCREEN_SIZE.MESSENGER_LEFT_MEDIUM_WIDTH,
-            maxHeight: `calc(100% - ${SCREEN_SIZE.HEADER_HEIGHT + SCREEN_SIZE.MESSENGER_CENTER_HEADER_HEIGHT}px)`,
+            minWidth: ScreenSize.MESSENGER_LEFT_MEDIUM_WIDTH,
+            maxWidth: ScreenSize.MESSENGER_LEFT_MEDIUM_WIDTH,
+            maxHeight: `calc(100% - ${ScreenSize.HEADER_HEIGHT + ScreenSize.MESSENGER_CENTER_HEADER_HEIGHT}px)`,
         },
     },
     center: {

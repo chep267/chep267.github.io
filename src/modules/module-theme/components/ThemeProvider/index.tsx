@@ -11,13 +11,11 @@ import { StyledEngineProvider } from '@mui/material/styles';
 import { CssBaseline, useMediaQuery, createTheme, ThemeProvider as ThemeProviderMUI } from '@mui/material';
 
 /** constants */
-import { themeLocalKey } from '@module-base/constants/storeKey';
-import { themeObject, breakpoints, palette } from '@module-theme/constants/data';
-import { ThemeContext } from '@module-theme/constants/contexts';
+import { themeLocalKey } from '@module-base/constants';
+import { themeObject, breakpoints, palette, ThemeContext } from '@module-theme/constants';
 
 /** utils */
-import { localStorageBase } from '@module-base/utils/storage';
-import { Crypto } from '@module-base/utils/security';
+import { localStorageBase, Crypto } from '@module-base/utils';
 
 /** types */
 import type { PropsWithChildren } from 'react';

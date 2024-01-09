@@ -10,8 +10,7 @@ import * as React from 'react';
 import { ErrorBoundary } from '@module-base/components';
 
 /** constants */
-import { dataNotifyContextDefault } from '@module-base/constants/defaulValue';
-import { NotifyContext } from '@module-base/constants/contexts';
+import { dataNotifyContextDefault, NotifyContext } from '@module-base/constants';
 
 /** types */
 import type { TypeNotifyContext, TypeNotify, NotifyProviderProps } from '@module-base/models';

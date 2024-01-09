@@ -5,7 +5,7 @@
  */
 
 /** hooks */
-import { useTheme } from './useTheme';
+import { useTheme } from './useTheme.ts';
 
 /** types */
 import type { ComponentType } from '@module-base/models';

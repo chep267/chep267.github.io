@@ -7,7 +7,7 @@ import * as React from 'react';
 import { Route, Routes } from 'react-router-dom';
 
 /** constants */
-import { SCREEN } from '@module-global/constants';
+import { ScreenPath } from '@module-global/constants';
 
 /** screens */
 const NotFoundScreen = React.lazy(() => import('@module-base/screens/NotFoundScreen'));
@@ -19,7 +19,7 @@ export default function CalendarRouter() {
         <React.Suspense fallback={null}>
             <Routes>
                 <Route index element={<CalendarScreen />} />
-                <Route path={SCREEN.CALENDAR_INFO} element={<CalendarInfoScreen />} />
+                <Route path={ScreenPath.CALENDAR_INFO} element={<CalendarInfoScreen />} />
                 <Route path="*" element={<NotFoundScreen />} />
             </Routes>
         </React.Suspense>

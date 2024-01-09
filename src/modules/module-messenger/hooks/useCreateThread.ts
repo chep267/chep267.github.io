@@ -10,8 +10,7 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { apiCreateThread } from '@module-messenger/apis';
 
 /** utils */
-import { checkId } from '@module-base/utils/helpers';
-import { baseMessage } from '@module-base/utils/messages';
+import { checkId, baseMessage } from '@module-base/utils';
 
 /** hooks */
 import { useNotify } from '@module-base/hooks';

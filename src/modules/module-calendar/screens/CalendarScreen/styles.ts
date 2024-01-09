@@ -7,7 +7,7 @@
 import makeStyles from '@mui/styles/makeStyles';
 
 /** constants */
-import { SCREEN_SIZE } from '@module-global/constants';
+import { ScreenSize } from '@module-global/constants';
 
 const useStyles = makeStyles(({ spacing, breakpoints }) => ({
     screen: {
@@ -15,7 +15,7 @@ const useStyles = makeStyles(({ spacing, breakpoints }) => ({
         width: '100%',
         height: '100%',
         padding: `${spacing(5)} 10%`,
-        [breakpoints.down(SCREEN_SIZE.APP_BAR_BREAKPOINT)]: {
+        [breakpoints.down(ScreenSize.APP_BAR_BREAKPOINT)]: {
             padding: 0,
         },
     },

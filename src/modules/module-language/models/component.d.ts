@@ -6,7 +6,7 @@
 
 /** types */
 import type { PropsWithChildren } from 'react';
-import type { TypeLocale, TypeMessages } from './data';
+import type { TypeLocale, TypeMessages } from './data.d.ts';
 
 export type LanguageContextProps = {
     data: {

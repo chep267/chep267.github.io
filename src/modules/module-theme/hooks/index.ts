@@ -5,5 +5,5 @@
  */
 
 /** hooks */
-export * from './useTheme';
-export * from './withTheme';
+export * from './useTheme.ts';
+export * from './withTheme.tsx';

@@ -7,7 +7,7 @@
 import makeStyles from '@mui/styles/makeStyles';
 
 /** constants */
-import { SCREEN_SIZE } from '@module-global/constants';
+import { ScreenSize } from '@module-global/constants';
 
 export const useStyles = makeStyles(({ palette, zIndex }) => ({
     layout: {
@@ -16,9 +16,9 @@ export const useStyles = makeStyles(({ palette, zIndex }) => ({
         width: '100%',
         maxWidth: '100%',
         minWidth: '100%',
-        height: `calc(100% - ${SCREEN_SIZE.HEADER_HEIGHT}px)`,
-        maxHeight: `calc(100% - ${SCREEN_SIZE.HEADER_HEIGHT}px)`,
-        minHeight: `calc(100% - ${SCREEN_SIZE.HEADER_HEIGHT}px)`,
+        height: `calc(100% - ${ScreenSize.HEADER_HEIGHT}px)`,
+        maxHeight: `calc(100% - ${ScreenSize.HEADER_HEIGHT}px)`,
+        minHeight: `calc(100% - ${ScreenSize.HEADER_HEIGHT}px)`,
         overflow: 'auto',
     },
     notFound: {

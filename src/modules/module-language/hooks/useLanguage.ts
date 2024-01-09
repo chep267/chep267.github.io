@@ -6,7 +6,7 @@
 
 import * as React from 'react';
 
-/** contexts */
-import { LanguageContext } from '@module-language/contexts';
+/** constants */
+import { LanguageContext } from '@module-language/constants';
 
 export const useLanguage = () => React.useContext(LanguageContext);

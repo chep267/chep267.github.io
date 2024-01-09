@@ -10,8 +10,7 @@ import { collection, doc, onSnapshot, query, setDoc, deleteDoc, getDoc } from 'f
 import { apiCreateMessage } from '@module-messenger/apis/Message';
 
 /** constants */
-import { firebaseRef } from '@module-base/constants/path';
-import { timePendingApi } from '@module-base/constants/timer';
+import { firebaseRef, timePendingApi } from '@module-base/constants';
 import {
     MESSENGER_CHAT_BOT_AI_ID,
     MESSENGER_DB_ROOT_REF,
@@ -23,8 +22,7 @@ import {
 } from '@module-messenger/constants';
 
 /** utils */
-import { firestore } from '@module-base/utils/firebase';
-import { debounce, checkId } from '@module-base/utils/helpers';
+import { firestore, debounce, checkId } from '@module-base/utils';
 import { genMessage } from '@module-messenger/utils';
 
 /** types */

@@ -8,7 +8,7 @@ import { alpha } from '@mui/material/styles';
 import makeStyles from '@mui/styles/makeStyles';
 
 /** constants */
-import { SCREEN_SIZE } from '@module-global/constants';
+import { ScreenSize } from '@module-global/constants';
 
 const useStyles = makeStyles(({ palette, breakpoints, spacing, zIndex }) => ({
     header: {
@@ -24,10 +24,10 @@ const useStyles = makeStyles(({ palette, breakpoints, spacing, zIndex }) => ({
             justifyContent: 'space-between',
             alignItems: 'center',
             width: '100vw',
-            height: SCREEN_SIZE.HEADER_HEIGHT,
-            maxHeight: SCREEN_SIZE.HEADER_HEIGHT,
-            minHeight: SCREEN_SIZE.HEADER_HEIGHT,
-            padding: `0 ${SCREEN_SIZE.HEADER_PADDING}px`,
+            height: ScreenSize.HEADER_HEIGHT,
+            maxHeight: ScreenSize.HEADER_HEIGHT,
+            minHeight: ScreenSize.HEADER_HEIGHT,
+            padding: `0 ${ScreenSize.HEADER_PADDING}px`,
             [breakpoints.down('sm')]: {
                 padding: `0 ${spacing(1)}`,
             },
@@ -71,7 +71,7 @@ const useStyles = makeStyles(({ palette, breakpoints, spacing, zIndex }) => ({
     },
     menuPaper: {
         zIndex: zIndex.tooltip,
-        '& .MuiPaper-root': { top: `${SCREEN_SIZE.HEADER_HEIGHT + 10}px !important` },
+        '& .MuiPaper-root': { top: `${ScreenSize.HEADER_HEIGHT + 10}px !important` },
     },
     menuIcon: {
         marginLeft: spacing(3),

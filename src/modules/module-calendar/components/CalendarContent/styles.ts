@@ -6,7 +6,7 @@
 
 import makeStyles from '@mui/styles/makeStyles';
 
-const useStyles = makeStyles(({ palette }) => ({
+export const useStyles = makeStyles(({ palette }) => ({
     calendar: {
         width: '100%',
         height: '100%',
@@ -63,5 +63,3 @@ const useStyles = makeStyles(({ palette }) => ({
         },
     },
 }));
-
-export default useStyles;

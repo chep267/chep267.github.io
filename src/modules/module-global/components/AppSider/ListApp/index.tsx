@@ -23,7 +23,7 @@ import { ListBase } from '@module-base/components';
 import AppItem from './AppItem';
 
 /** constants */
-import { SCREEN } from '@module-global/constants';
+import { ScreenPath } from '@module-global/constants';
 
 /** utils */
 import { feedMessage } from '@module-feed/utils';
@@ -45,28 +45,28 @@ const ListApp = React.memo((props: ListAppProps) => {
 
     const MENU_ROUTER = React.useRef<TypeAppItem[]>([
         {
-            path: SCREEN.FEED,
+            path: ScreenPath.FEED,
             name: <FormattedMessage {...feedMessage['module.feed.router.name']} />,
             icon: <HomeIcon />,
-            onClick: () => navigate(SCREEN.FEED),
+            onClick: () => navigate(ScreenPath.FEED),
         },
         {
-            path: SCREEN.MESSENGER,
+            path: ScreenPath.MESSENGER,
             name: <FormattedMessage {...messengerMessage['module.messenger.router.name']} />,
             icon: <TelegramIcon />,
-            onClick: () => navigate(SCREEN.MESSENGER),
+            onClick: () => navigate(ScreenPath.MESSENGER),
         },
         {
-            path: SCREEN.CALENDAR,
+            path: ScreenPath.CALENDAR,
             name: <FormattedMessage {...calendarMessage['module.calendar.router.name']} />,
             icon: <CalendarMonthIcon />,
-            onClick: () => navigate(SCREEN.CALENDAR),
+            onClick: () => navigate(ScreenPath.CALENDAR),
         },
         {
-            path: SCREEN.GAME,
+            path: ScreenPath.GAME,
             name: <FormattedMessage {...gameMessage['module.game.router.name']} />,
             icon: <GamesIcon />,
-            onClick: () => navigate(SCREEN.GAME),
+            onClick: () => navigate(ScreenPath.GAME),
         },
     ]).current;
 

@@ -5,7 +5,7 @@
  */
 
 /** hooks */
-import { useSider } from '@module-global/hooks/useSider';
+import { useSider } from './useSider.ts';
 
 /** types */
 import type { ComponentType } from '@module-base/models';

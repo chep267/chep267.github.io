@@ -8,7 +8,7 @@ import { alpha } from '@mui/material/styles';
 import makeStyles from '@mui/styles/makeStyles';
 
 /** constants */
-import { SCREEN_SIZE } from '@module-global/constants';
+import { ScreenSize } from '@module-global/constants';
 
 const useStyles = makeStyles(({ palette, spacing, zIndex }) => ({
     menu: {
@@ -35,7 +35,7 @@ const useStyles = makeStyles(({ palette, spacing, zIndex }) => ({
     },
     menuPaper: {
         zIndex: zIndex.tooltip,
-        '& .MuiPaper-root': { top: `${SCREEN_SIZE.HEADER_HEIGHT + 10}px !important` },
+        '& .MuiPaper-root': { top: `${ScreenSize.HEADER_HEIGHT + 10}px !important` },
     },
     menuIcon: {
         marginLeft: spacing(3),

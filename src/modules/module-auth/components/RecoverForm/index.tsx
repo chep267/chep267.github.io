@@ -15,12 +15,11 @@ import { Paper, Stack, Typography, TextField } from '@mui/material';
 import { LoadingButton } from '@mui/lab';
 
 /** constants */
-import { emailLocalKey } from '@module-base/constants/storeKey';
-import { AUTH_SCREEN } from '@module-auth/constants';
+import { emailLocalKey } from '@module-base/constants';
+import { AuthScreenPath } from '@module-auth/constants';
 
 /** utils */
-import { localStorageBase } from '@module-base/utils/storage';
-import { Crypto } from '@module-base/utils/security';
+import { Crypto, localStorageBase } from '@module-base/utils';
 import { authMessage, authFormSchema } from '@module-auth/utils';
 
 /** hooks */
@@ -81,13 +80,13 @@ export default function RecoverForm() {
                 />
 
                 <Stack className={classes.link}>
-                    <Link to={AUTH_SCREEN.SIGN_IN} replace>
+                    <Link to={AuthScreenPath.signin} replace>
                         {formatMessage(authMessage['module.auth.form.title.signin'])}
                     </Link>
                     <Typography variant="h6" color="primary.main">
                         &nbsp;/&nbsp;
                     </Typography>
-                    <Link to={AUTH_SCREEN.RECOVER} replace>
+                    <Link to={AuthScreenPath.recover} replace>
                         {formatMessage(authMessage['module.auth.form.title.recover'])}
                     </Link>
                 </Stack>

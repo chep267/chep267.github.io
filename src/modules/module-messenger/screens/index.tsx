@@ -7,7 +7,7 @@ import * as React from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 
 /** constants */
-import { SCREEN } from '@module-global/constants';
+import { ScreenPath } from '@module-global/constants';
 
 /** utils */
 import { genPath } from '@module-base/utils';
@@ -22,9 +22,13 @@ export default function MessengerRouter() {
             <Routes>
                 <Route
                     index
-                    element={<Navigate to={genPath(SCREEN.MESSENGER, SCREEN.MESSENGER_CONVERSATION.replace(':tid', '0'))} />}
+                    element={
+                        <Navigate
+                            to={genPath(ScreenPath.MESSENGER, ScreenPath.MESSENGER_CONVERSATION.replace(':tid', '0'))}
+                        />
+                    }
                 />
-                <Route path={SCREEN.MESSENGER_CONVERSATION} element={<ConversationScreen />} />
+                <Route path={ScreenPath.MESSENGER_CONVERSATION} element={<ConversationScreen />} />
                 <Route path="*" element={<NotFoundScreen />} />
             </Routes>
         </React.Suspense>

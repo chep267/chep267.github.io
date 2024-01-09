@@ -13,7 +13,7 @@ import { TextField, InputAdornment } from '@mui/material';
 import { Clear as ClearIcon, Search as SearchIcon } from '@mui/icons-material';
 
 /** constants */
-import { timeSearching } from '@module-base/constants/timer';
+import { timeSearching } from '@module-base/constants';
 
 /** types */
 import type { InputSearchProps, InputChangeEvent } from '@module-base/models';

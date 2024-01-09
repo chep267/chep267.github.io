@@ -5,7 +5,7 @@
  */
 
 /** hooks */
-import { useAuth } from '@module-auth/hooks/useAuth';
+import { useAuth } from './useAuth.ts';
 
 /** types */
 import type { ComponentType } from '@module-base/models';

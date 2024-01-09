@@ -7,9 +7,9 @@
 import makeStyles from '@mui/styles/makeStyles';
 
 /** constants */
-import { SCREEN_SIZE } from '@module-global/constants';
+import { ScreenSize } from '@module-global/constants';
 
-const useStyles = makeStyles(({ palette }) => ({
+export const useStyles = makeStyles(({ palette }) => ({
     screen: {
         flexDirection: 'row',
         width: '100%',
@@ -21,7 +21,7 @@ const useStyles = makeStyles(({ palette }) => ({
         width: '100%',
         height: '100%',
         borderRadius: 0,
-        maxWidth: SCREEN_SIZE.MESSENGER_LEFT_RIGHT_MAX_WIDTH,
+        maxWidth: ScreenSize.MESSENGER_LEFT_RIGHT_MAX_WIDTH,
     },
     mainContent: {
         display: 'flex',
@@ -33,5 +33,3 @@ const useStyles = makeStyles(({ palette }) => ({
         borderRight: `3px solid ${palette.divider}`,
     },
 }));
-
-export default useStyles;

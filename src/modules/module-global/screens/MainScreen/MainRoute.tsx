@@ -14,7 +14,7 @@ import { Box } from '@mui/material';
 import { SiderProvider, AppSider } from '@module-global/components';
 
 /** constants */
-import { SCREEN } from '@module-global/constants';
+import { ScreenPath } from '@module-global/constants';
 
 /** styles */
 import { useStyles } from './styles';
@@ -37,11 +37,11 @@ export default function MainRoute() {
             <Box className={classes.mainContent} component="main">
                 <React.Suspense fallback={null}>
                     <Routes>
-                        <Route path={SCREEN.HOME} element={<Navigate to={SCREEN.CALENDAR} />} />
-                        <Route path={`${SCREEN.FEED}/*`} element={<NewFeedScreen />} />
-                        <Route path={`${SCREEN.MESSENGER}/*`} element={<MessengerScreen />} />
-                        <Route path={`${SCREEN.CALENDAR}/*`} element={<CalendarScreen />} />
-                        <Route path={`${SCREEN.GAME}/*`} element={<GameScreen />} />
+                        <Route path={ScreenPath.HOME} element={<Navigate to={ScreenPath.CALENDAR} />} />
+                        <Route path={`${ScreenPath.FEED}/*`} element={<NewFeedScreen />} />
+                        <Route path={`${ScreenPath.MESSENGER}/*`} element={<MessengerScreen />} />
+                        <Route path={`${ScreenPath.CALENDAR}/*`} element={<CalendarScreen />} />
+                        <Route path={`${ScreenPath.GAME}/*`} element={<GameScreen />} />
                         <Route path="*" element={<NotFoundScreen />} />
                     </Routes>
                 </React.Suspense>

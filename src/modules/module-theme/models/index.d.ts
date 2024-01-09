@@ -7,6 +7,11 @@
 /** types */
 import type { ColorType, PaletteMode, Theme } from '@mui/material';
 
+declare module '*.ttf';
+declare module '*.woff';
+declare module '*.woff2';
+declare module '*.otf';
+
 declare module '@mui/material/styles' {
     interface BreakpointOverrides {
         xs: true;

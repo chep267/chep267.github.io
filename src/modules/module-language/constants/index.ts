@@ -5,4 +5,5 @@
  */
 
 /** constants */
-export * from './localeObject';
+export * from './localeObject.ts';
+export * from './LanguageContext.ts';

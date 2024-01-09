@@ -17,7 +17,7 @@ import ButtonDev from './ButtonDev';
 import { useAuth } from '@module-auth/hooks';
 
 /** styles */
-import useStyles from './styles';
+import { useStyles } from './styles';
 
 export default function AppMenu() {
     const AUTH = useAuth();

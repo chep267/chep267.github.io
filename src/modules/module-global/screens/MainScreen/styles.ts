@@ -7,7 +7,7 @@
 import makeStyles from '@mui/styles/makeStyles';
 
 /** constants */
-import { SCREEN_SIZE } from '@module-global/constants';
+import { ScreenSize } from '@module-global/constants';
 
 export const useStyles = makeStyles({
     main: {
@@ -23,14 +23,14 @@ export const useStyles = makeStyles({
         width: '100%',
         maxWidth: '100%',
         minWidth: '100%',
-        height: `calc(100% - ${SCREEN_SIZE.HEADER_HEIGHT}px)`,
-        maxHeight: `calc(100% - ${SCREEN_SIZE.HEADER_HEIGHT}px)`,
-        minHeight: `calc(100% - ${SCREEN_SIZE.HEADER_HEIGHT}px)`,
+        height: `calc(100% - ${ScreenSize.HEADER_HEIGHT}px)`,
+        maxHeight: `calc(100% - ${ScreenSize.HEADER_HEIGHT}px)`,
+        minHeight: `calc(100% - ${ScreenSize.HEADER_HEIGHT}px)`,
     },
     mainContent: {
         display: 'flex',
         width: '100%',
         height: '100%',
-        maxWidth: `calc(100% - ${SCREEN_SIZE.APP_BAR_MIN_WIDTH}px)`,
+        maxWidth: `calc(100% - ${ScreenSize.APP_BAR_MIN_WIDTH}px)`,
     },
 });

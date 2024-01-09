@@ -5,4 +5,3 @@
  */
 
 /** constants */
-export * from './ref';

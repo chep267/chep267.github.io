@@ -14,7 +14,7 @@ import { ListBase } from '@module-base/components';
 import ThreadItem from '@module-messenger/components/ThreadList/ThreadItem';
 
 /** constants */
-import { SCREEN } from '@module-global/constants';
+import { ScreenPath } from '@module-global/constants';
 
 /** utils */
 import { genPath } from '@module-base/utils';
@@ -39,12 +39,12 @@ const ThreadList = React.memo(() => {
 
     React.useEffect(() => {
         if (firstId && (!currentTid || currentTid === '0')) {
-            navigate(genPath(SCREEN.MESSENGER, SCREEN.MESSENGER_CONVERSATION.replace(':tid', firstId)));
+            navigate(genPath(ScreenPath.MESSENGER, ScreenPath.MESSENGER_CONVERSATION.replace(':tid', firstId)));
         }
     }, [currentTid, firstId]);
 
     const onClickItem = React.useCallback((tid: string) => {
-        navigate(genPath(SCREEN.MESSENGER, SCREEN.MESSENGER_CONVERSATION.replace(':tid', tid)));
+        navigate(genPath(ScreenPath.MESSENGER, ScreenPath.MESSENGER_CONVERSATION.replace(':tid', tid)));
     }, []);
 
     const renderItem = (tid: string) => {

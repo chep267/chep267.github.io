@@ -10,7 +10,7 @@ import { loadSlim } from '@tsparticles/slim';
 import { useTheme } from '@mui/material';
 
 /** constants */
-import { particleOptions } from '@module-base/utils/helpers';
+import { particleOptions } from '@module-base/utils';
 
 /** types */
 // import type { Container } from '@tsparticles/engine';

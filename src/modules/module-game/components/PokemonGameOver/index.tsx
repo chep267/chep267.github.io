@@ -12,7 +12,7 @@ import { Link } from 'react-router-dom';
 import { Stack, Typography, Button } from '@mui/material';
 
 /** constants */
-import { SCREEN } from '@module-global/constants';
+import { ScreenPath } from '@module-global/constants';
 
 /** utils */
 import { gameMessage } from '@module-game/utils';
@@ -43,7 +43,7 @@ export default function PokemonGameOver(props: PokemonTimerProps) {
                 <Button variant="outlined" onClick={method.restartGame}>
                     {formatMessage(gameMessage['module.game.pokemon.button.restart'])}
                 </Button>
-                <Link to={SCREEN.GAME}>
+                <Link to={ScreenPath.GAME}>
                     <Button variant="outlined" color="error">
                         {formatMessage(gameMessage['module.game.pokemon.button.exit'])}
                     </Button>

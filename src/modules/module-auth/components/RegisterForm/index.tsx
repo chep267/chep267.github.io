@@ -18,7 +18,7 @@ import { LoadingButton } from '@mui/lab';
 import { PasswordField } from '@module-base/components';
 
 /** constants */
-import { AUTH_SCREEN } from '@module-auth/constants';
+import { AuthScreenPath } from '@module-auth/constants';
 
 /** utils */
 import { authMessage, authFormSchema } from '@module-auth/utils';
@@ -106,13 +106,13 @@ export default function RegisterForm() {
                 />
 
                 <Stack className={classes.link}>
-                    <Link to={AUTH_SCREEN.SIGN_IN} replace>
+                    <Link to={AuthScreenPath.signin} replace>
                         {formatMessage(authMessage['module.auth.form.title.signin'])}
                     </Link>
                     <Typography variant="h6" color="primary.main">
                         &nbsp;/&nbsp;
                     </Typography>
-                    <Link to={AUTH_SCREEN.RECOVER} replace>
+                    <Link to={AuthScreenPath.recover} replace>
                         {formatMessage(authMessage['module.auth.form.title.recover'])}
                     </Link>
                 </Stack>

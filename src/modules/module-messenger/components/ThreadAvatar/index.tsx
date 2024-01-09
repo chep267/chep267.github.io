@@ -11,7 +11,7 @@ import { Avatar, Skeleton } from '@mui/material';
 import { UserAvatar } from '@module-user/components';
 
 /** utils */
-import { checkId } from '@module-base/utils/helpers';
+import { checkId } from '@module-base/utils';
 
 /** types */
 import type { AvatarProps } from '@mui/material';

@@ -11,7 +11,7 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import { Stack } from '@mui/material';
 
 /** constants */
-import { AUTH_SCREEN } from '@module-auth/constants';
+import { AuthScreenPath } from '@module-auth/constants';
 
 /** styles */
 import useStyles from './styles';
@@ -30,10 +30,10 @@ export default function SignInScreen() {
             <Stack className={classes.form}>
                 <React.Suspense fallback={null}>
                     <Routes>
-                        <Route path={AUTH_SCREEN.SIGN_IN} element={<SignInForm />} />
-                        <Route path={AUTH_SCREEN.REGISTER} element={<RegisterForm />} />
-                        <Route path={AUTH_SCREEN.RECOVER} element={<RecoverForm />} />
-                        <Route path="*" element={<Navigate to={AUTH_SCREEN.SIGN_IN} replace />} />
+                        <Route path={AuthScreenPath.signin} element={<SignInForm />} />
+                        <Route path={AuthScreenPath.register} element={<RegisterForm />} />
+                        <Route path={AuthScreenPath.recover} element={<RecoverForm />} />
+                        <Route path="*" element={<Navigate to={AuthScreenPath.signin} replace />} />
                     </Routes>
                 </React.Suspense>
             </Stack>

@@ -5,10 +5,10 @@
  */
 
 /** utils */
-import { checkId } from '@module-base/utils/helpers';
+import { checkId } from '@module-base/utils';
 
 /** hooks */
-import { useListUser } from '@module-user/hooks/useListUser';
+import { useListUser } from './useListUser.ts';
 
 /** types */
 import type { UserInfo } from '@module-user/models';

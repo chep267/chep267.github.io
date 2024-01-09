@@ -7,7 +7,7 @@
 import * as React from 'react';
 
 /** constants */
-import { emptyFunction } from '@module-base/constants/defaulValue';
+import { emptyFunction } from '@module-base/constants';
 
 /** types */
 import type { ThreadSearchContextProps } from '@module-messenger/models';

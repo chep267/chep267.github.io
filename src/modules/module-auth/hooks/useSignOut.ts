@@ -11,7 +11,7 @@ import { useMutation } from '@tanstack/react-query';
 import { apiSignOut } from '@module-auth/apis';
 
 /** constants */
-import { accessTokenKey } from '@module-base/constants/storeKey';
+import { accessTokenKey } from '@module-base/constants';
 
 /** hooks */
 import { useAuth } from '@module-auth/hooks';

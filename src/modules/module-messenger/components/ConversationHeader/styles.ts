@@ -7,7 +7,7 @@
 import makeStyles from '@mui/styles/makeStyles';
 
 /** constants */
-import { SCREEN_SIZE } from '@module-global/constants';
+import { ScreenSize } from '@module-global/constants';
 
 const useStyles = makeStyles(({ spacing, palette }) => ({
     header: {
@@ -17,9 +17,9 @@ const useStyles = makeStyles(({ spacing, palette }) => ({
         width: '100%',
         padding: `${spacing(3)} ${spacing(2)}`,
         borderBottom: `1px solid ${palette.divider}`,
-        height: SCREEN_SIZE.MESSENGER_CENTER_HEADER_HEIGHT,
-        minHeight: SCREEN_SIZE.MESSENGER_CENTER_HEADER_HEIGHT,
-        maxHeight: SCREEN_SIZE.MESSENGER_CENTER_HEADER_HEIGHT,
+        height: ScreenSize.MESSENGER_CENTER_HEADER_HEIGHT,
+        minHeight: ScreenSize.MESSENGER_CENTER_HEADER_HEIGHT,
+        maxHeight: ScreenSize.MESSENGER_CENTER_HEADER_HEIGHT,
     },
     header_left: {
         width: '100%',

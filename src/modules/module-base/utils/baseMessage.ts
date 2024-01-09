@@ -6,6 +6,6 @@
 
 /** utils */
 import { vi } from './vi.ts';
-import { createMessageIntl } from '@module-base/utils/helpers';
+import { createMessageIntl } from './createMessageIntl.ts';
 
 export const baseMessage = createMessageIntl(vi);

@@ -8,9 +8,9 @@ import { alpha } from '@mui/material/styles';
 import makeStyles from '@mui/styles/makeStyles';
 
 /** constants */
-import { SCREEN_SIZE } from '@module-global/constants';
+import { ScreenSize } from '@module-global/constants';
 
-const useStyles = makeStyles(({ palette, spacing, zIndex }) => ({
+export const useStyles = makeStyles(({ palette, spacing, zIndex }) => ({
     menu: {
         flexDirection: 'row',
         alignItems: 'center',
@@ -35,7 +35,7 @@ const useStyles = makeStyles(({ palette, spacing, zIndex }) => ({
     },
     menuPaper: {
         zIndex: zIndex.tooltip,
-        '& .MuiPaper-root': { top: `${SCREEN_SIZE.HEADER_HEIGHT + 10}px !important` },
+        '& .MuiPaper-root': { top: `${ScreenSize.HEADER_HEIGHT + 10}px !important` },
     },
     menuIcon: {
         marginLeft: spacing(3),
@@ -48,5 +48,3 @@ const useStyles = makeStyles(({ palette, spacing, zIndex }) => ({
         color: palette.primary.main,
     },
 }));
-
-export default useStyles;

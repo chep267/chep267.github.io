@@ -5,7 +5,7 @@
  */
 
 /** hooks */
-import { useLanguage } from './useLanguage';
+import { useLanguage } from './useLanguage.ts';
 
 /** types */
 import type { ComponentType } from '@module-base/models';

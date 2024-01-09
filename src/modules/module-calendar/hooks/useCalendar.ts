@@ -7,6 +7,6 @@
 import * as React from 'react';
 
 /** constants */
-import { CalendarContext } from './CalendarContext';
+import { CalendarContext } from '@module-calendar/constants';
 
 export const useCalendar = () => React.useContext(CalendarContext);

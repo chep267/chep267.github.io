@@ -15,7 +15,7 @@ import { IconBase } from '@module-base/components';
 
 /** constants */
 import { APP_NAME } from '@root/constants';
-import { SCREEN } from '@module-global/constants';
+import { ScreenPath } from '@module-global/constants';
 
 /** styles */
 import useStyles from './styles';
@@ -26,7 +26,7 @@ export default function Info() {
 
     return React.useMemo(() => {
         return (
-            <Stack className={classes.info} onClick={() => navigate(SCREEN.HOME)}>
+            <Stack className={classes.info} onClick={() => navigate(ScreenPath.HOME)}>
                 <IconBase name="appLogo" className={classes.infoIcon} />
                 <Typography variant="h5" fontWeight={600}>
                     {APP_NAME}
