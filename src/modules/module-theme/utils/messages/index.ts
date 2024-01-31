@@ -4,8 +4,12 @@
  *
  */
 
+import { defineMessages } from 'react-intl';
+
 /** utils */
 import { createMessageIntl } from '@module-base/utils';
 import { vi } from './vi.ts';
+import { en } from './en.ts';
 
-export const themeMessage = createMessageIntl(vi);
+export const themeMessage = defineMessages(createMessageIntl(vi));
+export { vi, en };

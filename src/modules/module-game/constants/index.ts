@@ -5,15 +5,8 @@
  */
 
 /** constants */
-import { ScreenPath } from '@module-global/constants';
-import pokemon_logo from '@module-game/assets/images/pokemon_logo.png';
-
-export const GAME_CENTER = {
-    POKEMON: {
-        icon: pokemon_logo,
-        path: `${ScreenPath.GAME}${ScreenPath.GAME_POKEMON}`,
-        name: 'Pokemon',
-    },
-};
-
-export * from './Pikachu';
+export * from './GAME_CENTER.ts';
+export * from './POKEMON_LINE.ts';
+export * from './POKEMON_LOGO.ts';
+export * from './PokemonStateDefault.ts';
+export * from './PokemonContext.ts';

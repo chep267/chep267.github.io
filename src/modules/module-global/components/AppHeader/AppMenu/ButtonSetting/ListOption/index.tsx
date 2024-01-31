@@ -23,7 +23,7 @@ import {
 import { NestedItem } from '@module-base/components';
 
 /** utils */
-import { themeMessage } from '@module-theme/utils';
+import { themeMessage } from '@module-theme/utils/messages';
 import { langMessage } from '@module-language/utils';
 import { calendarMessage } from '@module-calendar/utils';
 import { authMessage } from '@module-auth/utils';

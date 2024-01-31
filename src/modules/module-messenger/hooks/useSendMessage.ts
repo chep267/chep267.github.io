@@ -10,7 +10,7 @@ import { useMutation } from '@tanstack/react-query';
 import { apiCreateMessage, apiSendFile } from '@module-messenger/apis';
 
 /** constants */
-import { MESSENGER_CHAT_BOT_AI_ID, MessageGPT } from '@module-messenger/constants';
+import { ChatBotGPT, MessageGPT } from '@module-messenger/constants';
 
 /** utils */
 import { checkId, baseMessage } from '@module-base/utils';
@@ -59,7 +59,7 @@ export function useSendMessage() {
             });
         },
         onSuccess: ({ message }, { tid }) => {
-            if (tid === MESSENGER_CHAT_BOT_AI_ID) {
+            if (tid === ChatBotGPT.MESSENGER_CHAT_BOT_AI_ID) {
                 /** chatbot reply */
                 const arrText = MessageGPT['random'];
                 const text = arrText[Math.floor(Math.random() * arrText.length)];

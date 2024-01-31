@@ -7,7 +7,7 @@
 import * as React from 'react';
 
 /** utils */
-import { SiderContext } from '@module-global/hooks';
+import { SiderContext } from '@module-global/constants';
 
 /** types */
 import type { SiderProviderProps, TypeSiderContext } from '@module-global/models';

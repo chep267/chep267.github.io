@@ -7,25 +7,6 @@
 import * as React from 'react';
 
 /** constants */
-import { emptyFunction } from '@module-base/constants';
+import { ThreadSearchContext } from '@module-messenger/constants';
 
-/** types */
-import type { ThreadSearchContextProps } from '@module-messenger/models';
-
-const ThreadSearchContext = React.createContext<ThreadSearchContextProps>({
-    data: {
-        isSearching: false,
-        isFocusSearch: false,
-        searchKey: '',
-    },
-    method: {
-        setSearching: emptyFunction,
-        setFocusSearch: emptyFunction,
-        setSearchKey: emptyFunction,
-    },
-});
-ThreadSearchContext.displayName = 'ThreadSearchContext';
-
-const useUiThreadSearch = () => React.useContext(ThreadSearchContext);
-
-export { ThreadSearchContext, useUiThreadSearch };
+export const useUiThreadSearch = () => React.useContext(ThreadSearchContext);

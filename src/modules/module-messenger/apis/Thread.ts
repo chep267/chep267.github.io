@@ -7,19 +7,11 @@
 import { collection, doc, onSnapshot, query, setDoc, deleteDoc, getDoc } from 'firebase/firestore';
 
 /** apis */
-import { apiCreateMessage } from '@module-messenger/apis/Message';
+import { apiCreateMessage } from './apiCreateMessage.ts';
 
 /** constants */
 import { firebaseRef, timePendingApi } from '@module-base/constants';
-import {
-    MESSENGER_CHAT_BOT_AI_ID,
-    MESSENGER_DB_ROOT_REF,
-    MESSENGER_DB_THREAD_INFO_REF,
-    MESSENGER_DB_THREADS_REF,
-    MESSENGER_DB_USERS_REF,
-    MessageGPT,
-    MID_GPT_START,
-} from '@module-messenger/constants';
+import { ChatBotGPT, MessageGPT } from '@module-messenger/constants';
 
 /** utils */
 import { firestore, debounce, checkId } from '@module-base/utils';
@@ -29,16 +21,11 @@ import { genMessage } from '@module-messenger/utils';
 import type { TypeItemIds, TypeItems } from '@module-base/models';
 import type { MessengerApiProps, TypeDocumentThreadData } from '@module-messenger/models';
 
-const apiOnGetListThread = async (
+export const apiOnGetListThread = async (
     payload: MessengerApiProps['GetListThread']['Payload']
 ): Promise<MessengerApiProps['GetListThread']['Response']> => {
     const { timer = timePendingApi, uid, fnCallback } = payload;
-    const docRef = collection(
-        firestore,
-        MESSENGER_DB_ROOT_REF,
-        uid,
-        `${MESSENGER_DB_THREADS_REF}-${MESSENGER_DB_THREAD_INFO_REF}`
-    );
+    const docRef = collection(firestore, firebaseRef.messenger, uid, `${firebaseRef.thread}-${firebaseRef.info}`);
 
     const onGet = () => {
         const unsubscribe = onSnapshot(query(docRef), (querySnapshot) => {
@@ -49,29 +36,29 @@ const apiOnGetListThread = async (
                 itemIds.unshift(tid);
                 items[tid] = doc.data() as TypeDocumentThreadData;
             });
-            if (!itemIds.includes(MESSENGER_CHAT_BOT_AI_ID)) {
-                itemIds.unshift(MESSENGER_CHAT_BOT_AI_ID);
+            if (!itemIds.includes(ChatBotGPT.MESSENGER_CHAT_BOT_AI_ID)) {
+                itemIds.unshift(ChatBotGPT.MESSENGER_CHAT_BOT_AI_ID);
                 const dataGPT = genMessage({
-                    tid: MESSENGER_CHAT_BOT_AI_ID,
-                    uid: MESSENGER_CHAT_BOT_AI_ID,
+                    tid: ChatBotGPT.MESSENGER_CHAT_BOT_AI_ID,
+                    uid: ChatBotGPT.MESSENGER_CHAT_BOT_AI_ID,
                     text: MessageGPT['start'],
-                    mid: MID_GPT_START,
+                    mid: ChatBotGPT.MID_GPT_START,
                     isEncrypt: true,
                 });
                 apiCreateMessage({
                     uid,
-                    tid: MESSENGER_CHAT_BOT_AI_ID,
+                    tid: ChatBotGPT.MESSENGER_CHAT_BOT_AI_ID,
                     mid: dataGPT.mid,
                     data: dataGPT,
                 });
                 return apiCreateThread({
-                    tid: MESSENGER_CHAT_BOT_AI_ID,
+                    tid: ChatBotGPT.MESSENGER_CHAT_BOT_AI_ID,
                     uid,
                     data: {
                         type: 'thread',
-                        tid: MESSENGER_CHAT_BOT_AI_ID,
+                        tid: ChatBotGPT.MESSENGER_CHAT_BOT_AI_ID,
                         name: 'Chep GPT',
-                        members: [uid, checkId(MESSENGER_CHAT_BOT_AI_ID, 'uid')],
+                        members: [uid, checkId(ChatBotGPT.MESSENGER_CHAT_BOT_AI_ID, 'uid')],
                     },
                 });
             }
@@ -83,33 +70,19 @@ const apiOnGetListThread = async (
     return response;
 };
 
-const apiCreateThread = async (
+export const apiCreateThread = async (
     payload: MessengerApiProps['CreateThread']['Payload']
 ): Promise<MessengerApiProps['CreateThread']['Response']> => {
     const { uid, tid, data } = payload;
-    const docRef = doc(
-        firestore,
-        MESSENGER_DB_ROOT_REF,
-        uid,
-        `${MESSENGER_DB_THREADS_REF}-${MESSENGER_DB_THREAD_INFO_REF}`,
-        tid
-    );
+    const docRef = doc(firestore, firebaseRef.messenger, uid, `${firebaseRef.thread}-${firebaseRef.info}`, tid);
     return setDoc(docRef, data, { merge: true });
 };
 
-const apiMoveThread = async (
+export const apiMoveThread = async (
     payload: MessengerApiProps['MoveThread']['Payload']
 ): Promise<MessengerApiProps['MoveThread']['Response']> => {
     const { uid, tid } = payload;
-    const docRef = doc(
-        firestore,
-        firebaseRef.root,
-        MESSENGER_DB_ROOT_REF,
-        MESSENGER_DB_USERS_REF,
-        uid,
-        MESSENGER_DB_THREADS_REF,
-        tid
-    );
+    const docRef = doc(firestore, firebaseRef.root, firebaseRef.messenger, firebaseRef.user, uid, firebaseRef.thread, tid);
     let thread = {};
     const docSnap = await getDoc(docRef);
     if (docSnap.exists()) {
@@ -118,5 +91,3 @@ const apiMoveThread = async (
     }
     return setDoc(docRef, thread);
 };
-
-export { apiOnGetListThread, apiCreateThread, apiMoveThread };

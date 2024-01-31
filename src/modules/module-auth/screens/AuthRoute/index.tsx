@@ -44,17 +44,19 @@ export default function AuthRoute(props: PropsWithChildren) {
         if (accountState === AccountState.signedIn && Object.values(AuthScreenPath).includes(pathname as any)) {
             navigate(AuthScreenPath.home, { replace: true });
         }
-    }, [accountState]);
+    }, [accountState, pathname]);
 
-    return (
-        <React.Suspense>
-            {accountState === AccountState.signedIn ? (
-                children
-            ) : accountState === AccountState.reSignin ? (
-                <StartScreen />
-            ) : (
-                <SignInScreen />
-            )}
-        </React.Suspense>
-    );
+    return React.useMemo(() => {
+        return (
+            <React.Suspense>
+                {accountState === AccountState.signedIn ? (
+                    children
+                ) : accountState === AccountState.reSignin ? (
+                    <StartScreen />
+                ) : (
+                    <SignInScreen />
+                )}
+            </React.Suspense>
+        );
+    }, [accountState]);
 }

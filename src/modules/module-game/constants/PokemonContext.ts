@@ -8,24 +8,12 @@ import * as React from 'react';
 
 /** constants */
 import { emptyFunction } from '@module-base/constants';
-
-/** utils */
-import { PokemonUtils } from '@module-game/utils';
+import { PokemonStateDefault } from './PokemonStateDefault.ts';
 
 /** types */
 import type { PokemonContextProps } from '@module-game/models';
 
-const PokemonStateDefault: PokemonContextProps['data'] = {
-    boardGame: [],
-    items: [],
-    status: 'pending',
-    level: 'easy',
-    duration: PokemonUtils.GameLevel['easy'].duration,
-    gameKey: 1,
-    point: 0,
-};
-
-const PokemonContext = React.createContext<PokemonContextProps>({
+export const PokemonContext = React.createContext<PokemonContextProps>({
     data: PokemonStateDefault,
     method: {
         initGame: emptyFunction,
@@ -37,7 +25,3 @@ const PokemonContext = React.createContext<PokemonContextProps>({
     },
 });
 PokemonContext.displayName = 'PokemonContext';
-
-const usePokemon = () => React.useContext(PokemonContext);
-
-export { PokemonContext, usePokemon, PokemonStateDefault };

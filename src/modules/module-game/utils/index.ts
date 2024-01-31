@@ -8,4 +8,4 @@
 export * from './vi.ts';
 export * from './en.ts';
 export * from './gameMessage.ts';
-export * from './helpers';
+export * from './PokemonUtils.ts';

@@ -5,7 +5,9 @@
  */
 
 /** types */
-import type { ColorType, PaletteMode, Theme } from '@mui/material';
+import type { ColorType, Theme } from '@mui/material';
+
+export * from './data.d.ts';
 
 declare module '*.ttf';
 declare module '*.woff';
@@ -74,14 +76,3 @@ declare module '@mui/material/styles' {
 declare module '@mui/styles/defaultTheme' {
     interface DefaultTheme extends Theme {}
 }
-
-export type ThemeModeType = PaletteMode;
-
-export type ThemeContextProps = {
-    data: {
-        mode: ThemeModeType;
-    };
-    method: {
-        setTheme: (value: ThemeModeType) => void;
-    };
-};

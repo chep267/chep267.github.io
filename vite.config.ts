@@ -29,6 +29,7 @@ export default ({ mode }) => {
     const isDevMode = process.env.VITE_APP_MODE === 'dev';
     const portENV = Number(process.env.VITE_APP_PORT);
     const port = isNaN(portENV) ? 8080 : portENV;
+    const host = process.env.VITE_APP_HOST;
 
     return defineConfig({
         plugins: [
@@ -44,25 +45,12 @@ export default ({ mode }) => {
             extensions: ['.tsx', '.ts', '.js', '.jsx'],
         },
         build: {
-            minify: 'esbuild',
-            target: 'esnext',
             sourcemap: isDevMode,
-            rollupOptions: {
-                treeshake: true,
-            },
         },
         server: {
-            host: process.env.VITE_APP_HOST,
+            host,
             port,
-            open: true,
-            warmup: {
-                clientFiles: [
-                    // './src/modules/module-theme/components/ThemeProvider/index.tsx',
-                    // './src/modules/module-language/components/LanguageProvider/index.tsx',
-                    // './src/modules/module-auth/components/AuthProvider/index.tsx',
-                    // './src/modules/module-base/components/NotifyProvider/index.tsx',
-                ],
-            },
+            open: true, // auto open in browser
         },
         esbuild: {
             treeShaking: true,

@@ -7,7 +7,7 @@
 /** utils */
 import { vi as viBase, en as enBase } from '@module-base/utils';
 import { vi as viLang, en as enLang } from '@module-language/utils';
-import { vi as viTheme, en as enTheme } from '@module-theme/utils';
+import { vi as viTheme, en as enTheme } from '@module-theme/utils/messages';
 import { vi as viUser, en as enUser } from '@module-user/utils';
 import { vi as viGlobal, en as enGlobal } from '@module-global/utils';
 import { vi as viAuth, en as enAuth } from '@module-auth/utils';

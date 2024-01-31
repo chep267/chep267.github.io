@@ -10,6 +10,6 @@ export * from './en.ts';
 export * from './calendarMessage.ts';
 
 /** other */
-export * from './genMatrixCalendar';
+export * from './genMatrixCalendarDayJS.ts';
 export * from './reverseMatrix';
 export { default as VietnameseDate } from './Lunar';

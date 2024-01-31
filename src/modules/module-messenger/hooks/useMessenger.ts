@@ -5,6 +5,6 @@
  */
 
 import * as React from 'react';
-import { MessengerContext } from './MessengerContext';
+import { MessengerContext } from '../constants/MessengerContext.ts';
 
 export const useMessenger = () => React.useContext(MessengerContext);

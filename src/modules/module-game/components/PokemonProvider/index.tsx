@@ -6,12 +6,14 @@
 
 import * as React from 'react';
 
+/** constants */
+import { PokemonContext, PokemonStateDefault } from '@module-game/constants';
+
 /** utils */
-import { GameLevel, genBoardGame, isItemInArray, hasPruneItem } from '@module-game/utils';
+import { PokemonUtils } from '@module-game/utils';
 
 /** hooks */
 import { useCountdown } from '@module-base/hooks';
-import { PokemonContext, PokemonStateDefault } from '@module-game/hooks';
 
 /** types */
 import type { PropsWithChildren } from 'react';
@@ -36,7 +38,7 @@ export default function PokemonProvider(props: PropsWithChildren) {
 
     /** Effect victory game */
     React.useEffect(() => {
-        if (point >= GameLevel[level].point) {
+        if (point >= PokemonUtils.GameLevel[level].point) {
             setStatus('next');
         }
     }, [point]);
@@ -51,7 +53,7 @@ export default function PokemonProvider(props: PropsWithChildren) {
     /** Effect select item */
     React.useEffect(() => {
         const statusPresent: TypePokemonItemStatus =
-            items.length > 1 ? (hasPruneItem(boardGame, items) ? 'success' : 'error') : 'select';
+            items.length > 1 ? (PokemonUtils.hasPruneItem(boardGame, items) ? 'success' : 'error') : 'select';
         if (statusPresent === 'error') {
             setTimeout(() => {
                 setItems([]);
@@ -77,9 +79,9 @@ export default function PokemonProvider(props: PropsWithChildren) {
 
     const initGame = React.useCallback<PokemonContextProps['method']['initGame']>((level) => {
         setLevel(level);
-        setBoardGame(genBoardGame(level));
+        setBoardGame(PokemonUtils.genBoardGame(level));
         setStatus('start');
-        COUNT_DOWN.onRefresh(GameLevel[level].duration);
+        COUNT_DOWN.onRefresh(PokemonUtils.GameLevel[level].duration);
     }, []);
 
     const restartGame = React.useCallback<PokemonContextProps['method']['restartGame']>(() => {
@@ -100,7 +102,7 @@ export default function PokemonProvider(props: PropsWithChildren) {
             if (prev.length === 2) {
                 return prev;
             }
-            if (isItemInArray(prev, item)) {
+            if (PokemonUtils.isItemInArray(prev, item)) {
                 return [];
             }
             return [...prev, item];
@@ -108,7 +110,7 @@ export default function PokemonProvider(props: PropsWithChildren) {
     }, []);
 
     const getItemStatus: PokemonContextProps['method']['getItemStatus'] = (item) => {
-        return isItemInArray(items, item) ? itemStatus : undefined;
+        return PokemonUtils.isItemInArray(items, item) ? itemStatus : undefined;
     };
 
     const store = React.useMemo<PokemonContextProps>(
@@ -118,7 +120,7 @@ export default function PokemonProvider(props: PropsWithChildren) {
                 items,
                 status,
                 level,
-                duration: GameLevel[level].duration,
+                duration: PokemonUtils.GameLevel[level].duration,
                 gameKey,
                 point,
             },

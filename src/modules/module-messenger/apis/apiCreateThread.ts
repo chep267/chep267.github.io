@@ -4,5 +4,5 @@
  *
  */
 
-/** utils */
-export * from './Pokemon';
+/** apis */
+export { apiCreateThread } from './Thread.ts';

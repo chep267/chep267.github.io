@@ -37,8 +37,7 @@ module.exports = {
     },
     ignorePatterns: ['dist', '.eslintrc.cjs'],
     parser: '@typescript-eslint/parser',
-    plugins: ['react-refresh', 'prettier', '@tanstack/query'],
-    // plugins: ['prettier'],
+    plugins: ['react-refresh', 'prettier', '@tanstack/query', 'formatjs'],
     settings: {
         react: {
             // Nói eslint-plugin-react tự động biết version của React.
@@ -71,6 +70,9 @@ module.exports = {
         '@tanstack/query/exhaustive-deps': 'off',
         '@tanstack/query/no-rest-destructuring': 'warn',
         '@tanstack/query/stable-query-client': 'error',
+
+        // intl
+        "formatjs/no-offset": "error",
 
         // Cảnh báo khi import sai
         'no-restricted-imports': [

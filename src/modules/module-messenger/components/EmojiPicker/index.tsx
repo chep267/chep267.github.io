@@ -11,7 +11,7 @@ import Picker from '@emoji-mart/react';
 
 /** hooks */
 import { useLanguage } from '@module-language/hooks';
-import { useTheme } from '@module-theme/hooks';
+import { useTheme } from '@module-theme/hooks/useTheme.ts';
 
 type EmojiPickerProps = {
     onEmojiSelect?(emoji: any, event?: any): void;

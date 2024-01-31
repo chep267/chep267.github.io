@@ -5,5 +5,7 @@
  */
 
 /** constants */
-export * from './chatGPT';
-export * from './ref';
+export * from './MessageGPT.ts';
+export * from './ChatBotGPT.ts';
+export * from './MessengerContext.ts';
+export * from './ThreadSearchContext.ts';

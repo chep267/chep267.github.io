@@ -351,4 +351,4 @@ const getItemPosition = (x: number, y: number) => {
     return { posX, posY };
 };
 
-export { GameLevel, isItemInArray, genBoardGame, hasPruneItem, getItemPosition };
+export const PokemonUtils = { GameLevel, isItemInArray, genBoardGame, hasPruneItem, getItemPosition };

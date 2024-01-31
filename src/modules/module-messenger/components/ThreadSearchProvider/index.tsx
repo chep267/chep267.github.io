@@ -10,7 +10,7 @@ import * as React from 'react';
 import { ErrorBoundary } from '@module-base/components';
 
 /** utils */
-import { ThreadSearchContext } from '@module-messenger/hooks';
+import { ThreadSearchContext } from '@module-messenger/constants';
 
 /** types */
 import type { ThreadSearchProviderProps, ThreadSearchContextProps } from '@module-messenger/models';

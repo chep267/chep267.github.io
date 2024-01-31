@@ -10,7 +10,7 @@ import * as React from 'react';
 import { genMessage } from '@module-messenger/utils';
 
 /** hooks */
-import { MessengerContext } from '@module-messenger/hooks';
+import { MessengerContext } from '@module-messenger/constants';
 
 /** types */
 import type { PropsWithChildren } from 'react';
